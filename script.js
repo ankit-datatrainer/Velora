@@ -5,7 +5,7 @@
 (() => {
     'use strict';
 
-    const $  = (sel, root = document) => root.querySelector(sel);
+    const $ = (sel, root = document) => root.querySelector(sel);
     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -130,7 +130,7 @@
     const video = $('#showreel');
     if (video) {
         video.muted = true;                       // required for autoplay
-        const play = () => video.play().catch(() => {});
+        const play = () => video.play().catch(() => { });
         if (reduceMotion) { video.pause(); } else { play(); }
 
         const soundBtn = $('#sound-toggle');
@@ -171,6 +171,39 @@
             video.addEventListener('play', () => { delete video.dataset.userPaused; });
         }
     }
+
+    /* ---------- Hero cine stack ----------
+       Crossfades the real campaign photos behind the headline. Pauses while the
+       hero is off screen and stays on the first frame if motion is reduced. */
+    $$('.cine').forEach(cine => {
+        const slides = $$('.cine-slide', cine);
+        if (slides.length < 2) return;
+
+        let i = slides.findIndex(s => s.classList.contains('on'));
+        if (i < 0) { i = 0; slides[0].classList.add('on'); }
+
+        if (reduceMotion) return;
+
+        let timer = null;
+        const advance = () => {
+            slides[i].classList.remove('on');
+            i = (i + 1) % slides.length;
+            slides[i].classList.add('on');
+        };
+        const start = () => { if (!timer) timer = setInterval(advance, 4200); };
+        const stop = () => { clearInterval(timer); timer = null; };
+
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(entries => {
+                entries.forEach(e => (e.isIntersecting ? start() : stop()));
+            }, { threshold: 0.1 }).observe(cine);
+        } else {
+            start();
+        }
+        document.addEventListener('visibilitychange', () => {
+            document.hidden ? stop() : start();
+        });
+    });
 
     /* ---------- Testimonial slider ---------- */
     const track = $('.quotes');
