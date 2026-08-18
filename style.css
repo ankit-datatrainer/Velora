@@ -1975,6 +1975,199 @@ section {
     opacity: 1;
 }
 
+/* ---------- 13b. Stories & Social Proof Cloud (Mindvalley Style) ---------- */
+.stories-showcase {
+    background: #ffffff;
+    padding: clamp(5rem, 8vw, 8.5rem) 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.stories-container {
+    max-width: 1540px;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) minmax(320px, 480px) minmax(280px, 1fr);
+    align-items: center;
+    gap: clamp(1.5rem, 3.5vw, 4rem);
+    position: relative;
+}
+
+.stories-center-content {
+    text-align: center;
+    z-index: 5;
+    padding: 1rem 0;
+}
+
+.stories-number {
+    font-family: var(--f-display);
+    font-size: clamp(3.4rem, 5.8vw, 5.6rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    display: block;
+}
+
+.stories-heading {
+    font-family: var(--f-display);
+    font-size: clamp(1.45rem, 2.2vw, 2.2rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--ink);
+    letter-spacing: -0.025em;
+    margin-top: 0.75rem;
+}
+
+.stories-description {
+    font-family: var(--f-body);
+    font-size: clamp(0.98rem, 1.15vw, 1.15rem);
+    color: #4b527e;
+    line-height: 1.65;
+    max-width: 440px;
+    margin: 1.4rem auto 2.2rem;
+}
+
+.stories-domain-link {
+    color: #7a4df0;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.stories-domain-link:hover {
+    color: #2b36f5;
+    text-decoration: underline;
+}
+
+.btn-stories-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2.8rem;
+    border-radius: 999px;
+    border: 2px solid #7a4df0;
+    background: transparent;
+    color: #7a4df0;
+    font-family: var(--f-display);
+    font-size: 1.05rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(122, 77, 240, 0.12);
+}
+
+.btn-stories-pill:hover {
+    background: linear-gradient(135deg, #7a4df0 0%, #2b36f5 100%);
+    color: #ffffff;
+    border-color: transparent;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 14px 30px -6px rgba(43, 54, 245, 0.45);
+}
+
+/* Floating Photo Clouds */
+.stories-cloud {
+    position: relative;
+    width: 100%;
+    height: 520px;
+}
+
+.story-card {
+    position: absolute;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 16px 36px -8px rgba(11, 17, 64, 0.15);
+    background: #f0f2ff;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+}
+
+.story-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.story-card:hover {
+    transform: translateY(-8px) scale(1.08) !important;
+    box-shadow: 0 26px 48px -10px rgba(11, 17, 64, 0.3);
+    opacity: 1 !important;
+    filter: none !important;
+    z-index: 15 !important;
+}
+
+.story-card:hover img {
+    transform: scale(1.08);
+}
+
+.story-card.card-dim {
+    opacity: 0.24;
+    filter: blur(0.5px);
+}
+
+.story-card.card-semi-dim {
+    opacity: 0.52;
+}
+
+/* Left Cloud Card Positions (Influencers) */
+.card-l1 { width: 105px; height: 125px; top: 8px; left: 4%; opacity: 0.22; filter: blur(0.5px); }
+.card-l2 { width: 135px; height: 160px; top: 32px; left: 34%; z-index: 2; }
+.card-l3 { width: 130px; height: 155px; top: 115px; right: 2%; z-index: 2; }
+.card-l4 { width: 140px; height: 165px; top: 175px; left: 20%; z-index: 4; }
+.card-l5 { width: 135px; height: 160px; top: 235px; right: 12%; z-index: 3; }
+.card-l6 { width: 100px; height: 120px; bottom: 35px; left: 0%; opacity: 0.24; filter: blur(0.5px); }
+.card-l7 { width: 135px; height: 160px; bottom: 0; left: 26%; z-index: 4; }
+.card-l8 { width: 130px; height: 155px; bottom: 18px; right: 6%; z-index: 3; }
+
+/* Right Cloud Card Positions (Celebrities) */
+.card-r1 { width: 130px; height: 155px; top: 75px; left: 2%; z-index: 2; }
+.card-r2 { width: 135px; height: 160px; top: 18px; left: 36%; z-index: 3; }
+.card-r3 { width: 110px; height: 130px; top: 95px; right: 2%; opacity: 0.22; filter: blur(0.5px); }
+.card-r4 { width: 135px; height: 160px; top: 195px; left: 0%; z-index: 4; }
+.card-r5 { width: 130px; height: 155px; top: 145px; left: 28%; z-index: 5; }
+.card-r6 { width: 130px; height: 155px; top: 240px; right: 16%; z-index: 3; }
+.card-r7 { width: 135px; height: 160px; bottom: 10px; left: 7%; z-index: 4; }
+.card-r8 { width: 135px; height: 160px; bottom: 0; left: 38%; z-index: 4; }
+.card-r9 { width: 105px; height: 125px; bottom: 55px; right: 0%; opacity: 0.22; filter: blur(0.5px); }
+
+/* Floating animation */
+.stories-cloud-left .story-card:nth-child(odd) {
+    animation: floatCardA 6.8s ease-in-out infinite alternate;
+}
+.stories-cloud-left .story-card:nth-child(even) {
+    animation: floatCardB 7.4s ease-in-out infinite alternate;
+}
+.stories-cloud-right .story-card:nth-child(odd) {
+    animation: floatCardB 7.0s ease-in-out infinite alternate;
+}
+.stories-cloud-right .story-card:nth-child(even) {
+    animation: floatCardA 7.8s ease-in-out infinite alternate;
+}
+
+@media (max-width: 1080px) {
+    .stories-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    .stories-cloud {
+        height: 380px;
+        max-width: 500px;
+        margin-inline: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .stories-cloud {
+        display: none;
+    }
+}
+
 /* ---------- 14. Showreel band ---------- */
 .reel {
     position: relative;
