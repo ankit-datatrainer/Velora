@@ -183,12 +183,10 @@
         // Don't spend ~3.9MB of someone's mobile data on decoration. Dropping
         // the src and calling load() cancels the in-flight fetch and leaves the
         // poster frame in place, which the gradient scrim sits over anyway.
-        const skip = reduceMotion || window.matchMedia('(max-width: 720px)').matches;
+        const skip = reduceMotion;
         if (skip) {
             vid.removeAttribute('autoplay');
             vid.pause();
-            vid.removeAttribute('src');
-            vid.load();
             return;
         }
 

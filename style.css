@@ -711,13 +711,18 @@ section {
     z-index: 1100;
     display: flex;
     align-items: center;
-    background: var(--white);
-    box-shadow: var(--shadow-nav);
-    transition: height .35s var(--ease), transform .45s var(--ease), box-shadow .35s ease;
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: height .35s var(--ease), transform .45s var(--ease), background .35s ease, box-shadow .35s ease, border-color .35s ease;
 }
 
 .nav.stuck {
     height: 72px;
+    background: rgba(11, 17, 64, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .nav.hide {
@@ -734,7 +739,7 @@ section {
     gap: clamp(.9rem, 2vw, 2rem);
 }
 
-/* Brand: circular emblem badge + wordmark, like Oreo's cookie badge */
+/* Brand: circular emblem badge + wordmark */
 .brand {
     display: flex;
     align-items: center;
@@ -749,7 +754,7 @@ section {
     border-radius: 50%;
     overflow: hidden;
     flex: none;
-    box-shadow: 0 0 0 3px var(--ink);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8);
     animation: logoFloat 4.2s ease-in-out infinite;
     will-change: transform;
     transition: box-shadow .35s ease;
@@ -762,7 +767,7 @@ section {
 }
 
 .brand:hover .brand-badge {
-    box-shadow: 0 0 0 3px var(--electric);
+    box-shadow: 0 0 0 3px var(--gold);
 }
 
 .brand-word {
@@ -772,12 +777,12 @@ section {
     letter-spacing: -.04em;
     text-transform: uppercase;
     line-height: 1;
-    color: var(--ink);
+    color: var(--white);
     transition: color .3s ease;
 }
 
 .brand:hover .brand-word {
-    color: var(--electric);
+    color: var(--gold);
 }
 
 .nav.stuck .brand-badge {
@@ -817,9 +822,11 @@ section {
     margin-top: .55rem;
     display: grid;
     gap: .1rem;
-    background: var(--white);
+    background: rgba(11, 17, 64, 0.95);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 20px;
-    box-shadow: 0 22px 44px -16px rgba(11, 17, 64, .32);
+    box-shadow: 0 22px 44px -16px rgba(0, 0, 0, 0.5);
     opacity: 0;
     visibility: hidden;
     transform: translateY(12px);
@@ -852,13 +859,13 @@ section {
     font-weight: 800;
     letter-spacing: -.02em;
     text-transform: uppercase;
-    color: var(--ink);
+    color: var(--white);
     transition: background .25s ease, color .25s ease, padding-left .3s var(--ease);
 }
 
 .nav-sub a:hover {
-    background: var(--cream-deep);
-    color: var(--electric);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--gold);
     padding-left: 1.1rem;
 }
 
@@ -873,7 +880,7 @@ section {
     font-weight: 800;
     letter-spacing: -.02em;
     text-transform: uppercase;
-    color: var(--ink);
+    color: rgba(255, 255, 255, 0.92);
     transition: color .28s ease;
 }
 
@@ -885,7 +892,7 @@ section {
     width: 100%;
     height: 4px;
     border-radius: 4px;
-    background: var(--grad-cta);
+    background: var(--gold);
     transform: scaleX(0);
     transform-origin: 0 50%;
     transition: transform .4s var(--ease);
@@ -893,7 +900,7 @@ section {
 
 .nav-link:hover,
 .nav-link[aria-current="page"] {
-    color: var(--electric);
+    color: var(--gold);
 }
 
 .nav-link:hover::after,
@@ -931,7 +938,7 @@ section {
     display: grid;
     place-items: center;
     border-radius: 50%;
-    color: var(--ink);
+    color: var(--white);
     transition: background .3s ease, color .3s ease, transform .4s var(--spring);
 }
 
@@ -941,8 +948,8 @@ section {
 }
 
 .nav-ic:hover {
-    background: var(--cream-deep);
-    color: var(--electric);
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--gold);
     transform: scale(1.12);
 }
 
@@ -951,7 +958,7 @@ section {
     position: relative;
     width: 46px;
     height: 46px;
-    border: 3px solid var(--ink);
+    border: 2.5px solid rgba(255, 255, 255, 0.6);
     border-radius: 50%;
     background: transparent;
     cursor: pointer;
@@ -963,7 +970,7 @@ section {
     width: 18px;
     height: 2.5px;
     border-radius: 3px;
-    background: var(--ink);
+    background: var(--white);
     transition: transform .4s var(--ease), opacity .25s ease;
 }
 
@@ -1082,16 +1089,15 @@ section {
 /* ---------- 8. Hero ---------- */
 .hero {
     position: relative;
-    min-height: clamp(620px, 100svh, 1000px);
+    min-height: 100vh;
+    min-height: 100svh;
     display: flex;
-    align-items: center;
-    padding-top: calc(var(--nav-h) + clamp(1.75rem, 4vw, 3.5rem));
-    padding-bottom: clamp(2.5rem, 6vw, 4.5rem);
-    color: var(--on-bright-soft);
-    background:
-        radial-gradient(58% 52% at 82% 10%, rgba(255, 192, 33, .34), transparent 60%),
-        radial-gradient(54% 56% at 4% 92%, rgba(255, 91, 110, .3), transparent 62%),
-        var(--grad-bright);
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: var(--nav-h);
+    padding-bottom: clamp(3.5rem, 8vw, 6.5rem);
+    color: var(--white);
+    background: var(--ink);
     overflow: hidden;
 }
 
@@ -1106,37 +1112,56 @@ section {
     color: var(--on-bright-soft);
 }
 
-/* Showreel behind the hero. The video is dimmed and a brand-gradient scrim sits
-   on top of it, because white type over raw footage loses contrast the moment a
-   bright frame comes round. Measured at 6.5:1 against the lightest frame. */
 .hero-video {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
     z-index: 0;
     overflow: hidden;
+    pointer-events: none;
 }
 
 .hero-video video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: .5;
-    /* Blurred on purpose. The showreel has its own titles burned into it, and
-       unblurred they ghost through behind the VELORA wordmark and read as a
-       rendering fault. Softened, the footage reads as movement and light, which
-       is all a background needs to do — and it buys room for more opacity.
-       The scale hides the soft edges blur leaves at the frame boundary. */
-    filter: blur(3px) saturate(1.2) contrast(1.05);
-    transform: scale(1.08);
+    opacity: 0.96;
+    filter: none;
+    transform: none;
 }
 
 .hero-video::after {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-        radial-gradient(58% 52% at 82% 10%, rgba(255, 192, 33, .3), transparent 60%),
-        linear-gradient(100deg, rgba(43, 54, 245, .9) 0%, rgba(122, 77, 240, .82) 46%, rgba(23, 31, 176, .86) 100%);
+    background: linear-gradient(
+        180deg,
+        rgba(11, 17, 64, 0.55) 0%,
+        rgba(11, 17, 64, 0.12) 28%,
+        rgba(11, 17, 64, 0.42) 62%,
+        rgba(11, 17, 64, 0.88) 92%,
+        rgba(11, 17, 64, 0.98) 100%
+    );
+}
+
+.hero-watermark {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--f-display);
+    font-size: clamp(5rem, 17vw, 15rem);
+    font-weight: 900;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.12);
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.22);
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+    white-space: nowrap;
+    text-align: center;
 }
 
 .hero-inner {
@@ -1146,151 +1171,61 @@ section {
     max-width: var(--shell);
     margin-inline: auto;
     padding-inline: var(--gutter);
-    display: grid;
-    grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr);
-    gap: clamp(2.25rem, 5vw, 5rem);
-    align-items: center;
 }
 
 .hero-copy {
-    position: relative;
-    z-index: 2;
+    max-width: 980px;
 }
 
-.hero-title {
-    font-size: clamp(3.6rem, 14vw, 11rem);
+.hero-main-title {
+    font-family: var(--f-display);
+    font-size: clamp(2.4rem, 5.8vw, 5.2rem);
     font-weight: 800;
-    line-height: .84;
-    letter-spacing: -.05em;
-    text-transform: uppercase;
-    color: var(--on-bright);
-    margin: .1rem 0 .45rem;
-    text-shadow: 0 14px 0 rgba(11, 17, 64, .18);
+    line-height: 1.08;
+    letter-spacing: -.035em;
+    color: var(--white);
+    text-shadow: 0 4px 28px rgba(0, 0, 0, 0.7);
 }
 
-.hero-sub {
-    max-width: 38ch;
-    margin-top: 1.1rem;
-    font-size: clamp(1.05rem, .5vw + .9rem, 1.18rem);
+.hero-main-title .hl-cyan {
+    color: #4de1ff;
+    background: linear-gradient(92deg, #23d9b0 0%, #4de1ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.hero-lead-text {
+    max-width: 58ch;
+    margin-top: 1.25rem;
+    font-family: var(--f-body);
+    font-size: clamp(1.05rem, 1.4vw, 1.28rem);
     font-weight: 500;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
 }
 
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: .9rem;
+    align-items: center;
+    gap: 1rem;
     margin-top: 2rem;
 }
 
-.hero-pillars {
-    display: flex;
-    flex-wrap: wrap;
-    gap: clamp(1rem, 2.6vw, 2.5rem);
-    margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
-    padding-top: 1.5rem;
-    border-top: 4px solid var(--hair-bright-soft);
-}
-
-.hero-pillar {
-    display: flex;
-    align-items: center;
-    gap: .7rem;
-}
-
-.hero-pillar svg {
-    width: 30px;
-    height: 30px;
-    flex: none;
-    color: var(--gold);
-}
-
-.hero-pillar h4 {
-    font-family: var(--f-display);
-    font-size: .8rem;
-    font-weight: 800;
-    letter-spacing: -.01em;
-    text-transform: uppercase;
-    line-height: 1.25;
+.btn-ghost-white {
+    background: rgba(255, 255, 255, 0.12);
     color: var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(8px);
 }
 
-/* Wrapper exists so sticker labels can sit outside the arch, which clips */
-.cine-wrap {
-    position: relative;
-    z-index: 2;
-}
-
-/* Cine stack — crossfading arch of real campaign photography */
-.cine {
-    position: relative;
-    aspect-ratio: 4 / 5;
-    border-radius: 999px 999px 28px 28px;
-    overflow: hidden;
-    box-shadow: var(--shadow-photo);
-    isolation: isolate;
-    z-index: 2;
-}
-
-.cine-slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 1.4s var(--ease);
-}
-
-.cine-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: scale(1.07);
-    transition: transform 9s linear;
-}
-
-.cine-slide.on {
-    opacity: 1;
-}
-
-.cine-slide.on img {
-    transform: scale(1);
-}
-
-.cine::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    border: 6px solid var(--white);
-    border-radius: inherit;
-    pointer-events: none;
-}
-
-.cine-badge {
-    position: absolute;
-    z-index: 3;
-    left: 50%;
-    bottom: 1.2rem;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: .5rem;
-    padding: .55rem 1.15rem;
-    border-radius: 999px;
-    background: var(--ink);
-    font-family: var(--f-display);
-    font-size: .72rem;
-    font-weight: 800;
-    letter-spacing: -.01em;
-    text-transform: uppercase;
-    color: var(--gold);
-    white-space: nowrap;
-}
-
-.cine-badge i {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--coral);
-    animation: livePulse 1.6s ease-in-out infinite;
+.btn-ghost-white:hover {
+    background: var(--white);
+    color: var(--ink);
+    border-color: var(--white);
 }
 
 @keyframes livePulse {
@@ -3256,17 +3191,8 @@ section {
     }
 
     .hero {
-        min-height: auto;
-    }
-
-    .hero-inner {
-        grid-template-columns: 1fr;
-    }
-
-    .cine-wrap {
-        max-width: 440px;
-        margin-inline: auto;
-        order: -1;
+        min-height: 100vh;
+        min-height: 100svh;
     }
 
     .slide-split {
