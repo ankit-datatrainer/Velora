@@ -1106,6 +1106,39 @@ section {
     color: var(--on-bright-soft);
 }
 
+/* Showreel behind the hero. The video is dimmed and a brand-gradient scrim sits
+   on top of it, because white type over raw footage loses contrast the moment a
+   bright frame comes round. Measured at 6.5:1 against the lightest frame. */
+.hero-video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.hero-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .5;
+    /* Blurred on purpose. The showreel has its own titles burned into it, and
+       unblurred they ghost through behind the VELORA wordmark and read as a
+       rendering fault. Softened, the footage reads as movement and light, which
+       is all a background needs to do — and it buys room for more opacity.
+       The scale hides the soft edges blur leaves at the frame boundary. */
+    filter: blur(3px) saturate(1.2) contrast(1.05);
+    transform: scale(1.08);
+}
+
+.hero-video::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(58% 52% at 82% 10%, rgba(255, 192, 33, .3), transparent 60%),
+        linear-gradient(100deg, rgba(43, 54, 245, .9) 0%, rgba(122, 77, 240, .82) 46%, rgba(23, 31, 176, .86) 100%);
+}
+
 .hero-inner {
     position: relative;
     z-index: 2;
@@ -1797,6 +1830,185 @@ section {
     color: var(--gold);
 }
 
+/* ---------- 13b. Famous faces roster ---------- */
+.rail-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: .9rem;
+    margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
+    border-bottom: 5px solid var(--hair-soft);
+}
+
+.rail-title {
+    font-size: clamp(1.5rem, 3vw, 2.3rem);
+    color: var(--text);
+}
+
+.rail-count {
+    font-family: var(--f-display);
+    font-size: .82rem;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--coral);
+    white-space: nowrap;
+}
+
+/* Two rails drifting in opposite directions.
+   Both axes must be clipped (setting one axis to visible forces the other to
+   auto and produces a stray scrollbar), so the vertical padding is what gives
+   the cards' hover lift and shadow room to breathe. */
+.talent-marquee {
+    display: flex;
+    overflow: hidden;
+    padding-block: clamp(1rem, 2vw, 1.6rem);
+    mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+
+.talent-track {
+    display: flex;
+    flex: none;
+    gap: clamp(.8rem, 1.6vw, 1.25rem);
+    padding-right: clamp(.8rem, 1.6vw, 1.25rem);
+    animation: talentSlide var(--dur, 60s) linear infinite;
+    will-change: transform;
+}
+
+/* Influencers travel left to right, celebrities right to left. */
+.talent-marquee[data-marquee="right"] .talent-track {
+    animation-direction: reverse;
+}
+
+.talent-marquee:hover .talent-track,
+.talent-marquee:focus-within .talent-track {
+    animation-play-state: paused;
+}
+
+@keyframes talentSlide {
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.talent {
+    position: relative;
+    flex: 0 0 clamp(206px, 23vw, 282px);
+    display: block;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--ink);
+    box-shadow: var(--shadow-lift);
+    transition: transform .5s var(--spring), box-shadow .5s var(--ease);
+}
+
+.talent:hover {
+    box-shadow: var(--shadow-photo);
+}
+
+/* The tilt vars are written by script.js; the lift is layered on top of them. */
+.talent:hover .talent-photo img {
+    transform: scale(1.08);
+}
+
+.talent-photo {
+    display: block;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+}
+
+.talent-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 22%;
+    transition: transform .9s var(--ease);
+}
+
+.talent-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(11, 17, 64, .92) 0%, rgba(11, 17, 64, .35) 38%, transparent 66%);
+}
+
+.talent-body {
+    position: absolute;
+    z-index: 2;
+    left: 1.05rem;
+    right: 1.05rem;
+    bottom: 1rem;
+    display: grid;
+    gap: .18rem;
+}
+
+.talent-role {
+    font-family: var(--f-display);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--gold);
+    line-height: 1.25;
+}
+
+.talent-name {
+    font-family: var(--f-display);
+    font-size: clamp(1.15rem, 1.6vw, 1.5rem);
+    font-weight: 800;
+    letter-spacing: -.035em;
+    text-transform: uppercase;
+    line-height: 1.02;
+    color: var(--white);
+}
+
+.talent-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    margin-top: .3rem;
+    font-family: var(--f-body);
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--on-bright-soft);
+    transition: color .3s ease;
+}
+
+.talent-meta svg {
+    width: 15px;
+    height: 15px;
+    flex: none;
+}
+
+.talent:hover .talent-meta {
+    color: var(--gold);
+}
+
+/* Instagram ring lights up on hover, so the card reads as a link out */
+.talent::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: inherit;
+    padding: 4px;
+    background: conic-gradient(from 210deg, #f9ce34, #ee2a7b, #6228d7, #f9ce34);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity .4s ease;
+    pointer-events: none;
+}
+
+.talent:hover::after,
+.talent:focus-visible::after {
+    opacity: 1;
+}
+
 /* ---------- 14. Showreel band ---------- */
 .reel {
     position: relative;
@@ -1881,15 +2093,27 @@ section {
     color: var(--gold);
 }
 
-.stat span {
+.stat b span {
+    display: inline;
+    margin-top: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    text-transform: none;
+    color: inherit;
+}
+
+.stat>span {
     display: block;
-    margin-top: .55rem;
+    margin-top: .75rem;
     font-family: var(--f-display);
-    font-size: .82rem;
+    font-size: clamp(.85rem, 1.1vw, 1.05rem);
     font-weight: 800;
-    letter-spacing: .02em;
+    letter-spacing: .03em;
     text-transform: uppercase;
     color: var(--on-bright-soft);
+    line-height: 1.35;
 }
 
 /* On light grounds, flip the stat colours */
@@ -1904,7 +2128,7 @@ section {
     color: transparent;
 }
 
-.section:not(.ink-band) .stat span {
+.section:not(.ink-band) .stat>span {
     color: var(--muted);
 }
 
@@ -3064,6 +3288,15 @@ section {
     .cursor {
         display: none;
     }
+
+    /* Slide-in-from-the-side reveals hold a ±40px X offset until they fire,
+       which below desktop is wider than the gutter and pushes the document
+       sideways. Body clips it so no scrollbar shows, but the element still gets
+       cut off. Reveal on Y only here. */
+    [data-reveal="left"],
+    [data-reveal="right"] {
+        transform: translateY(28px);
+    }
 }
 
 @media (max-width: 720px) {
@@ -3172,6 +3405,18 @@ section {
         opacity: 1;
         transform: none;
         clip-path: none;
+    }
+
+    /* No auto-drift: hand the roster rails back as plain scrollers. */
+    .talent-marquee {
+        overflow-x: auto;
+        mask-image: none;
+        -webkit-mask-image: none;
+    }
+
+    .talent-track {
+        animation: none;
+        transform: none;
     }
 
     .cine-slide img {

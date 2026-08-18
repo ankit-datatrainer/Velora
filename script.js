@@ -172,6 +172,66 @@
         }
     }
 
+    /* ---------- Background video (hero showreel) ----------
+       Decorative, so it stays muted and silent-failing. Paused whenever it is
+       off screen or the tab is hidden, and never started if the visitor asked
+       for reduced motion — the poster frame stands in. */
+    $$('[data-bg-video]').forEach(vid => {
+        vid.muted = true;
+        vid.setAttribute('aria-hidden', 'true');
+
+        // Don't spend ~3.9MB of someone's mobile data on decoration. Dropping
+        // the src and calling load() cancels the in-flight fetch and leaves the
+        // poster frame in place, which the gradient scrim sits over anyway.
+        const skip = reduceMotion || window.matchMedia('(max-width: 720px)').matches;
+        if (skip) {
+            vid.removeAttribute('autoplay');
+            vid.pause();
+            vid.removeAttribute('src');
+            vid.load();
+            return;
+        }
+
+        const play = () => vid.play().catch(() => { });
+        play();
+
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(entries => {
+                entries.forEach(e => (e.isIntersecting ? play() : vid.pause()));
+            }, { threshold: 0.05 }).observe(vid);
+        }
+        document.addEventListener('visibilitychange', () => {
+            document.hidden ? vid.pause() : play();
+        });
+    });
+
+    /* ---------- Talent marquees ----------
+       The two roster rails drift in opposite directions. Duration is derived
+       from track width so both move at the same pixels-per-second no matter how
+       many cards each holds. Under reduced motion the clone is skipped and CSS
+       turns the rail back into a normal horizontal scroller. */
+    $$('.talent-marquee').forEach(m => {
+        const track = $('.talent-track', m);
+        if (!track || reduceMotion) return;
+
+        if (m.children.length === 1) {
+            const clone = track.cloneNode(true);
+            // The duplicate exists only to close the loop: hide it from
+            // assistive tech and keep it out of the tab order.
+            clone.setAttribute('aria-hidden', 'true');
+            $$('a', clone).forEach(a => { a.tabIndex = -1; });
+            m.appendChild(clone);
+        }
+
+        const PX_PER_SEC = 46;
+        const setDuration = () => {
+            const w = track.scrollWidth;
+            if (w) m.style.setProperty('--dur', `${Math.max(24, Math.round(w / PX_PER_SEC))}s`);
+        };
+        setDuration();
+        window.addEventListener('resize', setDuration, { passive: true });
+    });
+
     /* ---------- Hero cine stack ----------
        Crossfades the real campaign photos behind the headline. Pauses while the
        hero is off screen and stays on the first frame if motion is reduced. */
@@ -203,6 +263,15 @@
         document.addEventListener('visibilitychange', () => {
             document.hidden ? stop() : start();
         });
+    });
+
+    /* ---------- Talent marquee looping ---------- */
+    $$('.talent-marquee').forEach(marquee => {
+        const track = $('.talent-track', marquee);
+        if (!track) return;
+        const clone = track.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        marquee.appendChild(clone);
     });
 
     /* ---------- Testimonial slider ---------- */

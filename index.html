@@ -115,6 +115,14 @@
 
         <!-- ============ HERO ============ -->
         <section class="hero" id="top">
+            <!-- Showreel as hero background. Points at assets/showreel.mp4, which is
+                 byte-identical to "Creative Agency Showreel  Bee Social_1080p.mp4" in
+                 the project root. Replace that one file to change both this and the
+                 showreel band lower down. -->
+            <div class="hero-video" aria-hidden="true">
+                <video src="assets/showreel.mp4" poster="assets/hero-poster.jpg" muted loop playsinline autoplay
+                    preload="metadata" data-bg-video tabindex="-1"></video>
+            </div>
             <canvas class="confetti" aria-hidden="true"></canvas>
             <div class="hero-inner">
                 <div class="hero-copy">
@@ -500,6 +508,274 @@
                         </svg>
                     </a>
                 </p>
+            </div>
+        </section>
+
+        <!-- ============ FAMOUS FACES ============
+             Photos are branded placeholders. Drop a cleared photo in at
+             assets/talent/<slug>.jpg (same filename) and it appears automatically.
+             Cards with a confirmed handle link straight to the profile; the rest
+             link to an Instagram search for that name so a visitor is never sent
+             to an impersonator. -->
+        <section class="section" id="faces">
+            <span class="watermark" aria-hidden="true">V</span>
+            <div class="shell">
+                <div class="section-head">
+                    <p class="eyebrow" data-reveal>Famous Faces</p>
+                    <h2 class="display-2" data-reveal="mask" style="--d:60ms">
+                        Faces You Know,<br><span class="gold-solid">Reach You Can Book</span>
+                    </h2>
+                    <div class="rule left" data-reveal><span class="spark"></span></div>
+                    <p class="lead" data-reveal style="--d:120ms">
+                        Creators and celebrities we connect brands with. Tap any face to open their Instagram.
+                    </p>
+                </div>
+
+                <div class="rail-head">
+                    <h3 class="rail-title">Influencers</h3>
+                    <span class="rail-count">10 creators</span>
+                </div>
+                <div class="talent-marquee" data-marquee="right" aria-label="Influencers we work with">
+                    <div class="talent-track">
+                    <a class="talent" href="https://www.instagram.com/elvish_yadav/" target="_blank" rel="noopener"
+                        aria-label="Elvish Yadav on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/elvish-yadav.jpg" alt="Elvish Yadav" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">YouTuber & TV Personality</span>
+                            <span class="talent-name">Elvish Yadav</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@elvish_yadav</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/dolly_ki_tapri_nagpur/" target="_blank" rel="noopener"
+                        aria-label="Dolly Chaiwala on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/dolly-chaiwala.jpg" alt="Dolly Chaiwala" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Nagpur's Viral Chaiwala</span>
+                            <span class="talent-name">Dolly Chaiwala</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@dolly_ki_tapri_nagpur</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/armaanmalik/" target="_blank" rel="noopener"
+                        aria-label="Armaan Malik on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/armaan-malik.jpg" alt="Armaan Malik" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Singer & Creator</span>
+                            <span class="talent-name">Armaan Malik</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@armaanmalik</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/jubin_nautiyal/" target="_blank" rel="noopener"
+                        aria-label="Jubin Nautiyal on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/jubin-nautiyal.jpg" alt="Jubin Nautiyal" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Playback Singer</span>
+                            <span class="talent-name">Jubin Nautiyal</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@jubin_nautiyal</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/aarushbhola17/" target="_blank" rel="noopener"
+                        aria-label="Aarush Bhola on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/aarush-bhola.jpg" alt="Aarush Bhola" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Creator & Actor</span>
+                            <span class="talent-name">Aarush Bhola</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@aarushbhola17</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/varuun_yadav/" target="_blank" rel="noopener"
+                        aria-label="Varun Yadav on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/varun-yadav.jpg" alt="Varun Yadav" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Creator — Laila</span>
+                            <span class="talent-name">Varun Yadav</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@varuun_yadav</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/chandrika.dixit/" target="_blank" rel="noopener"
+                        aria-label="Chandrika Dixit on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/chandrika-dixit.jpg" alt="Chandrika Dixit" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Creator — Vada Pav Girl</span>
+                            <span class="talent-name">Chandrika Dixit</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@chandrika.dixit</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/tejasswiprakash/" target="_blank" rel="noopener"
+                        aria-label="Tejaswini Prakash on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/tejaswini-prakash.jpg" alt="Tejaswini Prakash" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Actor & Creator</span>
+                            <span class="talent-name">Tejaswini Prakash</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@tejasswiprakash</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/anjimaxuofficially/" target="_blank" rel="noopener"
+                        aria-label="Anjali Arora on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/anjali-arora.jpg" alt="Anjali Arora" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Creator</span>
+                            <span class="talent-name">Anjali Arora</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@anjimaxuofficially</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/munawar.faruqui/" target="_blank" rel="noopener"
+                        aria-label="Munawar Faruqui on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/munawar-faruqui.jpg" alt="Munawar Faruqui" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Comedian & Rapper</span>
+                            <span class="talent-name">Munawar Faruqui</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@munawar.faruqui</span>
+                        </span>
+                    </a>
+                    </div>
+                </div>
+
+                <div class="rail-head">
+                    <h3 class="rail-title">Celebrities</h3>
+                    <span class="rail-count">9 artists</span>
+                </div>
+                <div class="talent-marquee" data-marquee="left" aria-label="Celebrities we work with">
+                    <div class="talent-track">
+                    <a class="talent" href="https://www.instagram.com/badboyshah/" target="_blank" rel="noopener"
+                        aria-label="Badshah on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/badshah.jpg" alt="Badshah" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Rapper & Producer</span>
+                            <span class="talent-name">Badshah</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@badboyshah</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/sonu_sood/" target="_blank" rel="noopener"
+                        aria-label="Sonu Sood on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/sonu-sood.jpg" alt="Sonu Sood" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Actor & Philanthropist</span>
+                            <span class="talent-name">Sonu Sood</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@sonu_sood</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/zareenkhan/" target="_blank" rel="noopener"
+                        aria-label="Zareen Khan on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/zareen-khan.jpg" alt="Zareen Khan" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Actor</span>
+                            <span class="talent-name">Zareen Khan</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@zareenkhan</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/riteishd/" target="_blank" rel="noopener"
+                        aria-label="Riteish Deshmukh on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/riteish-deshmukh.jpg" alt="Riteish Deshmukh" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Actor & Producer</span>
+                            <span class="talent-name">Riteish Deshmukh</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@riteishd</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/vivekoberoi/" target="_blank" rel="noopener"
+                        aria-label="Vivek Oberoi on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/vivek-oberoi.jpg" alt="Vivek Oberoi" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Actor & Entrepreneur</span>
+                            <span class="talent-name">Vivek Oberoi</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@vivekoberoi</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/yoyohoneysingh/" target="_blank" rel="noopener"
+                        aria-label="Yo Yo Honey Singh on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/yo-yo-honey-singh.jpg" alt="Yo Yo Honey Singh" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Rapper & Music Producer</span>
+                            <span class="talent-name">Yo Yo Honey Singh</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@yoyohoneysingh</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/iamelnaaz/" target="_blank" rel="noopener"
+                        aria-label="Elnaaz Norouzi on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/elnaaz-norouzi.jpg" alt="Elnaaz Norouzi" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Actor & Model</span>
+                            <span class="talent-name">Elnaaz Norouzi</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@iamelnaaz</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/tamannaahspeaks/" target="_blank" rel="noopener"
+                        aria-label="Tamannaah Bhatia on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/tamannaah-bhatia.jpg" alt="Tamannaah Bhatia" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Actor</span>
+                            <span class="talent-name">Tamannaah Bhatia</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@tamannaahspeaks</span>
+                        </span>
+                    </a>
+                    <a class="talent" href="https://www.instagram.com/norafatehi/" target="_blank" rel="noopener"
+                        aria-label="Nora Fatehi on Instagram" data-tilt="5">
+                        <span class="talent-photo">
+                            <img src="assets/talent/nora-fatehi.jpg" alt="Nora Fatehi" loading="lazy" width="780"
+                                height="1040">
+                        </span>
+                        <span class="talent-body">
+                            <span class="talent-role">Dancer, Singer & Actor</span>
+                            <span class="talent-name">Nora Fatehi</span>
+                            <span class="talent-meta"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.26.07 1.64.07 4.85s-.01 3.58-.07 4.85c-.15 3.22-1.66 4.77-4.92 4.92-1.26.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.07 15.6 2.06 15.2 2.06 12s.01-3.58.07-4.85C2.28 3.92 3.8 2.42 7.05 2.27 8.32 2.21 8.7 2.2 12 2.2zm0 4.64a5.16 5.16 0 1 0 0 10.32 5.16 5.16 0 0 0 0-10.32zm0 8.5a3.34 3.34 0 1 1 0-6.68 3.34 3.34 0 0 1 0 6.68zm6.54-8.7a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>@norafatehi</span>
+                        </span>
+                    </a>
+                    </div>
+                </div>
             </div>
         </section>
 
