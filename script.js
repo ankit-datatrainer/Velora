@@ -1,6 +1,6 @@
 /* ==========================================================================
-   VELORA — site interactions
-   Vanilla JS, no dependencies. Progressive: every feature guards for its DOM.
+   VELORA — Influencer Marketing Agency Interactions
+   Vanilla JS with progressive enhancements and high-performance motion.
    ========================================================================== */
 (() => {
     'use strict';
@@ -9,16 +9,15 @@
     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    /* ---------- Preloader ---------- */
+    /* ---------- 1. Preloader ---------- */
     const preloader = $('.preloader');
     if (preloader) {
         const dismiss = () => preloader.classList.add('done');
-        window.addEventListener('load', () => setTimeout(dismiss, reduceMotion ? 0 : 550));
-        // Safety net so the page is never trapped behind the loader.
-        setTimeout(dismiss, 3500);
+        window.addEventListener('load', () => setTimeout(dismiss, reduceMotion ? 0 : 450));
+        setTimeout(dismiss, 3000); // Safety fallback
     }
 
-    /* ---------- Navbar: stick + auto-hide on scroll down ---------- */
+    /* ---------- 2. Navbar: stick + auto-hide on scroll ---------- */
     const nav = $('.nav');
     if (nav) {
         let lastY = window.scrollY;
@@ -26,14 +25,14 @@
             const y = window.scrollY;
             nav.classList.toggle('stuck', y > 40);
             const drawerOpen = $('.nav-drawer')?.classList.contains('open');
-            nav.classList.toggle('hide', y > 420 && y > lastY && !drawerOpen);
+            nav.classList.toggle('hide', y > 380 && y > lastY && !drawerOpen);
             lastY = y;
         };
         window.addEventListener('scroll', onNavScroll, { passive: true });
         onNavScroll();
     }
 
-    /* ---------- Mobile / tablet drawer ---------- */
+    /* ---------- 3. Mobile / Tablet Drawer ---------- */
     const burger = $('.burger');
     const drawer = $('.nav-drawer');
     if (burger && drawer) {
@@ -49,13 +48,12 @@
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') setDrawer(false);
         });
-        // Close automatically if the viewport grows into desktop layout.
         window.matchMedia('(min-width: 1081px)').addEventListener('change', e => {
             if (e.matches) setDrawer(false);
         });
     }
 
-    /* ---------- Scroll progress bar ---------- */
+    /* ---------- 4. Scroll Progress Bar ---------- */
     const bar = $('.scroll-progress');
     if (bar) {
         const update = () => {
@@ -67,7 +65,7 @@
         update();
     }
 
-    /* ---------- Reveal on scroll ---------- */
+    /* ---------- 5. Reveal On Scroll ---------- */
     const revealables = $$('[data-reveal]');
     if (revealables.length) {
         if (!('IntersectionObserver' in window) || reduceMotion) {
@@ -79,21 +77,20 @@
                     entry.target.classList.add('in');
                     io.unobserve(entry.target);
                 });
-            }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+            }, { threshold: 0.1, rootMargin: '0px 0px -5% 0px' });
 
-            revealables.forEach((el, i) => {
-                // Stagger siblings inside the same grid/row for a cascading entrance.
+            revealables.forEach((el) => {
                 if (!el.style.getPropertyValue('--d')) {
                     const sibs = el.parentElement ? Array.from(el.parentElement.children).filter(c => c.hasAttribute('data-reveal')) : [];
                     const idx = sibs.indexOf(el);
-                    el.style.setProperty('--d', `${(idx > 0 ? idx : 0) * 90}ms`);
+                    el.style.setProperty('--d', `${(idx > 0 ? idx : 0) * 80}ms`);
                 }
                 io.observe(el);
             });
         }
     }
 
-    /* ---------- Animated counters ---------- */
+    /* ---------- 6. Animated Number Counters ---------- */
     const counters = $$('[data-count]');
     if (counters.length) {
         const run = (el) => {
@@ -101,7 +98,7 @@
             const suffix = el.dataset.suffix || '';
             const decimals = (el.dataset.count.split('.')[1] || '').length;
             if (reduceMotion) { el.textContent = target.toFixed(decimals) + suffix; return; }
-            const dur = 1600;
+            const dur = 1500;
             const t0 = performance.now();
             const tick = (now) => {
                 const p = Math.min((now - t0) / dur, 1);
@@ -121,15 +118,15 @@
                     run(entry.target);
                     cio.unobserve(entry.target);
                 });
-            }, { threshold: 0.5 });
+            }, { threshold: 0.4 });
             counters.forEach(el => cio.observe(el));
         }
     }
 
-    /* ---------- Hero showreel controls ---------- */
+    /* ---------- 7. Video Controls & Background Video ---------- */
     const video = $('#showreel');
     if (video) {
-        video.muted = true;                       // required for autoplay
+        video.muted = true;
         const play = () => video.play().catch(() => { });
         if (reduceMotion) { video.pause(); } else { play(); }
 
@@ -147,8 +144,10 @@
         const playBtn = $('#play-toggle');
         if (playBtn) {
             const sync = () => {
-                playBtn.querySelector('.ic-play').hidden = !video.paused;
-                playBtn.querySelector('.ic-pause').hidden = video.paused;
+                const icPlay = playBtn.querySelector('.ic-play');
+                const icPause = playBtn.querySelector('.ic-pause');
+                if (icPlay) icPlay.hidden = !video.paused;
+                if (icPause) icPause.hidden = video.paused;
                 playBtn.setAttribute('aria-label', video.paused ? 'Play showreel' : 'Pause showreel');
             };
             playBtn.addEventListener('click', () => { video.paused ? play() : video.pause(); });
@@ -157,7 +156,6 @@
             sync();
         }
 
-        // Don't burn CPU/battery on a video nobody can see.
         if ('IntersectionObserver' in window) {
             new IntersectionObserver((entries) => {
                 entries.forEach(e => {
@@ -165,34 +163,29 @@
                     else video.pause();
                 });
             }, { threshold: 0.15 }).observe(video);
-            video.addEventListener('pause', () => {
-                if (video.getBoundingClientRect().bottom > 0) video.dataset.userPaused = '1';
-            });
-            video.addEventListener('play', () => { delete video.dataset.userPaused; });
         }
     }
 
-    /* ---------- Background video (hero showreel) ----------
-       Decorative, so it stays muted and silent-failing. Paused whenever it is
-       off screen or the tab is hidden, and never started if the visitor asked
-       for reduced motion — the poster frame stands in. */
-    $$('[data-bg-video]').forEach(vid => {
+    $$('[data-bg-video], .hero-video video').forEach(vid => {
         vid.muted = true;
+        vid.defaultMuted = true;
+        vid.setAttribute('playsinline', '');
+        vid.setAttribute('webkit-playsinline', '');
         vid.setAttribute('aria-hidden', 'true');
-
-        // Don't spend ~3.9MB of someone's mobile data on decoration. Dropping
-        // the src and calling load() cancels the in-flight fetch and leaves the
-        // poster frame in place, which the gradient scrim sits over anyway.
-        const skip = reduceMotion;
-        if (skip) {
-            vid.removeAttribute('autoplay');
-            vid.pause();
-            return;
-        }
-
-        const play = () => vid.play().catch(() => { });
+        if (reduceMotion) { vid.pause(); return; }
+        const play = () => {
+            const res = vid.play();
+            if (res !== undefined) {
+                res.catch(() => {
+                    const fallbackPlay = () => {
+                        vid.play().catch(() => {});
+                        ['click', 'touchstart', 'scroll'].forEach(evt => window.removeEventListener(evt, fallbackPlay));
+                    };
+                    ['click', 'touchstart', 'scroll'].forEach(evt => window.addEventListener(evt, fallbackPlay, { once: true, passive: true }));
+                });
+            }
+        };
         play();
-
         if ('IntersectionObserver' in window) {
             new IntersectionObserver(entries => {
                 entries.forEach(e => (e.isIntersecting ? play() : vid.pause()));
@@ -203,93 +196,23 @@
         });
     });
 
-    /* ---------- Talent marquees ----------
-       The two roster rails drift in opposite directions. Duration is derived
-       from track width so both move at the same pixels-per-second no matter how
-       many cards each holds. Under reduced motion the clone is skipped and CSS
-       turns the rail back into a normal horizontal scroller. */
-    $$('.talent-marquee').forEach(m => {
-        const track = $('.talent-track', m);
-        if (!track || reduceMotion) return;
-
-        if (m.children.length === 1) {
+    /* ---------- 8. Marquee Duplication for Seamless Loops ---------- */
+    $$('.talent-marquee, .quotes-marquee-wrap, .marquee').forEach(container => {
+        const track = container.querySelector('.talent-track, .quotes-track, .marquee-track');
+        if (track && container.children.length === 1 && !reduceMotion) {
             const clone = track.cloneNode(true);
-            // The duplicate exists only to close the loop: hide it from
-            // assistive tech and keep it out of the tab order.
             clone.setAttribute('aria-hidden', 'true');
             $$('a', clone).forEach(a => { a.tabIndex = -1; });
-            m.appendChild(clone);
+            container.appendChild(clone);
         }
-
-        const PX_PER_SEC = 46;
-        const setDuration = () => {
-            const w = track.scrollWidth;
-            if (w) m.style.setProperty('--dur', `${Math.max(24, Math.round(w / PX_PER_SEC))}s`);
-        };
-        setDuration();
-        window.addEventListener('resize', setDuration, { passive: true });
     });
 
-    /* ---------- Hero cine stack ----------
-       Crossfades the real campaign photos behind the headline. Pauses while the
-       hero is off screen and stays on the first frame if motion is reduced. */
-    $$('.cine').forEach(cine => {
-        const slides = $$('.cine-slide', cine);
-        if (slides.length < 2) return;
-
-        let i = slides.findIndex(s => s.classList.contains('on'));
-        if (i < 0) { i = 0; slides[0].classList.add('on'); }
-
-        if (reduceMotion) return;
-
-        let timer = null;
-        const advance = () => {
-            slides[i].classList.remove('on');
-            i = (i + 1) % slides.length;
-            slides[i].classList.add('on');
-        };
-        const start = () => { if (!timer) timer = setInterval(advance, 4200); };
-        const stop = () => { clearInterval(timer); timer = null; };
-
-        if ('IntersectionObserver' in window) {
-            new IntersectionObserver(entries => {
-                entries.forEach(e => (e.isIntersecting ? start() : stop()));
-            }, { threshold: 0.1 }).observe(cine);
-        } else {
-            start();
-        }
-        document.addEventListener('visibilitychange', () => {
-            document.hidden ? stop() : start();
-        });
-    });
-
-    /* ---------- Talent marquee looping ---------- */
-    $$('.talent-marquee').forEach(marquee => {
-        const track = $('.talent-track', marquee);
-        if (!track) return;
-        const clone = track.cloneNode(true);
-        clone.setAttribute('aria-hidden', 'true');
-        marquee.appendChild(clone);
-    });
-
-    /* ---------- Testimonial slider ---------- */
-    const track = $('.quotes');
-    if (track) {
-        const step = () => {
-            const card = track.firstElementChild;
-            return card ? card.getBoundingClientRect().width + 20 : track.clientWidth * 0.8;
-        };
-        $('.quotes-prev')?.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
-        $('.quotes-next')?.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
-    }
-
-    /* ---------- Accordion ---------- */
+    /* ---------- 9. Accordion ---------- */
     $$('.acc-item').forEach(item => {
         const trigger = $('.acc-trigger', item);
         if (!trigger) return;
         trigger.addEventListener('click', () => {
             const open = item.classList.contains('open');
-            // Single-open behaviour keeps long FAQ lists scannable.
             item.closest('.accordion')?.querySelectorAll('.acc-item.open').forEach(other => {
                 other.classList.remove('open');
                 $('.acc-trigger', other)?.setAttribute('aria-expanded', 'false');
@@ -301,64 +224,50 @@
         });
     });
 
-    /* ---------- Gallery lightbox ---------- */
-    const lightbox = $('.lightbox');
-    const figures = $$('.gallery figure');
-    if (lightbox && figures.length) {
-        const imgEl = $('img', lightbox);
-        const capEl = $('.lightbox-caption', lightbox);
-        let index = 0;
+    /* ---------- 10. Interactive Dual Form (Brand vs Creator) ---------- */
+    const form = $('#velora-form');
+    const toggleBtns = $$('.form-toggle-btn');
+    let currentRole = 'brand'; // 'brand' or 'creator'
 
-        const show = (i) => {
-            index = (i + figures.length) % figures.length;
-            const source = $('img', figures[index]);
-            imgEl.src = source.dataset.full || source.src;
-            imgEl.alt = source.alt || '';
-            if (capEl) capEl.textContent = $('figcaption', figures[index])?.textContent || '';
-        };
+    if (toggleBtns.length && form) {
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                toggleBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentRole = btn.dataset.role || 'brand';
 
-        const open = (i) => {
-            show(i);
-            lightbox.classList.add('open');
-            document.body.classList.add('nav-open');
-            $('.lightbox-close', lightbox)?.focus();
-        };
-
-        const close = () => {
-            lightbox.classList.remove('open');
-            document.body.classList.remove('nav-open');
-        };
-
-        figures.forEach((fig, i) => {
-            fig.tabIndex = 0;
-            fig.setAttribute('role', 'button');
-            fig.addEventListener('click', () => open(i));
-            fig.addEventListener('keydown', e => {
-                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); }
+                // Toggle visibility of role-specific fields
+                $$('[data-for-role]', form).forEach(field => {
+                    const forRole = field.dataset.forRole;
+                    const match = (forRole === currentRole || forRole === 'both');
+                    // Clear the inline value rather than forcing a display mode.
+                    // .field is a grid (label stacked over its input), so hardcoding
+                    // 'flex' here would lay the label out beside the input.
+                    field.style.display = match ? '' : 'none';
+                    const inputs = $$('input, select, textarea', field);
+                    inputs.forEach(inp => {
+                        if (inp.dataset.originalRequired !== undefined) {
+                            inp.required = match && inp.dataset.originalRequired === 'true';
+                        } else {
+                            inp.dataset.originalRequired = String(inp.required);
+                            inp.required = match && inp.required;
+                        }
+                    });
+                });
             });
         });
 
-        $('.lightbox-close', lightbox)?.addEventListener('click', close);
-        $('.lightbox .prev')?.addEventListener('click', () => show(index - 1));
-        $('.lightbox .next')?.addEventListener('click', () => show(index + 1));
-        lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
-
-        document.addEventListener('keydown', e => {
-            if (!lightbox.classList.contains('open')) return;
-            if (e.key === 'Escape') close();
-            if (e.key === 'ArrowRight') show(index + 1);
-            if (e.key === 'ArrowLeft') show(index - 1);
-        });
+        // Initialize state
+        toggleBtns[0]?.click();
     }
 
-    /* ---------- Contact form validation ---------- */
-    const form = $('#velora-form');
     if (form) {
         const status = $('.form-status', form);
 
         const validate = (field) => {
+            if (field.style.display === 'none') return true;
             const input = $('input, select, textarea', field);
-            if (!input) return true;
+            if (!input || !input.required) return true;
             let ok = input.checkValidity() && input.value.trim() !== '';
             if (ok && input.type === 'tel') ok = /^[0-9+\-\s()]{8,18}$/.test(input.value.trim());
             field.classList.toggle('invalid', !ok);
@@ -373,8 +282,8 @@
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const required = $$('.field', form).filter(f => $('[required]', f));
-            const bad = required.filter(f => !validate(f));
+            const visibleRequired = $$('.field', form).filter(f => f.style.display !== 'none' && $('[required]', f));
+            const bad = visibleRequired.filter(f => !validate(f));
 
             if (bad.length) {
                 bad[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -382,23 +291,23 @@
                 return;
             }
 
-            // No backend wired up yet — hand the enquiry off over WhatsApp/email
-            // so no lead is lost, and confirm inline.
             const data = new FormData(form);
+            const isBrand = currentRole === 'brand';
+
             const lines = [
-                'New enquiry from the VELORA website',
+                `*New ${isBrand ? 'Brand Campaign' : 'Creator Collab'} Enquiry — VELORA*`,
+                `Type: ${isBrand ? "Brand / Business" : "Content Creator / Influencer"}`,
                 `Name: ${data.get('name') || ''}`,
                 `Email: ${data.get('email') || ''}`,
                 `Phone: ${data.get('phone') || ''}`,
-                `Company: ${data.get('company') || ''}`,
-                `Service: ${data.get('service') || ''}`,
-                `Budget: ${data.get('budget') || ''}`,
-                `Source: ${data.get('source') || ''}`,
-                `Message: ${data.get('message') || ''}`
-            ].join('\n');
+                isBrand ? `Company / Brand: ${data.get('company') || ''}` : `Social Profile / Channel: ${data.get('creator_handle') || ''}`,
+                isBrand ? `Service: ${data.get('service') || ''}` : `Follower Count / Niche: ${data.get('creator_tier') || ''}`,
+                isBrand ? `Budget: ${data.get('budget') || ''}` : `Collab Interest: ${data.get('creator_collab_type') || ''}`,
+                `Message / Requirement: ${data.get('message') || ''}`
+            ].filter(Boolean).join('\n');
 
             if (status) {
-                status.textContent = 'Thank you. Your enquiry is on its way — the VELORA team replies within one business day.';
+                status.textContent = 'Thank you! Your enquiry is ready. Opening WhatsApp to connect directly with the VELORA team.';
                 status.classList.add('show');
             }
 
@@ -407,86 +316,97 @@
         });
     }
 
-    /* ---------- Back to top ---------- */
+    /* ---------- 10b. Campaign reel lightbox ----------
+       The work cards advertise a play affordance, so it has to actually play
+       something. The modal is built on demand rather than shipped in every
+       page's markup, since only the homepage carries work cards. */
+    const workPlayBtns = $$('[data-work-video]');
+    if (workPlayBtns.length) {
+        let box = null, boxVideo = null, boxCaption = null, lastFocused = null;
+
+        const build = () => {
+            box = document.createElement('div');
+            box.className = 'lightbox lightbox-video';
+            box.setAttribute('role', 'dialog');
+            box.setAttribute('aria-modal', 'true');
+            box.setAttribute('aria-label', 'Campaign reel');
+            box.innerHTML =
+                '<button class="lightbox-close" type="button" aria-label="Close reel">' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+                'stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>' +
+                '</button>' +
+                '<div class="lightbox-stage">' +
+                '<video controls playsinline preload="metadata"></video>' +
+                '<p class="lightbox-caption"></p>' +
+                '</div>';
+            document.body.appendChild(box);
+            boxVideo = $('video', box);
+            boxCaption = $('.lightbox-caption', box);
+
+            $('.lightbox-close', box).addEventListener('click', close);
+            box.addEventListener('click', (e) => { if (e.target === box) close(); });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && box.classList.contains('open')) close();
+            });
+        };
+
+        function close() {
+            if (!box) return;
+            box.classList.remove('open');
+            boxVideo.pause();
+            document.body.classList.remove('nav-open');
+            lastFocused?.focus();
+        }
+
+        const open = (src, title, trigger) => {
+            if (!box) build();
+            lastFocused = trigger;
+            boxVideo.src = src;
+            boxCaption.textContent = title || '';
+            box.classList.add('open');
+            document.body.classList.add('nav-open'); // reuse the scroll lock
+            if (!reduceMotion) boxVideo.play().catch(() => { });
+            $('.lightbox-close', box).focus();
+        };
+
+        workPlayBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                open(btn.dataset.workVideo, btn.dataset.workTitle, btn);
+            });
+        });
+    }
+
+    /* ---------- 11. "Hire Top Creators" CTA trigger ---------- */
+    $$('[data-hire-creators]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const formSection = $('#enquiry') || $('#contact-form');
+            if (formSection) {
+                e.preventDefault();
+                formSection.scrollIntoView({ behavior: 'smooth' });
+                // Switch form to Brand mode
+                const brandToggle = $('[data-role="brand"]');
+                if (brandToggle) brandToggle.click();
+                const serviceSelect = $('#service');
+                if (serviceSelect) serviceSelect.value = 'Influencer Marketing';
+            }
+        });
+    });
+
+    /* ---------- 12. Floating Action Controls & Helpers ---------- */
     const toTop = $('.float-btn.top');
     if (toTop) {
         window.addEventListener('scroll', () => {
-            toTop.classList.toggle('show', window.scrollY > 700);
+            toTop.classList.toggle('show', window.scrollY > 600);
         }, { passive: true });
         toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
 
-    /* ---------- Current year ---------- */
     $$('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
 
-    /* ---------- Marquee: duplicate content for a seamless loop ---------- */
-    $$('.marquee').forEach(m => {
-        const t = $('.marquee-track', m);
-        if (t && m.children.length === 1) m.appendChild(t.cloneNode(true));
-    });
-
-    /* ======================================================================
-       MOTION LAYER
-       Everything below is decoration. It all short-circuits under
-       prefers-reduced-motion and is gated on IntersectionObserver so nothing
-       animates while off screen.
-       ====================================================================== */
-
-    /* ---------- Per-character headline reveal ----------
-       Only text nodes are wrapped, so <br> and nested gradient spans inside a
-       heading survive untouched. */
-    const splitTargets = $$('[data-split]');
-    if (splitTargets.length) {
-        const wrapChars = (node) => {
-            const frag = document.createDocumentFragment();
-            for (const raw of node.textContent) {
-                if (raw === ' ') {
-                    const sp = document.createElement('span');
-                    sp.className = 'sp';
-                    sp.textContent = ' ';
-                    frag.appendChild(sp);
-                    continue;
-                }
-                const ch = document.createElement('span');
-                ch.className = 'ch';
-                ch.textContent = raw;
-                frag.appendChild(ch);
-            }
-            node.replaceWith(frag);
-        };
-
-        splitTargets.forEach(el => {
-            // Collect first, then mutate: the tree changes as we go.
-            const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
-            const texts = [];
-            while (walker.nextNode()) {
-                if (walker.currentNode.textContent.trim()) texts.push(walker.currentNode);
-            }
-            texts.forEach(wrapChars);
-            $$('.ch', el).forEach((ch, i) => ch.style.setProperty('--ci', i));
-        });
-
-        if (!('IntersectionObserver' in window) || reduceMotion) {
-            splitTargets.forEach(el => el.classList.add('in'));
-        } else {
-            const sio = new IntersectionObserver(entries => {
-                entries.forEach(e => {
-                    if (!e.isIntersecting) return;
-                    e.target.classList.add('in');
-                    sio.unobserve(e.target);
-                });
-            }, { threshold: 0.2 });
-            splitTargets.forEach(el => sio.observe(el));
-        }
-    }
-
-    /* ---------- Confetti ----------
-       The bright paper-scatter that gives the hero and closing band their
-       energy. Particle count scales with area and is capped so a large monitor
-       does not turn this into a stress test. */
+    /* ---------- 13. Confetti Animation (Luxury Purple & Pink) ---------- */
     const confettiMounts = $$('.confetti');
     if (confettiMounts.length && !reduceMotion) {
-        const COLOURS = ['#ffc021', '#ff5b6e', '#23d9b0', '#ffffff', '#7a4df0', '#ffe9a6'];
+        const COLOURS = ['#ec4899', '#f472b6', '#a855f7', '#c084fc', '#fbbf24', '#ffffff'];
 
         confettiMounts.forEach(canvas => {
             const ctx = canvas.getContext('2d');
@@ -497,13 +417,13 @@
             const seed = (bit, top) => {
                 bit.x = Math.random() * w;
                 bit.y = top ? -20 - Math.random() * h * 0.4 : Math.random() * h;
-                bit.size = 5 + Math.random() * 8;
-                bit.vy = 14 + Math.random() * 26;          // px per second
-                bit.vx = (Math.random() - 0.5) * 18;
+                bit.size = 4 + Math.random() * 6;
+                bit.vy = 12 + Math.random() * 22;
+                bit.vx = (Math.random() - 0.5) * 14;
                 bit.rot = Math.random() * Math.PI * 2;
-                bit.vr = (Math.random() - 0.5) * 2.2;
+                bit.vr = (Math.random() - 0.5) * 1.8;
                 bit.colour = COLOURS[(Math.random() * COLOURS.length) | 0];
-                bit.round = Math.random() < 0.35;
+                bit.round = Math.random() < 0.4;
                 return bit;
             };
 
@@ -517,7 +437,7 @@
                 canvas.height = Math.round(h * dpr);
                 ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-                const want = Math.max(18, Math.min(70, Math.round((w * h) / 16000)));
+                const want = Math.max(16, Math.min(50, Math.round((w * h) / 18000)));
                 if (bits.length > want) bits.length = want;
                 while (bits.length < want) bits.push(seed({}, false));
             };
@@ -538,7 +458,7 @@
                     ctx.translate(b.x, b.y);
                     ctx.rotate(b.rot);
                     ctx.fillStyle = b.colour;
-                    ctx.globalAlpha = 0.85;
+                    ctx.globalAlpha = 0.8;
                     if (b.round) {
                         ctx.beginPath();
                         ctx.arc(0, 0, b.size / 2, 0, Math.PI * 2);
@@ -559,7 +479,7 @@
             const stop = () => { cancelAnimationFrame(raf); raf = null; };
 
             resize();
-            window.addEventListener('resize', () => { resize(); }, { passive: true });
+            window.addEventListener('resize', resize, { passive: true });
             document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
 
             if ('IntersectionObserver' in window) {
@@ -573,99 +493,20 @@
         });
     }
 
+    /* ---------- 14. Magnetic Buttons & Subtle Parallax ---------- */
     const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-    /* ---------- Magnetic buttons ---------- */
     if (finePointer && !reduceMotion) {
         $$('.magnetic').forEach(el => {
-            const pull = (e) => {
+            el.addEventListener('mousemove', (e) => {
                 const r = el.getBoundingClientRect();
                 const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
                 const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
-                el.style.setProperty('--mx', `${Math.max(-1, Math.min(1, dx)) * 7}px`);
-                el.style.setProperty('--my', `${Math.max(-1, Math.min(1, dy)) * 7}px`);
-            };
-            const reset = () => {
-                el.style.setProperty('--mx', '0px');
-                el.style.setProperty('--my', '0px');
-            };
-            el.addEventListener('mousemove', pull);
-            el.addEventListener('mouseleave', reset);
-        });
-    }
-
-    /* ---------- 3D tilt ---------- */
-    if (finePointer && !reduceMotion) {
-        $$('[data-tilt]').forEach(el => {
-            const max = parseFloat(el.dataset.tilt) || 7;
-            el.addEventListener('mousemove', (e) => {
-                const r = el.getBoundingClientRect();
-                const px = (e.clientX - r.left) / r.width - 0.5;
-                const py = (e.clientY - r.top) / r.height - 0.5;
-                el.style.setProperty('--ry', `${px * max * 2}deg`);
-                el.style.setProperty('--rx', `${-py * max * 2}deg`);
+                el.style.transform = `translate3d(${dx * 6}px, ${dy * 6}px, 0)`;
             });
             el.addEventListener('mouseleave', () => {
-                el.style.setProperty('--rx', '0deg');
-                el.style.setProperty('--ry', '0deg');
+                el.style.transform = `translate3d(0, 0, 0)`;
             });
-        });
-    }
-
-    /* ---------- Scroll parallax ----------
-       data-parallax holds a speed: positive drifts up, negative drifts down. */
-    const parallaxEls = $$('[data-parallax]');
-    if (parallaxEls.length && !reduceMotion) {
-        let queued = false;
-        const apply = () => {
-            queued = false;
-            const mid = window.innerHeight / 2;
-            for (const el of parallaxEls) {
-                const r = el.getBoundingClientRect();
-                if (r.bottom < -200 || r.top > window.innerHeight + 200) continue;
-                const speed = parseFloat(el.dataset.parallax) || 0.08;
-                el.style.setProperty('--py', `${((r.top + r.height / 2) - mid) * -speed}px`);
-            }
-        };
-        const onScroll = () => {
-            if (queued) return;
-            queued = true;
-            requestAnimationFrame(apply);
-        };
-        window.addEventListener('scroll', onScroll, { passive: true });
-        window.addEventListener('resize', onScroll);
-        apply();
-    }
-
-    /* ---------- Cursor follower ---------- */
-    if (finePointer && !reduceMotion) {
-        const dot = document.createElement('div');
-        dot.className = 'cursor';
-        dot.setAttribute('aria-hidden', 'true');
-        document.body.appendChild(dot);
-
-        let tx = window.innerWidth / 2, ty = window.innerHeight / 2, cx = tx, cy = ty;
-
-        window.addEventListener('mousemove', (e) => {
-            tx = e.clientX;
-            ty = e.clientY;
-            dot.classList.add('show');
-        }, { passive: true });
-
-        document.addEventListener('mouseleave', () => dot.classList.remove('show'));
-
-        const ease = () => {
-            cx += (tx - cx) * 0.18;
-            cy += (ty - cy) * 0.18;
-            dot.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
-            requestAnimationFrame(ease);
-        };
-        requestAnimationFrame(ease);
-
-        // Swell over anything interactive.
-        document.addEventListener('mouseover', (e) => {
-            const hot = e.target.closest('a, button, .ig-item, .gallery figure, .face-item, input, select, textarea');
-            dot.classList.toggle('grow', Boolean(hot));
         });
     }
 })();
