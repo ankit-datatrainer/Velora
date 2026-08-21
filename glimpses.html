@@ -8,13 +8,22 @@
   <meta name="description"
     content="Some glimpses from VELORA — campaign shoots, influencer events, celebrity collaborations and brand activations we have brought to life.">
   <meta name="theme-color" content="#8b5cf6">
-  <link rel="icon" href="assets/velora-logo.png">
+  <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="assets/favicon-32x32.png" sizes="32x32">
+  <link rel="shortcut icon" href="assets/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+    <!-- Enables the section load-in in style.css section 40. Inline and in
+         <head> on purpose: it must land before first paint so sections are
+         never shown and then snapped to hidden, and if scripting is off the
+         class never arrives and everything simply stays visible. -->
+    <script>document.documentElement.classList.add('has-sectfx');</script>
 </head>
 
 <body>
@@ -48,8 +57,8 @@
               <a href="services.html#event">Event Promotion</a>
             </div>
           </li>
-          <li><a class="nav-link" href="why-velora.html">Mission &amp; Vision</a></li>
           <li><a class="nav-link" href="glimpses.html" aria-current="page">Glimpses</a></li>
+          <li><a class="nav-link" href="why-influencer-marketing.html">Why Influencer Marketing</a></li>
           <li><a class="nav-link" href="contact.html">Contact</a></li>
         </ul>
       </nav>
@@ -85,8 +94,8 @@
       <a href="index.html" style="--i:0"><small>01</small> Home</a>
       <a href="about.html" style="--i:1"><small>02</small> About</a>
       <a href="services.html" style="--i:2"><small>03</small> Services</a>
-      <a href="why-velora.html" style="--i:3"><small>04</small> Mission &amp; Vision</a>
-      <a href="glimpses.html" style="--i:4"><small>05</small> Glimpses</a>
+      <a href="glimpses.html" style="--i:3"><small>04</small> Glimpses</a>
+      <a href="why-influencer-marketing.html" style="--i:4"><small>05</small> Why Influencer Marketing</a>
       <a href="contact.html" style="--i:5"><small>06</small> Contact</a>
     </nav>
     <div class="drawer-foot">
@@ -114,83 +123,523 @@
 
     <div class="vvv">Value <i></i> Voice <i></i> Vision</div>
 
-    <!-- ============ SHOWREEL ============ -->
-    <section class="section">
+    <!-- ============ SHOWREEL (EMBEDDED FLOATING ROUNDED RECTANGLE) ============ -->
+    <section class="section section-showreel-glimpses">
       <div class="shell">
         <div class="section-head centered">
-          <p class="eyebrow centered" data-reveal>Watch</p>
+          <p class="eyebrow centered" data-reveal>Watch In Motion</p>
           <h2 class="display-3" data-reveal style="--d:60ms">Our <span class="gold-solid">Showreel</span></h2>
         </div>
-        <div class="reel" data-reveal="zoom">
-          <div class="reel-frame">
-            <video id="showreel-full" poster="assets/gallery/glimpse-1.jpg" controls playsinline preload="metadata">
+
+        <!-- Floating Rounded Rectangle Embedded Video Stage -->
+        <div class="floating-showreel-wrapper" data-reveal="zoom">
+          <div class="showreel-ambient-glow" aria-hidden="true"></div>
+          
+          <div class="floating-showreel-frame">
+            <video id="showreel" autoplay muted loop playsinline preload="auto">
               <source src="assets/showreel.mp4" type="video/mp4">
               Your browser does not support embedded video.
             </video>
+
+            <!-- Subtle Glass Reflection -->
+            <div class="showreel-glare" aria-hidden="true"></div>
+
+            <!-- Floating Media Controls -->
+            <div class="reel-tools">
+              <button class="media-btn" id="play-toggle" aria-label="Pause showreel">
+                <svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor">
+                  <rect x="7" y="5" width="3.4" height="14" rx="1" />
+                  <rect x="13.6" y="5" width="3.4" height="14" rx="1" />
+                </svg>
+                <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor" hidden>
+                  <path d="M8 5.5v13l11-6.5L8 5.5z" />
+                </svg>
+              </button>
+              <button class="media-btn" id="sound-toggle" aria-label="Unmute showreel">
+                <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                  <path d="M11 5 6.5 9H3v6h3.5L11 19V5z" />
+                  <path d="m16 9.5 5 5M21 9.5l-5 5" />
+                </svg>
+                <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" hidden>
+                  <path d="M11 5 6.5 9H3v6h3.5L11 19V5z" />
+                  <path d="M15.5 8.5a4.5 4.5 0 0 1 0 7M18 6a8 8 0 0 1 0 12" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============ GALLERY ============ -->
-    <section class="section" style="padding-top:0">
-      <div class="shell">
-        <div class="gallery">
-          <figure data-reveal><img src="assets/gallery/glimpse-1.jpg" alt="Creator collaboration" loading="lazy">
-            <figcaption>Creator Collaboration</figcaption>
-          </figure>
-          <figure data-reveal><img src="assets/gallery/glimpse-3.jpg" alt="Talent on location at night" loading="lazy">
-            <figcaption>On Location</figcaption>
-          </figure>
-          <figure data-reveal><img src="assets/gallery/glimpse-2.jpg" alt="Artist session" loading="lazy">
-            <figcaption>Artist Session</figcaption>
-          </figure>
-          <figure data-reveal><img src="assets/gallery/glimpse-5.jpg" alt="Event lounge" loading="lazy">
-            <figcaption>Event Lounge</figcaption>
-          </figure>
-          <figure data-reveal><img src="assets/gallery/glimpse-4.jpg" alt="Creator meet" loading="lazy">
-            <figcaption>Creator Meet</figcaption>
-          </figure>
-          <figure data-reveal><img src="assets/gallery/glimpse-6.jpg" alt="Studio session" loading="lazy">
-            <figcaption>Studio Session</figcaption>
-          </figure>
+    <!-- ============ STORIES & CASE STUDIES (CELEB PROOF) ============ -->
+    <section class="stories-showcase" id="stories">
+      <div class="stories-container">
+        <!-- Left Floating Photo Cloud (Influencers) -->
+        <div class="stories-cloud stories-cloud-left" aria-hidden="true">
+          <a class="story-card card-l1" href="https://www.instagram.com/aarushbhola17/" target="_blank"
+            rel="noopener" aria-label="Aarush Bhola">
+            <img src="assets/talent/aarush-bhola.jpg" alt="Aarush Bhola" loading="lazy">
+          </a>
+          <a class="story-card card-l2" href="https://www.instagram.com/elvish_yadav/" target="_blank"
+            rel="noopener" aria-label="Elvish Yadav">
+            <img src="assets/talent/elvish-yadav.jpg" alt="Elvish Yadav" loading="lazy">
+          </a>
+          <a class="story-card card-l3" href="https://www.instagram.com/dolly_ki_tapri_nagpur/"
+            target="_blank" rel="noopener" aria-label="Dolly Chaiwala">
+            <img src="assets/talent/dolly-chaiwala.jpg" alt="Dolly Chaiwala" loading="lazy">
+          </a>
+          <a class="story-card card-l4" href="https://www.instagram.com/chandrika.dixit/" target="_blank"
+            rel="noopener" aria-label="Chandrika Dixit">
+            <img src="assets/talent/chandrika-dixit.jpg" alt="Chandrika Dixit" loading="lazy">
+          </a>
+          <a class="story-card card-l5" href="https://www.instagram.com/munawar.faruqui/" target="_blank"
+            rel="noopener" aria-label="Munawar Faruqui">
+            <img src="assets/talent/munawar-faruqui.jpg" alt="Munawar Faruqui" loading="lazy">
+          </a>
+        </div>
+
+        <!-- Center Content -->
+        <div class="stories-center-content">
+          <span class="stories-number" data-reveal>50,000+</span>
+          <h2 class="stories-heading" data-reveal style="--d:60ms">Case Studies of Success</h2>
+          <p class="stories-description" data-reveal style="--d:120ms">
+            VELORA commands top-tier engagement benchmarks in the industry. Connecting leading consumer
+            brands with the nation's biggest celebrities and viral creators.
+          </p>
+          <div class="stories-cta-wrap" data-reveal style="--d:180ms">
+            <a class="btn-stories-pill magnetic" href="why-influencer-marketing.html">
+              Explore Success Stories
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Floating Photo Cloud (Celebrities) -->
+        <div class="stories-cloud stories-cloud-right" aria-hidden="true">
+          <a class="story-card card-r1" href="https://www.instagram.com/norafatehi/" target="_blank"
+            rel="noopener" aria-label="Nora Fatehi">
+            <img src="assets/talent/nora-fatehi.jpg" alt="Nora Fatehi" loading="lazy">
+          </a>
+          <a class="story-card card-r2" href="https://www.instagram.com/tamannaahspeaks/" target="_blank"
+            rel="noopener" aria-label="Tamannaah Bhatia">
+            <img src="assets/talent/tamannaah-bhatia.jpg" alt="Tamannaah Bhatia" loading="lazy">
+          </a>
+          <a class="story-card card-r3" href="https://www.instagram.com/yoyohoneysingh/" target="_blank"
+            rel="noopener" aria-label="Yo Yo Honey Singh">
+            <img src="assets/talent/yo-yo-honey-singh.jpg" alt="Yo Yo Honey Singh" loading="lazy">
+          </a>
+          <a class="story-card card-r4" href="https://www.instagram.com/sonu_sood/" target="_blank"
+            rel="noopener" aria-label="Sonu Sood">
+            <img src="assets/talent/sonu-sood.jpg" alt="Sonu Sood" loading="lazy">
+          </a>
+          <a class="story-card card-r5" href="https://www.instagram.com/badboyshah/" target="_blank"
+            rel="noopener" aria-label="Badshah">
+            <img src="assets/talent/badshah.jpg" alt="Badshah" loading="lazy">
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- ============ CAMPAIGN CATEGORIES ============ -->
+    <!-- ============ VISUAL CREATOR REELS SHOWCASE ============ -->
+    <section class="section" style="padding-top:0">
+      <div class="shell">
+        <div class="section-head centered">
+          <p class="eyebrow centered" data-reveal>Creator Spotlight</p>
+          <h2 class="display-3" data-reveal style="--d:60ms">Top Creator <span class="gold-solid">Impact Moments</span></h2>
+        </div>
+
+        <div class="ugc-reel-grid">
+          <div class="ugc-reel-card" data-reveal style="--d:30ms">
+            <img src="assets/talent/nora-fatehi.jpg" alt="Nora Fatehi" loading="lazy">
+            <div class="ugc-reel-overlay">
+              <div class="ugc-play-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+              <div class="ugc-info">
+                <span class="ugc-name">Nora Fatehi</span>
+                <span class="ugc-views">18.4M Views</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ugc-reel-card" data-reveal style="--d:60ms">
+            <img src="assets/talent/badshah.jpg" alt="Badshah" loading="lazy">
+            <div class="ugc-reel-overlay">
+              <div class="ugc-play-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+              <div class="ugc-info">
+                <span class="ugc-name">Badshah</span>
+                <span class="ugc-views">14.2M Views</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ugc-reel-card" data-reveal style="--d:90ms">
+            <img src="assets/talent/elvish-yadav.jpg" alt="Elvish Yadav" loading="lazy">
+            <div class="ugc-reel-overlay">
+              <div class="ugc-play-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+              <div class="ugc-info">
+                <span class="ugc-name">Elvish Yadav</span>
+                <span class="ugc-views">22.8M Views</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ugc-reel-card" data-reveal style="--d:120ms">
+            <img src="assets/talent/anjali-arora.jpg" alt="Anjali Arora" loading="lazy">
+            <div class="ugc-reel-overlay">
+              <div class="ugc-play-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+              <div class="ugc-info">
+                <span class="ugc-name">Anjali Arora</span>
+                <span class="ugc-views">11.6M Views</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ugc-reel-card" data-reveal style="--d:150ms">
+            <img src="assets/talent/armaan-malik.jpg" alt="Armaan Malik" loading="lazy">
+            <div class="ugc-reel-overlay">
+              <div class="ugc-play-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+              <div class="ugc-info">
+                <span class="ugc-name">Armaan Malik</span>
+                <span class="ugc-views">9.5M Views</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="ugc-reel-card" data-reveal style="--d:180ms">
+            <img src="assets/talent/chandrika-dixit.jpg" alt="Chandrika Dixit" loading="lazy">
+            <div class="ugc-reel-overlay">
+              <div class="ugc-play-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+              <div class="ugc-info">
+                <span class="ugc-name">Chandrika Dixit</span>
+                <span class="ugc-views">16.3M Views</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AWARD-LEVEL PRODUCTION GALLERY ============ -->
+    <section class="section award-gallery-section" style="padding-top:0">
+      <div class="shell shell-wide">
+        <div class="section-head centered">
+          <p class="eyebrow centered" data-reveal>Behind The Lens // Haute Production</p>
+          <h2 class="display-3" data-reveal style="--d:60ms">Production <span class="gold-solid">Gallery &amp; Sets</span></h2>
+        </div>
+
+        <!-- Interactive Category Filters -->
+        <div class="gallery-filters" data-reveal style="--d:100ms">
+          <button class="gallery-filter-btn active" data-filter="all" type="button">All Archives (08)</button>
+          <button class="gallery-filter-btn" data-filter="shoots" type="button">Campaign Shoots</button>
+          <button class="gallery-filter-btn" data-filter="celeb" type="button">Celeb Sessions</button>
+          <button class="gallery-filter-btn" data-filter="activations" type="button">Brand Activations</button>
+          <button class="gallery-filter-btn" data-filter="studio" type="button">Studio BTS</button>
+        </div>
+
+        <!-- Award-Level Asymmetric Exhibition Bento Grid -->
+        <div class="award-gallery-bento">
+          <!-- 01: Hero 2x2 Feature -->
+          <div class="award-gallery-card span-2x2" data-category="shoots" data-reveal style="--d:30ms">
+            <span class="viewfinder-corner corner-tl"></span>
+            <span class="viewfinder-corner corner-tr"></span>
+            <span class="viewfinder-corner corner-bl"></span>
+            <span class="viewfinder-corner corner-br"></span>
+            <img src="assets/gallery/glimpse-1.jpg" alt="Creator Collaboration Set" loading="lazy">
+            <div class="award-meta-top">
+              <span class="hud-pill rec">REC • 4K HDR</span>
+              <span class="hud-fps">24.00 FPS // 1/50</span>
+            </div>
+            <div class="award-card-overlay">
+              <h3 class="award-card-title">Creator Collaboration Set</h3>
+              <div class="award-card-meta">
+                <span class="gold-tag">Campaign Shoot</span>
+                <span>• Mumbai Film City • RED Helium 8K</span>
+              </div>
+              <span class="award-expand-pill">View Set Archive ↗</span>
+            </div>
+          </div>
+
+          <!-- 02: Tall Portrait Feature -->
+          <div class="award-gallery-card span-1x2" data-category="shoots" data-reveal style="--d:60ms">
+            <span class="viewfinder-corner corner-tl"></span>
+            <span class="viewfinder-corner corner-tr"></span>
+            <span class="viewfinder-corner corner-bl"></span>
+            <span class="viewfinder-corner corner-br"></span>
+            <img src="assets/gallery/glimpse-3.jpg" alt="On Location Night Shoot" loading="lazy">
+            <div class="award-meta-top">
+              <span class="hud-pill">EXP. 02</span>
+              <span class="hud-fps">ISO 3200</span>
+            </div>
+            <div class="award-card-overlay">
+              <h3 class="award-card-title">On Location Night Shoot</h3>
+              <div class="award-card-meta">
+                <span class="gold-tag">Night Exterior</span>
+                <span>• Delhi NCR</span>
+              </div>
+              <span class="award-expand-pill">View Set Archive ↗</span>
+            </div>
+          </div>
+
+          <!-- 03: Audio Visual Session -->
+          <div class="award-gallery-card span-1x2" data-category="studio" data-reveal style="--d:90ms">
+            <span class="viewfinder-corner corner-tl"></span>
+            <span class="viewfinder-corner corner-tr"></span>
+            <span class="viewfinder-corner corner-bl"></span>
+            <span class="viewfinder-corner corner-br"></span>
+            <img src="assets/gallery/glimpse-2.jpg" alt="Artist Recording Session" loading="lazy">
+            <div class="award-meta-top">
+              <span class="hud-pill">EXP. 03</span>
+              <span class="hud-fps">STUDIO A</span>
+            </div>
+            <div class="award-card-overlay">
+              <h3 class="award-card-title">Artist Recording Session</h3>
+              <div class="award-card-meta">
+                <span class="gold-tag">Studio BTS</span>
+                <span>• Soundstage 2</span>
+              </div>
+              <span class="award-expand-pill">View Set Archive ↗</span>
+            </div>
+          </div>
+
+          <!-- 04: Brand VIP Lounge Activation -->
+          <div class="award-gallery-card span-2x1" data-category="activations" data-reveal style="--d:120ms">
+            <span class="viewfinder-corner corner-tl"></span>
+            <span class="viewfinder-corner corner-tr"></span>
+            <span class="viewfinder-corner corner-bl"></span>
+            <span class="viewfinder-corner corner-br"></span>
+            <img src="assets/gallery/glimpse-5.jpg" alt="VIP Brand Event Lounge" loading="lazy">
+            <div class="award-meta-top">
+              <span class="hud-pill">EXP. 04</span>
+              <span class="hud-fps">LIVE EVENT</span>
+            </div>
+            <div class="award-card-overlay">
+              <h3 class="award-card-title">VIP Brand Event Lounge</h3>
+              <div class="award-card-meta">
+                <span class="gold-tag">Activation</span>
+                <span>• Goa Summit • 500+ Attendees</span>
+              </div>
+              <span class="award-expand-pill">View Set Archive ↗</span>
+            </div>
+          </div>
+
+          <!-- 05: Creator Meet Session -->
+          <div class="award-gallery-card span-2x1" data-category="activations" data-reveal style="--d:150ms">
+            <span class="viewfinder-corner corner-tl"></span>
+            <span class="viewfinder-corner corner-tr"></span>
+            <span class="viewfinder-corner corner-bl"></span>
+            <span class="viewfinder-corner corner-br"></span>
+            <img src="assets/gallery/glimpse-4.jpg" alt="Annual Creator Meetup" loading="lazy">
+            <div class="award-meta-top">
+              <span class="hud-pill">EXP. 05</span>
+              <span class="hud-fps">MEETUP</span>
+            </div>
+            <div class="award-card-overlay">
+              <h3 class="award-card-title">Annual Creator Meetup</h3>
+              <div class="award-card-meta">
+                <span class="gold-tag">Activation</span>
+                <span>• Hotel Imperial • 50M+ Reach</span>
+              </div>
+              <span class="award-expand-pill">View Set Archive ↗</span>
+            </div>
+          </div>
+
+          <!-- 06: Cyc Wall Studio Session -->
+          <div class="award-gallery-card span-2x1" data-category="studio" data-reveal style="--d:180ms">
+            <span class="viewfinder-corner corner-tl"></span>
+            <span class="viewfinder-corner corner-tr"></span>
+            <span class="viewfinder-corner corner-bl"></span>
+            <span class="viewfinder-corner corner-br"></span>
+            <img src="assets/gallery/glimpse-6.jpg" alt="Editorial Fashion Studio" loading="lazy">
+            <div class="award-meta-top">
+              <span class="hud-pill">EXP. 06</span>
+              <span class="hud-fps">PROFOTO D2</span>
+            </div>
+            <div class="award-card-overlay">
+              <h3 class="award-card-title">Editorial Fashion Studio</h3>
+              <div class="award-card-meta">
+                <span class="gold-tag">Studio BTS</span>
+                <span>• Cyc Wall 3</span>
+              </div>
+              <span class="award-expand-pill">View Set Archive ↗</span>
+            </div>
+          </div>
+
+          <!-- 07: Celebrity Lounge Session -->
+          <div class="award-gallery-card span-2x1" data-category="celeb" data-reveal style="--d:210ms">
+            <span class="viewfinder-corner corner-tl"></span>
+            <span class="viewfinder-corner corner-tr"></span>
+            <span class="viewfinder-corner corner-bl"></span>
+            <span class="viewfinder-corner corner-br"></span>
+            <img src="assets/faces/face-1.jpg" alt="Celebrity Green Room Interview" loading="lazy">
+            <div class="award-meta-top">
+              <span class="hud-pill">EXP. 07</span>
+              <span class="hud-fps">CELEB EXCLUSIVE</span>
+            </div>
+            <div class="award-card-overlay">
+              <h3 class="award-card-title">Celebrity Green Room Interview</h3>
+              <div class="award-card-meta">
+                <span class="gold-tag">Celeb Session</span>
+                <span>• OTT Premiere Launch</span>
+              </div>
+              <span class="award-expand-pill">View Set Archive ↗</span>
+            </div>
+          </div>
+
+          <!-- 08: Cinematic Full Panorama Wrap -->
+          <div class="award-gallery-card span-4x1" data-category="shoots" data-reveal style="--d:240ms">
+            <span class="viewfinder-corner corner-tl"></span>
+            <span class="viewfinder-corner corner-tr"></span>
+            <span class="viewfinder-corner corner-bl"></span>
+            <span class="viewfinder-corner corner-br"></span>
+            <img src="assets/faces/face-4.jpg" alt="National Commercial Production Wrap" loading="lazy">
+            <div class="award-meta-top">
+              <span class="hud-pill rec">PRODUCTION WRAP</span>
+              <span class="hud-fps">PANAVISION 65MM</span>
+            </div>
+            <div class="award-card-overlay">
+              <h3 class="award-card-title">National Commercial Production Wrap</h3>
+              <div class="award-card-meta">
+                <span class="gold-tag">Campaign Shoot</span>
+                <span>• 7-Day Multi-City Brand Commercial Campaign</span>
+              </div>
+              <span class="award-expand-pill">View Set Archive ↗</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VISUAL CAMPAIGN CATEGORIES ============ -->
     <section class="section" style="padding-top:0">
       <div class="shell">
         <div class="section-head">
-          <p class="eyebrow" data-reveal>Where We Work</p>
-          <h2 class="display-2" data-reveal style="--d:60ms">Categories We<br><span class="gold-solid">Know Well</span>
+          <p class="eyebrow" data-reveal>Where We Excel</p>
+          <h2 class="display-2" data-reveal style="--d:60ms">Categories We<br><span class="gold-solid">Dominate</span>
           </h2>
         </div>
-        <div class="offer">
-          <article class="offer-item" data-reveal><span class="offer-num">01</span>
-            <h3 class="offer-name">Beauty &amp;<b>Personal Care</b></h3>
-          </article>
-          <article class="offer-item" data-reveal><span class="offer-num">02</span>
-            <h3 class="offer-name">Fashion &amp;<b>Lifestyle</b></h3>
-          </article>
-          <article class="offer-item" data-reveal><span class="offer-num">03</span>
-            <h3 class="offer-name">Food &amp;<b>Beverage</b></h3>
-          </article>
-          <article class="offer-item" data-reveal><span class="offer-num">04</span>
-            <h3 class="offer-name">Tech &amp;<b>Electronics</b></h3>
-          </article>
-          <article class="offer-item" data-reveal><span class="offer-num">05</span>
-            <h3 class="offer-name">Entertainment &amp;<b>OTT</b></h3>
-          </article>
-          <article class="offer-item" data-reveal><span class="offer-num">06</span>
-            <h3 class="offer-name">Health &amp;<b>Fitness</b></h3>
-          </article>
-          <article class="offer-item" data-reveal><span class="offer-num">07</span>
-            <h3 class="offer-name">Finance &amp;<b>Fintech</b></h3>
-          </article>
-          <article class="offer-item" data-reveal><span class="offer-num">08</span>
-            <h3 class="offer-name">Travel &amp;<b>Hospitality</b></h3>
-          </article>
+
+        <div class="visual-category-grid">
+          <!-- 01 Beauty -->
+          <a href="services.html#influencer" class="visual-category-card" data-reveal style="--d:40ms">
+            <div class="category-icon-head">
+              <div class="category-vector-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <span class="category-num-tag">01</span>
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">Beauty &amp; <b>Personal Care</b></h3>
+              <span class="category-badge-stat">✨ 120+ Brand Shoots</span>
+            </div>
+          </a>
+
+          <!-- 02 Fashion -->
+          <a href="services.html#celebrity" class="visual-category-card" data-reveal style="--d:80ms">
+            <div class="category-icon-head">
+              <div class="category-vector-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              </div>
+              <span class="category-num-tag">02</span>
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">Fashion &amp; <b>Lifestyle</b></h3>
+              <span class="category-badge-stat">👗 250+ Lookbooks</span>
+            </div>
+          </a>
+
+          <!-- 03 Food -->
+          <a href="services.html#event" class="visual-category-card" data-reveal style="--d:120ms">
+            <div class="category-icon-head">
+              <div class="category-vector-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+              </div>
+              <span class="category-num-tag">03</span>
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">Food &amp; <b>Beverage</b></h3>
+              <span class="category-badge-stat">🍷 85+ Activations</span>
+            </div>
+          </a>
+
+          <!-- 04 Tech -->
+          <a href="services.html#social" class="visual-category-card" data-reveal style="--d:160ms">
+            <div class="category-icon-head">
+              <div class="category-vector-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
+              <span class="category-num-tag">04</span>
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">Tech &amp; <b>Electronics</b></h3>
+              <span class="category-badge-stat">📱 140+ Tech Reviews</span>
+            </div>
+          </a>
+
+          <!-- 05 Entertainment -->
+          <a href="services.html#movie" class="visual-category-card" data-reveal style="--d:200ms">
+            <div class="category-icon-head">
+              <div class="category-vector-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
+              </div>
+              <span class="category-num-tag">05</span>
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">Entertainment &amp; <b>OTT</b></h3>
+              <span class="category-badge-stat">🎬 90+ Premieres</span>
+            </div>
+          </a>
+
+          <!-- 06 Fitness -->
+          <a href="services.html#influencer" class="visual-category-card" data-reveal style="--d:240ms">
+            <div class="category-icon-head">
+              <div class="category-vector-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              </div>
+              <span class="category-num-tag">06</span>
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">Health &amp; <b>Fitness</b></h3>
+              <span class="category-badge-stat">⚡ 60+ Challenges</span>
+            </div>
+          </a>
+
+          <!-- 07 Fintech -->
+          <a href="services.html#influencer" class="visual-category-card" data-reveal style="--d:280ms">
+            <div class="category-icon-head">
+              <div class="category-vector-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              </div>
+              <span class="category-num-tag">07</span>
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">Finance &amp; <b>Fintech</b></h3>
+              <span class="category-badge-stat">💳 45+ App Launches</span>
+            </div>
+          </a>
+
+          <!-- 08 Travel -->
+          <a href="services.html#guest-listing" class="visual-category-card" data-reveal style="--d:320ms">
+            <div class="category-icon-head">
+              <div class="category-vector-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+              </div>
+              <span class="category-num-tag">08</span>
+            </div>
+            <div class="category-card-body">
+              <h3 class="category-card-title">Travel &amp; <b>Hospitality</b></h3>
+              <span class="category-badge-stat">✈️ 75+ Destination Trips</span>
+            </div>
+          </a>
         </div>
       </div>
     </section>
@@ -233,7 +682,7 @@
           <h5>Explore</h5>
           <div class="footer-links">
             <a href="index.html">Home</a><a href="about.html">About VELORA</a><a href="services.html">Services</a>
-            <a href="why-velora.html">Mission &amp; Vision</a><a href="glimpses.html">Glimpses</a><a href="contact.html">Contact</a>
+            <a href="glimpses.html">Glimpses</a><a href="why-influencer-marketing.html">Why Influencer Marketing</a><a href="contact.html">Contact</a>
           </div>
         </div>
         <div>

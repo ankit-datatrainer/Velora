@@ -6,11 +6,20 @@
 <title>Services | VELORA Influencer Marketing Agency</title>
 <meta name="description" content="Influencer marketing, celebrity management, guest listing, movie promotions, social media marketing, song promotion and event promotion — delivered end to end by VELORA.">
 <meta name="theme-color" content="#8b5cf6">
-<link rel="icon" href="assets/velora-logo.png">
+<link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="assets/favicon-32x32.png" sizes="32x32">
+<link rel="shortcut icon" href="assets/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+    <!-- Enables the section load-in in style.css section 40. Inline and in
+         <head> on purpose: it must land before first paint so sections are
+         never shown and then snapped to hidden, and if scripting is off the
+         class never arrives and everything simply stays visible. -->
+    <script>document.documentElement.classList.add('has-sectfx');</script>
 </head>
 <body>
 
@@ -40,8 +49,8 @@
                         <a href="services.html#event">Event Promotion</a>
                     </div>
                 </li>
-                <li><a class="nav-link" href="why-velora.html">Mission &amp; Vision</a></li>
                 <li><a class="nav-link" href="glimpses.html">Glimpses</a></li>
+                <li><a class="nav-link" href="why-influencer-marketing.html">Why Influencer Marketing</a></li>
                 <li><a class="nav-link" href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -68,8 +77,8 @@
     <a href="index.html"      style="--i:0"><small>01</small> Home</a>
     <a href="about.html"      style="--i:1"><small>02</small> About</a>
     <a href="services.html"   style="--i:2"><small>03</small> Services</a>
-    <a href="why-velora.html" style="--i:3"><small>04</small> Mission &amp; Vision</a>
-    <a href="glimpses.html"   style="--i:4"><small>05</small> Glimpses</a>
+    <a href="glimpses.html"   style="--i:3"><small>04</small> Glimpses</a>
+    <a href="why-influencer-marketing.html" style="--i:4"><small>05</small> Why Influencer Marketing</a>
     <a href="contact.html"    style="--i:5"><small>06</small> Contact</a>
   </nav>
   <div class="drawer-foot">
@@ -107,62 +116,61 @@
           <h2 class="display-3" data-reveal style="--d:60ms">Influencer<br><span class="gold-solid">Marketing</span></h2>
           <div class="rule left" data-reveal><span class="spark"></span></div>
           <p class="lead" data-reveal style="--d:120ms">
-            Connect with the right influencers across Instagram, YouTube and short-form video to amplify your brand message with authentic conversion.
+            Connect with the right creators across Instagram, YouTube and short-form video to amplify your brand message with authentic conversion.
           </p>
-          <p data-reveal style="margin-top:1.25rem;--d:160ms">
-            We cover all tiers from nano seeding and barter campaigns up to mega celebrity retainers with verified ROI attribution.
-          </p>
-        </div>
-        <div class="offer two">
-          <article class="offer-item" data-reveal><span class="offer-num">01</span><h3 class="offer-name">Creator<b>Discovery</b></h3><p class="offer-desc">Shortlists built on audience overlap, demographic fit and engagement authenticity, not follower count alone.</p></article>
-          <article class="offer-item" data-reveal><span class="offer-num">02</span><h3 class="offer-name">Barter &amp;<b>Paid Collabs</b></h3><p class="offer-desc">Flexible commercial models from product seeding and barter to contracted paid deliverables.</p></article>
-          <article class="offer-item" data-reveal><span class="offer-num">03</span><h3 class="offer-name">Always-On<b>Ambassadors</b></h3><p class="offer-desc">Long-term creator relationships that build compound brand recall and higher trust.</p></article>
-          <article class="offer-item" data-reveal><span class="offer-num">04</span><h3 class="offer-name">Performance<b>Reporting</b></h3><p class="offer-desc">Reach, engagement rate, saves, link clicks and sales conversions attributed campaign by campaign.</p></article>
-        </div>
-      </div>
 
-      <!-- INFLUENCER PRICING & CREATOR TIERS BREAKDOWN -->
-      <div style="margin-top: 4rem;">
-        <div class="section-head">
-          <p class="eyebrow" data-reveal>Creator Tiers &amp; Pricing Structure</p>
-          <h3 class="display-3" data-reveal>Tailored Packages From <span class="gold-solid">Barter to Celebrity</span></h3>
+          <!-- Visual Showcase Media Card -->
+          <div class="service-showcase-media" data-reveal="zoom" style="--d:160ms">
+            <img src="assets/faces/face-3.jpg" alt="VELORA Creator Campaign" loading="lazy">
+            <span class="service-media-badge-top">50,000+ Creators</span>
+            <span class="service-media-badge-bottom">⚡ 3.8x Virality</span>
+          </div>
         </div>
-        <div class="tiers-grid">
-          <div class="tier-card" data-reveal>
-            <span class="tier-badge">Tier 1</span>
-            <h4 class="tier-name">Nano Creator</h4>
-            <span class="tier-followers">1K – 10K Followers</span>
-            <p class="offer-desc">High engagement, grassroots community trust, authentic micro-reviews.</p>
-            <div class="tier-price">Barter / ₹1,000 – ₹5,000</div>
-          </div>
-          <div class="tier-card" data-reveal style="--d:80ms">
-            <span class="tier-badge">Tier 2</span>
-            <h4 class="tier-name">Micro Creator</h4>
-            <span class="tier-followers">10K – 100K Followers</span>
-            <p class="offer-desc">Targeted niche authority, strong comment interaction, high ROI.</p>
-            <div class="tier-price">₹5,000 – ₹25,000</div>
-          </div>
-          <div class="tier-card" data-reveal style="--d:160ms">
-            <span class="tier-badge">Tier 3</span>
-            <h4 class="tier-name">Mid-Tier Creator</h4>
-            <span class="tier-followers">100K – 500K Followers</span>
-            <p class="offer-desc">Broad reach with established credibility, polished production quality.</p>
-            <div class="tier-price">₹25,000 – ₹1,00,000</div>
-          </div>
-          <div class="tier-card" data-reveal style="--d:240ms">
-            <span class="tier-badge">Tier 4</span>
-            <h4 class="tier-name">Macro Creator</h4>
-            <span class="tier-followers">500K – 1M Followers</span>
-            <p class="offer-desc">Mass market visibility, trend-setting potential, rapid awareness surge.</p>
-            <div class="tier-price">₹1,00,000 – ₹5,00,000</div>
-          </div>
-          <div class="tier-card" data-reveal style="--d:320ms">
-            <span class="tier-badge">Tier 5</span>
-            <h4 class="tier-name">Celebrity Creator</h4>
-            <span class="tier-followers">1M+ / Star Tier</span>
-            <p class="offer-desc">Household name status, nationwide PR impact, 360° commercial endorsements.</p>
-            <div class="tier-price">₹5,00,000 till Max Out</div>
-          </div>
+
+        <div class="offer-grid-visual">
+          <article class="offer-card-visual" data-reveal style="--d:40ms">
+            <div class="offer-card-head">
+              <div class="offer-vector-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </div>
+              <span class="offer-metric-pill">98% Match Fit</span>
+            </div>
+            <h3 class="offer-card-title">Creator <span>Discovery</span></h3>
+            <p class="offer-card-desc">Shortlists built on audience overlap, demographic fit and engagement authenticity, not follower count alone.</p>
+          </article>
+
+          <article class="offer-card-visual" data-reveal style="--d:80ms">
+            <div class="offer-card-head">
+              <div class="offer-vector-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m11 17 2 2a1 1 0 0 0 1.4 0l4.6-4.6a2 2 0 0 0 0-2.8l-5.4-5.4"/><path d="m2 12 5-5a2 2 0 0 1 2.8 0l5.4 5.4a2 2 0 0 1 0 2.8L10.6 22"/></svg>
+              </div>
+              <span class="offer-metric-pill">100% Verified ROI</span>
+            </div>
+            <h3 class="offer-card-title">Barter &amp; <span>Paid Collabs</span></h3>
+            <p class="offer-card-desc">Flexible commercial models from product seeding and barter to contracted paid deliverables.</p>
+          </article>
+
+          <article class="offer-card-visual" data-reveal style="--d:120ms">
+            <div class="offer-card-head">
+              <div class="offer-vector-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <span class="offer-metric-pill">Compound Recall</span>
+            </div>
+            <h3 class="offer-card-title">Always-On <span>Ambassadors</span></h3>
+            <p class="offer-card-desc">Long-term creator relationships that build compound brand recall and higher consumer trust.</p>
+          </article>
+
+          <article class="offer-card-visual" data-reveal style="--d:160ms">
+            <div class="offer-card-head">
+              <div class="offer-vector-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              </div>
+              <span class="offer-metric-pill">Live Dashboard</span>
+            </div>
+            <h3 class="offer-card-title">Performance <span>Reporting</span></h3>
+            <p class="offer-card-desc">Reach, engagement rate, saves, link clicks and sales conversions attributed campaign by campaign.</p>
+          </article>
         </div>
       </div>
     </div>
@@ -178,17 +186,64 @@
         <p class="lead" data-reveal style="--d:120ms">
           End-to-end commercial management of artists, actors, and public figures to build lasting brand associations.
         </p>
+
+        <!-- Visual Showcase Media Card -->
+        <div class="service-showcase-media" data-reveal="zoom" style="--d:160ms">
+          <img src="assets/talent/nora-fatehi.jpg" alt="Celebrity Management">
+          <span class="service-media-badge-top">A-List Talent Desk</span>
+          <span class="service-media-badge-bottom">⭐ Zero Markup</span>
+        </div>
       </div>
-      <div class="offer two">
-        <article class="offer-item" data-reveal><span class="offer-num">01</span><h3 class="offer-name">Talent<b>Sourcing</b></h3><p class="offer-desc">Direct access to Bollywood, regional cinema, sports, and music icons without intermediary markup.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">02</span><h3 class="offer-name">Endorsement<b>Deals</b></h3><p class="offer-desc">Benchmarked commercials, usage rights, and exclusivity clauses negotiated in your favour.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">03</span><h3 class="offer-name">Appearances &amp;<b>Shoots</b></h3><p class="offer-desc">Store openings, brand films, press meets, and production day coordination handled seamlessly.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">04</span><h3 class="offer-name">Reputation<b>Alignment</b></h3><p class="offer-desc">Due diligence and brand safety auditing to protect company equity.</p></article>
+
+      <div class="offer-grid-visual">
+        <article class="offer-card-visual" data-reveal style="--d:40ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <span class="offer-metric-pill">Bollywood &amp; Cinema</span>
+          </div>
+          <h3 class="offer-card-title">Talent <span>Sourcing</span></h3>
+          <p class="offer-card-desc">Direct access to Bollywood, regional cinema, sports, and music icons without intermediary markup.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:80ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <span class="offer-metric-pill">Ironclad Legal</span>
+          </div>
+          <h3 class="offer-card-title">Endorsement <span>Deals</span></h3>
+          <p class="offer-card-desc">Benchmarked commercials, usage rights, and exclusivity clauses negotiated in your favour.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:120ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            </div>
+            <span class="offer-metric-pill">Turnkey Production</span>
+          </div>
+          <h3 class="offer-card-title">Appearances &amp; <span>Shoots</span></h3>
+          <p class="offer-card-desc">Store openings, brand films, press meets, and production day coordination handled seamlessly.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:160ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <span class="offer-metric-pill">Brand Safety</span>
+          </div>
+          <h3 class="offer-card-title">Reputation <span>Alignment</span></h3>
+          <p class="offer-card-desc">Due diligence and brand safety auditing to protect your brand equity across all touchpoints.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ============ SERVICE 03 — GUEST LISTING (NEW 7TH POINT) ============ -->
+  <!-- ============ SERVICE 03 — GUEST LISTING ============ -->
   <section class="section" id="guest-listing">
     <div class="shell slide-split">
       <div class="slide-copy">
@@ -196,14 +251,61 @@
         <h2 class="display-3" data-reveal style="--d:60ms">Guest Listing &amp;<br><span class="gold-solid">VIP Curation</span></h2>
         <div class="rule left" data-reveal><span class="spark"></span></div>
         <p class="lead" data-reveal style="--d:120ms">
-          Curating high-profile guest lists, celebrity attendees, key opinion leaders and viral creators for exclusive launches, red carpets &amp; soirées.
+          Curating high-profile guest lists, celebrity attendees, key opinion leaders and viral creators for exclusive launches &amp; red carpets.
         </p>
+
+        <!-- Visual Showcase Media Card -->
+        <div class="service-showcase-media" data-reveal="zoom" style="--d:160ms">
+          <img src="assets/gallery/glimpse-5.jpg" alt="VIP Guest Listing & Curation" loading="lazy">
+          <span class="service-media-badge-top">VIP Red Carpet</span>
+          <span class="service-media-badge-bottom">👑 500+ HNI Invites</span>
+        </div>
       </div>
-      <div class="offer two">
-        <article class="offer-item" data-reveal><span class="offer-num">01</span><h3 class="offer-name">VIP &amp; Celebrity<b>Invites</b></h3><p class="offer-desc">Direct invitations and RSVP management for Bollywood, digital stars, and HNIs.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">02</span><h3 class="offer-name">Creator<b>Squads</b></h3><p class="offer-desc">Handpicked creators attending the event to capture real-time stories, reels, and red carpet moments.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">03</span><h3 class="offer-name">Red Carpet<b>Coordination</b></h3><p class="offer-desc">Arrival sequences, media photo-op management, and soundbite interviews.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">04</span><h3 class="offer-name">Exclusive<b>Seating &amp; Hospitality</b></h3><p class="offer-desc">Seamless on-ground concierge ensuring premium hospitality for all guests.</p></article>
+
+      <div class="offer-grid-visual">
+        <article class="offer-card-visual" data-reveal style="--d:40ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <span class="offer-metric-pill">Direct RSVPs</span>
+          </div>
+          <h3 class="offer-card-title">VIP &amp; Celebrity <span>Invites</span></h3>
+          <p class="offer-card-desc">Direct invitations and RSVP management for Bollywood stars, digital creators, and elite HNIs.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:80ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <span class="offer-metric-pill">Live Story Floods</span>
+          </div>
+          <h3 class="offer-card-title">Creator <span>Squads</span></h3>
+          <p class="offer-card-desc">Handpicked creators attending the event to capture real-time stories, reels, and red carpet moments.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:120ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            </div>
+            <span class="offer-metric-pill">Media Management</span>
+          </div>
+          <h3 class="offer-card-title">Red Carpet <span>Coordination</span></h3>
+          <p class="offer-card-desc">Arrival sequences, media photo-op management, and paparazzi soundbite interviews.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:160ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <span class="offer-metric-pill">White Glove</span>
+          </div>
+          <h3 class="offer-card-title">Exclusive <span>Hospitality</span></h3>
+          <p class="offer-card-desc">Seamless on-ground concierge ensuring premium VIP hospitality and seating for all esteemed guests.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -218,12 +320,59 @@
         <p class="lead" data-reveal style="--d:120ms">
           Strategic movie promotion campaigns timed to create immense opening weekend box office momentum.
         </p>
+
+        <!-- Visual Showcase Media Card -->
+        <div class="service-showcase-media" data-reveal="zoom" style="--d:160ms">
+          <img src="assets/faces/face-1.jpg" alt="Movie Promotions & Launches" loading="lazy">
+          <span class="service-media-badge-top">National Box Office</span>
+          <span class="service-media-badge-bottom">🎬 Opening Weekend Blitz</span>
+        </div>
       </div>
-      <div class="offer two">
-        <article class="offer-item" data-reveal><span class="offer-num">01</span><h3 class="offer-name">Trailer<b>Amplification</b></h3><p class="offer-desc">Coordinated reaction videos and reviews timed with teaser and trailer releases.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">02</span><h3 class="offer-name">Audio &amp; Meme<b>Seeding</b></h3><p class="offer-desc">Dialogue clips, catchphrases and viral meme hooks engineered to spread organically.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">03</span><h3 class="offer-name">City-Level<b>Tours</b></h3><p class="offer-desc">Regional creator tie-ins and college activations in key box-office territories.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">04</span><h3 class="offer-name">Premiere<b>Coverage</b></h3><p class="offer-desc">Special screenings and cast interviews captured for rapid social publishing.</p></article>
+
+      <div class="offer-grid-visual">
+        <article class="offer-card-visual" data-reveal style="--d:40ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
+            </div>
+            <span class="offer-metric-pill">50M+ Day-1 Views</span>
+          </div>
+          <h3 class="offer-card-title">Trailer <span>Amplification</span></h3>
+          <p class="offer-card-desc">Coordinated reaction videos and reviews timed with teaser and trailer releases across all formats.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:80ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3z"/></svg>
+            </div>
+            <span class="offer-metric-pill">Organic Duplication</span>
+          </div>
+          <h3 class="offer-card-title">Audio &amp; <span>Meme Seeding</span></h3>
+          <p class="offer-card-desc">Dialogue clips, catchphrases and viral meme hooks engineered to spread organically across social feeds.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:120ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <span class="offer-metric-pill">Pan-India Reach</span>
+          </div>
+          <h3 class="offer-card-title">City-Level <span>Tours</span></h3>
+          <p class="offer-card-desc">Regional creator tie-ins and college activations in high-grossing key box-office territories.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:160ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            </div>
+            <span class="offer-metric-pill">Instant Press Blitz</span>
+          </div>
+          <h3 class="offer-card-title">Premiere <span>Coverage</span></h3>
+          <p class="offer-card-desc">Special screenings and cast interviews captured for rapid, high-impact social publishing.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -236,14 +385,61 @@
         <h2 class="display-3" data-reveal style="--d:60ms">Social Media<br><span class="gold-solid">Marketing</span></h2>
         <div class="rule left" data-reveal><span class="spark"></span></div>
         <p class="lead" data-reveal style="--d:120ms">
-          Data-driven organic content strategies, high-aesthetic reels, and community engagement.
+          Data-driven organic content strategies, high-aesthetic reels, and community engagement that drive real conversion.
         </p>
+
+        <!-- Visual Showcase Media Card -->
+        <div class="service-showcase-media" data-reveal="zoom" style="--d:160ms">
+          <img src="assets/gallery/glimpse-6.jpg" alt="Social Media Production & Growth" loading="lazy">
+          <span class="service-media-badge-top">Viral Organic Feed</span>
+          <span class="service-media-badge-bottom">📈 92% Retention</span>
+        </div>
       </div>
-      <div class="offer two">
-        <article class="offer-item" data-reveal><span class="offer-num">01</span><h3 class="offer-name">Content<b>Strategy</b></h3><p class="offer-desc">Pillars, themes and publishing cadences designed for algorithmic reach.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">02</span><h3 class="offer-name">High-End<b>Production</b></h3><p class="offer-desc">Short-form vertical video, motion graphics, and editorial carousels.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">03</span><h3 class="offer-name">Community<b>Building</b></h3><p class="offer-desc">Proactive DM and comment interaction turning followers into loyal advocates.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">04</span><h3 class="offer-name">Paid<b>Boosting</b></h3><p class="offer-desc">Performance media spend backing proven top-performing organic posts.</p></article>
+
+      <div class="offer-grid-visual">
+        <article class="offer-card-visual" data-reveal style="--d:40ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 12l-4-4-4 4M12 16V8"/></svg>
+            </div>
+            <span class="offer-metric-pill">Algorithmic Timing</span>
+          </div>
+          <h3 class="offer-card-title">Content <span>Strategy</span></h3>
+          <p class="offer-card-desc">Pillars, themes and publishing cadences mathematically designed for viral algorithmic momentum.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:80ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <span class="offer-metric-pill">4K Studio Grade</span>
+          </div>
+          <h3 class="offer-card-title">High-End <span>Production</span></h3>
+          <p class="offer-card-desc">Short-form vertical video, motion graphics, and editorial carousels filmed on cinema rigs.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:120ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <span class="offer-metric-pill">Superfan Loyalty</span>
+          </div>
+          <h3 class="offer-card-title">Community <span>Building</span></h3>
+          <p class="offer-card-desc">Proactive DM and comment interaction turning casual scrollers into loyal brand advocates.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:160ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <span class="offer-metric-pill">Data-Backed ROI</span>
+          </div>
+          <h3 class="offer-card-title">Paid <span>Boosting</span></h3>
+          <p class="offer-card-desc">Performance media spend backing proven top-performing organic posts to multiply conversions.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -258,12 +454,59 @@
         <p class="lead" data-reveal style="--d:120ms">
           Igniting viral music trends across Instagram Reels, YouTube Shorts, and streaming charts.
         </p>
+
+        <!-- Visual Showcase Media Card -->
+        <div class="service-showcase-media" data-reveal="zoom" style="--d:160ms">
+          <img src="assets/talent/badshah.jpg" alt="Song & Audio Viral Promotion" loading="lazy">
+          <span class="service-media-badge-top">Chartbuster Audio</span>
+          <span class="service-media-badge-bottom">🎵 100M+ Audio Plays</span>
+        </div>
       </div>
-      <div class="offer two">
-        <article class="offer-item" data-reveal><span class="offer-num">01</span><h3 class="offer-name">Audio<b>Seeding</b></h3><p class="offer-desc">Hook placement across hundreds of synchronized lifestyle and dance creators.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">02</span><h3 class="offer-name">Trend<b>Choreography</b></h3><p class="offer-desc">Signature hook-step formats engineered for user duplication.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">03</span><h3 class="offer-name">Streaming<b>Outreach</b></h3><p class="offer-desc">Editorial playlist pitch assistance on Spotify, Apple Music &amp; Wynk.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">04</span><h3 class="offer-name">DJ &amp; Club<b>Seeding</b></h3><p class="offer-desc">Club, lounge, and radio rotations for high-tempo commercial releases.</p></article>
+
+      <div class="offer-grid-visual">
+        <article class="offer-card-visual" data-reveal style="--d:40ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            </div>
+            <span class="offer-metric-pill">Hook Drop Sync</span>
+          </div>
+          <h3 class="offer-card-title">Audio <span>Seeding</span></h3>
+          <p class="offer-card-desc">Hook placement across hundreds of synchronized lifestyle and dance creators simultaneously.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:80ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <span class="offer-metric-pill">Duet Formats</span>
+          </div>
+          <h3 class="offer-card-title">Trend <span>Choreography</span></h3>
+          <p class="offer-card-desc">Signature hook-step choreography formats engineered for friction-free user duplication.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:120ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12a4 4 0 0 1 8 0"/><path d="M6 10a7 7 0 0 1 12 0"/></svg>
+            </div>
+            <span class="offer-metric-pill">Spotify &amp; Apple</span>
+          </div>
+          <h3 class="offer-card-title">Streaming <span>Outreach</span></h3>
+          <p class="offer-card-desc">Editorial playlist pitch assistance and algorithm triggers across Spotify, Apple Music &amp; Wynk.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:160ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/></svg>
+            </div>
+            <span class="offer-metric-pill">Club Rotations</span>
+          </div>
+          <h3 class="offer-card-title">DJ &amp; Club <span>Seeding</span></h3>
+          <p class="offer-card-desc">Club, lounge, and radio rotations for high-tempo commercial releases in top metro hubs.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -278,12 +521,59 @@
         <p class="lead" data-reveal style="--d:120ms">
           Maximizing footfall and live digital buzz for concerts, festivals, conferences and store launches.
         </p>
+
+        <!-- Visual Showcase Media Card -->
+        <div class="service-showcase-media" data-reveal="zoom" style="--d:160ms">
+          <img src="assets/gallery/glimpse-3.jpg" alt="Concerts & Live Event Promotion" loading="lazy">
+          <span class="service-media-badge-top">Live Amplification</span>
+          <span class="service-media-badge-bottom">🔥 100% Sold Out Buzz</span>
+        </div>
       </div>
-      <div class="offer two">
-        <article class="offer-item" data-reveal><span class="offer-num">01</span><h3 class="offer-name">Pre-Event<b>Hype</b></h3><p class="offer-desc">Ticketing countdowns, creator unboxings, and VIP passes giveaways.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">02</span><h3 class="offer-name">On-Ground<b>Squads</b></h3><p class="offer-desc">Vetted creators covering the venue live on their channels.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">03</span><h3 class="offer-name">Live<b>Streaming</b></h3><p class="offer-desc">High-definition social live broadcasts capturing key stage moments.</p></article>
-        <article class="offer-item" data-reveal><span class="offer-num">04</span><h3 class="offer-name">Aftermovie<b>Assets</b></h3><p class="offer-desc">Recap reels and high-energy highlight films delivered within 24 hours.</p></article>
+
+      <div class="offer-grid-visual">
+        <article class="offer-card-visual" data-reveal style="--d:40ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg>
+            </div>
+            <span class="offer-metric-pill">Ticket Sell-Out Blitz</span>
+          </div>
+          <h3 class="offer-card-title">Pre-Event <span>Hype</span></h3>
+          <p class="offer-card-desc">Ticketing countdowns, creator unboxings, and VIP pass giveaways to trigger FOMO.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:80ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <span class="offer-metric-pill">Real-Time Streams</span>
+          </div>
+          <h3 class="offer-card-title">On-Ground <span>Squads</span></h3>
+          <p class="offer-card-desc">Vetted creators covering the venue live on their channels to drive exponential trending buzz.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:120ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14"/></svg>
+            </div>
+            <span class="offer-metric-pill">Pan-India Reach</span>
+          </div>
+          <h3 class="offer-card-title">Live <span>Streaming</span></h3>
+          <p class="offer-card-desc">High-definition social live broadcasts capturing key stage moments and celebrity attendance.</p>
+        </article>
+
+        <article class="offer-card-visual" data-reveal style="--d:160ms">
+          <div class="offer-card-head">
+            <div class="offer-vector-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <span class="offer-metric-pill">24-Hour Express</span>
+          </div>
+          <h3 class="offer-card-title">Aftermovie <span>Assets</span></h3>
+          <p class="offer-card-desc">Recap reels and high-energy highlight films delivered within 24 hours to prolong campaign impact.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -297,6 +587,175 @@
       <h2 class="display-2" data-reveal style="--d:60ms">Let's Build<br><span class="gold-solid">Your Next Campaign</span></h2>
       <div class="rule" data-reveal><span class="spark"></span></div>
       <p style="margin-top:2rem" data-reveal><a class="btn btn-gold btn-lg magnetic" href="contact.html">Request A Proposal</a></p>
+    </div>
+  </section>
+
+  <!-- ============ REPRESENT ROSTER — SCROLLING MARQUEES ============ -->
+  <section class="section" id="faces">
+    <span class="watermark" aria-hidden="true">V</span>
+    <div class="shell">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Represent Roster</p>
+        <h2 class="display-2" data-reveal style="--d:60ms">
+          Faces You Know,<br><span class="gold-solid">Reach You Can Book</span>
+        </h2>
+        <div class="rule left" data-reveal><span class="spark"></span></div>
+        <p class="lead" data-reveal style="--d:120ms">
+          Top digital creators and verified stars represented and curated by VELORA. Tap any profile to view their work.
+        </p>
+      </div>
+
+      <!-- ── Influencers Rail (scrolls right) ── -->
+      <div class="rail-head">
+        <h3 class="rail-title">Influencers</h3>
+        <span class="rail-count">Top Creators</span>
+      </div>
+      <div class="talent-marquee" data-marquee="right" aria-label="Influencers we work with">
+        <div class="talent-track">
+          <!-- Set 1 -->
+          <a class="talent" href="https://www.instagram.com/elvish_yadav/" target="_blank" rel="noopener">
+            <span class="talent-photo"><img src="assets/talent/elvish-yadav.jpg" alt="Elvish Yadav" loading="lazy"></span>
+            <span class="talent-body">
+              <span class="talent-role">YouTuber &amp; Reality Star</span>
+              <span class="talent-name">Elvish Yadav</span>
+              <span class="talent-meta">@elvish_yadav</span>
+            </span>
+          </a>
+          <a class="talent" href="https://www.instagram.com/dolly_ki_tapri_nagpur/" target="_blank" rel="noopener">
+            <span class="talent-photo"><img src="assets/talent/dolly-chaiwala.jpg" alt="Dolly Chaiwala" loading="lazy"></span>
+            <span class="talent-body">
+              <span class="talent-role">Viral Lifestyle Creator</span>
+              <span class="talent-name">Dolly Chaiwala</span>
+              <span class="talent-meta">@dolly_ki_tapri_nagpur</span>
+            </span>
+          </a>
+          <a class="talent" href="https://www.instagram.com/armaan__malik9/" target="_blank" rel="noopener">
+            <span class="talent-photo"><img src="assets/talent/armaan-malik.jpg" alt="Armaan Malik" loading="lazy"></span>
+            <span class="talent-body">
+              <span class="talent-role">Top YouTuber &amp; Creator</span>
+              <span class="talent-name">Armaan Malik</span>
+              <span class="talent-meta">@armaan__malik9</span>
+            </span>
+          </a>
+          <a class="talent" href="https://www.instagram.com/aarushbhola17/" target="_blank" rel="noopener">
+            <span class="talent-photo"><img src="assets/talent/aarush-bhola.jpg" alt="Aarush Bhola" loading="lazy"></span>
+            <span class="talent-body">
+              <span class="talent-role">Fitness &amp; Lifestyle</span>
+              <span class="talent-name">Aarush Bhola</span>
+              <span class="talent-meta">@aarushbhola17</span>
+            </span>
+          </a>
+          <a class="talent" href="https://www.instagram.com/chandrika.dixit/" target="_blank" rel="noopener">
+            <span class="talent-photo"><img src="assets/talent/chandrika-dixit.jpg" alt="Chandrika Dixit" loading="lazy"></span>
+            <span class="talent-body">
+              <span class="talent-role">Viral Food Creator</span>
+              <span class="talent-name">Chandrika Dixit</span>
+              <span class="talent-meta">@chandrika.dixit</span>
+            </span>
+          </a>
+          <a class="talent" href="https://www.instagram.com/munawar.faruqui/" target="_blank" rel="noopener">
+            <span class="talent-photo"><img src="assets/talent/munawar-faruqui.jpg" alt="Munawar Faruqui" loading="lazy"></span>
+            <span class="talent-body">
+              <span class="talent-role">Comedian &amp; Artist</span>
+              <span class="talent-name">Munawar Faruqui</span>
+              <span class="talent-meta">@munawar.faruqui</span>
+            </span>
+          </a>
+          <a class="talent" href="https://www.instagram.com/anjimaxuofficially/" target="_blank" rel="noopener">
+            <span class="talent-photo"><img src="assets/talent/anjali-arora.jpg" alt="Anjali Arora" loading="lazy"></span>
+            <span class="talent-body">
+              <span class="talent-role">Top Digital Creator</span>
+              <span class="talent-name">Anjali Arora</span>
+              <span class="talent-meta">@anjimaxuofficially</span>
+            </span>
+          </a>
+          <a class="talent" href="https://www.instagram.com/_elnaaz_/" target="_blank" rel="noopener">
+            <span class="talent-photo"><img src="assets/talent/elnaaz-norouzi.jpg" alt="Elnaaz Norouzi" loading="lazy"></span>
+            <span class="talent-body">
+              <span class="talent-role">Global Icon &amp; Model</span>
+              <span class="talent-name">Elnaaz Norouzi</span>
+              <span class="talent-meta">@_elnaaz_</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- ── Celebrities Rail (scrolls left) ── -->
+      <div class="rail-head">
+        <h3 class="rail-title">Celebrities</h3>
+        <span class="rail-count">A-List Talent</span>
+      </div>
+      <div class="talent-marquee" data-marquee="left" aria-label="Celebrities we work with">
+        <div class="talent-track">
+          <!-- Set 1 -->
+          <a class="talent" href="https://www.instagram.com/tamannaahspeaks/" target="_blank" rel="noopener">
+            <span class="talent-photo"><img src="assets/talent/tamannaah-bhatia.jpg" alt="Tamannaah Bhatia" loading="lazy"></span>
+            <span class="talent-body">
+              <span class="talent-role">Film Actor</span>
+              <span class="talent-name">Tamannaah Bhatia</span>
+              <span class="talent-meta">@tamannaahspeaks</span>
+            </span>
+          </a>
+          <a class="talent" href="https://www.instagram.com/norafatehi/" target="_blank" rel="noopener">
+            <span class="talent-photo"><img src="assets/talent/nora-fatehi.jpg" alt="Nora Fatehi" loading="lazy"></span>
+            <span class="talent-body">
+              <span class="talent-role">Global Performer &amp; Actor</span>
+              <span class="talent-name">Nora Fatehi</span>
+              <span class="talent-meta">@norafatehi</span>
+            </span>
+          </a>
+          <a class="talent" href="https://www.instagram.com/yoyohoneysingh/" target="_blank" rel="noopener">
+            <span class="talent-photo"><img src="assets/talent/yo-yo-honey-singh.jpg" alt="Yo Yo Honey Singh" loading="lazy"></span>
+            <span class="talent-body">
+              <span class="talent-role">Music Icon</span>
+              <span class="talent-name">Yo Yo Honey Singh</span>
+              <span class="talent-meta">@yoyohoneysingh</span>
+            </span>
+          </a>
+          <a class="talent" href="https://www.instagram.com/badboyshah/" target="_blank" rel="noopener">
+            <span class="talent-photo"><img src="assets/talent/badshah.jpg" alt="Badshah" loading="lazy"></span>
+            <span class="talent-body">
+              <span class="talent-role">Rapper &amp; Producer</span>
+              <span class="talent-name">Badshah</span>
+              <span class="talent-meta">@badboyshah</span>
+            </span>
+          </a>
+          <a class="talent" href="https://www.instagram.com/sonu_sood/" target="_blank" rel="noopener">
+            <span class="talent-photo"><img src="assets/talent/sonu-sood.jpg" alt="Sonu Sood" loading="lazy"></span>
+            <span class="talent-body">
+              <span class="talent-role">Actor &amp; Philanthropist</span>
+              <span class="talent-name">Sonu Sood</span>
+              <span class="talent-meta">@sonu_sood</span>
+            </span>
+          </a>
+          <a class="talent" href="https://www.instagram.com/zareenkhan/" target="_blank" rel="noopener">
+            <span class="talent-photo"><img src="assets/talent/zareen-khan.jpg" alt="Zareen Khan" loading="lazy"></span>
+            <span class="talent-body">
+              <span class="talent-role">Film Actor</span>
+              <span class="talent-name">Zareen Khan</span>
+              <span class="talent-meta">@zareenkhan</span>
+            </span>
+          </a>
+          <a class="talent" href="https://www.instagram.com/jubin_nautiyal/" target="_blank" rel="noopener">
+            <span class="talent-photo"><img src="assets/talent/jubin-nautiyal.jpg" alt="Jubin Nautiyal" loading="lazy"></span>
+            <span class="talent-body">
+              <span class="talent-role">Playback Singer &amp; Music Star</span>
+              <span class="talent-name">Jubin Nautiyal</span>
+              <span class="talent-meta">@jubin_nautiyal</span>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- HIRE TOP CREATORS BUTTON -->
+      <div class="hire-talent-wrap" data-reveal style="--d:100ms">
+        <a class="btn btn-gold btn-lg magnetic" href="contact.html">
+          Hire Top Creators
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -326,7 +785,7 @@
         <h5>Explore</h5>
         <div class="footer-links">
           <a href="index.html">Home</a><a href="about.html">About VELORA</a><a href="services.html">Services</a>
-          <a href="why-velora.html">Mission &amp; Vision</a><a href="glimpses.html">Glimpses</a><a href="contact.html">Contact</a>
+          <a href="glimpses.html">Glimpses</a><a href="why-influencer-marketing.html">Why Influencer Marketing</a><a href="contact.html">Contact</a>
         </div>
       </div>
       <div>

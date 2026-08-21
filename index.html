@@ -13,13 +13,22 @@
         content="Connecting visionary brands with 50,000+ top creators to produce authentic, high-impact campaigns that drive measurable growth.">
     <meta property="og:image" content="assets/gallery/glimpse-1.jpg">
     <meta property="og:type" content="website">
-    <link rel="icon" href="assets/velora-logo.png">
+    <link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="assets/favicon-32x32.png" sizes="32x32">
+    <link rel="shortcut icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Enables the section load-in in style.css section 40. Inline and in
+         <head> on purpose: it must land before first paint so sections are
+         never shown and then snapped to hidden, and if scripting is off the
+         class never arrives and everything simply stays visible. -->
+    <script>document.documentElement.classList.add('has-sectfx');</script>
 </head>
 
 <body>
@@ -63,30 +72,13 @@
                             <a href="services.html#event">Event Promotion</a>
                         </div>
                     </li>
-                    <li><a class="nav-link" href="why-velora.html">Mission &amp; Vision</a></li>
                     <li><a class="nav-link" href="glimpses.html">Glimpses</a></li>
+                    <li><a class="nav-link" href="why-influencer-marketing.html">Why Influencer Marketing</a></li>
                     <li><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
             </nav>
 
             <div class="nav-cta">
-                <div class="nav-icons">
-                    <a class="nav-ic" href="tel:+919871788896" aria-label="Call VELORA">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" />
-                        </svg>
-                    </a>
-                    <a class="nav-ic" href="https://www.instagram.com/" target="_blank" rel="noopener"
-                        aria-label="VELORA on Instagram">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="3" width="18" height="18" rx="5" />
-                            <circle cx="12" cy="12" r="4" />
-                            <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none" />
-                        </svg>
-                    </a>
-                </div>
                 <a class="btn btn-gold btn-sm magnetic" href="#enquiry">Start a Campaign</a>
                 <button class="burger" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
                     <span></span><span></span><span></span>
@@ -101,8 +93,8 @@
             <a href="index.html" style="--i:0"><small>01</small> Home</a>
             <a href="about.html" style="--i:1"><small>02</small> About</a>
             <a href="services.html" style="--i:2"><small>03</small> Services</a>
-            <a href="why-velora.html" style="--i:3"><small>04</small> Mission &amp; Vision</a>
-            <a href="glimpses.html" style="--i:4"><small>05</small> Glimpses</a>
+            <a href="glimpses.html" style="--i:3"><small>04</small> Glimpses</a>
+            <a href="why-influencer-marketing.html" style="--i:4"><small>05</small> Why Influencer Marketing</a>
             <a href="contact.html" style="--i:5"><small>06</small> Contact</a>
         </nav>
         <div class="drawer-foot">
@@ -117,38 +109,19 @@
         <!-- ============ HERO ============ -->
         <section class="hero" id="top">
             <div class="hero-video" aria-hidden="true">
-                <video src="assets/showreel.mp4" autoplay muted loop playsinline preload="auto" data-bg-video tabindex="-1">
-                    <source src="assets/showreel.mp4" type="video/mp4">
-                </video>
+                <video src="assets/hero-loop.mp4" poster="assets/hero-poster-promo.jpg" autoplay muted loop playsinline
+                    preload="auto" data-bg-video tabindex="-1"></video>
             </div>
+
+
+
             <div class="hero-inner">
-                <div class="hero-copy">
-                    <div class="hero-badge-wrap" data-reveal>
-                        <span class="hero-badge">
-                            <span class="hero-badge-dot"></span>
-                            Premier Influencer &amp; Celebrity Marketing Agency
-                        </span>
-                    </div>
-                    <h1 class="hero-main-title" data-reveal style="--d:80ms">
-                        India's Leading Experiential Marketing<br>
-                        and <span class="gold-solid">Influencer Agency</span>
-                    </h1>
-                    <p class="hero-lead-text" data-reveal style="--d:160ms">
-                        Where Influence Meets Impact. Connecting visionary brands with <strong>50,000+ top
-                            creators</strong> to produce high-impact, authentic campaigns that drive measurable growth.
-                    </p>
-                    <div class="hero-actions" data-reveal style="--d:220ms">
-                        <a class="btn btn-gold btn-lg magnetic hero-btn-main" href="#enquiry">
-                            Start a Campaign
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14M13 6l6 6-6 6" />
-                            </svg>
-                        </a>
-                        <a class="btn btn-ghost-glass btn-lg magnetic" href="services.html">Our Services</a>
-                    </div>
-                </div>
+                <h1 class="hero-main-title" data-reveal>
+                    India's Leading Experiential Marketing<br>
+                    and <span class="hero-accent">Influencer Agency</span>
+                </h1>
             </div>
+
         </section>
 
         <!-- VALUE · VOICE · VISION STRIP -->
@@ -173,16 +146,102 @@
         <section class="trust-banner">
             <div class="shell">
                 <p class="trust-title" data-reveal>Trusted by India's Top Brands &amp; High-Growth Startups</p>
-                <div class="trust-grid" data-reveal style="--d:80ms">
-                    <span class="trust-item">NYKAA</span>
-                    <span class="trust-item">MAMAEARTH</span>
-                    <span class="trust-item">BOAT</span>
-                    <span class="trust-item">SWIGGY</span>
-                    <span class="trust-item">MYNTRA</span>
-                    <span class="trust-item">AMAZON</span>
-                    <span class="trust-item">T-SERIES</span>
-                    <span class="trust-item">SPOTIFY</span>
-                    <span class="trust-item">ZEE5</span>
+                <!-- Row 1 -->
+                <div class="trust-band" data-reveal style="--d:80ms; margin-top: 2.5rem; --dur: 80s;"
+                    aria-hidden="true">
+                    <div class="trust-track">
+                        <!-- Original -->
+                        <div class="client-logo"><img src="assets/clients/itc.svg" alt="ITC" loading="lazy"
+                                onerror="this.src='https://logo.uplead.com/itcportal.com'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/puma.com" alt="PUMA" loading="lazy"
+                                onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/flipkart.com" alt="Flipkart"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/tatacliq.com" alt="TATA CLiQ"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/boat-lifestyle.com" alt="boAt"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/snapdeal.com" alt="snapdeal"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/vadilalgroup.com" alt="Vadilal"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/veeba.in" alt="VEEBA" loading="lazy"
+                                onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="assets/clients/google.svg" alt="Google" loading="lazy"
+                                onerror="this.src='https://logo.uplead.com/google.com'"></div>
+                        <div class="client-logo"><img src="assets/clients/hdfc.svg" alt="HDFC Bank" loading="lazy"
+                                onerror="this.src='assets/clients/hdfc.png'"></div>
+                        <!-- Duplicate for seamless scroll -->
+                        <div class="client-logo"><img src="assets/clients/itc.svg" alt="ITC" loading="lazy"
+                                onerror="this.src='https://logo.uplead.com/itcportal.com'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/puma.com" alt="PUMA" loading="lazy"
+                                onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/flipkart.com" alt="Flipkart"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/tatacliq.com" alt="TATA CLiQ"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/boat-lifestyle.com" alt="boAt"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/snapdeal.com" alt="snapdeal"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/vadilalgroup.com" alt="Vadilal"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/veeba.in" alt="VEEBA" loading="lazy"
+                                onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="assets/clients/google.svg" alt="Google" loading="lazy"
+                                onerror="this.src='https://logo.uplead.com/google.com'"></div>
+                        <div class="client-logo"><img src="assets/clients/hdfc.svg" alt="HDFC Bank" loading="lazy"
+                                onerror="this.src='assets/clients/hdfc.png'"></div>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="trust-band" data-reveal style="--d:120ms; margin-top: 1.5rem; --dur: 85s;"
+                    aria-hidden="true">
+                    <div class="trust-track" style="animation-direction: reverse;">
+                        <!-- Original -->
+                        <div class="client-logo"><img src="https://logo.uplead.com/kissan.in" alt="Kissan"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/mccainindia.com" alt="McCain"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="assets/clients/mamaearth.png" alt="Mamaearth" loading="lazy"
+                                onerror="this.src='https://logo.uplead.com/mamaearth.in'"></div>
+                        <div class="client-logo"><img src="assets/clients/paperboat.png" alt="Paper Boat" loading="lazy"
+                                onerror="this.src='https://logo.uplead.com/paperboatdrinks.com'"></div>
+                        <div class="client-logo"><img src="assets/clients/parle.png" alt="PARLE" loading="lazy"
+                                onerror="this.src='https://logo.uplead.com/parleproducts.com'"></div>
+                        <div class="client-logo"><img src="assets/clients/federalbank.png" alt="FEDERAL BANK"
+                                loading="lazy" onerror="this.src='https://logo.uplead.com/federalbank.co.in'"></div>
+                        <div class="client-logo"><img src="assets/clients/fortune.png" alt="Fortune" loading="lazy"
+                                onerror="this.src='https://logo.uplead.com/fortunefoods.com'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/gocolors.com" alt="GO COLORS!"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/samsonite.in" alt="Samsonite"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/sebamedindia.com" alt="sebamed"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <!-- Duplicate for seamless scroll -->
+                        <div class="client-logo"><img src="https://logo.uplead.com/kissan.in" alt="Kissan"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/mccainindia.com" alt="McCain"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="assets/clients/mamaearth.png" alt="Mamaearth" loading="lazy"
+                                onerror="this.src='https://logo.uplead.com/mamaearth.in'"></div>
+                        <div class="client-logo"><img src="assets/clients/paperboat.png" alt="Paper Boat" loading="lazy"
+                                onerror="this.src='https://logo.uplead.com/paperboatdrinks.com'"></div>
+                        <div class="client-logo"><img src="assets/clients/parle.png" alt="PARLE" loading="lazy"
+                                onerror="this.src='https://logo.uplead.com/parleproducts.com'"></div>
+                        <div class="client-logo"><img src="assets/clients/federalbank.png" alt="FEDERAL BANK"
+                                loading="lazy" onerror="this.src='https://logo.uplead.com/federalbank.co.in'"></div>
+                        <div class="client-logo"><img src="assets/clients/fortune.png" alt="Fortune" loading="lazy"
+                                onerror="this.src='https://logo.uplead.com/fortunefoods.com'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/gocolors.com" alt="GO COLORS!"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/samsonite.in" alt="Samsonite"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                        <div class="client-logo"><img src="https://logo.uplead.com/sebamedindia.com" alt="sebamed"
+                                loading="lazy" onerror="this.parentElement.style.display='none'"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -435,63 +494,6 @@
             </div>
         </section>
 
-        <!-- ============ OUR MISSION & VISION (NOT WHY SHOULD YOU) ============ -->
-        <section class="section" id="mission-vision">
-            <div class="shell">
-                <div class="section-head">
-                    <p class="eyebrow" data-reveal>Our Mission &amp; Vision</p>
-                    <h2 class="display-2" data-reveal style="--d:60ms">
-                        Built For <span class="gold-solid">Real Impact.</span>
-                    </h2>
-                    <div class="rule left" data-reveal><span class="spark"></span></div>
-                    <p class="lead" data-reveal style="--d:120ms">
-                        We don't buy vanity metrics. We construct authentic cultural moments that turn viewers into
-                        lifelong customers.
-                    </p>
-                </div>
-
-                <div class="offer">
-                    <article class="offer-item" data-reveal>
-                        <span class="offer-num">01</span>
-                        <div class="offer-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <circle cx="12" cy="7" r="2.6" />
-                                <circle cx="5.5" cy="10" r="2.1" />
-                                <circle cx="18.5" cy="10" r="2.1" />
-                            </svg>
-                        </div>
-                        <h3 class="offer-name">Our<b>Mission</b></h3>
-                        <p class="offer-desc">To make every brand–creator collaboration feel authentic, value-driven,
-                            and measurable, turning influence into predictable commercial outcomes.</p>
-                    </article>
-
-                    <article class="offer-item" data-reveal>
-                        <span class="offer-num">02</span>
-                        <div class="offer-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 2.5a6 6 0 0 0-3.4 10.9V16h6.8v-2.6A6 6 0 0 0 12 2.5z" />
-                            </svg>
-                        </div>
-                        <h3 class="offer-name">Our<b>Vision</b></h3>
-                        <p class="offer-desc">To become the gold standard agency in experiential and influencer
-                            marketing across India and global digital ecosystems.</p>
-                    </article>
-
-                    <article class="offer-item" data-reveal>
-                        <span class="offer-num">03</span>
-                        <div class="offer-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M3 20V6M3 20h18" />
-                                <path d="M7 20v-5M11 20v-8M15 20v-4" />
-                            </svg>
-                        </div>
-                        <h3 class="offer-name">Core<b>Values</b></h3>
-                        <p class="offer-desc">Uncompromising transparency, creator integrity, data-verified results, and
-                            relentless creative innovation.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
 
         <!-- ============ STORIES & CASE STUDIES (CELEB PROOF) ============ -->
         <section class="stories-showcase" id="stories">
@@ -514,11 +516,7 @@
                         rel="noopener" aria-label="Chandrika Dixit">
                         <img src="assets/talent/chandrika-dixit.jpg" alt="Chandrika Dixit" loading="lazy">
                     </a>
-                    <a class="story-card card-l5" href="https://www.instagram.com/armaan__malik9/" target="_blank"
-                        rel="noopener" aria-label="Armaan Malik YouTuber">
-                        <img src="assets/talent/armaan-malik.jpg" alt="Armaan Malik" loading="lazy">
-                    </a>
-                    <a class="story-card card-l6" href="https://www.instagram.com/munawar.faruqui/" target="_blank"
+                    <a class="story-card card-l5" href="https://www.instagram.com/munawar.faruqui/" target="_blank"
                         rel="noopener" aria-label="Munawar Faruqui">
                         <img src="assets/talent/munawar-faruqui.jpg" alt="Munawar Faruqui" loading="lazy">
                     </a>
@@ -541,13 +539,13 @@
 
                 <!-- Right Floating Photo Cloud (Celebrities) -->
                 <div class="stories-cloud stories-cloud-right" aria-hidden="true">
-                    <a class="story-card card-r1" href="https://www.instagram.com/tamannaahspeaks/" target="_blank"
-                        rel="noopener" aria-label="Tamannaah Bhatia">
-                        <img src="assets/talent/tamannaah-bhatia.jpg" alt="Tamannaah Bhatia" loading="lazy">
-                    </a>
-                    <a class="story-card card-r2" href="https://www.instagram.com/norafatehi/" target="_blank"
+                    <a class="story-card card-r1" href="https://www.instagram.com/norafatehi/" target="_blank"
                         rel="noopener" aria-label="Nora Fatehi">
                         <img src="assets/talent/nora-fatehi.jpg" alt="Nora Fatehi" loading="lazy">
+                    </a>
+                    <a class="story-card card-r2" href="https://www.instagram.com/tamannaahspeaks/" target="_blank"
+                        rel="noopener" aria-label="Tamannaah Bhatia">
+                        <img src="assets/talent/tamannaah-bhatia.jpg" alt="Tamannaah Bhatia" loading="lazy">
                     </a>
                     <a class="story-card card-r3" href="https://www.instagram.com/yoyohoneysingh/" target="_blank"
                         rel="noopener" aria-label="Yo Yo Honey Singh">
@@ -564,6 +562,7 @@
                 </div>
             </div>
         </section>
+
 
         <!-- ============ FAMOUS FACES / REPRESENT ROSTER (MOVING ANIMATION) ============ -->
         <section class="section" id="faces">
@@ -587,6 +586,7 @@
                 </div>
                 <div class="talent-marquee" data-marquee="right" aria-label="Influencers we work with">
                     <div class="talent-track">
+                        <!-- Set 1 -->
                         <a class="talent" href="https://www.instagram.com/elvish_yadav/" target="_blank" rel="noopener">
                             <span class="talent-photo"><img src="assets/talent/elvish-yadav.jpg" alt="Elvish Yadav"
                                     loading="lazy"></span>
@@ -611,7 +611,7 @@
                             <span class="talent-photo"><img src="assets/talent/armaan-malik.jpg" alt="Armaan Malik"
                                     loading="lazy"></span>
                             <span class="talent-body">
-                                <span class="talent-role">Top YouTuber &amp; Lifestyle Creator</span>
+                                <span class="talent-role">Top YouTuber &amp; Creator</span>
                                 <span class="talent-name">Armaan Malik</span>
                                 <span class="talent-meta">@armaan__malik9</span>
                             </span>
@@ -621,7 +621,7 @@
                             <span class="talent-photo"><img src="assets/talent/aarush-bhola.jpg" alt="Aarush Bhola"
                                     loading="lazy"></span>
                             <span class="talent-body">
-                                <span class="talent-role">Creator &amp; Actor</span>
+                                <span class="talent-role">Fitness &amp; Lifestyle</span>
                                 <span class="talent-name">Aarush Bhola</span>
                                 <span class="talent-meta">@aarushbhola17</span>
                             </span>
@@ -631,7 +631,7 @@
                             <span class="talent-photo"><img src="assets/talent/chandrika-dixit.jpg"
                                     alt="Chandrika Dixit" loading="lazy"></span>
                             <span class="talent-body">
-                                <span class="talent-role">Viral Creator</span>
+                                <span class="talent-role">Viral Food Creator</span>
                                 <span class="talent-name">Chandrika Dixit</span>
                                 <span class="talent-meta">@chandrika.dixit</span>
                             </span>
@@ -646,6 +646,107 @@
                                 <span class="talent-meta">@munawar.faruqui</span>
                             </span>
                         </a>
+                        <a class="talent" href="https://www.instagram.com/anjimaxuofficially/" target="_blank"
+                            rel="noopener">
+                            <span class="talent-photo"><img src="assets/talent/anjali-arora.jpg" alt="Anjali Arora"
+                                    loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Top Digital Creator</span>
+                                <span class="talent-name">Anjali Arora</span>
+                                <span class="talent-meta">@anjimaxuofficially</span>
+                            </span>
+                        </a>
+                        <a class="talent" href="https://www.instagram.com/_elnaaz_" target="_blank" rel="noopener">
+                            <span class="talent-photo"><img src="assets/talent/elnaaz-norouzi.jpg" alt="Elnaaz Norouzi"
+                                    loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Global Icon &amp; Model</span>
+                                <span class="talent-name">Elnaaz Norouzi</span>
+                                <span class="talent-meta">@_elnaaz_</span>
+                            </span>
+                        </a>
+
+                        <!-- Set 2 (Duplicate for Seamless Infinite Loop) -->
+                        <a class="talent" href="https://www.instagram.com/elvish_yadav/" target="_blank" rel="noopener"
+                            aria-hidden="true" tabindex="-1">
+                            <span class="talent-photo"><img src="assets/talent/elvish-yadav.jpg" alt="Elvish Yadav"
+                                    loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">YouTuber &amp; Reality Star</span>
+                                <span class="talent-name">Elvish Yadav</span>
+                                <span class="talent-meta">@elvish_yadav</span>
+                            </span>
+                        </a>
+                        <a class="talent" href="https://www.instagram.com/dolly_ki_tapri_nagpur/" target="_blank"
+                            rel="noopener" aria-hidden="true" tabindex="-1">
+                            <span class="talent-photo"><img src="assets/talent/dolly-chaiwala.jpg" alt="Dolly Chaiwala"
+                                    loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Viral Lifestyle Creator</span>
+                                <span class="talent-name">Dolly Chaiwala</span>
+                                <span class="talent-meta">@dolly_ki_tapri_nagpur</span>
+                            </span>
+                        </a>
+                        <a class="talent" href="https://www.instagram.com/armaan__malik9/" target="_blank"
+                            rel="noopener" aria-hidden="true" tabindex="-1">
+                            <span class="talent-photo"><img src="assets/talent/armaan-malik.jpg" alt="Armaan Malik"
+                                    loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Top YouTuber &amp; Creator</span>
+                                <span class="talent-name">Armaan Malik</span>
+                                <span class="talent-meta">@armaan__malik9</span>
+                            </span>
+                        </a>
+                        <a class="talent" href="https://www.instagram.com/aarushbhola17/" target="_blank" rel="noopener"
+                            aria-hidden="true" tabindex="-1">
+                            <span class="talent-photo"><img src="assets/talent/aarush-bhola.jpg" alt="Aarush Bhola"
+                                    loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Fitness &amp; Lifestyle</span>
+                                <span class="talent-name">Aarush Bhola</span>
+                                <span class="talent-meta">@aarushbhola17</span>
+                            </span>
+                        </a>
+                        <a class="talent" href="https://www.instagram.com/chandrika.dixit/" target="_blank"
+                            rel="noopener" aria-hidden="true" tabindex="-1">
+                            <span class="talent-photo"><img src="assets/talent/chandrika-dixit.jpg"
+                                    alt="Chandrika Dixit" loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Viral Food Creator</span>
+                                <span class="talent-name">Chandrika Dixit</span>
+                                <span class="talent-meta">@chandrika.dixit</span>
+                            </span>
+                        </a>
+                        <a class="talent" href="https://www.instagram.com/munawar.faruqui/" target="_blank"
+                            rel="noopener" aria-hidden="true" tabindex="-1">
+                            <span class="talent-photo"><img src="assets/talent/munawar-faruqui.jpg"
+                                    alt="Munawar Faruqui" loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Comedian &amp; Artist</span>
+                                <span class="talent-name">Munawar Faruqui</span>
+                                <span class="talent-meta">@munawar.faruqui</span>
+                            </span>
+                        </a>
+                        <a class="talent" href="https://www.instagram.com/anjimaxuofficially/" target="_blank"
+                            rel="noopener" aria-hidden="true" tabindex="-1">
+                            <span class="talent-photo"><img src="assets/talent/anjali-arora.jpg" alt="Anjali Arora"
+                                    loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Top Digital Creator</span>
+                                <span class="talent-name">Anjali Arora</span>
+                                <span class="talent-meta">@anjimaxuofficially</span>
+                            </span>
+                        </a>
+                        <a class="talent" href="https://www.instagram.com/_elnaaz_" target="_blank" rel="noopener"
+                            aria-hidden="true" tabindex="-1">
+                            <span class="talent-photo"><img src="assets/talent/elnaaz-norouzi.jpg" alt="Elnaaz Norouzi"
+                                    loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Global Icon &amp; Model</span>
+                                <span class="talent-name">Elnaaz Norouzi</span>
+                                <span class="talent-meta">@_elnaaz_</span>
+                            </span>
+                        </a>
                     </div>
                 </div>
 
@@ -655,6 +756,7 @@
                 </div>
                 <div class="talent-marquee" data-marquee="left" aria-label="Celebrities we work with">
                     <div class="talent-track">
+                        <!-- Set 1 -->
                         <a class="talent" href="https://www.instagram.com/tamannaahspeaks/" target="_blank"
                             rel="noopener">
                             <span class="talent-photo"><img src="assets/talent/tamannaah-bhatia.jpg"
@@ -702,6 +804,97 @@
                                 <span class="talent-meta">@sonu_sood</span>
                             </span>
                         </a>
+                        <a class="talent" href="https://www.instagram.com/zareenkhan/" target="_blank" rel="noopener">
+                            <span class="talent-photo"><img src="assets/talent/zareen-khan.jpg" alt="Zareen Khan"
+                                    loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Film Actor</span>
+                                <span class="talent-name">Zareen Khan</span>
+                                <span class="talent-meta">@zareenkhan</span>
+                            </span>
+                        </a>
+                        <a class="talent" href="https://www.instagram.com/jubin_nautiyal/" target="_blank"
+                            rel="noopener">
+                            <span class="talent-photo"><img src="assets/talent/jubin-nautiyal.jpg" alt="Jubin Nautiyal"
+                                    loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Playback Singer &amp; Music Star</span>
+                                <span class="talent-name">Jubin Nautiyal</span>
+                                <span class="talent-meta">@jubin_nautiyal</span>
+                            </span>
+                        </a>
+
+                        <!-- Set 2 (Duplicate for Seamless Infinite Loop) -->
+                        <a class="talent" href="https://www.instagram.com/tamannaahspeaks/" target="_blank"
+                            rel="noopener" aria-hidden="true" tabindex="-1">
+                            <span class="talent-photo"><img src="assets/talent/tamannaah-bhatia.jpg"
+                                    alt="Tamannaah Bhatia" loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Film Actor</span>
+                                <span class="talent-name">Tamannaah Bhatia</span>
+                                <span class="talent-meta">@tamannaahspeaks</span>
+                            </span>
+                        </a>
+                        <a class="talent" href="https://www.instagram.com/norafatehi/" target="_blank" rel="noopener"
+                            aria-hidden="true" tabindex="-1">
+                            <span class="talent-photo"><img src="assets/talent/nora-fatehi.jpg" alt="Nora Fatehi"
+                                    loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Global Performer &amp; Actor</span>
+                                <span class="talent-name">Nora Fatehi</span>
+                                <span class="talent-meta">@norafatehi</span>
+                            </span>
+                        </a>
+                        <a class="talent" href="https://www.instagram.com/yoyohoneysingh/" target="_blank"
+                            rel="noopener" aria-hidden="true" tabindex="-1">
+                            <span class="talent-photo"><img src="assets/talent/yo-yo-honey-singh.jpg"
+                                    alt="Yo Yo Honey Singh" loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Music Icon</span>
+                                <span class="talent-name">Yo Yo Honey Singh</span>
+                                <span class="talent-meta">@yoyohoneysingh</span>
+                            </span>
+                        </a>
+                        <a class="talent" href="https://www.instagram.com/badboyshah/" target="_blank" rel="noopener"
+                            aria-hidden="true" tabindex="-1">
+                            <span class="talent-photo"><img src="assets/talent/badshah.jpg" alt="Badshah"
+                                    loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Rapper &amp; Producer</span>
+                                <span class="talent-name">Badshah</span>
+                                <span class="talent-meta">@badboyshah</span>
+                            </span>
+                        </a>
+                        <a class="talent" href="https://www.instagram.com/sonu_sood/" target="_blank" rel="noopener"
+                            aria-hidden="true" tabindex="-1">
+                            <span class="talent-photo"><img src="assets/talent/sonu-sood.jpg" alt="Sonu Sood"
+                                    loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Actor &amp; Philanthropist</span>
+                                <span class="talent-name">Sonu Sood</span>
+                                <span class="talent-meta">@sonu_sood</span>
+                            </span>
+                        </a>
+                        <a class="talent" href="https://www.instagram.com/zareenkhan/" target="_blank" rel="noopener"
+                            aria-hidden="true" tabindex="-1">
+                            <span class="talent-photo"><img src="assets/talent/zareen-khan.jpg" alt="Zareen Khan"
+                                    loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Film Actor</span>
+                                <span class="talent-name">Zareen Khan</span>
+                                <span class="talent-meta">@zareenkhan</span>
+                            </span>
+                        </a>
+                        <a class="talent" href="https://www.instagram.com/jubin_nautiyal/" target="_blank"
+                            rel="noopener" aria-hidden="true" tabindex="-1">
+                            <span class="talent-photo"><img src="assets/talent/jubin-nautiyal.jpg" alt="Jubin Nautiyal"
+                                    loading="lazy"></span>
+                            <span class="talent-body">
+                                <span class="talent-role">Playback Singer &amp; Music Star</span>
+                                <span class="talent-name">Jubin Nautiyal</span>
+                                <span class="talent-meta">@jubin_nautiyal</span>
+                            </span>
+                        </a>
                     </div>
                 </div>
 
@@ -718,216 +911,370 @@
             </div>
         </section>
 
-        <!-- ============ CREATOR CAMPAIGNS IN ACTION / OUR WORK (CHTR STUDIOS STYLE) ============ -->
-        <section class="section tint" id="our-work">
+
+        <!-- ============ ABOUT CEO & CREATOR SHOWCASE (BENTO UGC GRID) ============ -->
+        <section class="section" id="founder">
             <div class="shell">
-                <div class="section-head">
-                    <p class="eyebrow" data-reveal>Our Work</p>
-                    <h2 class="display-2" data-reveal style="--d:60ms">
-                        Creator Campaigns<br><span class="gold-solid">In Action</span>
-                    </h2>
-                    <div class="rule left" data-reveal><span class="spark"></span></div>
-                    <p class="lead" data-reveal style="--d:120ms">
-                        A showcase of high-performing creator activations, viral song rollouts, and experiential brand
-                        films delivered by VELORA.
-                    </p>
+                <div class="founder-header-block">
+                    <div class="founder-header-left">
+                        <p class="eyebrow" data-reveal>Meet Our Founder &amp; CEO</p>
+                        <h2 class="founder-name" data-reveal style="--d:60ms">
+                            Shubh <span class="gold-solid">Gupta</span>
+                        </h2>
+                        <p class="founder-role" data-reveal style="--d:100ms">Founder &amp; CEO, VELORA</p>
+                        <div class="rule left" data-reveal><span class="spark"></span></div>
+                    </div>
+                    <div class="founder-header-right" data-reveal style="--d:140ms">
+                        <div class="pullquote">
+                            <blockquote>At VELORA, we don't just run campaigns, we build <span class="hl">influence that
+                                    lasts</span>.</blockquote>
+                        </div>
+                        <p class="lead" style="margin-top: 0.75rem;">
+                            Driving the new era of influencer and experiential marketing across India with high-impact
+                            partnerships and strategic clarity.
+                        </p>
+                        <div class="founder-actions" style="margin-top: 1.25rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a class="btn btn-gold btn-sm magnetic" href="#enquiry">Talk To Shubh</a>
+                            <a class="btn btn-ghost btn-sm magnetic" href="tel:+919871788896">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="margin-right: 4px; vertical-align: -2px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                Call Direct
+                            </a>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="work-grid">
-                    <!-- Project 1 -->
-                    <article class="work-card" data-reveal>
-                        <div class="work-thumb">
-                            <img src="assets/gallery/glimpse-1.jpg" alt="D2C Festive Launch" loading="lazy">
-                            <button class="work-play-btn" type="button"
-                                data-work-video="assets/showreel.mp4"
-                                data-work-title="The Glow Revolution Campaign"
-                                aria-label="Play the reel for The Glow Revolution Campaign">
-                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                    <polygon points="5 3 19 12 5 21 5 3" />
-                                </svg>
-                            </button>
+                <!-- 7-Card Modern Bento UGC Gallery -->
+                <div class="bento-ugc-showcase" data-reveal="fade-up" style="--d:180ms">
+                    <!-- Row 1 (4 Cards) -->
+                    <div class="bento-ugc-row bento-row-top">
+                        <!-- Card 1: Portrait Creator -->
+                        <div class="bento-ugc-card card-tall-1">
+                            <img src="assets/talent/elnaaz-norouzi.jpg" alt="Creator Activation" loading="lazy">
                         </div>
-                        <div class="work-body">
-                            <div class="work-tag-row">
-                                <span class="work-tag">Influencer Launch</span>
-                                <span class="work-brand">Beauty &amp; Skincare</span>
-                            </div>
-                            <h3 class="work-title">The Glow Revolution Campaign</h3>
-                            <div class="work-metrics">
-                                <div class="work-metric-item">
-                                    <b>18.4M+</b>
-                                    <span>Impressions</span>
-                                </div>
-                                <div class="work-metric-item">
-                                    <b>4.6x</b>
-                                    <span>ROAS</span>
-                                </div>
-                                <div class="work-metric-item">
-                                    <b>85+</b>
-                                    <span>Creators</span>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
 
-                    <!-- Project 2 -->
-                    <article class="work-card" data-reveal style="--d:100ms">
-                        <div class="work-thumb">
-                            <img src="assets/gallery/glimpse-2.jpg" alt="Viral Audio Seeding" loading="lazy">
-                            <button class="work-play-btn" type="button"
-                                data-work-video="assets/showreel.mp4"
-                                data-work-title="Monsoon Beat Reel Trend"
-                                aria-label="Play the reel for Monsoon Beat Reel Trend">
-                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                    <polygon points="5 3 19 12 5 21 5 3" />
-                                </svg>
-                            </button>
+                        <!-- Card 2: Featured Shubh Gupta -->
+                        <div class="bento-ugc-card card-wide-1">
+                            <img src="assets/shubh-gupta.jpg" alt="Shubh Gupta VELORA" loading="lazy">
                         </div>
-                        <div class="work-body">
-                            <div class="work-tag-row">
-                                <span class="work-tag">Song Promotion</span>
-                                <span class="work-brand">Music Label</span>
-                            </div>
-                            <h3 class="work-title">Monsoon Beat Reel Trend</h3>
-                            <div class="work-metrics">
-                                <div class="work-metric-item">
-                                    <b>320K+</b>
-                                    <span>Reels Made</span>
-                                </div>
-                                <div class="work-metric-item">
-                                    <b>#1</b>
-                                    <span>Trending Audio</span>
-                                </div>
-                                <div class="work-metric-item">
-                                    <b>42M+</b>
-                                    <span>Views</span>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
 
-                    <!-- Project 3 -->
-                    <article class="work-card" data-reveal style="--d:200ms">
-                        <div class="work-thumb">
-                            <img src="assets/gallery/glimpse-3.jpg" alt="Theatrical Premiere" loading="lazy">
-                            <button class="work-play-btn" type="button"
-                                data-work-video="assets/showreel.mp4"
-                                data-work-title="Blockbuster Premiere &amp; VIP Lounge"
-                                aria-label="Play the reel for Blockbuster Premiere and VIP Lounge">
-                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                    <polygon points="5 3 19 12 5 21 5 3" />
-                                </svg>
-                            </button>
+                        <!-- Card 3: Creator Collaboration -->
+                        <div class="bento-ugc-card card-med-1">
+                            <img src="assets/faces/face-2.jpg" alt="Creator Collaboration" loading="lazy">
                         </div>
-                        <div class="work-body">
-                            <div class="work-tag-row">
-                                <span class="work-tag">Movie Promotion</span>
-                                <span class="work-brand">Entertainment Studio</span>
-                            </div>
-                            <h3 class="work-title">Blockbuster Premiere &amp; VIP Lounge</h3>
-                            <div class="work-metrics">
-                                <div class="work-metric-item">
-                                    <b>28M+</b>
-                                    <span>Reach</span>
-                                </div>
-                                <div class="work-metric-item">
-                                    <b>100%</b>
-                                    <span>Sold Out</span>
-                                </div>
-                                <div class="work-metric-item">
-                                    <b>35+</b>
-                                    <span>Celeb Attendees</span>
-                                </div>
-                            </div>
+
+                        <!-- Card 4: Celebrity Portrait -->
+                        <div class="bento-ugc-card card-tall-2">
+                            <img src="assets/talent/tamannaah-bhatia.jpg" alt="Celebrity Partner" loading="lazy">
                         </div>
-                    </article>
+                    </div>
+
+                    <!-- Row 2 (3 Cards) -->
+                    <div class="bento-ugc-row bento-row-bottom">
+                        <!-- Card 5: Duo Community -->
+                        <div class="bento-ugc-card card-duo-1">
+                            <img src="assets/faces/face-4.jpg" alt="Creator Community" loading="lazy">
+                        </div>
+
+                        <!-- Card 6: Creator Activation -->
+                        <div class="bento-ugc-card card-square-1">
+                            <img src="assets/faces/face-5.jpg" alt="Viral Rollouts" loading="lazy">
+                        </div>
+
+                        <!-- Card 7: Experiential Production -->
+                        <div class="bento-ugc-card card-wide-2">
+                            <img src="assets/gallery/glimpse-1.jpg" alt="Experiential Production" loading="lazy">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ============ ABOUT CEO (SINGLE PHOTO + MOVING CIRCLES) ============ -->
-        <section class="section" id="founder">
+
+        <!-- ============ CREATOR CAMPAIGNS IN ACTION ============ -->
+        <section class="section section-campaigns" id="campaigns" style="background: #ffffff; color: #000;">
             <div class="shell">
-                <div class="founder">
-                    <div class="slide-copy">
-                        <p class="eyebrow" data-reveal>Meet Our Founder &amp; CEO</p>
-                        <h2 class="founder-name" data-reveal style="--d:60ms">
-                            Shubh<br><span class="gold-solid">Gupta</span>
-                        </h2>
-                        <p class="founder-role" data-reveal style="--d:100ms">Founder &amp; CEO, VELORA</p>
-                        <div class="rule left" data-reveal><span class="spark"></span></div>
-                        <div class="pullquote" data-reveal style="--d:160ms">
-                            <blockquote>At VELORA, we don't just run campaigns, we build <span class="hl">influence that
-                                    lasts</span>.</blockquote>
+                <div class="section-head" style="text-align: center; max-width: 800px; margin-inline: auto;">
+                    <p class="eyebrow" data-reveal style="color: var(--pink);">Real Results</p>
+                    <h2 class="display-2" data-reveal style="--d:60ms; color: #111;">
+                        Creator Campaigns <br><span class="gold-solid">In Action</span>
+                    </h2>
+                    <div class="rule mx-auto" data-reveal
+                        style="margin-inline: auto; margin-top: 1rem; margin-bottom: 1.5rem;"><span
+                            class="spark"></span></div>
+                    <p class="lead" data-reveal style="--d:120ms; color: #444; margin-inline: auto;">
+                        Experience the viral impact of our top creator collaborations. Real views, real engagement, real
+                        growth.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Reels Scrolling Marquee -->
+            <div class="campaigns-marquee" aria-label="Creator Campaigns Reels">
+                <div class="campaigns-track">
+                    <!-- Set 1 -->
+                    <div class="reel-card">
+                        <div class="reel-video-wrap">
+                            <video src="assets/reel.mp4" autoplay loop muted playsinline></video>
+                            <div class="reel-icon" style="color: #0052cc;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </div>
                         </div>
-                        <p class="lead" data-reveal style="--d:200ms">
-                            Driving the new era of influencer and experiential marketing across India with high-impact
-                            partnerships and strategic clarity.
-                        </p>
-                        <p style="margin-top:1.5rem" data-reveal>
-                            <a class="btn btn-ghost magnetic" href="#enquiry">Talk To Shubh</a>
-                        </p>
+                        <div class="reel-stats">3.7M FOLLOWERS</div>
+                    </div>
+                    <div class="reel-card">
+                        <div class="reel-video-wrap">
+                            <video src="assets/reel.mp4" autoplay loop muted playsinline></video>
+                            <div class="reel-icon" style="color: #0052cc;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="reel-stats">3.7M FOLLOWERS</div>
+                    </div>
+                    <div class="reel-card">
+                        <div class="reel-video-wrap">
+                            <video src="assets/reel.mp4" autoplay loop muted playsinline></video>
+                            <div class="reel-icon" style="color: #0052cc;">
+                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <path
+                                        d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 15.71a6.34 6.34 0 0 0 12.67-1.18V8.75a8.3 8.3 0 0 0 4.19 1.13V6.43a4.57 4.57 0 0 1-2.27-.74z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="reel-stats">2.2M FOLLOWERS</div>
+                    </div>
+                    <div class="reel-card">
+                        <div class="reel-video-wrap">
+                            <video src="assets/reel.mp4" autoplay loop muted playsinline></video>
+                            <div class="reel-icon" style="color: #0052cc;">
+                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3.81l.19-4h-4V7a1 1 0 0 1 1-1h3z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="reel-stats">39M LIKES</div>
+                    </div>
+                    <div class="reel-card">
+                        <div class="reel-video-wrap">
+                            <video src="assets/reel.mp4" autoplay loop muted playsinline></video>
+                            <div class="reel-icon" style="color: #0052cc;">
+                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <path
+                                        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                    </path>
+                                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#fff"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="reel-stats">842K SUBSCRIBERS</div>
                     </div>
 
-                    <!-- CEO Center Portrait with Orbiting Moving Circle Avatars -->
-                    <div class="ceo-orbit-stage" data-reveal="zoom">
-                        <div class="ceo-center-card">
-                            <img src="assets/shubh-gupta.jpg" alt="Shubh Gupta, Founder & CEO VELORA" loading="lazy">
-                        </div>
-                        <div class="ceo-orbit-ring" aria-hidden="true">
-                            <div class="ceo-orbit-node node-1">
-                                <img src="assets/faces/face-1.jpg" alt="Partner">
-                            </div>
-                            <div class="ceo-orbit-node node-2">
-                                <img src="assets/faces/face-2.jpg" alt="Partner">
-                            </div>
-                            <div class="ceo-orbit-node node-3">
-                                <img src="assets/faces/face-3.jpg" alt="Partner">
-                            </div>
-                            <div class="ceo-orbit-node node-4">
-                                <img src="assets/faces/face-4.jpg" alt="Partner">
+                    <!-- Set 2 (Duplicate for Infinite Scroll) -->
+                    <div class="reel-card">
+                        <div class="reel-video-wrap">
+                            <video src="assets/reel.mp4" autoplay loop muted playsinline></video>
+                            <div class="reel-icon" style="color: #0052cc;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
                             </div>
                         </div>
+                        <div class="reel-stats">3.7M FOLLOWERS</div>
+                    </div>
+                    <div class="reel-card">
+                        <div class="reel-video-wrap">
+                            <video src="assets/reel.mp4" autoplay loop muted playsinline></video>
+                            <div class="reel-icon" style="color: #0052cc;">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="reel-stats">3.7M FOLLOWERS</div>
+                    </div>
+                    <div class="reel-card">
+                        <div class="reel-video-wrap">
+                            <video src="assets/reel.mp4" autoplay loop muted playsinline></video>
+                            <div class="reel-icon" style="color: #0052cc;">
+                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <path
+                                        d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 15.71a6.34 6.34 0 0 0 12.67-1.18V8.75a8.3 8.3 0 0 0 4.19 1.13V6.43a4.57 4.57 0 0 1-2.27-.74z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="reel-stats">2.2M FOLLOWERS</div>
+                    </div>
+                    <div class="reel-card">
+                        <div class="reel-video-wrap">
+                            <video src="assets/reel.mp4" autoplay loop muted playsinline></video>
+                            <div class="reel-icon" style="color: #0052cc;">
+                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3.81l.19-4h-4V7a1 1 0 0 1 1-1h3z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="reel-stats">39M LIKES</div>
+                    </div>
+                    <div class="reel-card">
+                        <div class="reel-video-wrap">
+                            <video src="assets/reel.mp4" autoplay loop muted playsinline></video>
+                            <div class="reel-icon" style="color: #0052cc;">
+                                <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                                    <path
+                                        d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                                    </path>
+                                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#fff"></polygon>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="reel-stats">842K SUBSCRIBERS</div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ============ SEE IT IN MOTION / SHOWREEL ============ -->
-        <section class="section ink-band">
+        <section class="section ink-band section-showreel" id="showreel-section">
+            <!-- Ambient Glowing Wave Ribbons Background (Matching Reference) -->
+            <div class="showreel-waves-bg" aria-hidden="true">
+                <!-- Left Beam / Light Projection -->
+                <div class="wave-beam-light"></div>
+
+                <!-- Flowing Sine Wave Lines & Geometric Constellation -->
+                <svg class="ambient-sine-waves" viewBox="0 0 1200 600" fill="none" preserveAspectRatio="xMidYMid slice">
+                    <path d="M-100,300 C200,150 400,450 700,280 C950,140 1100,380 1300,250" stroke="url(#waveGrad1)" stroke-width="2" stroke-linecap="round" class="sine-line line-1" />
+                    <path d="M-100,320 C220,170 380,470 680,300 C930,160 1080,400 1300,270" stroke="url(#waveGrad1)" stroke-width="1.5" stroke-opacity="0.8" class="sine-line line-2" />
+                    <path d="M-100,340 C240,190 360,490 660,320 C910,180 1060,420 1300,290" stroke="url(#waveGrad2)" stroke-width="1.5" stroke-opacity="0.6" class="sine-line line-3" />
+                    <path d="M-100,360 C260,210 340,510 640,340 C890,200 1040,440 1300,310" stroke="url(#waveGrad2)" stroke-width="1" stroke-opacity="0.4" class="sine-line line-4" />
+                    <path d="M-100,380 C280,230 320,530 620,360 C870,220 1020,460 1300,330" stroke="url(#waveGrad1)" stroke-width="1" stroke-opacity="0.3" class="sine-line line-5" />
+
+                    <!-- Geometric Constellation & Star Nodes -->
+                    <g class="cyber-constellation" stroke="url(#goldGrad)" stroke-width="1.2" opacity="0.65">
+                        <line x1="880" y1="180" x2="940" y2="120" />
+                        <line x1="940" y1="120" x2="1020" y2="150" />
+                        <line x1="940" y1="120" x2="950" y2="220" />
+                        <line x1="880" y1="180" x2="950" y2="220" />
+                        <line x1="950" y1="220" x2="1020" y2="150" />
+                        <line x1="950" y1="220" x2="990" y2="300" />
+                        <line x1="1020" y1="150" x2="1080" y2="260" />
+                        <line x1="990" y1="300" x2="1080" y2="260" />
+                        <line x1="990" y1="300" x2="930" y2="360" />
+                        <line x1="930" y1="360" x2="970" y2="440" />
+                        <line x1="970" y1="440" x2="1030" y2="390" />
+                        <line x1="1080" y1="260" x2="1030" y2="390" />
+
+                        <!-- Glowing Star Nodes -->
+                        <circle cx="880" cy="180" r="4" fill="#fbbf24" filter="url(#glowFilter)" />
+                        <circle cx="940" cy="120" r="4.5" fill="#f472b6" filter="url(#glowFilter)" />
+                        <circle cx="1020" cy="150" r="4" fill="#fbbf24" filter="url(#glowFilter)" />
+                        <circle cx="950" cy="220" r="5" fill="#c084fc" filter="url(#glowFilter)" />
+                        <circle cx="990" cy="300" r="4.5" fill="#fbbf24" filter="url(#glowFilter)" />
+                        <circle cx="1080" cy="260" r="4" fill="#f472b6" filter="url(#glowFilter)" />
+                        <circle cx="930" cy="360" r="4" fill="#c084fc" filter="url(#glowFilter)" />
+                        <circle cx="970" cy="440" r="4.5" fill="#fbbf24" filter="url(#glowFilter)" />
+                        <circle cx="1030" cy="390" r="4" fill="#f472b6" filter="url(#glowFilter)" />
+                    </g>
+
+                    <defs>
+                        <linearGradient id="waveGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#ec4899" stop-opacity="0.8" />
+                            <stop offset="50%" stop-color="#8b5cf6" stop-opacity="0.9" />
+                            <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.6" />
+                        </linearGradient>
+                        <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.4" />
+                            <stop offset="50%" stop-color="#ec4899" stop-opacity="0.7" />
+                            <stop offset="100%" stop-color="#6366f1" stop-opacity="0.5" />
+                        </linearGradient>
+                        <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#fbbf24" />
+                            <stop offset="50%" stop-color="#f472b6" />
+                            <stop offset="100%" stop-color="#c084fc" />
+                        </linearGradient>
+                        <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+
             <div class="shell">
-                <div class="section-head centered">
+                <div class="section-head centered" style="position: relative; z-index: 2;">
                     <p class="eyebrow centered" data-reveal>Showreel</p>
                     <h2 class="display-2 gold-text" data-reveal style="--d:60ms">See It In Motion</h2>
                 </div>
-                <div class="reel" data-reveal="zoom">
-                    <div class="reel-frame">
-                        <video id="showreel" poster="assets/gallery/glimpse-1.jpg" muted loop playsinline autoplay
-                            preload="metadata">
-                            <source src="assets/showreel.mp4" type="video/mp4">
-                        </video>
-                        <div class="reel-tools">
-                            <button class="media-btn" id="play-toggle" aria-label="Pause showreel">
-                                <svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor">
-                                    <rect x="7" y="5" width="3.4" height="14" rx="1" />
-                                    <rect x="13.6" y="5" width="3.4" height="14" rx="1" />
-                                </svg>
-                                <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor" hidden>
-                                    <path d="M8 5.5v13l11-6.5L8 5.5z" />
-                                </svg>
-                            </button>
-                            <button class="media-btn" id="sound-toggle" aria-label="Unmute showreel">
-                                <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="1.6" stroke-linecap="round">
-                                    <path d="M11 5 6.5 9H3v6h3.5L11 19V5z" />
-                                    <path d="m16 9.5 5 5M21 9.5l-5 5" />
-                                </svg>
-                                <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
-                                    stroke-linecap="round" hidden>
-                                    <path d="M11 5 6.5 9H3v6h3.5L11 19V5z" />
-                                    <path d="M15.5 8.5a4.5 4.5 0 0 1 0 7M18 6a8 8 0 0 1 0 12" />
-                                </svg>
-                            </button>
+
+                <!-- Cinematic Embedded Screen Display -->
+                <div class="cinematic-screen-stage" data-reveal="zoom">
+                    <!-- Screen Ambient Glow Projection -->
+                    <div class="screen-ambient-glow" aria-hidden="true"></div>
+
+                    <!-- Outer Luxury Bezel / Hardware Housing -->
+                    <div class="cinematic-screen-housing">
+                        <!-- Top Bezel with Camera Dot -->
+                        <div class="screen-top-bezel">
+                            <div class="screen-camera-dot"></div>
+                        </div>
+
+                        <!-- Inner Screen with Video -->
+                        <div class="screen-display-area">
+                            <video id="showreel" poster="assets/gallery/glimpse-1.jpg" muted loop playsinline autoplay preload="auto">
+                                <source src="assets/showreel.mp4" type="video/mp4">
+                            </video>
+
+                            <!-- Glass Reflection Glare -->
+                            <div class="screen-glass-glare" aria-hidden="true"></div>
+
+                            <!-- Floating Media Controls -->
+                            <div class="reel-tools">
+                                <button class="media-btn" id="play-toggle" aria-label="Pause showreel">
+                                    <svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor">
+                                        <rect x="7" y="5" width="3.4" height="14" rx="1" />
+                                        <rect x="13.6" y="5" width="3.4" height="14" rx="1" />
+                                    </svg>
+                                    <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor" hidden>
+                                        <path d="M8 5.5v13l11-6.5L8 5.5z" />
+                                    </svg>
+                                </button>
+                                <button class="media-btn" id="sound-toggle" aria-label="Unmute showreel">
+                                    <svg class="off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+                                        <path d="M11 5 6.5 9H3v6h3.5L11 19V5z" />
+                                        <path d="m16 9.5 5 5M21 9.5l-5 5" />
+                                    </svg>
+                                    <svg class="on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" hidden>
+                                        <path d="M11 5 6.5 9H3v6h3.5L11 19V5z" />
+                                        <path d="M15.5 8.5a4.5 4.5 0 0 1 0 7M18 6a8 8 0 0 1 0 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Bezel Accent -->
+                        <div class="screen-bottom-chin">
+                            <span class="screen-brand-label">VELORA VISION DISPLAY</span>
                         </div>
                     </div>
                 </div>
@@ -1157,8 +1504,7 @@
     <!-- ============ QYOU-INSPIRED FOOTER WITH AMBIENT VIDEO ============ -->
     <footer class="footer">
         <div class="footer-video-wrap" aria-hidden="true">
-            <video src="assets/showreel.mp4" muted loop playsinline autoplay preload="none"
-                data-bg-video></video>
+            <video src="assets/showreel.mp4" muted loop playsinline autoplay preload="none" data-bg-video></video>
         </div>
 
         <div class="shell">
@@ -1206,8 +1552,8 @@
                         <a href="index.html">Home</a>
                         <a href="about.html">About VELORA</a>
                         <a href="services.html">Services</a>
-                        <a href="why-velora.html">Mission &amp; Vision</a>
                         <a href="glimpses.html">Glimpses</a>
+                        <a href="why-influencer-marketing.html">Why Influencer Marketing</a>
                         <a href="contact.html">Contact</a>
                     </div>
                 </div>

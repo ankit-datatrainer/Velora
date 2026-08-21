@@ -90,6 +90,106 @@
         }
     }
 
+    /* ---------- 5b. Section load-in + ambient float ----------
+       Every section on every page fades and floats up as it enters view, and
+       gets a pair of slowly drifting backdrop orbs so it still has motion once
+       it has settled. The orbs are decorative and injected here rather than
+       written into seven pages of markup; they are absolutely positioned, so
+       prepending one to a flex or grid section adds no layout item. */
+    const sectionsFx = $$('main > section, main > div.ink-band, footer.footer');
+    if (sectionsFx.length) {
+        sectionsFx.forEach((sec, i) => {
+            const first = sec.firstElementChild;
+            const alreadyBuilt = first && first.classList.contains('sect-float');
+            // The hero is skipped: it already has a video, a scrim and the
+            // floating client discs, and orbs would land on top of the footage.
+            // It still gets the load-in, which doubles as the page-load entrance.
+            const wantsOrbs = !sec.classList.contains('hero');
+            if (!reduceMotion && !alreadyBuilt && wantsOrbs) {
+                const layer = document.createElement('div');
+                layer.className = 'sect-float';
+                layer.setAttribute('aria-hidden', 'true');
+                for (let n = 0; n < 2; n += 1) {
+                    const orb = document.createElement('span');
+                    orb.className = 'sect-orb';
+                    // Spreads drift durations across sections so adjacent ones
+                    // are visibly out of phase rather than pulsing together.
+                    orb.style.setProperty('--i', String((i * 2 + n) % 5));
+                    layer.appendChild(orb);
+                }
+                sec.prepend(layer);
+            }
+            // Nudge each section's fade so a tall section and the one after it
+            // do not arrive at exactly the same moment. Kept small — a long
+            // stagger is what makes fast scrolling feel like missing content.
+            sec.style.setProperty('--sd', `${(i % 3) * 45}ms`);
+            sec.classList.add('sect-anim');
+        });
+
+        const settle = (el) => {
+            el.classList.add('is-in');
+            const done = () => el.classList.add('is-done');
+            el.addEventListener('transitionend', done, { once: true });
+            // transitionend never fires for a section already at its resting
+            // value, or if the tab is backgrounded mid-transition.
+            setTimeout(done, 1700);
+        };
+
+        if (!('IntersectionObserver' in window) || reduceMotion) {
+            sectionsFx.forEach(s => s.classList.add('is-in', 'is-done'));
+        } else {
+            const pending = new Set(sectionsFx);
+
+            // A generous margin on all four sides starts the fade before a
+            // section reaches the viewport, so by the time it is actually on
+            // screen it is already arriving. A negative margin here — the more
+            // usual choice for reveal effects — held sections back until they
+            // were well inside the fold and left visible gaps when scrolling.
+            const sio = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) reveal(entry.target);
+                });
+            }, { threshold: 0, rootMargin: '400px 0px 400px 0px' });
+
+            const reveal = (el) => {
+                if (!pending.has(el)) return;
+                pending.delete(el);
+                sio.unobserve(el);
+                settle(el);
+                if (!pending.size) window.removeEventListener('scroll', onScroll);
+            };
+
+            /* Backstop for fast scrolling.
+               IntersectionObserver batches its callbacks, so when the page moves
+               quickly — a flick scroll, an anchor jump, a restored scroll
+               position — a section can be passed before any notification is
+               delivered for it, and it is then never told to reveal. It stays
+               observed, so it would turn up on the way back, but scrolling down
+               past content that stays blank is the bug. This sweep reveals
+               anything the viewport has already reached. */
+            const sweep = () => {
+                pending.forEach(el => {
+                    if (el.getBoundingClientRect().top < window.innerHeight * 1.1) {
+                        reveal(el);
+                    }
+                });
+            };
+
+            let sweepQueued = false;
+            function onScroll() {
+                if (sweepQueued) return;
+                sweepQueued = true;
+                requestAnimationFrame(() => {
+                    sweepQueued = false;
+                    sweep();
+                });
+            }
+
+            sectionsFx.forEach(s => sio.observe(s));
+            window.addEventListener('scroll', onScroll, { passive: true });
+        }
+    }
+
     /* ---------- 6. Animated Number Counters ---------- */
     const counters = $$('[data-count]');
     if (counters.length) {
@@ -178,7 +278,7 @@
             if (res !== undefined) {
                 res.catch(() => {
                     const fallbackPlay = () => {
-                        vid.play().catch(() => {});
+                        vid.play().catch(() => { });
                         ['click', 'touchstart', 'scroll'].forEach(evt => window.removeEventListener(evt, fallbackPlay));
                     };
                     ['click', 'touchstart', 'scroll'].forEach(evt => window.addEventListener(evt, fallbackPlay, { once: true, passive: true }));
@@ -206,6 +306,145 @@
             container.appendChild(clone);
         }
     });
+
+    /* ---------- 8b. Roster rails: auto-scroll + grab-to-scroll ----------
+       The Influencer and Celebrity rails drift on their own and can also be
+       taken over by hand. Driving scrollLeft rather than animating a transform
+       is what makes that possible: touch panning, trackpads, the keyboard and a
+       mouse drag all operate on the same property, so the manual and automatic
+       motion cannot disagree about where the rail is.
+
+       Seamless looping relies on the track having been duplicated in step 8, so
+       the content is exactly two identical halves and scrollLeft can be wrapped
+       by half the width without any visible jump. */
+    const rails = $$('.talent-marquee').map(rail => {
+        // Content moves right => scrollLeft decreases, and vice versa.
+        const step = rail.dataset.marquee === 'right' ? -1 : 1;
+        const looped = rail.children.length > 1;
+        const SPEED = 34; // px per second
+
+        const half = () => rail.scrollWidth / 2;
+
+        const wrap = () => {
+            if (!looped) return;
+            const h = half();
+            if (h <= 0) return;
+            if (rail.scrollLeft >= h) rail.scrollLeft -= h;
+            else if (rail.scrollLeft <= 0) rail.scrollLeft += h;
+        };
+
+        // A rail drifting rightwards has to start with room on its left to
+        // travel into, otherwise it sits pinned at scrollLeft 0 doing nothing.
+        if (looped && step < 0) rail.scrollLeft = half();
+
+        // Expose it to keyboard users; the rails are scrollable regions, and
+        // focus-within then also pauses the drift while they tab through cards.
+        rail.tabIndex = 0;
+
+        let hovered = false, pressing = false, dragging = false, focused = false;
+        let visible = true, holdUntil = 0;
+        let startX = 0, startScroll = 0, travelled = 0;
+
+        // Any manual input hands control over for a moment, so the drift does
+        // not immediately fight the user's own scroll.
+        const hold = (ms = 1400) => { holdUntil = performance.now() + ms; };
+
+        rail.addEventListener('pointerenter', () => { hovered = true; });
+        rail.addEventListener('pointerleave', () => { hovered = false; });
+        rail.addEventListener('focusin', () => { focused = true; });
+        rail.addEventListener('focusout', () => { focused = false; });
+        rail.addEventListener('wheel', () => hold(), { passive: true });
+        // Touch panning is handled natively via touch-action: pan-x; this only
+        // needs to stop the drift so the two do not compete.
+        rail.addEventListener('touchstart', () => hold(2000), { passive: true });
+        rail.addEventListener('touchmove', () => hold(2000), { passive: true });
+        rail.addEventListener('dragstart', e => e.preventDefault());
+
+        const DRAG_SLOP = 6; // px before a press counts as a drag
+
+        rail.addEventListener('pointerdown', e => {
+            hold();
+            if (e.pointerType !== 'mouse') return;
+            pressing = true;
+            dragging = false;
+            travelled = 0;
+            startX = e.clientX;
+            startScroll = rail.scrollLeft;
+            // Deliberately no setPointerCapture here. Capturing on pointerdown
+            // retargets the whole gesture — including the click derived from it —
+            // to the rail, so the card's link never received the click and a
+            // plain click stopped opening the profile. Capture is taken only
+            // once the press has been promoted to a drag, below.
+        });
+
+        rail.addEventListener('pointermove', e => {
+            if (!pressing) return;
+            const dx = e.clientX - startX;
+            travelled = Math.max(travelled, Math.abs(dx));
+            // Only now does this become a drag. Marking it on pointerdown was a
+            // bug: .is-dragging puts pointer-events:none on the cards, so the
+            // mousedown landed on the rail rather than the link and a plain
+            // click stopped opening the profile entirely.
+            if (!dragging && travelled > DRAG_SLOP) {
+                dragging = true;
+                rail.classList.add('is-dragging');
+                // Now that it is unambiguously a drag, capture so the gesture
+                // keeps working if the pointer leaves the rail mid-drag.
+                try { rail.setPointerCapture(e.pointerId); } catch (err) { /* not fatal */ }
+            }
+            if (!dragging) return;
+            rail.scrollLeft = startScroll - dx;
+            wrap();
+        });
+
+        const endDrag = (e) => {
+            if (!pressing) return;
+            pressing = false;
+            dragging = false;
+            rail.classList.remove('is-dragging');
+            hold();
+            try { rail.releasePointerCapture(e.pointerId); } catch (err) { /* already gone */ }
+        };
+        rail.addEventListener('pointerup', endDrag);
+        rail.addEventListener('pointercancel', endDrag);
+
+        // Every card is a link, so a drag that ends on one would otherwise open
+        // a profile. Captured before the link sees it.
+        rail.addEventListener('click', e => {
+            if (travelled > DRAG_SLOP) {
+                e.preventDefault();
+                e.stopPropagation();
+                travelled = 0;
+            }
+        }, true);
+
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(entries => {
+                entries.forEach(en => { visible = en.isIntersecting; });
+            }, { threshold: 0 }).observe(rail);
+        }
+
+        return {
+            tick(dt, now) {
+                if (!visible || document.hidden) return;
+                if (hovered || dragging || focused || now < holdUntil) return;
+                rail.scrollLeft += step * SPEED * dt;
+                wrap();
+            }
+        };
+    });
+
+    if (rails.length && !reduceMotion) {
+        let last = performance.now();
+        const run = (now) => {
+            // Clamped so a backgrounded tab does not resume with one huge jump.
+            const dt = Math.min((now - last) / 1000, 0.05);
+            last = now;
+            rails.forEach(r => r.tick(dt, now));
+            requestAnimationFrame(run);
+        };
+        requestAnimationFrame(run);
+    }
 
     /* ---------- 9. Accordion ---------- */
     $$('.acc-item').forEach(item => {
@@ -396,7 +635,7 @@
     const toTop = $('.float-btn.top');
     if (toTop) {
         window.addEventListener('scroll', () => {
-            toTop.classList.toggle('show', window.scrollY > 600);
+            toTop.classList.toggle('show', window.scrollY > 250);
         }, { passive: true });
         toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     }
@@ -506,6 +745,29 @@
             });
             el.addEventListener('mouseleave', () => {
                 el.style.transform = `translate3d(0, 0, 0)`;
+            });
+        });
+    }
+
+    /* ---------- 16. Award Gallery Filter Handler ---------- */
+    const filterBtns = $$('.gallery-filter-btn');
+    const galleryCards = $$('.award-gallery-card');
+
+    if (filterBtns.length && galleryCards.length) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+                galleryCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        card.classList.remove('is-filtered-out');
+                    } else {
+                        card.classList.add('is-filtered-out');
+                    }
+                });
             });
         });
     }
