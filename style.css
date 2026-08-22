@@ -782,10 +782,9 @@ section {
     border-radius: 50%;
     overflow: hidden;
     flex: none;
-    box-shadow: 0 0 0 2px var(--pink), var(--glow-pink);
+    box-shadow: none;
     animation: logoFloat 4.4s ease-in-out infinite;
     will-change: transform;
-    transition: box-shadow .35s ease;
 }
 
 .brand-badge img {
@@ -795,7 +794,7 @@ section {
 }
 
 .brand:hover .brand-badge {
-    box-shadow: 0 0 0 2px var(--violet-light), var(--glow-violet);
+    box-shadow: none;
 }
 
 .brand-word {
@@ -3612,7 +3611,7 @@ section {
     width: clamp(118px, 13vw, 168px);
     margin: 0 auto 1.5rem;
     border-radius: 50%;
-    box-shadow: 0 0 0 6px rgba(236, 72, 153, .18), var(--glow-pink);
+    box-shadow: none;
     animation: float 6.5s ease-in-out infinite;
 }
 
@@ -4413,19 +4412,33 @@ section {
 /* ---------- 35b. Trust banner ---------- */
 .trust-banner {
     position: relative;
-    padding-block: clamp(1.75rem, 3.5vw, 2.75rem);
-    border-bottom: 1px solid var(--hair-soft);
+    padding-block: clamp(2.75rem, 5vw, 4.25rem);
+    background: linear-gradient(135deg, #ffffff 0%, #fff0f6 38%, #ffe4f0 75%, #ffffff 100%);
+    border-top: 1px solid rgba(236, 72, 153, 0.16);
+    border-bottom: 1px solid rgba(236, 72, 153, 0.16);
+    box-shadow: 0 10px 30px -10px rgba(236, 72, 153, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+}
+
+.trust-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(244, 114, 182, 0.12) 0%, rgba(253, 242, 248, 0.05) 50%, transparent 80%);
+    pointer-events: none;
 }
 
 .trust-title {
     text-align: center;
     font-family: var(--f-display);
-    font-size: clamp(.7rem, 1.2vw, .82rem);
-    font-weight: 700;
-    letter-spacing: .2em;
+    font-size: clamp(.76rem, 1.2vw, .9rem);
+    font-weight: 800;
+    letter-spacing: .22em;
     text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 1.4rem;
+    color: #431438;
+    margin-bottom: 1.6rem;
+    position: relative;
+    z-index: 1;
 }
 
 .trust-grid {
@@ -5681,23 +5694,25 @@ section {
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
-    border-radius: 14px;
-    padding: 8px 20px;
-    height: 90px;
+    border-radius: 16px;
+    padding: 10px 24px;
+    height: 86px;
     min-width: 175px;
     flex-shrink: 0;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(244, 114, 182, 0.22);
+    box-shadow: 0 8px 24px -4px rgba(180, 50, 110, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .client-logo:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+    transform: translateY(-4px) scale(1.02);
+    border-color: rgba(236, 72, 153, 0.45);
+    box-shadow: 0 14px 32px -6px rgba(236, 72, 153, 0.22), 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
 .client-logo img {
-    max-height: 62px;
-    max-width: 155px;
+    max-height: 58px;
+    max-width: 145px;
     width: auto;
     height: auto;
     object-fit: contain;
@@ -6326,7 +6341,7 @@ section {
     border-radius: 50%;
     overflow: hidden;
     border: 2px solid var(--canvas-2);
-    box-shadow: var(--glow-pink);
+    box-shadow: none;
 }
 
 .ceo-orbit-node img {
