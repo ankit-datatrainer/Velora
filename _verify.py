@@ -17,7 +17,7 @@ for p in sorted(glob.glob("*.html")):
     for attr, val in re.findall(r'(src|href)="([^"]+)"', src):
         if val.startswith(("http", "mailto:", "tel:", "#", "data:")):
             continue
-        t = val.split("#")[0]
+        t = val.split("#")[0].split("?")[0]
         if t and not os.path.exists(t):
             missing.append(f"{attr}={val}")
     ck(not missing, f"{p}: local refs resolve", "; ".join(missing[:4]))

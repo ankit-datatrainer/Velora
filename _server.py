@@ -1,6 +1,6 @@
 import os
 import sys
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 
 class RangeHTTPRequestHandler(SimpleHTTPRequestHandler):
     def send_head(self):
@@ -76,9 +76,10 @@ class RangeHTTPRequestHandler(SimpleHTTPRequestHandler):
             remaining -= len(buf)
 
 if __name__ == '__main__':
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
     port = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
     server_address = ('', port)
-    httpd = HTTPServer(server_address, RangeHTTPRequestHandler)
+    httpd = ThreadingHTTPServer(server_address, RangeHTTPRequestHandler)
     print(f"Serving HTTP on 0.0.0.0 port {port} with Range/Video Streaming support...")
     try:
         httpd.serve_forever()
