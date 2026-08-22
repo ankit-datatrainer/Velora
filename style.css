@@ -1937,6 +1937,7 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 14%;
 }
 
 .pullquote {
@@ -1986,6 +1987,7 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 14%;
 }
 
 .ceo-orbit::before,
@@ -2336,8 +2338,12 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 20%;
+    object-position: 50% 16%;
     transition: transform .8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.talent-photo img[src*="dolly-chaiwala"] {
+    object-position: 80% 20%;
 }
 
 .talent-photo::after {
@@ -4651,8 +4657,12 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 50% 20%;
+    object-position: 50% 16%;
     transition: transform .7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.story-card img[src*="dolly-chaiwala"] {
+    object-position: 80% 20%;
 }
 
 .story-card:hover {
@@ -5125,9 +5135,26 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: center 16%;
     display: block;
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bento-ugc-card.card-wide-1 img {
+    object-position: center 14%;
+}
+
+.bento-ugc-card.card-wide-2 img {
+    object-position: center 10%;
+}
+
+.bento-ugc-card.card-duo-1 img {
+    object-position: center 18%;
+}
+
+.bento-ugc-card.card-tall-1 img,
+.bento-ugc-card.card-tall-2 img {
+    object-position: center 12%;
 }
 
 .bento-ugc-card:hover {
@@ -6315,6 +6342,7 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 14%;
 }
 
 .ceo-orbit-ring {
@@ -6866,6 +6894,7 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 16%;
     transition: transform 0.6s ease;
 }
 
@@ -6970,8 +6999,8 @@ section {
 .award-gallery-bento {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 270px;
-    gap: clamp(1rem, 1.8vw, 1.6rem);
+    grid-auto-rows: clamp(280px, 24vw, 340px);
+    gap: clamp(1.2rem, 2vw, 1.8rem);
     margin-top: 2.5rem;
 }
 
@@ -7015,15 +7044,22 @@ section {
     z-index: 5;
 }
 
-/* Image with ultra-smooth cinematic zoom */
+/* Image with ultra-smooth cinematic zoom and face-safe framing */
 .award-gallery-card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: center 15%;
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
     filter: brightness(0.92) contrast(1.05);
 }
+
+.award-gallery-card img[src*="glimpse-1"] { object-position: center 12%; }
+.award-gallery-card img[src*="glimpse-2"] { object-position: center 14%; }
+.award-gallery-card img[src*="glimpse-3"] { object-position: center 10%; }
+.award-gallery-card img[src*="glimpse-4"] { object-position: center 18%; }
+.award-gallery-card img[src*="glimpse-5"] { object-position: center 20%; }
+.award-gallery-card img[src*="glimpse-6"] { object-position: center 22%; }
 
 .award-gallery-card:hover img {
     transform: scale(1.08);
@@ -7358,6 +7394,7 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 15%;
     display: block;
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
