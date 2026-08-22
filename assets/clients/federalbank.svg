@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" height="40" width="160">
+  <rect x="2" y="8" width="24" height="24" rx="3" fill="#004a8f"/>
+  <path d="M6 14 h16 M6 20 h12 M6 26 h16" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="32" y="21" fill="#004a8f" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="13.5" letter-spacing="1">FEDERAL BANK</text>
+  <text x="32" y="31" fill="#d97706" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="7.5" letter-spacing="0.8">YOUR PERFECT BANKING PARTNER</text>
+</svg>

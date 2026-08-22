@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 40" height="40" width="150">
+  <path d="M6 24 L28 24 L24 30 L10 30 Z" fill="#18181b"/>
+  <path d="M17 12 L25 24 L9 24 Z" fill="#18181b" opacity="0.8"/>
+  <text x="36" y="21" fill="#18181b" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="14.5" letter-spacing="0.5">paper boat</text>
+  <text x="36" y="31" fill="#52525b" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="7.5" letter-spacing="0.5">drinks and memories</text>
+</svg>

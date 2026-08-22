@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 40" height="40" width="140">
+  <rect x="2" y="6" width="26" height="28" rx="4" fill="#FFE11B"/>
+  <path d="M8 6 C8 1, 22 1, 22 6" fill="none" stroke="#2874F0" stroke-width="2.5"/>
+  <path d="M19 14 h-5 v3 h4 v2.5 h-4 v8 h-3 v-13.5 h8 Z" fill="#2874F0"/>
+  <text x="35" y="27" fill="#2874F0" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="19" letter-spacing="0.5">Flipkart</text>
+</svg>

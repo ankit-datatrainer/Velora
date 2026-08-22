@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 40" height="40" width="140">
+  <polygon points="16,6 27,12 27,26 16,32 5,26 5,12" fill="#E40046"/>
+  <polygon points="16,6 27,12 16,18 5,12" fill="#ff4d79"/>
+  <text x="35" y="26" fill="#E40046" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="17" letter-spacing="0.5">snapdeal</text>
+</svg>

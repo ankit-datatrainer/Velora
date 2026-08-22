@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 40" height="40" width="130">
+  <path d="M6 8 L24 8 L24 22 C24 28 15 32 15 32 C15 32 6 28 6 22 Z" fill="#1C3F94"/>
+  <text x="15" y="22" fill="#ffffff" font-family="sans-serif" font-weight="900" font-size="13" text-anchor="middle">V</text>
+  <text x="32" y="26" fill="#1C3F94" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="18" letter-spacing="2">VEEBA</text>
+</svg>

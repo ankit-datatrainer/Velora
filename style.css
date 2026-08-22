@@ -24,46 +24,62 @@
 
 /* ---------- 1. Tokens ---------- */
 :root {
-    /* Luxury dark canvas */
-    --canvas: #0b0716;
-    --canvas-2: #130924;
-    --canvas-3: #1a0e30;
+    /* Light canvas — white, with lavender and blush tints for raised panels. */
+    --canvas: #ffffff;
+    --canvas-2: #f9f5ff;
+    --canvas-3: #f2ebff;
 
-    /* Purple / pink spectrum */
+    /* Purple / pink spectrum.
+       --violet and --pink are used for small label text all over this sheet, so
+       both are set to values that clear WCAG AA on white (violet 5.0:1, pink
+       6.2:1). The vivid brand tones live separately in --violet-bright and
+       --pink-bright and are only ever used as fills, borders and glows, never
+       as text: #ec4899 on white is 3.2:1, which fails for anything under 24px. */
     --violet: #7c3aed;
-    --violet-light: #8b5cf6;
-    --violet-deep: #5b21b6;
-    --pink: #ec4899;
-    --pink-light: #f9a8d4;
-    --rose: #f43f5e;
-    --rose-light: #fb7185;
+    --violet-bright: #8b5cf6;
+    --violet-light: #6d28d9;
+    --violet-deep: #4c1d95;
+    --pink: #be185d;
+    --pink-bright: #ec4899;
+    --pink-light: #db2777;
+    --rose: #e11d48;
+    --rose-light: #f43f5e;
 
     /* Gold survives only where the VELORA emblem lives — it is gold artwork,
-       and orphaning it against pure purple looks like an oversight. */
-    --gold: #f0c661;
+       and orphaning it against pure purple looks like an oversight. Darkened
+       from #f0c661, which was 1.7:1 on white and effectively invisible. */
+    --gold: #a16207;
 
-    /* Type on the dark canvas */
-    --text: #f7f3ff;
-    --text-soft: #cfc4ea;
-    --muted: #a192c4;
+    /* Type on the light canvas */
+    --text: #1a0b2e;
+    --text-soft: #3d2a5c;
+    --muted: #64548a;
 
-    /* Glass + hairlines, per the design spec */
-    --glass: rgba(255, 255, 255, .04);
-    --glass-strong: rgba(255, 255, 255, .07);
-    --hair: rgba(236, 72, 153, .18);
-    --hair-soft: rgba(236, 72, 153, .1);
-    --hair-bright: rgba(255, 255, 255, .16);
+    /* Glass + hairlines: a violet-black tint over white, rather than white
+       over black. */
+    --glass: rgba(26, 11, 46, .035);
+    --glass-strong: rgba(26, 11, 46, .06);
+    --hair: rgba(124, 58, 237, .18);
+    --hair-soft: rgba(124, 58, 237, .1);
+    --hair-bright: rgba(26, 11, 46, .14);
 
     /* Gradients */
     --grad-primary: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-    --grad-rich: linear-gradient(135deg, #7c3aed 0%, #f43f5e 50%, #fb7185 100%);
-    --grad-text: linear-gradient(96deg, #c4b5fd 0%, #f9a8d4 44%, #fb7185 100%);
-    --grad-band: linear-gradient(150deg, #1a0e30 0%, #130924 55%, #0b0716 100%);
+    /* Every stop is dark enough to carry white button text: the brighter ramp
+       this replaced bottomed out at 3.2:1 on its pink end. */
+    --grad-rich: linear-gradient(135deg, #6d28d9 0%, #a21caf 50%, #be185d 100%);
+    /* Clipped to headline text, so it has to stay dark enough to read on white;
+       the old violet-to-blush ramp topped out around 1.5:1. */
+    --grad-text: linear-gradient(96deg, #6d28d9 0%, #a21caf 46%, #be185d 100%);
+    --grad-band: linear-gradient(150deg, #f5eeff 0%, #fdf2fa 55%, #ffffff 100%);
 
-    --glow-violet: 0 0 44px -8px rgba(139, 92, 246, .55);
-    --glow-pink: 0 0 44px -8px rgba(236, 72, 153, .55);
-    --shadow-photo: 0 40px 80px -30px rgba(0, 0, 0, .8);
-    --shadow-lift: 0 24px 48px -24px rgba(0, 0, 0, .7);
+    /* Coloured glows read as grubby smudges on white, so they are tighter and
+       weaker than the dark-theme versions, and shadows are violet-tinted rather
+       than black. */
+    --glow-violet: 0 0 30px -10px rgba(139, 92, 246, .4);
+    --glow-pink: 0 0 30px -10px rgba(236, 72, 153, .38);
+    --shadow-photo: 0 30px 60px -26px rgba(76, 29, 149, .3);
+    --shadow-lift: 0 18px 40px -22px rgba(76, 29, 149, .22);
 
     --f-display: 'Bricolage Grotesque', 'Arial Black', system-ui, sans-serif;
     --f-body: 'Figtree', -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -1541,9 +1557,9 @@ section {
     border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     background: #08080a;
     transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                color 0.35s ease,
-                border-color 0.35s ease,
-                box-shadow 0.4s ease;
+        color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.4s ease;
     box-sizing: border-box;
 }
 
@@ -1635,6 +1651,7 @@ section {
     .luxury-grid-container {
         grid-template-columns: repeat(3, 1fr);
     }
+
     .luxury-empty-cell {
         display: none;
     }
@@ -1650,6 +1667,7 @@ section {
     .luxury-grid-container {
         grid-template-columns: 1fr;
     }
+
     .luxury-grid-cell {
         aspect-ratio: auto;
         min-height: 200px;
@@ -4418,26 +4436,21 @@ section {
 /* ---------- 35b. Trust banner ---------- */
 .trust-banner {
     position: relative;
-    padding-block: clamp(2.75rem, 5vw, 4.25rem);
-    background: linear-gradient(135deg, #ffffff 0%, #fff0f6 38%, #ffe4f0 75%, #ffffff 100%);
-    border-top: 1px solid rgba(236, 72, 153, 0.16);
-    border-bottom: 1px solid rgba(236, 72, 153, 0.16);
-    box-shadow: 0 10px 30px -10px rgba(236, 72, 153, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    padding-block: clamp(2.5rem, 4.5vw, 3.75rem);
+    background: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     overflow: hidden;
 }
 
 .trust-banner::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(244, 114, 182, 0.12) 0%, rgba(253, 242, 248, 0.05) 50%, transparent 80%);
-    pointer-events: none;
+    display: none;
 }
 
 .trust-title {
     text-align: center;
     font-family: var(--f-display);
-    font-size: clamp(.76rem, 1.2vw, .9rem);
+    font-size: clamp(.76rem, 1.2vw, .88rem);
     font-weight: 800;
     letter-spacing: .22em;
     text-transform: uppercase;
@@ -5720,36 +5733,38 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #ffffff;
-    border-radius: 16px;
-    padding: 10px 24px;
-    height: 86px;
-    min-width: 175px;
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0 18px;
+    height: 56px;
+    min-width: 130px;
     flex-shrink: 0;
-    border: 1px solid rgba(244, 114, 182, 0.22);
-    box-shadow: 0 8px 24px -4px rgba(180, 50, 110, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: none;
+    box-shadow: none;
+    opacity: 0.85;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .client-logo:hover {
-    transform: translateY(-4px) scale(1.02);
-    border-color: rgba(236, 72, 153, 0.45);
-    box-shadow: 0 14px 32px -6px rgba(236, 72, 153, 0.22), 0 4px 12px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px) scale(1.06);
+    opacity: 1;
+    border-color: transparent;
+    box-shadow: none;
 }
 
 .client-logo img {
-    max-height: 58px;
-    max-width: 145px;
+    height: clamp(38px, 4.2vw, 48px);
+    max-height: 50px;
+    max-width: 165px;
     width: auto;
-    height: auto;
     object-fit: contain;
-    filter: grayscale(0%);
-    opacity: 1;
-    transition: transform 0.3s ease;
+    filter: none;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .client-logo:hover img {
-    transform: scale(1.06);
+    transform: scale(1.05);
+    filter: drop-shadow(0 4px 12px rgba(236, 72, 153, 0.3));
 }
 
 .fallback-text {
@@ -6961,15 +6976,19 @@ section {
     .visual-funnel-grid {
         grid-template-columns: 1fr;
     }
+
     .visual-pillars-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .visual-compare-wrapper {
         grid-template-columns: 1fr;
     }
+
     .visual-category-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
     .ugc-reel-grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -6979,9 +6998,11 @@ section {
     .visual-pillars-grid {
         grid-template-columns: 1fr;
     }
+
     .visual-category-grid {
         grid-template-columns: 1fr;
     }
+
     .ugc-reel-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -7013,8 +7034,8 @@ section {
     box-shadow: 0 14px 32px rgba(0, 0, 0, 0.5);
     cursor: pointer;
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.4s ease,
-                box-shadow 0.5s ease;
+        border-color 0.4s ease,
+        box-shadow 0.5s ease;
 }
 
 .award-gallery-card.span-2x2 {
@@ -7054,12 +7075,29 @@ section {
     filter: brightness(0.92) contrast(1.05);
 }
 
-.award-gallery-card img[src*="glimpse-1"] { object-position: center 12%; }
-.award-gallery-card img[src*="glimpse-2"] { object-position: center 14%; }
-.award-gallery-card img[src*="glimpse-3"] { object-position: center 10%; }
-.award-gallery-card img[src*="glimpse-4"] { object-position: center 18%; }
-.award-gallery-card img[src*="glimpse-5"] { object-position: center 20%; }
-.award-gallery-card img[src*="glimpse-6"] { object-position: center 22%; }
+.award-gallery-card img[src*="glimpse-1"] {
+    object-position: center 12%;
+}
+
+.award-gallery-card img[src*="glimpse-2"] {
+    object-position: center 14%;
+}
+
+.award-gallery-card img[src*="glimpse-3"] {
+    object-position: center 10%;
+}
+
+.award-gallery-card img[src*="glimpse-4"] {
+    object-position: center 18%;
+}
+
+.award-gallery-card img[src*="glimpse-5"] {
+    object-position: center 20%;
+}
+
+.award-gallery-card img[src*="glimpse-6"] {
+    object-position: center 22%;
+}
 
 .award-gallery-card:hover img {
     transform: scale(1.08);
@@ -7109,10 +7147,21 @@ section {
     border-right: 1.5px solid;
 }
 
-.award-gallery-card:hover .corner-tl { transform: translate(-3px, -3px); }
-.award-gallery-card:hover .corner-tr { transform: translate(3px, -3px); }
-.award-gallery-card:hover .corner-bl { transform: translate(-3px, 3px); }
-.award-gallery-card:hover .corner-br { transform: translate(3px, 3px); }
+.award-gallery-card:hover .corner-tl {
+    transform: translate(-3px, -3px);
+}
+
+.award-gallery-card:hover .corner-tr {
+    transform: translate(3px, -3px);
+}
+
+.award-gallery-card:hover .corner-bl {
+    transform: translate(-3px, 3px);
+}
+
+.award-gallery-card:hover .corner-br {
+    transform: translate(3px, 3px);
+}
 
 /* Top Floating Meta Tag */
 .award-meta-top {
@@ -7249,6 +7298,7 @@ section {
         grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: 250px;
     }
+
     .award-gallery-card.span-4x1 {
         grid-column: span 3;
     }
@@ -7259,10 +7309,12 @@ section {
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: 240px;
     }
+
     .award-gallery-card.span-2x2 {
         grid-column: span 2;
         grid-row: span 1;
     }
+
     .award-gallery-card.span-4x1 {
         grid-column: span 2;
     }
@@ -7273,9 +7325,11 @@ section {
         grid-template-columns: 1fr;
         grid-auto-rows: auto;
     }
+
     .award-gallery-card {
         aspect-ratio: 4 / 3;
     }
+
     .award-gallery-card.span-2x2,
     .award-gallery-card.span-2x1,
     .award-gallery-card.span-1x2,
@@ -7312,8 +7366,15 @@ section {
 }
 
 @keyframes ambientGlowPulse {
-    0% { opacity: 0.65; transform: scale(0.96); }
-    100% { opacity: 1; transform: scale(1.04); }
+    0% {
+        opacity: 0.65;
+        transform: scale(0.96);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
 }
 
 .floating-showreel-frame {
@@ -7325,8 +7386,8 @@ section {
     background: #090514;
     border: 1.5px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 25px 65px -10px rgba(0, 0, 0, 0.92),
-                0 0 45px rgba(236, 72, 153, 0.25),
-                inset 0 1px 1px rgba(255, 255, 255, 0.35);
+        0 0 45px rgba(236, 72, 153, 0.25),
+        inset 0 1px 1px rgba(255, 255, 255, 0.35);
     animation: floatShowreel 6s ease-in-out infinite;
     transition: box-shadow 0.5s ease, border-color 0.4s ease;
 }
@@ -7334,14 +7395,17 @@ section {
 .floating-showreel-frame:hover {
     border-color: rgba(236, 72, 153, 0.6);
     box-shadow: 0 35px 85px -10px rgba(0, 0, 0, 0.98),
-                0 0 65px rgba(236, 72, 153, 0.45),
-                inset 0 1px 1px rgba(255, 255, 255, 0.5);
+        0 0 65px rgba(236, 72, 153, 0.45),
+        inset 0 1px 1px rgba(255, 255, 255, 0.5);
 }
 
 @keyframes floatShowreel {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0px) rotate(0deg);
     }
+
     50% {
         transform: translateY(-14px) rotate(0.4deg);
     }
@@ -7380,8 +7444,8 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.14);
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.4s ease,
-                box-shadow 0.5s ease;
+        border-color 0.4s ease,
+        box-shadow 0.5s ease;
 }
 
 .service-showcase-media:hover {
@@ -7470,8 +7534,8 @@ section {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.35s ease,
-                box-shadow 0.4s ease;
+        border-color 0.35s ease,
+        box-shadow 0.4s ease;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -7662,8 +7726,8 @@ section {
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                border-color 0.4s ease,
-                box-shadow 0.45s ease;
+        border-color 0.4s ease,
+        box-shadow 0.45s ease;
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
 }
 
@@ -8128,8 +8192,15 @@ section {
 }
 
 @keyframes orbitHaloPulse {
-    0% { transform: scale(0.88); opacity: 0.65; }
-    100% { transform: scale(1.15); opacity: 1; }
+    0% {
+        transform: scale(0.88);
+        opacity: 0.65;
+    }
+
+    100% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
 }
 
 /* Concentric Orbit Track Rings */
@@ -8188,10 +8259,25 @@ section {
     color: var(--pink-light);
 }
 
-.stat-pill-tl { top: 22px; left: 24px; }
-.stat-pill-tr { top: 22px; right: 24px; }
-.stat-pill-bl { bottom: 22px; left: 24px; }
-.stat-pill-br { bottom: 22px; right: 24px; }
+.stat-pill-tl {
+    top: 22px;
+    left: 24px;
+}
+
+.stat-pill-tr {
+    top: 22px;
+    right: 24px;
+}
+
+.stat-pill-bl {
+    bottom: 22px;
+    left: 24px;
+}
+
+.stat-pill-br {
+    bottom: 22px;
+    right: 24px;
+}
 
 /* Orbiting Satellites Track */
 .orbit-satellites-track {
@@ -8208,14 +8294,45 @@ section {
 }
 
 /* 8 Symmetrical Coordinates around the Main Center Circle */
-.node-1 { top: 14%; left: 50%; }
-.node-2 { top: 24%; left: 80%; }
-.node-3 { top: 50%; left: 88%; }
-.node-4 { top: 76%; left: 80%; }
-.node-5 { top: 86%; left: 50%; }
-.node-6 { top: 76%; left: 20%; }
-.node-7 { top: 50%; left: 12%; }
-.node-8 { top: 24%; left: 20%; }
+.node-1 {
+    top: 14%;
+    left: 50%;
+}
+
+.node-2 {
+    top: 24%;
+    left: 80%;
+}
+
+.node-3 {
+    top: 50%;
+    left: 88%;
+}
+
+.node-4 {
+    top: 76%;
+    left: 80%;
+}
+
+.node-5 {
+    top: 86%;
+    left: 50%;
+}
+
+.node-6 {
+    top: 76%;
+    left: 20%;
+}
+
+.node-7 {
+    top: 50%;
+    left: 12%;
+}
+
+.node-8 {
+    top: 24%;
+    left: 20%;
+}
 
 /* Hover Animation on Satellite Nodes */
 .orbit-node:hover {
@@ -8334,8 +8451,15 @@ section {
 }
 
 @keyframes hubRingPulse {
-    0% { transform: translate(-50%, -50%) scale(0.92); opacity: 0.6; }
-    100% { transform: translate(-50%, -50%) scale(1.12); opacity: 1; }
+    0% {
+        transform: translate(-50%, -50%) scale(0.92);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.12);
+        opacity: 1;
+    }
 }
 
 .center-hub-avatar-frame {
@@ -8447,19 +8571,24 @@ section {
     .ceo-orbit-wrapper {
         height: 600px;
     }
+
     .orbit-node-inner {
         width: 74px;
         height: 74px;
     }
+
     .orbit-node-info {
         padding: 2px 7px;
     }
+
     .orbit-node-info strong {
         font-size: 0.6rem;
     }
+
     .orbit-node-info .node-tag {
         display: none;
     }
+
     .center-hub-avatar-frame {
         width: 150px;
         height: 150px;
@@ -8471,27 +8600,910 @@ section {
         height: 520px;
         border-radius: 20px;
     }
+
     .orbit-stat-pill {
         display: none;
     }
+
     .orbit-node-inner {
         width: 58px;
         height: 58px;
     }
-    .node-1 { top: 12%; left: 50%; }
-    .node-2 { top: 24%; left: 82%; }
-    .node-3 { top: 50%; left: 89%; }
-    .node-4 { top: 76%; left: 82%; }
-    .node-5 { top: 88%; left: 50%; }
-    .node-6 { top: 76%; left: 18%; }
-    .node-7 { top: 50%; left: 11%; }
-    .node-8 { top: 24%; left: 18%; }
+
+    .node-1 {
+        top: 12%;
+        left: 50%;
+    }
+
+    .node-2 {
+        top: 24%;
+        left: 82%;
+    }
+
+    .node-3 {
+        top: 50%;
+        left: 89%;
+    }
+
+    .node-4 {
+        top: 76%;
+        left: 82%;
+    }
+
+    .node-5 {
+        top: 88%;
+        left: 50%;
+    }
+
+    .node-6 {
+        top: 76%;
+        left: 18%;
+    }
+
+    .node-7 {
+        top: 50%;
+        left: 11%;
+    }
+
+    .node-8 {
+        top: 24%;
+        left: 18%;
+    }
+
     .center-hub-avatar-frame {
         width: 130px;
         height: 130px;
     }
+
     .center-hub-label-card {
         padding: 4px 14px;
         bottom: -20px;
     }
+}
+
+/* ==========================================================================
+   42. Light theme — surface corrections
+   The token block in section 1 flips almost everything, but a number of
+   surfaces were written as literal rgba(11, 7, 22, x) rather than through a
+   token, so they stayed near-black. Those are corrected here.
+
+   A deliberate distinction runs through this section: page surfaces go light,
+   scrims over photography stay dark. A caption sitting on top of an image still
+   needs a dark gradient underneath it whatever the page theme is, so the card
+   scrims in sections 16, 18, 37 and 38 are left exactly as they were.
+   ========================================================================== */
+
+/* ---------- Header ---------- */
+/* Transparent over the hero footage, opaque white once it lifts off the top. */
+.nav {
+    background: rgba(255, 255, 255, .06);
+}
+
+.nav.stuck {
+    background: rgba(255, 255, 255, .9);
+    border-bottom-color: var(--hair);
+    box-shadow: 0 10px 30px -18px rgba(76, 29, 149, .35);
+}
+
+/* Header type is dark everywhere. The hero now carries a light veil rather than
+   a dark one, so there is no longer anywhere on the site where the header sits
+   on something dark. An earlier attempt forced white here, which left
+   white-on-white navigation on the five pages that have no hero at all. */
+.nav .brand-word,
+.nav .nav-link {
+    color: var(--text);
+}
+
+.nav .nav-link:hover {
+    color: var(--violet);
+}
+
+.burger span {
+    background: var(--text);
+}
+
+/* ---------- Hero ---------- */
+/* The dark-theme scrim ended on var(--canvas), which is now white — so the
+   bottom-left corner the headline occupies faded to white behind white type and
+   the headline disappeared entirely (measured 1.36:1). Inverted: a white veil
+   pooled into the bottom-left, and dark type over it. */
+.hero {
+    color: var(--text);
+}
+
+.hero-video video {
+    opacity: .95;
+    filter: saturate(1.02) contrast(.98) brightness(1.04);
+}
+
+.hero-video::after {
+    background:
+        /* Bright pool in the bottom-left, under the headline. */
+        radial-gradient(105% 82% at -5% 108%,
+            rgba(255, 255, 255, .97) 0%,
+            rgba(255, 255, 255, .92) 30%,
+            rgba(255, 255, 255, .66) 52%,
+            rgba(255, 255, 255, .26) 72%,
+            transparent 88%),
+        /* Lower band, seating the hero into the white page beneath it. */
+        linear-gradient(180deg,
+            transparent 30%,
+            rgba(255, 255, 255, .34) 54%,
+            rgba(255, 255, 255, .76) 76%,
+            rgba(255, 255, 255, .95) 92%,
+            var(--canvas) 100%),
+        /* Keeps the dark header legible over a dark frame. */
+        linear-gradient(180deg, rgba(255, 255, 255, .8) 0%, rgba(255, 255, 255, .3) 22%, transparent 42%),
+        /* Brand tint, so the footage still reads as VELORA. */
+        linear-gradient(125deg, rgba(124, 58, 237, .16) 0%, transparent 46%, rgba(236, 72, 153, .14) 100%);
+}
+
+.hero-main-title {
+    color: var(--text);
+    /* White halo instead of a dark one, to lift the type off busier frames. */
+    text-shadow: 0 2px 22px rgba(255, 255, 255, .9), 0 1px 3px rgba(255, 255, 255, .8);
+}
+
+.hero-accent {
+    background-image: var(--grad-text);
+    filter: drop-shadow(0 2px 14px rgba(255, 255, 255, .85));
+}
+
+/* ---------- Value · Voice · Vision strip ---------- */
+/* White text on the old ramp's pink end measured 3.7:1, and at 14.7px bold it
+   needs 4.5:1. Every stop is now dark enough to carry it. */
+.vvv {
+    background: linear-gradient(100deg, #4c1d95, #6d28d9, #a21caf, #be185d, #a21caf, #6d28d9, #4c1d95);
+    background-size: 320% 100%;
+}
+
+.footer .vvv {
+    color: var(--pink);
+}
+
+.nav-sub {
+    background: rgba(255, 255, 255, .98);
+    box-shadow: 0 24px 50px -20px rgba(76, 29, 149, .3);
+}
+
+.nav-sub a {
+    color: var(--text-soft);
+}
+
+.nav-sub a:hover {
+    color: var(--violet);
+    background: var(--canvas-3);
+}
+
+/* ---------- Mobile drawer ---------- */
+.nav-drawer {
+    background:
+        radial-gradient(70% 55% at 80% 8%, rgba(139, 92, 246, .16), transparent 62%),
+        var(--canvas);
+}
+
+.drawer-menu a {
+    color: var(--text);
+    border-bottom-color: var(--hair);
+}
+
+.drawer-menu a small {
+    color: var(--pink);
+}
+
+.drawer-foot a {
+    color: var(--muted);
+}
+
+/* ---------- Bands and panels ---------- */
+/* Was a near-black purple slab; now a soft lavender-to-blush wash that still
+   separates the band from the plain white sections around it. */
+.ink-band {
+    color: var(--text-soft);
+    background:
+        radial-gradient(64% 80% at 88% 4%, rgba(139, 92, 246, .16), transparent 60%),
+        radial-gradient(58% 74% at 6% 96%, rgba(236, 72, 153, .13), transparent 62%),
+        linear-gradient(150deg, #f4edff 0%, #fbf1f8 60%, #ffffff 100%);
+    border-block: 1px solid var(--hair);
+}
+
+.ink-band .display-2,
+.ink-band .rail-title,
+.ink-band h2 {
+    color: var(--text);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    color: var(--text-soft);
+    background:
+        radial-gradient(56% 70% at 96% 2%, rgba(139, 92, 246, .16), transparent 60%),
+        radial-gradient(52% 64% at 2% 98%, rgba(236, 72, 153, .13), transparent 62%),
+        linear-gradient(180deg, #faf6ff 0%, #ffffff 100%);
+    border-top: 1px solid var(--hair);
+}
+
+/* The ambient footer video needs a light veil now, not a dark one, or the
+   footer reads as a black box hanging off the bottom of a white page. */
+.footer-video-wrap video {
+    opacity: .1;
+}
+
+.footer-video-wrap::after {
+    background: linear-gradient(180deg, rgba(255, 255, 255, .86) 0%, rgba(255, 255, 255, .95) 100%);
+}
+
+.footer-mail {
+    color: var(--text);
+}
+
+.footer-links a {
+    color: var(--muted);
+}
+
+.footer-links a:hover {
+    color: var(--violet);
+}
+
+.footer-bottom {
+    color: var(--muted);
+    border-top-color: var(--hair);
+}
+
+.footer-mega {
+    color: rgba(124, 58, 237, .07);
+}
+
+/* ---------- Captions that sit on dark photo scrims ---------- */
+/* --muted and --text-soft are dark now, which is right for the page but wrong
+   for the handful of places where they were being used as light text on top of
+   an image. Those are pinned back to light values. */
+.talent-meta,
+.ig-tag,
+.work-tag-row .work-brand,
+.cine-badge {
+    color: rgba(255, 255, 255, .82);
+}
+
+/* ---------- Form controls ---------- */
+.field select option {
+    background: #fff;
+    color: var(--text);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: rgba(100, 84, 138, .65);
+}
+
+/* The chevron was drawn in the bright brand pink; darkened to match the label
+   colour now that it sits on white. */
+.field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23be185d' stroke-width='3'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+
+/* ---------- Buttons ---------- */
+/* The ghost button filled from transparent on a dark page; on white it needs a
+   visible outline of its own. */
+.btn-ghost,
+.btn-ghost-glass {
+    color: var(--violet-deep);
+    background: rgba(124, 58, 237, .05);
+    border: 1px solid rgba(124, 58, 237, .28);
+}
+
+.btn-ghost:hover,
+.btn-ghost-glass:hover {
+    color: #fff;
+}
+
+/* ---------- Preloader ---------- */
+.preloader-bar {
+    background: rgba(124, 58, 237, .14);
+}
+
+.preloader p {
+    color: var(--muted);
+}
+
+/* ---------- Ambient section orbs ---------- */
+/* Section 40's orbs were tuned against a near-black page, where a heavy tint
+   was invisible. On white the same alpha darkens whatever sits on top of it,
+   and it was dragging small pink and violet label text from a comfortable 6:1
+   down to around 3.9:1. Weakened until they colour the page without measurably
+   affecting the type over them. */
+.sect-orb:nth-child(1) {
+    background: radial-gradient(circle,
+            rgba(139, 92, 246, .085) 0%,
+            rgba(236, 72, 153, .05) 46%,
+            transparent 72%);
+}
+
+.sect-orb:nth-child(2) {
+    background: radial-gradient(circle,
+            rgba(236, 72, 153, .075) 0%,
+            rgba(124, 58, 237, .045) 46%,
+            transparent 72%);
+}
+
+/* The campaigns rail is white in its own right, so it needs no extra wash. */
+.section-campaigns .sect-orb {
+    opacity: .3;
+}
+
+/* ==========================================================================
+   43. Represent Roster — photo wall
+   Reworked to match the reference: bare photographic tiles rather than dark
+   panels with a caption printed over the image. The card chrome, the scrim and
+   the overlaid text are all removed, the picture becomes the whole tile, and
+   the name sits underneath in page-dark type.
+
+   Each tile also takes a small Y-axis rotation and vertical offset, which is
+   what gives the row the curved, leaning-wall look of the reference instead of
+   a flat strip of rectangles.
+   ========================================================================== */
+.talent {
+    flex: 0 0 clamp(178px, 19vw, 240px);
+    background: none;
+    border: 0;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+    /* Vertical room for the leaning tiles and the hover lift. */
+    padding-block: 14px;
+}
+
+.talent:hover {
+    transform: none;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+/* The conic gradient ring belonged to the old bordered card. */
+.talent::after {
+    display: none;
+}
+
+.talent-photo {
+    position: relative;
+    display: block;
+    aspect-ratio: 3 / 4;
+    border-radius: clamp(14px, 1.5vw, 20px);
+    overflow: hidden;
+    background: var(--canvas-3);
+    box-shadow: 0 22px 44px -20px rgba(76, 29, 149, .45);
+    transform:
+        perspective(1000px) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px)) scale(var(--sc, 1));
+    transition: transform .55s var(--ease), box-shadow .45s ease;
+}
+
+/* No caption sits on the image any more, so the scrim goes. */
+.talent-photo::after {
+    display: none;
+}
+
+/* Straighten and lift on hover, so the leaning tile snaps to face you. */
+.talent:hover .talent-photo,
+.talent:focus-visible .talent-photo {
+    transform: perspective(1000px) rotateY(0deg) translateY(-10px) scale(1.03);
+    box-shadow: 0 30px 60px -18px rgba(76, 29, 149, .5), var(--glow-pink);
+}
+
+/* The lean. Four-step cycle so the rhythm does not read as a repeat at a
+   glance, and the pattern still holds wherever the rail happens to be. */
+.talent:nth-child(4n+1) .talent-photo {
+    --ry: 8deg;
+    --ty: 12px;
+    --sc: .97;
+}
+
+.talent:nth-child(4n+2) .talent-photo {
+    --ry: -6deg;
+    --ty: -8px;
+    --sc: 1;
+}
+
+.talent:nth-child(4n+3) .talent-photo {
+    --ry: 6deg;
+    --ty: 6px;
+    --sc: .98;
+}
+
+.talent:nth-child(4n+4) .talent-photo {
+    --ry: -8deg;
+    --ty: -12px;
+    --sc: 1.01;
+}
+
+/* Caption moves out from over the photograph and onto the page. */
+.talent-body {
+    position: static;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    display: grid;
+    gap: .1rem;
+    padding: .85rem .15rem 0;
+}
+
+.talent-role {
+    font-size: .6rem;
+    letter-spacing: .12em;
+    color: var(--pink);
+}
+
+.talent-name {
+    font-size: clamp(.95rem, 1.15vw, 1.1rem);
+    text-transform: none;
+    letter-spacing: -.015em;
+    line-height: 1.2;
+    color: var(--text);
+}
+
+/* Overrides the light-on-scrim value set in section 42 — this caption is on
+   white now, not on the photograph. */
+.talent-marquee .talent-meta {
+    margin-top: .18rem;
+    font-size: .76rem;
+    color: var(--muted);
+}
+
+.talent:hover .talent-meta {
+    color: var(--pink);
+}
+
+/* The tiles lean and lift, so the rail needs headroom; clipping the overflow
+   would shear the top of every raised tile. */
+.talent-marquee {
+    padding-block: clamp(1.4rem, 2.4vw, 2rem);
+}
+
+/* ==========================================================================
+   44. Light theme — newer component surfaces
+   A set of components (the funnel, the comparison columns, the creator tier
+   boxes, the offer cards, the orbit stage) were built with their own dark
+   gradient panels rather than through the tokens, so the theme flip left them
+   as dark islands on a white page — and every one of them holds body copy that
+   is now dark, so the text inside was unreadable at around 1.1–1.9:1.
+
+   Same rule as section 42 applies: panels go light, scrims over photographs
+   stay dark. Anything positioned on top of an image keeps its dark plate and
+   gets pinned to light text.
+   ========================================================================== */
+
+:root {
+    /* Referenced as var(--gold-light, #fbbf24) in a dozen places. Defining it
+       converts all of those at once; #fbbf24 is 1.5:1 on white. */
+    --gold-light: #b45309;
+    --danger: #dc2626;
+    --success: #047857;
+}
+
+/* ---------- Funnel ---------- */
+.visual-funnel-step {
+    background: linear-gradient(145deg, #faf5ff 0%, #ffffff 100%);
+    border: 1px solid var(--hair);
+}
+
+.visual-funnel-step:hover {
+    border-color: rgba(236, 72, 153, .4);
+}
+
+/* ---------- Comparison columns ---------- */
+.visual-compare-col.traditional {
+    background: linear-gradient(165deg, #fff6f6 0%, #ffffff 100%);
+    border: 1px solid rgba(220, 38, 38, .22);
+}
+
+.visual-compare-col.velora {
+    background: linear-gradient(165deg, #f8f1ff 0%, #fdf2fa 100%);
+    border: 1px solid rgba(236, 72, 153, .35);
+    box-shadow: 0 16px 40px -22px rgba(76, 29, 149, .3), var(--glow-pink);
+}
+
+.visual-compare-col.traditional h3,
+.visual-compare-col.traditional .metric-row-stat,
+.visual-compare-col.traditional .metric-icon-small,
+.compare-status-badge.negative {
+    color: var(--danger);
+}
+
+.compare-status-badge.positive {
+    color: var(--success);
+}
+
+.pillar-big-metric {
+    color: var(--text);
+}
+
+/* ---------- Creator tier boxes ---------- */
+.creator-tier-box {
+    background: linear-gradient(180deg, #fbf8ff 0%, #ffffff 100%);
+    border: 1px solid var(--hair);
+}
+
+.creator-tier-featured {
+    background: linear-gradient(180deg, #fff9ed 0%, #ffffff 100%);
+    border: 1px solid rgba(180, 83, 9, .35);
+    box-shadow: 0 18px 45px -24px rgba(76, 29, 149, .3), 0 0 24px -12px rgba(180, 83, 9, .3);
+}
+
+.creator-tier-featured:hover {
+    border-color: var(--gold-light);
+}
+
+.creator-tiers-lead strong,
+.tier-price-box-gold .price-val,
+.tier-barter-tag-gold,
+.v-tag-gold svg,
+.tier-deliverable-gold svg,
+.award-card-meta span.gold-tag {
+    color: var(--gold-light);
+}
+
+.tier-barter-tag-gold {
+    background: rgba(180, 83, 9, .08);
+    border-color: rgba(180, 83, 9, .28);
+}
+
+.tier-price-box {
+    background: rgba(26, 11, 46, .03);
+    border: 1px solid rgba(236, 72, 153, .22);
+}
+
+.tier-price-box-gold {
+    background: rgba(180, 83, 9, .06);
+    border-color: rgba(180, 83, 9, .3);
+}
+
+.tier-cta-gold {
+    background: linear-gradient(135deg, rgba(180, 83, 9, .1), rgba(217, 119, 6, .14));
+    border-color: rgba(180, 83, 9, .38);
+    color: #7c2d12;
+}
+
+/* ---------- Offer cards ---------- */
+.offer-card-visual {
+    background: #ffffff;
+    border: 1px solid var(--hair);
+}
+
+.offer-card-title span {
+    color: var(--pink);
+}
+
+/* ---------- Orbit stage ---------- */
+.orbit-stage {
+    background: radial-gradient(circle at center,
+            #ffffff 0%,
+            #fbf7ff 62%,
+            #f4ecff 100%);
+    border: 1px solid var(--hair);
+    box-shadow: 0 25px 60px -30px rgba(76, 29, 149, .35), var(--glow-violet);
+}
+
+.orbit-node-inner {
+    border-color: #ffffff;
+}
+
+.orbit-node-info {
+    background: rgba(255, 255, 255, .96);
+    border-color: var(--hair);
+    color: var(--text);
+}
+
+.orbit-node:hover .orbit-node-info {
+    background: #ffffff;
+    border-color: var(--gold-light);
+    box-shadow: 0 6px 20px -8px rgba(76, 29, 149, .4);
+}
+
+.orbit-node:hover .orbit-node-info strong {
+    color: var(--gold-light);
+}
+
+.center-hub-label-card {
+    background: #ffffff;
+    border-color: var(--hair);
+}
+
+.orbit-node-avatar,
+.center-hub-avatar {
+    border-color: #ffffff;
+}
+
+/* ---------- Gallery filter pills ---------- */
+.gallery-filter-btn {
+    color: var(--text-soft);
+    background: rgba(26, 11, 46, .035);
+    border: 1px solid var(--hair);
+}
+
+/* Was #ec4899 -> #8b5cf6, which put white text at 3.8:1. */
+.gallery-filter-btn:hover,
+.gallery-filter-btn.active {
+    background: linear-gradient(135deg, #be185d, #6d28d9);
+    border-color: transparent;
+    color: #fff;
+}
+
+/* ---------- Form validation ---------- */
+.field.invalid input,
+.field.invalid select,
+.field.invalid textarea {
+    border-bottom-color: var(--danger);
+}
+
+.field .err {
+    color: var(--danger);
+}
+
+/* ---------- Badges that sit on photographs ---------- */
+/* These keep their dark plates, because they are over imagery. What they cannot
+   keep is the now-dark token text they were inheriting. */
+.hud-pill,
+.hud-fps,
+.category-badge-stat,
+.service-media-badge-top,
+.service-media-badge-bottom,
+.award-card-meta,
+.bento-metric-pill,
+.creator-tiers-tag {
+    color: rgba(255, 255, 255, .88);
+}
+
+.hud-pill.rec,
+.hud-pill.rec i {
+    color: #fca5a5;
+}
+
+/* The pill's own plate, so the light text on it is guaranteed a dark backing
+   regardless of the photograph underneath. */
+.category-badge-stat,
+.creator-tiers-tag {
+    background: rgba(26, 11, 46, .78);
+    border-color: rgba(255, 255, 255, .2);
+}
+
+/* ---------- Sundry ---------- */
+.node-tag {
+    color: #fff;
+    background: rgba(26, 11, 46, .8);
+}
+
+.offer-metric-pill {
+    color: rgba(255, 255, 255, .9);
+}
+
+.swipe-hint {
+    color: var(--pink);
+    background: rgba(190, 24, 93, .06);
+    border-color: rgba(190, 24, 93, .22);
+}
+
+/* ==========================================================================
+   45. Light theme — final pass
+   Two things the contrast audit turned up once sections 42–44 were in.
+
+   First: lightening a card is only half the job. Several of these components
+   set #ffffff explicitly on their own headings, so once the panel behind them
+   went white the text vanished completely — measured 1.00:1 on the orbit hub
+   name, the offer card title and the tier name. Those are pinned to page dark.
+
+   Second: --pink at #be185d clears AA comfortably on pure white (6.2:1) but
+   several labels sit on the blush and lavender panel tints rather than on
+   white, which pulled a whole cluster of eyebrows, roles and counts down to
+   4.06–4.48 against a 4.5 requirement. Both pinks drop one step darker.
+   ========================================================================== */
+
+:root {
+    /* 8.0:1 on white, and still above 4.5:1 on the darkest panel tint. */
+    --pink: #9d174d;
+    --pink-light: #be185d;
+}
+
+/* ---------- Pillar cards ---------- */
+.visual-pillar-card {
+    background: linear-gradient(160deg, #faf6ff 0%, #ffffff 100%);
+    border: 1px solid var(--hair);
+}
+
+.visual-pillar-card:hover {
+    border-color: rgba(139, 92, 246, .5);
+    box-shadow: 0 16px 36px -22px rgba(76, 29, 149, .35), var(--glow-violet);
+}
+
+.pillar-vector-badge {
+    background: linear-gradient(135deg, rgba(236, 72, 153, .14), rgba(139, 92, 246, .2));
+    border: 1px solid var(--hair);
+    color: var(--violet-deep);
+    box-shadow: none;
+}
+
+.pillar-index-num {
+    color: rgba(26, 11, 46, .38);
+}
+
+.pillar-big-metric,
+.pillar-short-label,
+.visual-pillar-card h3 {
+    color: var(--text);
+}
+
+.pillar-title-tag {
+    color: var(--violet-deep);
+}
+
+.pillar-visual-meter {
+    background: rgba(26, 11, 46, .08);
+}
+
+/* ---------- Headings that were hardcoded white ---------- */
+.center-hub-name,
+.offer-card-title,
+.creator-tier-box .tier-name,
+.tier-deliverable-badge {
+    color: var(--text);
+}
+
+.center-hub-title {
+    color: var(--gold-light);
+}
+
+.tier-deliverable-badge.tier-deliverable-gold {
+    color: #7c2d12;
+}
+
+.metric-row-stat {
+    color: var(--text);
+}
+
+.visual-compare-col.velora .metric-row-stat {
+    color: var(--success);
+}
+
+.visual-compare-col.traditional h3 {
+    color: var(--danger);
+}
+
+.compare-status-badge.negative {
+    background: rgba(220, 38, 38, .1);
+    border-color: rgba(220, 38, 38, .3);
+}
+
+.compare-status-badge.positive {
+    background: rgba(4, 120, 87, .1);
+    border-color: rgba(4, 120, 87, .3);
+}
+
+/* ---------- Mobile drawer ---------- */
+/* The base rule in section 8 paints a near-black panel and wins over the
+   background set in section 42, because that one only replaced `background`
+   while this sets background-color separately. Both are pinned here. */
+.nav-drawer {
+    background-color: var(--canvas);
+    color: var(--text);
+}
+
+/* ---------- Gold tags sitting on photographs ---------- */
+/* These are on top of imagery, so they need the light end of the amber ramp,
+   not the dark one section 44 introduced for amber on white panels. */
+.award-gallery-card .gold-tag,
+.ugc-views,
+.award-card-overlay .gold-tag {
+    color: #fcd34d;
+}
+
+/* ---------- Filter pills over imagery ---------- */
+/* The gallery filter row sits above the photo grid, so give the inactive pills
+   an opaque light plate rather than a 3.5%-alpha tint that lets whatever is
+   behind them set the contrast. */
+.gallery-filter-btn {
+    background: #ffffff;
+    box-shadow: 0 2px 10px -6px rgba(76, 29, 149, .4);
+}
+
+/* ==========================================================================
+   46. Light theme — last corrections
+   ========================================================================== */
+
+/* The confetti canvas sits behind the CTA band's heading and button, so any
+   particle that drifts under a glyph sets the local contrast there. On the dark
+   theme the particles were darker than the page and it did not matter; on white
+   they are darker than the page too, which is now the wrong direction — a violet
+   particle under the 51px heading measured 2.8:1 against a 3.0 requirement.
+   Light enough now that a particle passing behind type cannot pull it under. */
+.confetti {
+    opacity: .16;
+}
+
+/* One step darker again: each of these sits on its own pale tinted plate rather
+   than on white, which cost roughly 2 points of ratio. */
+:root {
+    --gold-light: #92400e;
+    --danger: #b91c1c;
+    --success: #065f46;
+}
+
+.creator-tiers-lead strong,
+.tier-price-box-gold .price-val,
+.tier-barter-tag-gold,
+.tier-deliverable-badge.tier-deliverable-gold {
+    color: #78350f;
+}
+
+/* The ambient footer video was showing through enough to drag the footer's
+   contact links down to 4.15:1. */
+.footer-video-wrap video {
+    opacity: .06;
+}
+
+.footer-video-wrap::after {
+    background: linear-gradient(180deg, rgba(255, 255, 255, .92) 0%, rgba(255, 255, 255, .97) 100%);
+}
+
+/* Amber tags anywhere over photography, not only inside .award-gallery-card. */
+.gold-tag,
+.ugc-views {
+    color: #fcd34d;
+}
+
+/* Sat on the middle of a violet-to-pink gradient with no plate of its own. */
+.service-media-badge-bottom,
+.service-media-badge-top {
+    background: rgba(26, 11, 46, .8);
+    border: 1px solid rgba(255, 255, 255, .18);
+    color: #fff;
+}
+
+/* ==========================================================================
+   47. Light theme — remaining dark panels on glimpses
+   The production gallery section and the industry category cards were the last
+   two components still painting themselves near-black (#08080a and #0d061c),
+   which left their headings and eyebrows at 1.4–2.6:1.
+   ========================================================================== */
+.award-gallery-section {
+    background: radial-gradient(circle at 50% 20%, #f7f1ff 0%, #ffffff 70%);
+}
+
+.visual-category-card {
+    background: linear-gradient(160deg, #fbf7ff 0%, #ffffff 100%);
+    border: 1px solid var(--hair);
+}
+
+.visual-category-card:hover {
+    border-color: rgba(236, 72, 153, .55);
+}
+
+.category-vector-icon {
+    color: var(--violet-deep);
+    box-shadow: none;
+}
+
+.category-num-tag {
+    color: rgba(26, 11, 46, .38);
+}
+
+.category-card-title,
+.category-card-title b {
+    color: var(--text);
+}
+
+/* The card is light now, so its stat pill does not need a dark plate. */
+.visual-category-card .category-badge-stat {
+    color: var(--text-soft);
+    background: rgba(26, 11, 46, .05);
+    border-color: var(--hair);
+}
+
+/* The bento cards are photographic, so their captions stay light — including
+   the amber tag, which section 44 had pinned to the dark end of the ramp with a
+   more specific selector than section 46's correction could beat. */
+.award-card-meta,
+.award-card-meta span {
+    color: rgba(255, 255, 255, .85);
+}
+
+.award-card-meta span.gold-tag {
+    color: #fcd34d;
 }

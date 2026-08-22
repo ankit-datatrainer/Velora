@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 40" height="40" width="140">
+  <circle cx="20" cy="20" r="14" fill="#facc15"/>
+  <path d="M20 6 L20 34 M6 20 L34 20" stroke="#ea580c" stroke-width="2"/>
+  <text x="40" y="26" fill="#1e3a8a" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="18" font-style="italic" letter-spacing="0.5">McCain</text>
+</svg>

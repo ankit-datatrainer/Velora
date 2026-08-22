@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 40" height="40" width="130">
+  <path d="M12 28 L24 28 L18 6 Z" fill="#ED1C24"/>
+  <path d="M6 28 L15 28 L11 16 Z" fill="#ED1C24"/>
+  <text x="32" y="27" fill="#0f172a" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="20" letter-spacing="1">bo<tspan fill="#ED1C24">A</tspan>t</text>
+</svg>
