@@ -106,6 +106,8 @@
 html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
+    width: 100%;
 }
 
 body {
@@ -115,7 +117,8 @@ body {
     line-height: 1.68;
     color: var(--text-soft);
     background: var(--canvas);
-    overflow-x: hidden;
+    overflow-x: clip;
+    width: 100%;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -378,10 +381,25 @@ strong {
 
 section {
     position: relative;
+    max-width: 100%;
+    overflow-x: clip;
 }
 
 .section {
+    position: relative;
+    max-width: 100%;
+    overflow-x: clip;
     padding-block: clamp(3.5rem, 7vw, 6.75rem);
+}
+
+.sect-float {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    width: 100%;
+    max-width: 100%;
 }
 
 /* Slightly raised panel */
@@ -1810,7 +1828,8 @@ section {
 }
 
 /* ---------- 13. Swipe deck (Who We Are) ---------- */
-.swipe-deck {
+.swipe-deck,
+.swipe-track {
     display: flex;
     gap: clamp(1rem, 2vw, 1.6rem);
     overflow-x: auto;
@@ -1818,18 +1837,32 @@ section {
     padding-bottom: 1.2rem;
     scrollbar-width: thin;
     scrollbar-color: var(--pink) transparent;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
 }
 
-.swipe-deck::-webkit-scrollbar {
+.swipe-container {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.swipe-deck::-webkit-scrollbar,
+.swipe-track::-webkit-scrollbar {
     height: 4px;
 }
 
-.swipe-deck::-webkit-scrollbar-track {
+.swipe-deck::-webkit-scrollbar-track,
+.swipe-track::-webkit-scrollbar-track {
     background: var(--hair-soft);
     border-radius: 4px;
 }
 
-.swipe-deck::-webkit-scrollbar-thumb {
+.swipe-deck::-webkit-scrollbar-thumb,
+.swipe-track::-webkit-scrollbar-thumb {
     background: var(--grad-primary);
     border-radius: 4px;
 }
@@ -7982,20 +8015,20 @@ section {
 }
 
 .price-curr {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: #fbbf24;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #d97706;
 }
 
 .price-val {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     font-weight: 800;
-    color: #ffffff;
+    color: #1a0b2e;
     letter-spacing: -0.02em;
 }
 
 .tier-price-box-gold .price-val {
-    color: #fbbf24;
+    color: #92400e;
 }
 
 .tier-barter-tag {
