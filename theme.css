@@ -209,8 +209,9 @@ main {
 }
 
 .trust-band {
-    background: rgba(255, 255, 255, .25);
-    border-color: rgba(97, 62, 124, .12);
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 #campaigns.section-campaigns {
@@ -276,6 +277,40 @@ main {
 .creator-tier-box:hover {
     border-color: rgba(139, 92, 246, .38);
     box-shadow: 0 22px 44px rgba(72, 39, 90, .2);
+}
+
+.visual-category-card {
+    color: var(--text);
+    background: linear-gradient(155deg, rgba(255, 255, 255, .88), rgba(239, 229, 246, .94)) !important;
+    border-color: rgba(97, 62, 124, .18) !important;
+    box-shadow: 0 12px 30px rgba(72, 39, 90, .12) !important;
+}
+
+.visual-category-card:hover {
+    border-color: var(--pink-bright) !important;
+    box-shadow: 0 20px 40px rgba(72, 39, 90, .2) !important;
+}
+
+.visual-category-card .category-card-title {
+    color: #1a0f2b !important;
+    font-weight: 800 !important;
+}
+
+.visual-category-card .category-card-title b {
+    color: #c026d3 !important;
+    font-weight: 800 !important;
+}
+
+.visual-category-card .category-num-tag {
+    color: #7c688c !important;
+    font-weight: 700 !important;
+}
+
+.visual-category-card .category-badge-stat {
+    color: #3b1d54 !important;
+    background: rgba(124, 58, 237, 0.08) !important;
+    border-color: rgba(97, 62, 124, 0.18) !important;
+    font-weight: 700 !important;
 }
 
 .creator-tier-featured {
@@ -541,6 +576,174 @@ main {
 .cinematic-screen-housing {
     border-color: rgba(97, 62, 124, .28);
     box-shadow: 0 24px 58px -14px rgba(72, 39, 90, .34), 0 0 38px rgba(236, 72, 153, .16);
+}
+
+/* ==========================================================================
+   Why Influencer Marketing - High Contrast & Crystal-Clear Visibility
+   ========================================================================== */
+
+/* 3-Stage Growth Funnel */
+.visual-funnel-step {
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.92), rgba(243, 233, 250, 0.96)) !important;
+    border: 1px solid rgba(97, 62, 124, 0.18) !important;
+    box-shadow: 0 16px 36px rgba(72, 39, 90, 0.12) !important;
+}
+
+.visual-funnel-step:hover {
+    border-color: var(--pink-bright) !important;
+    box-shadow: 0 20px 45px rgba(72, 39, 90, 0.2) !important;
+}
+
+.funnel-icon-box {
+    background: linear-gradient(135deg, #d946ef, #8b5cf6) !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25) !important;
+}
+
+.funnel-badge {
+    background: rgba(124, 58, 237, 0.1) !important;
+    border-color: rgba(97, 62, 124, 0.2) !important;
+    color: #831843 !important;
+    font-weight: 800 !important;
+}
+
+.funnel-stat-hero {
+    background: linear-gradient(135deg, #170f2b 25%, #c026d3 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #170f2b !important;
+    font-weight: 900 !important;
+}
+
+.funnel-caption {
+    color: #3b2256 !important;
+    font-weight: 600 !important;
+}
+
+/* 6 Visual Infographic Pillars */
+.visual-pillar-card {
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.92), rgba(243, 233, 250, 0.96)) !important;
+    border: 1px solid rgba(97, 62, 124, 0.18) !important;
+    box-shadow: 0 14px 34px rgba(72, 39, 90, 0.12) !important;
+}
+
+.visual-pillar-card:hover {
+    border-color: var(--pink-bright) !important;
+    box-shadow: 0 20px 42px rgba(72, 39, 90, 0.2) !important;
+}
+
+.pillar-vector-badge {
+    background: linear-gradient(135deg, #d946ef, #8b5cf6) !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 6px 16px rgba(124, 58, 237, 0.25) !important;
+}
+
+.pillar-index-num {
+    color: #6b557d !important;
+    font-weight: 700 !important;
+}
+
+.pillar-big-metric {
+    color: #170f2b !important;
+    font-weight: 800 !important;
+}
+
+.pillar-big-metric span.accent-highlight {
+    background: linear-gradient(135deg, #c026d3, #7c3aed) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #c026d3 !important;
+}
+
+.pillar-title-tag {
+    color: #9a3412 !important;
+    font-weight: 800 !important;
+}
+
+.pillar-short-label {
+    color: #422d56 !important;
+    font-weight: 500 !important;
+}
+
+.pillar-visual-meter {
+    background: rgba(97, 62, 124, 0.14) !important;
+}
+
+.pillar-meter-fill {
+    background: linear-gradient(90deg, #db2777, #7c3aed) !important;
+}
+
+/* Visual Comparison Board */
+.visual-compare-col.traditional {
+    background: linear-gradient(155deg, rgba(254, 242, 242, 0.94), rgba(254, 226, 226, 0.88)) !important;
+    border: 1px solid rgba(239, 68, 68, 0.28) !important;
+    box-shadow: 0 16px 36px rgba(185, 28, 28, 0.08) !important;
+}
+
+.visual-compare-col.traditional h3 {
+    color: #991b1b !important;
+    font-weight: 800 !important;
+}
+
+.visual-compare-col.traditional .visual-metric-row {
+    background: rgba(255, 255, 255, 0.85) !important;
+    border: 1px solid rgba(239, 68, 68, 0.18) !important;
+}
+
+.visual-compare-col.traditional .metric-row-text {
+    color: #3f1d24 !important;
+    font-weight: 600 !important;
+}
+
+.visual-compare-col.traditional .metric-row-stat {
+    color: #dc2626 !important;
+    font-weight: 800 !important;
+}
+
+.visual-compare-col.velora {
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.94), rgba(243, 232, 255, 0.95)) !important;
+    border: 1px solid rgba(217, 70, 239, 0.35) !important;
+    box-shadow: 0 18px 40px rgba(147, 51, 234, 0.15) !important;
+}
+
+.visual-compare-col.velora h3 {
+    color: #170f2b !important;
+    font-weight: 800 !important;
+}
+
+.visual-compare-col.velora .visual-metric-row {
+    background: rgba(255, 255, 255, 0.88) !important;
+    border: 1px solid rgba(139, 92, 246, 0.18) !important;
+}
+
+.visual-compare-col.velora .metric-row-text {
+    color: #1f1435 !important;
+    font-weight: 600 !important;
+}
+
+.visual-compare-col.velora .metric-row-stat {
+    color: #047857 !important;
+    font-weight: 800 !important;
+}
+
+.compare-head-tag {
+    border-bottom: 1px solid rgba(97, 62, 124, 0.14) !important;
+}
+
+.compare-status-badge.negative {
+    background: rgba(239, 68, 68, 0.12) !important;
+    border: 1px solid rgba(239, 68, 68, 0.3) !important;
+    color: #b91c1c !important;
+    font-weight: 700 !important;
+}
+
+.compare-status-badge.positive {
+    background: rgba(16, 185, 129, 0.12) !important;
+    border: 1px solid rgba(16, 185, 129, 0.3) !important;
+    color: #047857 !important;
+    font-weight: 700 !important;
 }
 
 @media (max-width: 900px) {

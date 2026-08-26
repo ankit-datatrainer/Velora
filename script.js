@@ -297,8 +297,8 @@
     });
 
     /* ---------- 8. Marquee Duplication for Seamless Loops ---------- */
-    $$('.talent-marquee, .quotes-marquee-wrap, .marquee').forEach(container => {
-        const track = container.querySelector('.talent-track, .quotes-track, .marquee-track');
+    $$('.quotes-marquee-wrap, .marquee').forEach(container => {
+        const track = container.querySelector('.quotes-track, .marquee-track');
         if (track && container.children.length === 1 && !reduceMotion) {
             const clone = track.cloneNode(true);
             clone.setAttribute('aria-hidden', 'true');
@@ -306,145 +306,6 @@
             container.appendChild(clone);
         }
     });
-
-    /* ---------- 8b. Roster rails: auto-scroll + grab-to-scroll ----------
-       The Influencer and Celebrity rails drift on their own and can also be
-       taken over by hand. Driving scrollLeft rather than animating a transform
-       is what makes that possible: touch panning, trackpads, the keyboard and a
-       mouse drag all operate on the same property, so the manual and automatic
-       motion cannot disagree about where the rail is.
-
-       Seamless looping relies on the track having been duplicated in step 8, so
-       the content is exactly two identical halves and scrollLeft can be wrapped
-       by half the width without any visible jump. */
-    const rails = $$('.talent-marquee').map(rail => {
-        // Content moves right => scrollLeft decreases, and vice versa.
-        const step = rail.dataset.marquee === 'right' ? -1 : 1;
-        const looped = rail.children.length > 1;
-        const SPEED = 34; // px per second
-
-        const half = () => rail.scrollWidth / 2;
-
-        const wrap = () => {
-            if (!looped) return;
-            const h = half();
-            if (h <= 0) return;
-            if (rail.scrollLeft >= h) rail.scrollLeft -= h;
-            else if (rail.scrollLeft <= 0) rail.scrollLeft += h;
-        };
-
-        // A rail drifting rightwards has to start with room on its left to
-        // travel into, otherwise it sits pinned at scrollLeft 0 doing nothing.
-        if (looped && step < 0) rail.scrollLeft = half();
-
-        // Expose it to keyboard users; the rails are scrollable regions, and
-        // focus-within then also pauses the drift while they tab through cards.
-        rail.tabIndex = 0;
-
-        let hovered = false, pressing = false, dragging = false, focused = false;
-        let visible = true, holdUntil = 0;
-        let startX = 0, startScroll = 0, travelled = 0;
-
-        // Any manual input hands control over for a moment, so the drift does
-        // not immediately fight the user's own scroll.
-        const hold = (ms = 1400) => { holdUntil = performance.now() + ms; };
-
-        rail.addEventListener('pointerenter', () => { hovered = true; });
-        rail.addEventListener('pointerleave', () => { hovered = false; });
-        rail.addEventListener('focusin', () => { focused = true; });
-        rail.addEventListener('focusout', () => { focused = false; });
-        rail.addEventListener('wheel', () => hold(), { passive: true });
-        // Touch panning is handled natively via touch-action: pan-x; this only
-        // needs to stop the drift so the two do not compete.
-        rail.addEventListener('touchstart', () => hold(2000), { passive: true });
-        rail.addEventListener('touchmove', () => hold(2000), { passive: true });
-        rail.addEventListener('dragstart', e => e.preventDefault());
-
-        const DRAG_SLOP = 6; // px before a press counts as a drag
-
-        rail.addEventListener('pointerdown', e => {
-            hold();
-            if (e.pointerType !== 'mouse') return;
-            pressing = true;
-            dragging = false;
-            travelled = 0;
-            startX = e.clientX;
-            startScroll = rail.scrollLeft;
-            // Deliberately no setPointerCapture here. Capturing on pointerdown
-            // retargets the whole gesture — including the click derived from it —
-            // to the rail, so the card's link never received the click and a
-            // plain click stopped opening the profile. Capture is taken only
-            // once the press has been promoted to a drag, below.
-        });
-
-        rail.addEventListener('pointermove', e => {
-            if (!pressing) return;
-            const dx = e.clientX - startX;
-            travelled = Math.max(travelled, Math.abs(dx));
-            // Only now does this become a drag. Marking it on pointerdown was a
-            // bug: .is-dragging puts pointer-events:none on the cards, so the
-            // mousedown landed on the rail rather than the link and a plain
-            // click stopped opening the profile entirely.
-            if (!dragging && travelled > DRAG_SLOP) {
-                dragging = true;
-                rail.classList.add('is-dragging');
-                // Now that it is unambiguously a drag, capture so the gesture
-                // keeps working if the pointer leaves the rail mid-drag.
-                try { rail.setPointerCapture(e.pointerId); } catch (err) { /* not fatal */ }
-            }
-            if (!dragging) return;
-            rail.scrollLeft = startScroll - dx;
-            wrap();
-        });
-
-        const endDrag = (e) => {
-            if (!pressing) return;
-            pressing = false;
-            dragging = false;
-            rail.classList.remove('is-dragging');
-            hold();
-            try { rail.releasePointerCapture(e.pointerId); } catch (err) { /* already gone */ }
-        };
-        rail.addEventListener('pointerup', endDrag);
-        rail.addEventListener('pointercancel', endDrag);
-
-        // Every card is a link, so a drag that ends on one would otherwise open
-        // a profile. Captured before the link sees it.
-        rail.addEventListener('click', e => {
-            if (travelled > DRAG_SLOP) {
-                e.preventDefault();
-                e.stopPropagation();
-                travelled = 0;
-            }
-        }, true);
-
-        if ('IntersectionObserver' in window) {
-            new IntersectionObserver(entries => {
-                entries.forEach(en => { visible = en.isIntersecting; });
-            }, { threshold: 0 }).observe(rail);
-        }
-
-        return {
-            tick(dt, now) {
-                if (!visible || document.hidden) return;
-                if (hovered || dragging || focused || now < holdUntil) return;
-                rail.scrollLeft += step * SPEED * dt;
-                wrap();
-            }
-        };
-    });
-
-    if (rails.length && !reduceMotion) {
-        let last = performance.now();
-        const run = (now) => {
-            // Clamped so a backgrounded tab does not resume with one huge jump.
-            const dt = Math.min((now - last) / 1000, 0.05);
-            last = now;
-            rails.forEach(r => r.tick(dt, now));
-            requestAnimationFrame(run);
-        };
-        requestAnimationFrame(run);
-    }
 
     /* ---------- 9. Accordion ---------- */
     $$('.acc-item').forEach(item => {

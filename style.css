@@ -2285,49 +2285,56 @@ section {
    vertical scrollbar; the vertical padding gives them room instead. */
 .talent-marquee {
     display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-block: clamp(1rem, 1.9vw, 1.5rem);
-    mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-
-    cursor: grab;
-    /* Vertical page scrolling still belongs to the page when a touch starts on
-       the rail; only horizontal panning is the rail's. */
-    touch-action: pan-x;
-    /* Stops a drag past the end from chaining into the page scroll or firing
-       the browser's back-swipe gesture. */
-    overscroll-behavior-x: contain;
-    /* JS writes scrollLeft every frame, so the smooth scrolling inherited from
-       html would fight it and stutter. */
-    scroll-behavior: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.talent-marquee::-webkit-scrollbar {
-    display: none;
-}
-
-.talent-marquee.is-dragging {
-    cursor: grabbing;
-}
-
-/* While dragging, kill the card hover lift and let go of pointer targeting so
-   the cursor cannot land "inside" a card mid-drag and jitter the transform. */
-.talent-marquee.is-dragging .talent {
-    pointer-events: none;
-}
-
-.talent-marquee.is-dragging .talent:hover {
-    transform: none;
+    overflow: hidden;
+    padding-block: clamp(1.2rem, 2vw, 1.8rem);
+    mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+    width: 100%;
+    position: relative;
 }
 
 .talent-track {
     display: flex;
     flex: none;
-    gap: clamp(.75rem, 1.5vw, 1.2rem);
-    padding-right: clamp(.75rem, 1.5vw, 1.2rem);
+    gap: clamp(.85rem, 1.6vw, 1.3rem);
+    padding-right: clamp(.85rem, 1.6vw, 1.3rem);
+    width: max-content;
+    will-change: transform;
+}
+
+/* Left to right sliding (Influencers rail: data-marquee="right") */
+.talent-marquee[data-marquee="right"] .talent-track,
+.talent-track.slide-right {
+    animation: talentSlideRight 35s linear infinite;
+}
+
+/* Right to left sliding (Celebrities rail: data-marquee="left") */
+.talent-marquee[data-marquee="left"] .talent-track,
+.talent-track.slide-left {
+    animation: talentSlideLeft 35s linear infinite;
+}
+
+/* Pause smoothly on hover so user can easily view or click profile */
+.talent-marquee:hover .talent-track {
+    animation-play-state: paused;
+}
+
+@keyframes talentSlideLeft {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+@keyframes talentSlideRight {
+    0% {
+        transform: translate3d(-50%, 0, 0);
+    }
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 /* Images must not become native drag payloads, or the browser starts its own
@@ -2373,8 +2380,8 @@ section {
     transition: transform .8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.talent-photo img[src*="dolly-chaiwala"] {
-    object-position: 80% 20%;
+.talent-photo img[src*="dolly"] {
+    object-position: 50% 15%;
 }
 
 .talent-photo::after {
@@ -4687,8 +4694,8 @@ section {
     transition: transform .7s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.story-card img[src*="dolly-chaiwala"] {
-    object-position: 80% 20%;
+.story-card img[src*="dolly"] {
+    object-position: 50% 15%;
 }
 
 .story-card:hover {
@@ -5788,13 +5795,13 @@ section {
     max-width: 165px;
     width: auto;
     object-fit: contain;
-    filter: brightness(1.2) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
-    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: none;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .client-logo:hover img {
     transform: scale(1.05);
-    filter: brightness(1.4) drop-shadow(0 4px 14px rgba(236, 72, 153, 0.4));
+    filter: none;
 }
 
 .fallback-text {
@@ -9663,32 +9670,36 @@ body {
 }
 
 .visual-category-card {
-    background: linear-gradient(160deg, #180d2e 0%, #0d061c 100%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: linear-gradient(155deg, rgba(255, 255, 255, 0.88), rgba(239, 229, 246, 0.94));
+    border: 1px solid rgba(97, 62, 124, 0.18);
 }
 
 .visual-category-card:hover {
-    border-color: rgba(236, 72, 153, .55);
+    border-color: var(--pink-bright);
 }
 
 .category-vector-icon {
     color: #ffffff;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #d946ef, #8b5cf6);
+    box-shadow: 0 6px 14px rgba(124, 58, 237, 0.25);
 }
 
 .category-num-tag {
-    color: rgba(255, 255, 255, 0.35);
+    color: #7c688c;
 }
 
-.category-card-title,
+.category-card-title {
+    color: #1a0f2b;
+}
+
 .category-card-title b {
-    color: #ffffff;
+    color: #c026d3;
 }
 
 .visual-category-card .category-badge-stat {
-    color: var(--text-soft);
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.12);
+    color: #3b1d54;
+    background: rgba(124, 58, 237, 0.08);
+    border-color: rgba(97, 62, 124, 0.18);
 }
 
 .gallery-filter-btn {
@@ -9719,29 +9730,35 @@ body {
    prevents wide wordmarks and compact app-style marks from crowding each
    other while the rail moves. */
 .trust-banner .trust-band {
-    padding-block: 1.15rem 1.35rem;
-    mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+    padding-block: 1.25rem 1.5rem;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
 }
 
 .trust-banner .trust-track {
-    gap: clamp(3rem, 5vw, 5rem);
-    padding-right: clamp(3rem, 5vw, 5rem);
+    gap: clamp(2rem, 3.5vw, 3.8rem);
+    padding-right: clamp(2rem, 3.5vw, 3.8rem);
 }
 
 .trust-banner .client-logo {
-    width: clamp(160px, 14vw, 215px);
-    min-width: clamp(160px, 14vw, 215px);
-    height: 82px;
+    width: clamp(140px, 14vw, 195px);
+    min-width: clamp(140px, 14vw, 195px);
+    height: 80px;
     padding: 0;
     opacity: 1;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 .trust-banner .client-logo img {
     width: auto;
     height: auto;
-    max-width: 190px;
-    max-height: 64px;
+    max-width: 175px;
+    max-height: 56px;
     object-fit: contain;
 }
 
@@ -9749,12 +9766,12 @@ body {
 .trust-banner .client-logo img[src$="meesho.png"],
 .trust-banner .client-logo img[src$="tseries.svg"],
 .trust-banner .client-logo img[src$="aajtak.svg"] {
-    max-width: 68px;
-    max-height: 68px;
+    max-width: 62px;
+    max-height: 62px;
 }
 
 .trust-banner .client-logo--wide img {
-    max-width: 200px;
+    max-width: 185px;
 }
 
 /* Creator portraits stay perfectly circular and use a crop tuned to the
