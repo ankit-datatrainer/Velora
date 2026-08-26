@@ -24,62 +24,48 @@
 
 /* ---------- 1. Tokens ---------- */
 :root {
-    /* Light canvas — white, with lavender and blush tints for raised panels. */
-    --canvas: #ffffff;
-    --canvas-2: #f9f5ff;
-    --canvas-3: #f2ebff;
+    /* Rich Luxury Dark canvas — sleek deep velvet obsidian palette */
+    --canvas: #090514;
+    --canvas-2: #120a22;
+    --canvas-3: #1b1033;
 
-    /* Purple / pink spectrum.
-       --violet and --pink are used for small label text all over this sheet, so
-       both are set to values that clear WCAG AA on white (violet 5.0:1, pink
-       6.2:1). The vivid brand tones live separately in --violet-bright and
-       --pink-bright and are only ever used as fills, borders and glows, never
-       as text: #ec4899 on white is 3.2:1, which fails for anything under 24px. */
-    --violet: #7c3aed;
-    --violet-bright: #8b5cf6;
-    --violet-light: #6d28d9;
+    /* Purple / pink spectrum. */
+    --violet: #8b5cf6;
+    --violet-bright: #a78bfa;
+    --violet-light: #c084fc;
     --violet-deep: #4c1d95;
-    --pink: #be185d;
-    --pink-bright: #ec4899;
-    --pink-light: #db2777;
-    --rose: #e11d48;
-    --rose-light: #f43f5e;
+    --pink: #ec4899;
+    --pink-bright: #f472b6;
+    --pink-light: #fb7185;
+    --rose: #f43f5e;
+    --rose-light: #fb7185;
 
-    /* Gold survives only where the VELORA emblem lives — it is gold artwork,
-       and orphaning it against pure purple looks like an oversight. Darkened
-       from #f0c661, which was 1.7:1 on white and effectively invisible. */
-    --gold: #a16207;
+    /* Gold */
+    --gold: #fbbf24;
 
-    /* Type on the light canvas */
-    --text: #1a0b2e;
-    --text-soft: #3d2a5c;
-    --muted: #64548a;
+    /* Type on the dark canvas */
+    --text: #ffffff;
+    --text-soft: #e2d9f3;
+    --muted: #a594c4;
 
-    /* Glass + hairlines: a violet-black tint over white, rather than white
-       over black. */
-    --glass: rgba(26, 11, 46, .035);
-    --glass-strong: rgba(26, 11, 46, .06);
-    --hair: rgba(124, 58, 237, .18);
-    --hair-soft: rgba(124, 58, 237, .1);
-    --hair-bright: rgba(26, 11, 46, .14);
+    /* Glass + hairlines */
+    --glass: rgba(255, 255, 255, .04);
+    --glass-strong: rgba(255, 255, 255, .08);
+    --hair: rgba(168, 85, 247, .22);
+    --hair-soft: rgba(168, 85, 247, .12);
+    --hair-bright: rgba(255, 255, 255, .2);
 
     /* Gradients */
     --grad-primary: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-    /* Every stop is dark enough to carry white button text: the brighter ramp
-       this replaced bottomed out at 3.2:1 on its pink end. */
-    --grad-rich: linear-gradient(135deg, #6d28d9 0%, #a21caf 50%, #be185d 100%);
-    /* Clipped to headline text, so it has to stay dark enough to read on white;
-       the old violet-to-blush ramp topped out around 1.5:1. */
-    --grad-text: linear-gradient(96deg, #6d28d9 0%, #a21caf 46%, #be185d 100%);
-    --grad-band: linear-gradient(150deg, #f5eeff 0%, #fdf2fa 55%, #ffffff 100%);
+    --grad-rich: linear-gradient(135deg, #7c3aed 0%, #c026d3 50%, #ec4899 100%);
+    --grad-text: linear-gradient(96deg, #c084fc 0%, #f472b6 48%, #fbbf24 100%);
+    --grad-band: linear-gradient(150deg, #130a24 0%, #1c0f33 55%, #090514 100%);
 
-    /* Coloured glows read as grubby smudges on white, so they are tighter and
-       weaker than the dark-theme versions, and shadows are violet-tinted rather
-       than black. */
-    --glow-violet: 0 0 30px -10px rgba(139, 92, 246, .4);
-    --glow-pink: 0 0 30px -10px rgba(236, 72, 153, .38);
-    --shadow-photo: 0 30px 60px -26px rgba(76, 29, 149, .3);
-    --shadow-lift: 0 18px 40px -22px rgba(76, 29, 149, .22);
+    /* Coloured glows */
+    --glow-violet: 0 0 35px -5px rgba(139, 92, 246, .45);
+    --glow-pink: 0 0 35px -5px rgba(236, 72, 153, .42);
+    --shadow-photo: 0 30px 60px -20px rgba(0, 0, 0, .8);
+    --shadow-lift: 0 18px 40px -15px rgba(0, 0, 0, .6);
 
     --f-display: 'Bricolage Grotesque', 'Arial Black', system-ui, sans-serif;
     --f-body: 'Figtree', -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -178,9 +164,9 @@ body::before {
     z-index: -2;
     pointer-events: none;
     background:
-        radial-gradient(58% 44% at 88% -4%, rgba(139, 92, 246, .3) 0%, transparent 62%),
-        radial-gradient(52% 42% at 4% 22%, rgba(236, 72, 153, .2) 0%, transparent 64%),
-        radial-gradient(60% 50% at 76% 82%, rgba(244, 63, 94, .16) 0%, transparent 66%),
+        radial-gradient(58% 44% at 88% -4%, rgba(139, 92, 246, .22) 0%, transparent 62%),
+        radial-gradient(52% 42% at 4% 22%, rgba(236, 72, 153, .16) 0%, transparent 64%),
+        radial-gradient(60% 50% at 76% 82%, rgba(244, 63, 94, .12) 0%, transparent 66%),
         var(--canvas);
 }
 
@@ -1193,27 +1179,21 @@ section {
     z-index: 2;
     pointer-events: none;
     background:
-        /* Deep pool in the bottom-left corner, under the headline. */
-        radial-gradient(105% 80% at -5% 108%,
-            rgba(11, 7, 22, .97) 0%,
-            rgba(11, 7, 22, .9) 30%,
-            rgba(11, 7, 22, .62) 52%,
-            rgba(11, 7, 22, .22) 72%,
-            transparent 86%),
-        /* Cinematic lower band. The footage in this loop runs bright right
-           where the copy sits, so the bottom third has to carry real weight —
-           the upper ~55% is left alone, which is what keeps the video the
-           dominant element. */
+        /* Cinematic dark wash that seamlessly anchors into dark canvas */
         linear-gradient(180deg,
-            transparent 34%,
-            rgba(11, 7, 22, .3) 56%,
-            rgba(11, 7, 22, .72) 76%,
-            rgba(11, 7, 22, .93) 92%,
+            rgba(9, 5, 20, 0.45) 0%,
+            rgba(9, 5, 20, 0.2) 30%,
+            rgba(9, 5, 20, 0.68) 70%,
+            rgba(9, 5, 20, 0.95) 92%,
             var(--canvas) 100%),
-        /* Keep the white nav legible against a bright frame. */
-        linear-gradient(180deg, rgba(11, 7, 22, .68) 0%, rgba(11, 7, 22, .2) 22%, transparent 40%),
-        /* Faint brand tint so the footage still reads as VELORA. */
-        linear-gradient(125deg, rgba(124, 58, 237, .22) 0%, transparent 45%, rgba(236, 72, 153, .18) 100%);
+        /* Deep pool in the bottom-left corner under headline */
+        radial-gradient(105% 80% at -5% 108%,
+            rgba(9, 5, 20, .98) 0%,
+            rgba(9, 5, 20, .85) 35%,
+            rgba(9, 5, 20, .5) 60%,
+            transparent 85%),
+        /* Ambient luxury brand tint */
+        linear-gradient(125deg, rgba(124, 58, 237, .24) 0%, transparent 50%, rgba(236, 72, 153, .2) 100%);
 }
 
 .hero-inner {
@@ -5762,6 +5742,23 @@ section {
 }
 
 /* ---------- 30. Client Logos Marquee ---------- */
+.trust-banner {
+    padding-block: clamp(3.5rem, 5vw, 5rem);
+    position: relative;
+    overflow: hidden;
+}
+
+.trust-title {
+    text-align: center;
+    font-family: var(--f-display);
+    font-size: clamp(0.72rem, 1vw, 0.88rem);
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--pink-bright);
+    margin-bottom: 0.5rem;
+}
+
 .client-logo {
     display: flex;
     align-items: center;
@@ -5791,13 +5788,13 @@ section {
     max-width: 165px;
     width: auto;
     object-fit: contain;
-    filter: none;
+    filter: brightness(1.2) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
     transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .client-logo:hover img {
     transform: scale(1.05);
-    filter: drop-shadow(0 4px 12px rgba(236, 72, 153, 0.3));
+    filter: brightness(1.4) drop-shadow(0 4px 14px rgba(236, 72, 153, 0.4));
 }
 
 .fallback-text {
@@ -5820,24 +5817,27 @@ section {
    ========================================================================== */
 .section-campaigns {
     overflow: hidden;
-    padding-block: clamp(3rem, 6vw, 5rem);
+    padding-block: clamp(4rem, 6vw, 6rem);
+    background: var(--canvas);
+    position: relative;
+    scroll-margin-top: 90px;
 }
 
 .campaigns-marquee {
     display: flex;
     overflow: hidden;
-    padding-block: 1.5rem;
+    padding-block: 2.5rem 3.2rem;
     margin-top: 1.5rem;
-    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
 }
 
 .campaigns-track {
     display: flex;
     flex: none;
-    gap: clamp(1.2rem, 3vw, 2.5rem);
-    padding-right: clamp(1.2rem, 3vw, 2.5rem);
-    animation: campaignsSlide 30s linear infinite;
+    gap: clamp(3.2rem, 5vw, 4.8rem);
+    padding-right: clamp(3.2rem, 5vw, 4.8rem);
+    animation: campaignsSlide 50s linear infinite;
     will-change: transform;
 }
 
@@ -5849,7 +5849,6 @@ section {
     0% {
         transform: translateX(0);
     }
-
     100% {
         transform: translateX(-50%);
     }
@@ -5859,105 +5858,264 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: clamp(180px, 20vw, 240px);
+    width: clamp(235px, 18.5vw, 275px);
     flex-shrink: 0;
-    transition: transform 0.3s ease;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    user-select: none;
 }
 
 .reel-card:hover {
-    transform: translateY(-8px);
+    border: none;
+    box-shadow: none;
+}
+
+.reel-card.audio-active {
+    border: none;
+    box-shadow: none;
 }
 
 .reel-video-wrap {
     position: relative;
     width: 100%;
     aspect-ratio: 9 / 16;
-    border-radius: 20px;
+    border-radius: 28px;
     overflow: hidden;
-    background-color: #000;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
-    margin-bottom: 1rem;
-    border: none;
-    transform-origin: center center;
-    animation: cuteShake 6s ease-in-out infinite;
+    background-color: #0b0716;
+    box-shadow: 0 12px 30px -6px rgba(15, 23, 42, 0.16), 0 4px 12px rgba(0, 0, 0, 0.06);
+    transform-origin: 50% 0%;
+    transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), box-shadow 0.4s ease;
+    will-change: transform;
 }
 
-.reel-card:nth-child(even) .reel-video-wrap {
-    animation-duration: 7s;
-    animation-name: cuteShakeAlt;
-    animation-delay: -3s;
+/* Alternating Slow Pendulum Sway */
+.reel-card:nth-child(4n + 1) .reel-video-wrap {
+    animation: pendulumOdd 5.8s ease-in-out infinite;
+    animation-delay: 0s;
 }
 
-@keyframes cuteShake {
+.reel-card:nth-child(4n + 2) .reel-video-wrap {
+    animation: pendulumEven 5.4s ease-in-out infinite;
+    animation-delay: -1.35s;
+}
 
-    0%,
-    100% {
-        transform: rotate(-3deg);
+.reel-card:nth-child(4n + 3) .reel-video-wrap {
+    animation: pendulumOdd 6.2s ease-in-out infinite;
+    animation-delay: -2.7s;
+}
+
+.reel-card:nth-child(4n + 4) .reel-video-wrap {
+    animation: pendulumEven 5.6s ease-in-out infinite;
+    animation-delay: -4.05s;
+}
+
+@keyframes pendulumOdd {
+    0% {
+        transform: rotate(-3.5deg);
     }
-
     50% {
         transform: rotate(3deg);
     }
+    100% {
+        transform: rotate(-3.5deg);
+    }
 }
 
-@keyframes cuteShakeAlt {
-
-    0%,
-    100% {
-        transform: rotate(3deg);
+@keyframes pendulumEven {
+    0% {
+        transform: rotate(3.5deg);
     }
-
     50% {
         transform: rotate(-3deg);
     }
+    100% {
+        transform: rotate(3.5deg);
+    }
+}
+
+.reel-card:hover .reel-video-wrap {
+    transform: rotate(0deg) scale(1.04) translateY(-6px) !important;
+    animation-play-state: paused !important;
+    box-shadow: 0 24px 48px -8px rgba(24, 119, 242, 0.32), 0 8px 24px rgba(0, 0, 0, 0.16);
 }
 
 .reel-video-wrap video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    object-position: 50% 50%;
+    display: block;
+    transition: transform 0.4s ease;
 }
 
-.reel-card:hover .reel-video-wrap video {
-    transform: scale(1.04);
-}
-
-.reel-icon {
+/* Floating Circular Platform Tag at Bottom Center of Video */
+.reel-platform-badge {
     position: absolute;
     bottom: 14px;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 5;
     width: 44px;
     height: 44px;
-    background: #fff;
     border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-    z-index: 2;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 0;
+    border: none;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
-.reel-card:hover .reel-icon {
+.reel-card:hover .reel-platform-badge {
     transform: translateX(-50%) scale(1.1);
-    box-shadow: 0 8px 20px rgba(0, 82, 204, 0.4);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
 }
 
-.reel-icon svg {
+.reel-platform-badge svg {
     width: 22px;
     height: 22px;
+    color: #1877f2;
 }
 
-.reel-stats {
-    font-family: var(--f-display);
-    font-size: clamp(0.85rem, 1.2vw, 1rem);
-    font-weight: 900;
-    color: #0052cc;
-    text-transform: uppercase;
+.reel-platform-badge span {
+    display: none;
+}
+
+/* Speaker Audio Button */
+.reel-audio-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 6;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(11, 7, 22, 0.72);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(255, 255, 255, 0.28);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.reel-audio-btn:hover {
+    transform: scale(1.12);
+    background: #1877f2;
+    border-color: #ffffff;
+    box-shadow: 0 4px 16px rgba(24, 119, 242, 0.6);
+}
+
+.reel-audio-btn.is-unmuted {
+    background: #1877f2;
+    border-color: #ffffff;
+    box-shadow: 0 0 16px rgba(24, 119, 242, 0.75);
+}
+
+.reel-audio-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+.audio-waves {
+    display: none;
+    align-items: center;
+    gap: 2px;
+    margin-left: 2px;
+}
+
+.reel-audio-btn.is-unmuted .audio-waves {
+    display: flex;
+}
+
+.audio-waves i {
+    display: block;
+    width: 2px;
+    height: 10px;
+    background: #ffffff;
+    border-radius: 2px;
+    animation: waveBounce 0.8s ease-in-out infinite alternate;
+}
+
+.audio-waves i:nth-child(2) {
+    animation-delay: 0.2s;
+    height: 14px;
+}
+
+.audio-waves i:nth-child(3) {
+    animation-delay: 0.4s;
+    height: 8px;
+}
+
+@keyframes waveBounce {
+    0% { transform: scaleY(0.4); }
+    100% { transform: scaleY(1.2); }
+}
+
+/* Card Content / Typography */
+.reel-content {
+    margin-top: 14px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    letter-spacing: 0.03em;
+    width: 100%;
+}
+
+.reel-title {
+    font-family: var(--f-display);
+    font-size: clamp(0.88rem, 1.05vw, 1.02rem);
+    font-weight: 800;
+    color: #ffffff !important;
+    margin: 0;
+    line-height: 1.3;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: normal;
+    overflow: visible;
+}
+
+.reel-note {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #be185d;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.reel-stats-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--f-display);
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: #0052cc;
+    margin-top: 5px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    padding: 4px 10px;
+    border-radius: 8px;
+    width: fit-content;
+}
+
+.stats-dot {
+    color: #94a3b8;
+    font-size: 0.7rem;
 }
 
 /* ==========================================================================
@@ -6008,14 +6166,10 @@ section {
    to roughly 2:1 and made it the least readable thing on the page. Holding
    both stops light keeps the brand colour while staying legible. */
 .hero-accent {
-    background-image: linear-gradient(96deg, #e9d5ff 0%, #fbcfe8 55%, #fecdd3 100%);
+    background-image: linear-gradient(96deg, #c084fc 0%, #f472b6 48%, #fbbf24 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    /* Must be reset, not inherited. With background-clip:text the gradient is a
-       background layer, and the h1's dark text-shadow paints *above* it — the
-       inherited shadow was greying the phrase out to a dull mauve. The glow is
-       reproduced with a filter, which composites outside the glyphs instead. */
     text-shadow: none;
     filter: drop-shadow(0 2px 16px rgba(11, 7, 22, .9)) drop-shadow(0 1px 3px rgba(11, 7, 22, .75));
 }
@@ -6427,25 +6581,25 @@ section {
     animation: orbitSpinRev 30s linear infinite;
 }
 
-.node-1 {
+.ceo-orbit-stage .node-1 {
     top: -5%;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.node-2 {
+.ceo-orbit-stage .node-2 {
     top: 50%;
     right: -5%;
     transform: translateY(-50%);
 }
 
-.node-3 {
+.ceo-orbit-stage .node-3 {
     bottom: -5%;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.node-4 {
+.ceo-orbit-stage .node-4 {
     top: 50%;
     left: -5%;
     transform: translateY(-50%);
@@ -7373,6 +7527,248 @@ section {
 }
 
 /* ==========================================================================
+   49. Unified Obsidian Theme
+   One shared dark surface system for every page and section. The compact
+   enforcement layer at the end wins over retired compatibility rules.
+   ========================================================================== */
+
+:root {
+    --canvas: #05020c;
+    --canvas-2: #0a0415;
+    --canvas-3: #120821;
+    --glass: rgba(255, 255, 255, .035);
+    --glass-strong: rgba(255, 255, 255, .065);
+    --hair: rgba(192, 132, 252, .2);
+    --hair-soft: rgba(192, 132, 252, .1);
+    --grad-band: linear-gradient(150deg, #0f061e 0%, #090313 56%, #05020c 100%);
+    --shadow-photo: 0 30px 65px -20px rgba(0, 0, 0, .92);
+    --shadow-lift: 0 20px 46px -16px rgba(0, 0, 0, .82);
+}
+
+html,
+body {
+    background: var(--canvas);
+}
+
+body {
+    background-image:
+        radial-gradient(70% 48% at 92% 0%, rgba(109, 40, 217, .08), transparent 68%),
+        radial-gradient(60% 42% at 0% 32%, rgba(190, 24, 93, .05), transparent 70%);
+    background-attachment: fixed;
+}
+
+/* Header and navigation now remain dark both over the hero and after scroll. */
+.nav,
+.nav.stuck {
+    background: rgba(5, 2, 12, .88);
+    border-bottom-color: rgba(192, 132, 252, .16);
+    box-shadow: 0 14px 36px -24px rgba(0, 0, 0, .95);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+}
+
+.nav.stuck {
+    background: rgba(5, 2, 12, .97);
+}
+
+.nav .brand-word,
+.nav .nav-link {
+    color: var(--text-soft);
+}
+
+.nav .nav-link:hover,
+.nav .nav-link[aria-current="page"] {
+    color: #ffffff;
+}
+
+.burger span {
+    background: #ffffff;
+}
+
+.nav-sub {
+    color: var(--text-soft);
+    background: rgba(10, 4, 21, .98);
+    border-color: rgba(192, 132, 252, .22);
+    box-shadow: 0 26px 56px -24px rgba(0, 0, 0, .95), var(--glow-violet);
+}
+
+.nav-sub a {
+    color: var(--text-soft);
+}
+
+.nav-sub a:hover {
+    color: #ffffff;
+    background: rgba(139, 92, 246, .12);
+}
+
+.nav-drawer {
+    background:
+        radial-gradient(70% 55% at 82% 8%, rgba(139, 92, 246, .13), transparent 64%),
+        #070310;
+}
+
+/* The homepage footage keeps its personality, but no longer washes the page white. */
+.hero {
+    color: #ffffff;
+    background: var(--canvas);
+}
+
+.hero-video video {
+    opacity: .9;
+    filter: saturate(1.04) contrast(1.06) brightness(.76);
+}
+
+.hero-video::after {
+    background:
+        linear-gradient(180deg,
+            rgba(3, 1, 8, .58) 0%,
+            rgba(4, 2, 10, .24) 34%,
+            rgba(5, 2, 12, .66) 72%,
+            var(--canvas) 100%),
+        radial-gradient(95% 78% at 0% 100%, rgba(5, 2, 12, .86) 0%, rgba(5, 2, 12, .35) 52%, transparent 78%),
+        linear-gradient(125deg, rgba(76, 29, 149, .22) 0%, transparent 48%, rgba(190, 24, 93, .16) 100%);
+}
+
+.hero-main-title {
+    color: #ffffff;
+    text-shadow: 0 3px 24px rgba(0, 0, 0, .82), 0 1px 3px rgba(0, 0, 0, .95);
+}
+
+.hero-accent {
+    filter: drop-shadow(0 4px 18px rgba(0, 0, 0, .72));
+}
+
+/* Consistent section hierarchy: base obsidian, raised aubergine, rich feature band. */
+.page-head {
+    background:
+        radial-gradient(46% 120% at 100% 0%, rgba(109, 40, 217, .14), transparent 72%),
+        linear-gradient(180deg, #080312 0%, var(--canvas) 100%);
+    border-bottom: 1px solid var(--hair-soft);
+}
+
+.tint {
+    background:
+        radial-gradient(62% 90% at 92% 4%, rgba(109, 40, 217, .09), transparent 66%),
+        linear-gradient(150deg, #0c0518 0%, #080311 62%, #05020c 100%);
+    border-block-color: var(--hair-soft);
+}
+
+.ink-band,
+.stories-showcase {
+    color: var(--text-soft);
+    background:
+        radial-gradient(62% 86% at 90% 0%, rgba(109, 40, 217, .15), transparent 64%),
+        radial-gradient(56% 76% at 4% 100%, rgba(190, 24, 93, .1), transparent 64%),
+        linear-gradient(150deg, #0e061b 0%, #080312 62%, #05020c 100%);
+    border-block-color: var(--hair-soft);
+}
+
+.trust-banner {
+    background:
+        radial-gradient(70% 110% at 50% 0%, rgba(109, 40, 217, .1), transparent 66%),
+        #070310;
+    border-block-color: var(--hair-soft);
+}
+
+.trust-title {
+    color: var(--pink-bright);
+}
+
+#campaigns.section-campaigns {
+    color: var(--text-soft) !important;
+    background:
+        radial-gradient(68% 94% at 50% 0%, rgba(24, 119, 242, .07), transparent 64%),
+        linear-gradient(180deg, #070310 0%, #05020c 100%) !important;
+    border-block: 1px solid var(--hair-soft);
+}
+
+#campaigns .display-2,
+#campaigns .display-3,
+#campaigns .section-head,
+#campaigns .lead {
+    color: var(--text-soft);
+}
+
+.section-showreel,
+.section-showreel-glimpses,
+.award-gallery-section {
+    background:
+        radial-gradient(circle at 50% 15%, rgba(76, 29, 149, .12), transparent 58%),
+        #06020e;
+}
+
+.cta-band {
+    background:
+        radial-gradient(48% 120% at 50% 100%, rgba(190, 24, 93, .11), transparent 68%),
+        linear-gradient(180deg, var(--canvas) 0%, #080312 100%);
+    border-top: 1px solid var(--hair-soft);
+}
+
+.luxury-grid-section,
+.luxury-grid-container,
+.luxury-grid-cell,
+.luxury-empty-cell {
+    background: #06030c;
+}
+
+/* Shared cards use the same near-black glass instead of mixed black/white panels. */
+.swipe-card,
+.offer-card-visual,
+.visual-pillar-card,
+.visual-category-card,
+.visual-funnel-step,
+.creator-tier-box,
+.form-tabs {
+    background: linear-gradient(155deg, rgba(18, 8, 33, .86), rgba(7, 3, 16, .96));
+    border-color: rgba(192, 132, 252, .14);
+    box-shadow: 0 16px 38px rgba(0, 0, 0, .48);
+}
+
+.field select option {
+    color: var(--text);
+    background: #0a0415;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: rgba(226, 217, 243, .48);
+}
+
+.btn-ghost,
+.btn-ghost-glass {
+    color: var(--text-soft);
+    background: rgba(139, 92, 246, .06);
+    border-color: rgba(192, 132, 252, .24);
+}
+
+/* Close every page with the same deep footer instead of the retired white wash. */
+.footer {
+    color: var(--text-soft);
+    background:
+        radial-gradient(56% 70% at 96% 2%, rgba(109, 40, 217, .12), transparent 62%),
+        radial-gradient(52% 64% at 2% 98%, rgba(190, 24, 93, .09), transparent 64%),
+        linear-gradient(180deg, #080312 0%, #040109 100%);
+    border-top-color: var(--hair);
+}
+
+.footer-video-wrap video {
+    opacity: .08;
+}
+
+.footer-video-wrap::after {
+    background: linear-gradient(180deg, rgba(5, 2, 12, .82) 0%, rgba(4, 1, 9, .98) 100%);
+}
+
+.footer-mail,
+.footer-links a {
+    color: var(--text-soft);
+}
+
+.footer-mega {
+    color: rgba(192, 132, 252, .055);
+}
+
+/* ==========================================================================
    FLOATING ROUNDED RECTANGLE EMBEDDED SHOWREEL
    ========================================================================== */
 .section-showreel-glimpses {
@@ -8200,9 +8596,9 @@ section {
 .ceo-orbit-wrapper {
     position: relative;
     width: 100%;
-    max-width: 1040px;
+    max-width: 1180px;
     margin: 0 auto;
-    height: clamp(600px, 66vw, 750px);
+    height: clamp(640px, 68vw, 780px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8215,8 +8611,8 @@ section {
 
 .orbit-halo-glow {
     position: absolute;
-    width: clamp(280px, 38vw, 420px);
-    height: clamp(280px, 38vw, 420px);
+    width: clamp(320px, 42vw, 480px);
+    height: clamp(320px, 42vw, 480px);
     border-radius: 50%;
     background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, rgba(251, 191, 36, 0.16) 45%, transparent 70%);
     filter: blur(40px);
@@ -8247,21 +8643,21 @@ section {
 }
 
 .orbit-ring-outer {
-    width: clamp(400px, 82%, 840px);
-    height: clamp(400px, 80%, 580px);
+    width: clamp(420px, 80%, 920px);
+    height: clamp(420px, 78%, 620px);
     border: 1.5px dashed rgba(236, 72, 153, 0.35);
     box-shadow: 0 0 30px rgba(236, 72, 153, 0.12);
 }
 
 .orbit-ring-mid {
-    width: clamp(300px, 62%, 620px);
-    height: clamp(300px, 60%, 420px);
+    width: clamp(320px, 62%, 680px);
+    height: clamp(320px, 60%, 460px);
     border: 1px solid rgba(139, 92, 246, 0.22);
 }
 
 .orbit-ring-inner {
-    width: clamp(210px, 44%, 420px);
-    height: clamp(210px, 42%, 280px);
+    width: clamp(220px, 44%, 440px);
+    height: clamp(220px, 42%, 300px);
     border: 1px dashed rgba(251, 191, 36, 0.25);
 }
 
@@ -8293,23 +8689,23 @@ section {
 }
 
 .stat-pill-tl {
-    top: 22px;
-    left: 24px;
+    top: 24px;
+    left: 28px;
 }
 
 .stat-pill-tr {
-    top: 22px;
-    right: 24px;
+    top: 24px;
+    right: 28px;
 }
 
 .stat-pill-bl {
-    bottom: 22px;
-    left: 24px;
+    bottom: 24px;
+    left: 28px;
 }
 
 .stat-pill-br {
-    bottom: 22px;
-    right: 24px;
+    bottom: 24px;
+    right: 28px;
 }
 
 /* Orbiting Satellites Track */
@@ -8324,52 +8720,74 @@ section {
     transform: translate(-50%, -50%);
     transition: transform 0.35s cubic-bezier(0.2, 1, 0.3, 1), z-index 0.2s;
     z-index: 10;
+    width: max-content;
+    height: max-content;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
 }
 
 /* 8 Symmetrical Coordinates around the Main Center Circle */
-.node-1 {
-    top: 14%;
+.orbit-node.node-1, .node-1 {
+    top: 15%;
     left: 50%;
+    right: auto;
+    bottom: auto;
 }
 
-.node-2 {
-    top: 24%;
-    left: 80%;
+.orbit-node.node-2, .node-2 {
+    top: 25%;
+    left: 77%;
+    right: auto;
+    bottom: auto;
 }
 
-.node-3 {
+.orbit-node.node-3, .node-3 {
     top: 50%;
-    left: 88%;
+    left: 84%;
+    right: auto;
+    bottom: auto;
 }
 
-.node-4 {
-    top: 76%;
-    left: 80%;
+.orbit-node.node-4, .node-4 {
+    top: 75%;
+    left: 77%;
+    right: auto;
+    bottom: auto;
 }
 
-.node-5 {
-    top: 86%;
+.orbit-node.node-5, .node-5 {
+    top: 85%;
     left: 50%;
+    right: auto;
+    bottom: auto;
 }
 
-.node-6 {
-    top: 76%;
-    left: 20%;
+.orbit-node.node-6, .node-6 {
+    top: 75%;
+    left: 23%;
+    right: auto;
+    bottom: auto;
 }
 
-.node-7 {
+.orbit-node.node-7, .node-7 {
     top: 50%;
-    left: 12%;
+    left: 16%;
+    right: auto;
+    bottom: auto;
 }
 
-.node-8 {
-    top: 24%;
-    left: 20%;
+.orbit-node.node-8, .node-8 {
+    top: 25%;
+    left: 23%;
+    right: auto;
+    bottom: auto;
 }
 
 /* Hover Animation on Satellite Nodes */
 .orbit-node:hover {
-    transform: translate(-50%, -50%) scale(1.22);
+    transform: translate(-50%, -50%) scale(1.18);
     z-index: 40;
 }
 
@@ -8409,52 +8827,56 @@ section {
 /* Clean Non-Overlapping Info Capsule Pill */
 .orbit-node-info {
     position: absolute;
-    bottom: -16px;
+    bottom: -18px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 5px;
-    padding: 3px 10px;
+    gap: 6px;
+    padding: 4px 12px;
     border-radius: 999px;
-    background: rgba(11, 7, 22, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.7);
+    background: rgba(13, 8, 26, 0.97) !important;
+    border: 1px solid rgba(255, 255, 255, 0.28) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.85), 0 0 14px rgba(236, 72, 153, 0.25);
     white-space: nowrap;
     pointer-events: none;
     transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
-    z-index: 5;
+    z-index: 15;
 }
 
 .orbit-node-info strong {
     font-family: var(--f-display);
-    font-size: 0.66rem;
+    font-size: 0.72rem;
     font-weight: 800;
-    color: #ffffff;
+    color: #ffffff !important;
     line-height: 1;
+    letter-spacing: 0.02em;
 }
 
 .orbit-node-info .node-tag {
     font-family: var(--f-display);
-    font-size: 0.56rem;
-    font-weight: 700;
-    color: var(--pink-light);
-    background: rgba(236, 72, 153, 0.16);
-    padding: 1px 5px;
-    border-radius: 4px;
-    letter-spacing: 0.02em;
+    font-size: 0.58rem;
+    font-weight: 800;
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #ec4899, #8b5cf6) !important;
+    padding: 2px 7px;
+    border-radius: 999px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    box-shadow: 0 2px 6px rgba(236, 72, 153, 0.4);
 }
 
 .orbit-node:hover .orbit-node-info {
-    border-color: #fbbf24;
-    background: rgba(18, 10, 32, 0.98);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8), 0 0 16px rgba(251, 191, 36, 0.35);
+    border-color: #fbbf24 !important;
+    background: rgba(22, 11, 42, 0.98) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9), 0 0 20px rgba(251, 191, 36, 0.5) !important;
+    transform: translateX(-50%) scale(1.08);
 }
 
 .orbit-node:hover .orbit-node-info strong {
-    color: #fbbf24;
+    color: #fbbf24 !important;
 }
 
 /* Center Main Hub (CEO Shubh Gupta) - EXACT CENTER */
@@ -8517,7 +8939,7 @@ section {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    object-position: center 14%;
+    object-position: center top;
     display: block;
     border: 3.5px solid #0b0716;
 }
@@ -8558,26 +8980,26 @@ section {
     gap: 2px;
     padding: 6px 18px;
     border-radius: 999px;
-    background: rgba(11, 7, 22, 0.95);
-    border: 1px solid rgba(251, 191, 36, 0.5);
+    background: rgba(13, 8, 26, 0.97) !important;
+    border: 1.5px solid rgba(251, 191, 36, 0.65) !important;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 18px rgba(251, 191, 36, 0.25);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85), 0 0 20px rgba(251, 191, 36, 0.3) !important;
     white-space: nowrap;
-    z-index: 5;
+    z-index: 25;
     transition: all 0.3s ease;
 }
 
 .orbit-center-hub:hover .center-hub-label-card {
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.8), 0 0 24px rgba(251, 191, 36, 0.45);
-    border-color: #fbbf24;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.9), 0 0 28px rgba(251, 191, 36, 0.5) !important;
+    border-color: #fbbf24 !important;
 }
 
 .center-hub-name {
     font-family: var(--f-display);
     font-size: clamp(0.85rem, 1.15vw, 1rem);
     font-weight: 800;
-    color: #ffffff;
+    color: #ffffff !important;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -8594,7 +9016,7 @@ section {
     font-family: var(--f-display);
     font-size: 0.67rem;
     font-weight: 700;
-    color: #fbbf24;
+    color: #fbbf24 !important;
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
@@ -9092,46 +9514,37 @@ section {
 }
 
 /* ==========================================================================
-   44. Light theme — newer component surfaces
-   A set of components (the funnel, the comparison columns, the creator tier
-   boxes, the offer cards, the orbit stage) were built with their own dark
-   gradient panels rather than through the tokens, so the theme flip left them
-   as dark islands on a white page — and every one of them holds body copy that
-   is now dark, so the text inside was unreadable at around 1.1–1.9:1.
-
-   Same rule as section 42 applies: panels go light, scrims over photographs
-   stay dark. Anything positioned on top of an image keeps its dark plate and
-   gets pinned to light text.
+   44. Dark Luxury Theme — Component Surfaces & Accents
    ========================================================================== */
 
 :root {
-    /* Referenced as var(--gold-light, #fbbf24) in a dozen places. Defining it
-       converts all of those at once; #fbbf24 is 1.5:1 on white. */
-    --gold-light: #b45309;
-    --danger: #dc2626;
-    --success: #047857;
+    --gold-light: #fbbf24;
+    --danger: #f87171;
+    --success: #34d399;
 }
 
 /* ---------- Funnel ---------- */
 .visual-funnel-step {
-    background: linear-gradient(145deg, #faf5ff 0%, #ffffff 100%);
-    border: 1px solid var(--hair);
+    background: linear-gradient(145deg, rgba(26, 14, 48, 0.75) 0%, rgba(15, 8, 32, 0.92) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
 }
 
 .visual-funnel-step:hover {
-    border-color: rgba(236, 72, 153, .4);
+    border-color: rgba(236, 72, 153, .55);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(236, 72, 153, 0.2);
 }
 
 /* ---------- Comparison columns ---------- */
 .visual-compare-col.traditional {
-    background: linear-gradient(165deg, #fff6f6 0%, #ffffff 100%);
-    border: 1px solid rgba(220, 38, 38, .22);
+    background: linear-gradient(165deg, rgba(35, 15, 25, 0.75) 0%, rgba(18, 9, 16, 0.92) 100%);
+    border: 1px solid rgba(248, 113, 113, 0.3);
 }
 
 .visual-compare-col.velora {
-    background: linear-gradient(165deg, #f8f1ff 0%, #fdf2fa 100%);
-    border: 1px solid rgba(236, 72, 153, .35);
-    box-shadow: 0 16px 40px -22px rgba(76, 29, 149, .3), var(--glow-pink);
+    background: linear-gradient(165deg, rgba(30, 12, 52, 0.9) 0%, rgba(16, 8, 30, 0.96) 100%);
+    border: 1px solid rgba(236, 72, 153, 0.45);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), var(--glow-pink);
 }
 
 .visual-compare-col.traditional h3,
@@ -9146,23 +9559,25 @@ section {
 }
 
 .pillar-big-metric {
-    color: var(--text);
+    color: #ffffff;
 }
 
 /* ---------- Creator tier boxes ---------- */
 .creator-tier-box {
-    background: linear-gradient(180deg, #fbf8ff 0%, #ffffff 100%);
-    border: 1px solid var(--hair);
+    background: linear-gradient(180deg, rgba(22, 11, 40, 0.78) 0%, rgba(12, 6, 24, 0.94) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
 }
 
 .creator-tier-featured {
-    background: linear-gradient(180deg, #fff9ed 0%, #ffffff 100%);
-    border: 1px solid rgba(180, 83, 9, .35);
-    box-shadow: 0 18px 45px -24px rgba(76, 29, 149, .3), 0 0 24px -12px rgba(180, 83, 9, .3);
+    background: linear-gradient(180deg, rgba(32, 16, 52, 0.85) 0%, rgba(15, 7, 27, 0.96) 100%);
+    border: 1px solid rgba(251, 191, 36, 0.5);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65), 0 0 28px rgba(251, 191, 36, 0.25);
 }
 
 .creator-tier-featured:hover {
     border-color: var(--gold-light);
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.75), 0 0 35px rgba(251, 191, 36, 0.4);
 }
 
 .creator-tiers-lead strong,
@@ -9175,333 +9590,81 @@ section {
 }
 
 .tier-barter-tag-gold {
-    background: rgba(180, 83, 9, .08);
-    border-color: rgba(180, 83, 9, .28);
+    background: rgba(251, 191, 36, 0.12);
+    border-color: rgba(251, 191, 36, 0.35);
 }
 
 .tier-price-box {
-    background: rgba(26, 11, 46, .03);
-    border: 1px solid rgba(236, 72, 153, .22);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(236, 72, 153, 0.3);
 }
 
 .tier-price-box-gold {
-    background: rgba(180, 83, 9, .06);
-    border-color: rgba(180, 83, 9, .3);
+    background: rgba(251, 191, 36, 0.08);
+    border-color: rgba(251, 191, 36, 0.4);
 }
 
 .tier-cta-gold {
-    background: linear-gradient(135deg, rgba(180, 83, 9, .1), rgba(217, 119, 6, .14));
-    border-color: rgba(180, 83, 9, .38);
-    color: #7c2d12;
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(245, 158, 11, 0.3));
+    border-color: rgba(251, 191, 36, 0.5);
+    color: #fbbf24;
 }
 
 /* ---------- Offer cards ---------- */
 .offer-card-visual {
-    background: #ffffff;
-    border: 1px solid var(--hair);
+    background: rgba(17, 9, 32, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
 }
 
 .offer-card-title span {
-    color: var(--pink);
-}
-
-/* ---------- Orbit stage ---------- */
-.orbit-stage {
-    background: radial-gradient(circle at center,
-            #ffffff 0%,
-            #fbf7ff 62%,
-            #f4ecff 100%);
-    border: 1px solid var(--hair);
-    box-shadow: 0 25px 60px -30px rgba(76, 29, 149, .35), var(--glow-violet);
-}
-
-.orbit-node-inner {
-    border-color: #ffffff;
-}
-
-.orbit-node-info {
-    background: rgba(255, 255, 255, .96);
-    border-color: var(--hair);
-    color: var(--text);
-}
-
-.orbit-node:hover .orbit-node-info {
-    background: #ffffff;
-    border-color: var(--gold-light);
-    box-shadow: 0 6px 20px -8px rgba(76, 29, 149, .4);
-}
-
-.orbit-node:hover .orbit-node-info strong {
-    color: var(--gold-light);
-}
-
-.center-hub-label-card {
-    background: #ffffff;
-    border-color: var(--hair);
-}
-
-.orbit-node-avatar,
-.center-hub-avatar {
-    border-color: #ffffff;
-}
-
-/* ---------- Gallery filter pills ---------- */
-.gallery-filter-btn {
-    color: var(--text-soft);
-    background: rgba(26, 11, 46, .035);
-    border: 1px solid var(--hair);
-}
-
-/* Was #ec4899 -> #8b5cf6, which put white text at 3.8:1. */
-.gallery-filter-btn:hover,
-.gallery-filter-btn.active {
-    background: linear-gradient(135deg, #be185d, #6d28d9);
-    border-color: transparent;
-    color: #fff;
-}
-
-/* ---------- Form validation ---------- */
-.field.invalid input,
-.field.invalid select,
-.field.invalid textarea {
-    border-bottom-color: var(--danger);
-}
-
-.field .err {
-    color: var(--danger);
-}
-
-/* ---------- Badges that sit on photographs ---------- */
-/* These keep their dark plates, because they are over imagery. What they cannot
-   keep is the now-dark token text they were inheriting. */
-.hud-pill,
-.hud-fps,
-.category-badge-stat,
-.service-media-badge-top,
-.service-media-badge-bottom,
-.award-card-meta,
-.bento-metric-pill,
-.creator-tiers-tag {
-    color: rgba(255, 255, 255, .88);
-}
-
-.hud-pill.rec,
-.hud-pill.rec i {
-    color: #fca5a5;
-}
-
-/* The pill's own plate, so the light text on it is guaranteed a dark backing
-   regardless of the photograph underneath. */
-.category-badge-stat,
-.creator-tiers-tag {
-    background: rgba(26, 11, 46, .78);
-    border-color: rgba(255, 255, 255, .2);
-}
-
-/* ---------- Sundry ---------- */
-.node-tag {
-    color: #fff;
-    background: rgba(26, 11, 46, .8);
-}
-
-.offer-metric-pill {
-    color: rgba(255, 255, 255, .9);
-}
-
-.swipe-hint {
-    color: var(--pink);
-    background: rgba(190, 24, 93, .06);
-    border-color: rgba(190, 24, 93, .22);
-}
-
-/* ==========================================================================
-   45. Light theme — final pass
-   Two things the contrast audit turned up once sections 42–44 were in.
-
-   First: lightening a card is only half the job. Several of these components
-   set #ffffff explicitly on their own headings, so once the panel behind them
-   went white the text vanished completely — measured 1.00:1 on the orbit hub
-   name, the offer card title and the tier name. Those are pinned to page dark.
-
-   Second: --pink at #be185d clears AA comfortably on pure white (6.2:1) but
-   several labels sit on the blush and lavender panel tints rather than on
-   white, which pulled a whole cluster of eyebrows, roles and counts down to
-   4.06–4.48 against a 4.5 requirement. Both pinks drop one step darker.
-   ========================================================================== */
-
-:root {
-    /* 8.0:1 on white, and still above 4.5:1 on the darkest panel tint. */
-    --pink: #9d174d;
-    --pink-light: #be185d;
+    color: var(--pink-light);
 }
 
 /* ---------- Pillar cards ---------- */
 .visual-pillar-card {
-    background: linear-gradient(160deg, #faf6ff 0%, #ffffff 100%);
-    border: 1px solid var(--hair);
+    background: linear-gradient(160deg, rgba(23, 11, 42, 0.85) 0%, rgba(13, 7, 26, 0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .visual-pillar-card:hover {
-    border-color: rgba(139, 92, 246, .5);
-    box-shadow: 0 16px 36px -22px rgba(76, 29, 149, .35), var(--glow-violet);
+    border-color: rgba(139, 92, 246, .6);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), var(--glow-violet);
 }
 
 .pillar-vector-badge {
-    background: linear-gradient(135deg, rgba(236, 72, 153, .14), rgba(139, 92, 246, .2));
-    border: 1px solid var(--hair);
-    color: var(--violet-deep);
-    box-shadow: none;
+    background: linear-gradient(135deg, rgba(236, 72, 153, .22), rgba(139, 92, 246, .3));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
 }
 
 .pillar-index-num {
-    color: rgba(26, 11, 46, .38);
+    color: rgba(255, 255, 255, 0.35);
 }
 
 .pillar-big-metric,
 .pillar-short-label,
 .visual-pillar-card h3 {
-    color: var(--text);
+    color: #ffffff;
 }
 
 .pillar-title-tag {
-    color: var(--violet-deep);
-}
-
-.pillar-visual-meter {
-    background: rgba(26, 11, 46, .08);
-}
-
-/* ---------- Headings that were hardcoded white ---------- */
-.center-hub-name,
-.offer-card-title,
-.creator-tier-box .tier-name,
-.tier-deliverable-badge {
-    color: var(--text);
-}
-
-.center-hub-title {
     color: var(--gold-light);
 }
 
-.tier-deliverable-badge.tier-deliverable-gold {
-    color: #7c2d12;
+.pillar-visual-meter {
+    background: rgba(255, 255, 255, 0.08);
 }
 
-.metric-row-stat {
-    color: var(--text);
-}
-
-.visual-compare-col.velora .metric-row-stat {
-    color: var(--success);
-}
-
-.visual-compare-col.traditional h3 {
-    color: var(--danger);
-}
-
-.compare-status-badge.negative {
-    background: rgba(220, 38, 38, .1);
-    border-color: rgba(220, 38, 38, .3);
-}
-
-.compare-status-badge.positive {
-    background: rgba(4, 120, 87, .1);
-    border-color: rgba(4, 120, 87, .3);
-}
-
-/* ---------- Mobile drawer ---------- */
-/* The base rule in section 8 paints a near-black panel and wins over the
-   background set in section 42, because that one only replaced `background`
-   while this sets background-color separately. Both are pinned here. */
-.nav-drawer {
-    background-color: var(--canvas);
-    color: var(--text);
-}
-
-/* ---------- Gold tags sitting on photographs ---------- */
-/* These are on top of imagery, so they need the light end of the amber ramp,
-   not the dark one section 44 introduced for amber on white panels. */
-.award-gallery-card .gold-tag,
-.ugc-views,
-.award-card-overlay .gold-tag {
-    color: #fcd34d;
-}
-
-/* ---------- Filter pills over imagery ---------- */
-/* The gallery filter row sits above the photo grid, so give the inactive pills
-   an opaque light plate rather than a 3.5%-alpha tint that lets whatever is
-   behind them set the contrast. */
-.gallery-filter-btn {
-    background: #ffffff;
-    box-shadow: 0 2px 10px -6px rgba(76, 29, 149, .4);
-}
-
-/* ==========================================================================
-   46. Light theme — last corrections
-   ========================================================================== */
-
-/* The confetti canvas sits behind the CTA band's heading and button, so any
-   particle that drifts under a glyph sets the local contrast there. On the dark
-   theme the particles were darker than the page and it did not matter; on white
-   they are darker than the page too, which is now the wrong direction — a violet
-   particle under the 51px heading measured 2.8:1 against a 3.0 requirement.
-   Light enough now that a particle passing behind type cannot pull it under. */
-.confetti {
-    opacity: .16;
-}
-
-/* One step darker again: each of these sits on its own pale tinted plate rather
-   than on white, which cost roughly 2 points of ratio. */
-:root {
-    --gold-light: #92400e;
-    --danger: #b91c1c;
-    --success: #065f46;
-}
-
-.creator-tiers-lead strong,
-.tier-price-box-gold .price-val,
-.tier-barter-tag-gold,
-.tier-deliverable-badge.tier-deliverable-gold {
-    color: #78350f;
-}
-
-/* The ambient footer video was showing through enough to drag the footer's
-   contact links down to 4.15:1. */
-.footer-video-wrap video {
-    opacity: .06;
-}
-
-.footer-video-wrap::after {
-    background: linear-gradient(180deg, rgba(255, 255, 255, .92) 0%, rgba(255, 255, 255, .97) 100%);
-}
-
-/* Amber tags anywhere over photography, not only inside .award-gallery-card. */
-.gold-tag,
-.ugc-views {
-    color: #fcd34d;
-}
-
-/* Sat on the middle of a violet-to-pink gradient with no plate of its own. */
-.service-media-badge-bottom,
-.service-media-badge-top {
-    background: rgba(26, 11, 46, .8);
-    border: 1px solid rgba(255, 255, 255, .18);
-    color: #fff;
-}
-
-/* ==========================================================================
-   47. Light theme — remaining dark panels on glimpses
-   The production gallery section and the industry category cards were the last
-   two components still painting themselves near-black (#08080a and #0d061c),
-   which left their headings and eyebrows at 1.4–2.6:1.
-   ========================================================================== */
+/* ---------- Gallery & Category Components ---------- */
 .award-gallery-section {
-    background: radial-gradient(circle at 50% 20%, #f7f1ff 0%, #ffffff 70%);
+    background: radial-gradient(circle at 50% 20%, rgba(26, 14, 48, 0.5) 0%, #090514 70%);
 }
 
 .visual-category-card {
-    background: linear-gradient(160deg, #fbf7ff 0%, #ffffff 100%);
-    border: 1px solid var(--hair);
+    background: linear-gradient(160deg, #180d2e 0%, #0d061c 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .visual-category-card:hover {
@@ -9509,34 +9672,408 @@ section {
 }
 
 .category-vector-icon {
-    color: var(--violet-deep);
-    box-shadow: none;
+    color: #ffffff;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
 }
 
 .category-num-tag {
-    color: rgba(26, 11, 46, .38);
+    color: rgba(255, 255, 255, 0.35);
 }
 
 .category-card-title,
 .category-card-title b {
-    color: var(--text);
+    color: #ffffff;
 }
 
-/* The card is light now, so its stat pill does not need a dark plate. */
 .visual-category-card .category-badge-stat {
     color: var(--text-soft);
-    background: rgba(26, 11, 46, .05);
-    border-color: var(--hair);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.12);
 }
 
-/* The bento cards are photographic, so their captions stay light — including
-   the amber tag, which section 44 had pinned to the dark end of the ramp with a
-   more specific selector than section 46's correction could beat. */
-.award-card-meta,
-.award-card-meta span {
-    color: rgba(255, 255, 255, .85);
+.gallery-filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--text-soft);
+    box-shadow: none;
 }
 
-.award-card-meta span.gold-tag {
-    color: #fcd34d;
+.gallery-filter-btn:hover,
+.gallery-filter-btn.active {
+    background: linear-gradient(135deg, #ec4899, #8b5cf6);
+    border-color: transparent;
+    color: #ffffff;
+    box-shadow: 0 4px 18px rgba(236, 72, 153, 0.35);
+}
+
+.footer-video-wrap::after {
+    background: linear-gradient(180deg, rgba(9, 5, 20, 0.75) 0%, rgba(9, 5, 20, 0.96) 100%);
+}
+
+/* ==========================================================================
+   48. Homepage polish — authentic client marks, readable creator labels,
+   and footage-first campaign cards
+   ========================================================================== */
+
+/* Give every client mark its own clear visual lane. The larger fixed lane
+   prevents wide wordmarks and compact app-style marks from crowding each
+   other while the rail moves. */
+.trust-banner .trust-band {
+    padding-block: 1.15rem 1.35rem;
+    mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+}
+
+.trust-banner .trust-track {
+    gap: clamp(3rem, 5vw, 5rem);
+    padding-right: clamp(3rem, 5vw, 5rem);
+}
+
+.trust-banner .client-logo {
+    width: clamp(160px, 14vw, 215px);
+    min-width: clamp(160px, 14vw, 215px);
+    height: 82px;
+    padding: 0;
+    opacity: 1;
+}
+
+.trust-banner .client-logo img {
+    width: auto;
+    height: auto;
+    max-width: 190px;
+    max-height: 64px;
+    object-fit: contain;
+}
+
+.trust-banner .client-logo--square img,
+.trust-banner .client-logo img[src$="meesho.png"],
+.trust-banner .client-logo img[src$="tseries.svg"],
+.trust-banner .client-logo img[src$="aajtak.svg"] {
+    max-width: 68px;
+    max-height: 68px;
+}
+
+.trust-banner .client-logo--wide img {
+    max-width: 200px;
+}
+
+/* Creator portraits stay perfectly circular and use a crop tuned to the
+   subject instead of one global crop for every source photo. */
+#founder .orbit-node-inner,
+#founder .center-hub-avatar-frame {
+    aspect-ratio: 1;
+}
+
+#founder .orbit-node-inner {
+    overflow: visible;
+}
+
+#founder .center-hub-avatar-frame {
+    overflow: hidden;
+}
+
+#founder .orbit-node-inner img,
+#founder .center-hub-avatar-frame img {
+    object-fit: cover;
+    transform-origin: center;
+}
+
+#founder .node-1 img { object-position: 50% 18%; }
+#founder .node-2 img { object-position: 50% 20%; }
+#founder .node-3 img { object-position: 50% 18%; }
+#founder .node-4 img { object-position: 50% 16%; }
+#founder .node-5 img { object-position: 50% 20%; }
+#founder .node-6 img { object-position: 50% 18%; }
+#founder .node-7 img { object-position: 50% 16%; }
+#founder .node-8 img { object-position: 50% 14%; }
+
+/* High-contrast white labels make every creator name readable over the dark
+   orbit artwork, including on photographs with bright edges. */
+#founder .orbit-node-info {
+    bottom: -22px;
+    min-height: 30px;
+    padding: 5px 10px;
+    gap: 5px;
+    background: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, .92) !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .58), 0 0 0 1px rgba(236, 72, 153, .12) !important;
+}
+
+#founder .orbit-node-info strong {
+    color: #19122e !important;
+    font-size: clamp(.68rem, .82vw, .78rem);
+    letter-spacing: 0;
+}
+
+#founder .orbit-node-info .node-tag {
+    color: #9d174d !important;
+    background: #fce7f3 !important;
+    box-shadow: none;
+}
+
+#founder .orbit-node:hover .orbit-node-info {
+    background: #ffffff !important;
+    border-color: #fbbf24 !important;
+}
+
+#founder .orbit-node:hover .orbit-node-info strong {
+    color: #19122e !important;
+}
+
+#founder .center-hub-label-card {
+    background: #ffffff !important;
+    border-color: rgba(251, 191, 36, .9) !important;
+}
+
+#founder .center-hub-name {
+    color: #19122e !important;
+}
+
+#founder .center-hub-title {
+    color: #92400e !important;
+}
+
+/* Campaign reels carry no background card, displaying standalone rounded video canvas and centered title */
+.section-campaigns .campaigns-track {
+    gap: clamp(3.2rem, 5vw, 4.8rem);
+    padding-right: clamp(3.2rem, 5vw, 4.8rem);
+}
+
+.section-campaigns .reel-card {
+    width: clamp(235px, 18.5vw, 275px);
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section-campaigns .reel-video-wrap {
+    aspect-ratio: 9 / 16;
+    border-radius: 28px;
+    background: #0b0716;
+}
+
+.section-campaigns .reel-video-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+}
+
+.section-campaigns .speaker-icon,
+.section-campaigns .speaker-icon.is-muted {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-campaigns .reel-content {
+    margin-top: 14px;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.section-campaigns .reel-title {
+    color: #1877f2;
+    font-size: clamp(.95rem, 1.1vw, 1.08rem);
+    font-weight: 900;
+    line-height: 1.3;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+}
+
+@media (max-width: 600px) {
+    .trust-banner .trust-track {
+        gap: 2.25rem;
+        padding-right: 2.25rem;
+    }
+
+    .trust-banner .client-logo {
+        width: 145px;
+        min-width: 145px;
+        height: 70px;
+    }
+
+    .trust-banner .client-logo img {
+        max-width: 150px;
+        max-height: 54px;
+    }
+
+    #founder .orbit-node-info {
+        bottom: -19px;
+        min-height: 24px;
+        padding: 3px 7px;
+    }
+
+    #founder .orbit-node-info strong {
+        font-size: .58rem;
+    }
+}
+
+/* ==========================================================================
+   50. Obsidian Theme Enforcement
+   Kept last so legacy light-surface compatibility declarations cannot leak
+   back into the shared navigation, hero, content bands, forms or footer.
+   ========================================================================== */
+
+/* Pricing text was originally authored for light cards, so enforce its
+   contrast again inside the final site-wide theme layer. */
+.creator-tier-box .price-curr {
+    color: var(--gold-light);
+}
+
+.creator-tier-box .price-val {
+    color: #ffffff;
+}
+
+.creator-tier-box .tier-price-box-gold .price-val {
+    color: var(--gold-light);
+}
+
+.creator-tier-box .tier-barter-tag {
+    color: #fda4cf;
+    background: #30091f;
+    border-color: rgba(244, 114, 182, .38);
+}
+
+.creator-tier-box .tier-barter-tag-gold {
+    color: #fde68a;
+    background: #382308;
+    border-color: rgba(251, 191, 36, .42);
+}
+
+.nav,
+.nav.stuck {
+    background: rgba(5, 2, 12, .92);
+    border-bottom-color: rgba(192, 132, 252, .16);
+    box-shadow: 0 14px 36px -24px rgba(0, 0, 0, .95);
+}
+
+.nav.stuck {
+    background: rgba(5, 2, 12, .98);
+}
+
+.nav .brand-word,
+.nav .nav-link,
+.nav-sub a {
+    color: var(--text-soft);
+}
+
+.nav .nav-link:hover,
+.nav .nav-link[aria-current="page"],
+.nav-sub a:hover {
+    color: #ffffff;
+}
+
+.nav-sub {
+    background: rgba(10, 4, 21, .98);
+    border-color: rgba(192, 132, 252, .22);
+    box-shadow: 0 26px 56px -24px rgba(0, 0, 0, .95), var(--glow-violet);
+}
+
+.nav-sub a:hover {
+    background: rgba(139, 92, 246, .12);
+}
+
+.hero-video video {
+    opacity: .9;
+    filter: saturate(1.04) contrast(1.06) brightness(.76);
+}
+
+.hero-video::after {
+    background:
+        linear-gradient(180deg, rgba(3, 1, 8, .58) 0%, rgba(4, 2, 10, .24) 34%, rgba(5, 2, 12, .66) 72%, var(--canvas) 100%),
+        radial-gradient(95% 78% at 0% 100%, rgba(5, 2, 12, .86) 0%, rgba(5, 2, 12, .35) 52%, transparent 78%),
+        linear-gradient(125deg, rgba(76, 29, 149, .22) 0%, transparent 48%, rgba(190, 24, 93, .16) 100%);
+}
+
+.hero-main-title {
+    color: #ffffff;
+    text-shadow: 0 3px 24px rgba(0, 0, 0, .82), 0 1px 3px rgba(0, 0, 0, .95);
+}
+
+.hero-accent {
+    filter: drop-shadow(0 4px 18px rgba(0, 0, 0, .72));
+}
+
+.ink-band,
+.stories-showcase {
+    color: var(--text-soft);
+    background:
+        radial-gradient(62% 86% at 90% 0%, rgba(109, 40, 217, .15), transparent 64%),
+        radial-gradient(56% 76% at 4% 100%, rgba(190, 24, 93, .1), transparent 64%),
+        linear-gradient(150deg, #0e061b 0%, #080312 62%, #05020c 100%);
+    border-block-color: var(--hair-soft);
+}
+
+.section-showreel,
+.section-showreel-glimpses,
+.award-gallery-section {
+    background:
+        radial-gradient(circle at 50% 15%, rgba(76, 29, 149, .12), transparent 58%),
+        #06020e;
+}
+
+.swipe-card,
+.offer-card-visual,
+.visual-pillar-card,
+.visual-category-card,
+.visual-funnel-step,
+.creator-tier-box,
+.form-tabs {
+    background: linear-gradient(155deg, rgba(18, 8, 33, .86), rgba(7, 3, 16, .96));
+    border-color: rgba(192, 132, 252, .14);
+    box-shadow: 0 16px 38px rgba(0, 0, 0, .48);
+}
+
+.field select option {
+    color: var(--text);
+    background: #0a0415;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: rgba(226, 217, 243, .48);
+}
+
+.btn-ghost,
+.btn-ghost-glass {
+    color: var(--text-soft);
+    background: rgba(139, 92, 246, .06);
+    border-color: rgba(192, 132, 252, .24);
+}
+
+.footer {
+    color: var(--text-soft);
+    background:
+        radial-gradient(56% 70% at 96% 2%, rgba(109, 40, 217, .12), transparent 62%),
+        radial-gradient(52% 64% at 2% 98%, rgba(190, 24, 93, .09), transparent 64%),
+        linear-gradient(180deg, #080312 0%, #040109 100%);
+    border-top-color: var(--hair);
+}
+
+.footer-video-wrap video {
+    opacity: .08;
+}
+
+.footer-video-wrap::after {
+    background: linear-gradient(180deg, rgba(5, 2, 12, .82) 0%, rgba(4, 1, 9, .98) 100%);
+}
+
+.footer-mail,
+.footer-links a {
+    color: var(--text-soft);
+}
+
+.footer-mega {
+    color: rgba(192, 132, 252, .055);
 }

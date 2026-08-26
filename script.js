@@ -749,25 +749,84 @@
         });
     }
 
-    /* ---------- 16. Award Gallery Filter Handler ---------- */
-    const filterBtns = $$('.gallery-filter-btn');
-    const galleryCards = $$('.award-gallery-card');
+    /* ---------- 17. Creator Campaign Reels Interactive Audio Controller ---------- */
+    const reelCards = $$('.reel-card');
+    if (reelCards.length) {
+        reelCards.forEach(card => {
+            const video = $('video', card);
+            const btn = $('.reel-audio-btn', card);
+            if (!video || !btn) return;
 
-    if (filterBtns.length && galleryCards.length) {
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+            // Start previews on representative footage instead of an intro or
+            // dark title frame, and avoid decoding reels that are off-screen.
+            const previewStart = Number(video.dataset.previewStart || 0);
+            const seekToPreview = () => {
+                if (previewStart > 0 && video.currentTime < previewStart - 0.25) {
+                    video.currentTime = previewStart;
+                }
+            };
+            const playPreview = () => {
+                seekToPreview();
+                if (!reduceMotion) video.play().catch(() => {});
+            };
 
-                const filter = btn.getAttribute('data-filter');
-                galleryCards.forEach(card => {
-                    const category = card.getAttribute('data-category');
-                    if (filter === 'all' || category === filter) {
-                        card.classList.remove('is-filtered-out');
-                    } else {
-                        card.classList.add('is-filtered-out');
-                    }
-                });
+            if (video.readyState >= 1) seekToPreview();
+            else video.addEventListener('loadedmetadata', seekToPreview, { once: true });
+            if (previewStart > 0) video.addEventListener('timeupdate', seekToPreview);
+
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) playPreview();
+                        else video.pause();
+                    });
+                }, { threshold: 0.08 }).observe(card);
+            } else {
+                playPreview();
+            }
+
+            const setSoundState = (unmuted) => {
+                video.muted = !unmuted;
+                btn.classList.toggle('is-unmuted', unmuted);
+                card.classList.toggle('audio-active', unmuted);
+
+                const mutedIcon = $('.speaker-icon.is-muted', btn);
+                const unmutedIcon = $('.speaker-icon.is-unmuted', btn);
+                if (mutedIcon) mutedIcon.style.display = unmuted ? 'none' : 'flex';
+                if (unmutedIcon) unmutedIcon.style.display = unmuted ? 'flex' : 'none';
+                btn.setAttribute('title', unmuted ? 'Click to Mute' : 'Click to Unmute');
+                btn.setAttribute('aria-label', unmuted ? 'Mute audio' : 'Unmute audio');
+            };
+
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const willUnmute = video.muted;
+
+                // When enabling audio on one reel, mute all others for pleasant audio experience
+                if (willUnmute) {
+                    reelCards.forEach(otherCard => {
+                        if (otherCard !== card) {
+                            const otherVid = $('video', otherCard);
+                            const otherBtn = $('.reel-audio-btn', otherCard);
+                            if (otherVid && otherBtn) {
+                                otherVid.muted = true;
+                                otherBtn.classList.remove('is-unmuted');
+                                otherCard.classList.remove('audio-active');
+                                const mI = $('.speaker-icon.is-muted', otherBtn);
+                                const uI = $('.speaker-icon.is-unmuted', otherBtn);
+                                if (mI) mI.style.display = 'flex';
+                                if (uI) uI.style.display = 'none';
+                                otherBtn.setAttribute('title', 'Click to Unmute');
+                            }
+                        }
+                    });
+                }
+
+                setSoundState(willUnmute);
+                if (video.paused) {
+                    playPreview();
+                }
             });
         });
     }
