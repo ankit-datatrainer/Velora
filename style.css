@@ -8424,10 +8424,11 @@ body {
 }
 
 .price-val {
-    font-size: 1.25rem;
+    font-size: 1.05rem;
     font-weight: 800;
     color: #1a0b2e;
     letter-spacing: -0.02em;
+    white-space: nowrap;
 }
 
 .tier-price-box-gold .price-val {
