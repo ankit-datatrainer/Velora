@@ -18,8 +18,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260826-19">
-  <link rel="stylesheet" href="theme.css?v=20260826-5">
+  <link rel="stylesheet" href="style.css?v=20260828-1">
+  <link rel="stylesheet" href="theme.css?v=20260828-1">
     <!-- Enables the section load-in in style.css section 40. Inline and in
          <head> on purpose: it must land before first paint so sections are
          never shown and then snapped to hidden, and if scripting is off the
@@ -532,128 +532,343 @@
       </div>
     </section>
 
-    <!-- ============ VISUAL CAMPAIGN CATEGORIES ============ -->
-    <section class="section" style="padding-top:0">
-      <div class="shell">
-        <div class="section-head">
-          <p class="eyebrow" data-reveal>Where We Excel</p>
-          <h2 class="display-2" data-reveal style="--d:60ms">Categories We<br><span class="gold-solid">Dominate</span>
-          </h2>
+    <!-- ============ VISUAL CAMPAIGN CATEGORIES (HORIZONTAL PINNED 2-ROW SCROLL) ============ -->
+    <section class="prismatic-scroll-section" id="prismatic-process">
+      <div class="prismatic-sticky-container">
+        <!-- Ambient Glowing Background Gradient -->
+        <div class="prismatic-ambient-backdrop" aria-hidden="true"></div>
+
+        <!-- Section Header -->
+        <div class="shell prismatic-header-container">
+          <div class="prismatic-header-row">
+            <div class="prismatic-header-left">
+              <span class="prismatic-badge-lime" data-reveal>OUR METHOD</span>
+              <h2 class="prismatic-hero-title" data-reveal style="--d:60ms">The Prismatic Process</h2>
+            </div>
+            <div class="prismatic-header-right" data-reveal style="--d:120ms">
+              <div class="prismatic-scroll-indicator">
+                <span class="prismatic-pulse-dot"></span>
+                <span class="prismatic-hint-label">Scroll to explore categories</span>
+                <svg class="prismatic-hint-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="visual-category-grid">
-          <!-- 01 Beauty -->
-          <a href="services.html#influencer" class="visual-category-card" data-reveal style="--d:40ms">
-            <div class="category-icon-head">
-              <div class="category-vector-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              </div>
-              <span class="category-num-tag">01</span>
-            </div>
-            <div class="category-card-body">
-              <h3 class="category-card-title">Beauty &amp; <b>Personal Care</b></h3>
-              <span class="category-badge-stat">✨ 120+ Brand Shoots</span>
-            </div>
-          </a>
+        <!-- Horizontal Scroll Viewport & 2-Row Track -->
+        <div class="prismatic-scroll-viewport" id="prismaticViewport">
+          <div class="prismatic-track" id="prismaticTrack">
+            
+            <!-- Row 1: Cards 01 - 04 (and 09, 10) -->
+            <div class="prismatic-row prismatic-row-1">
+              
+              <!-- 01 Beauty & Personal Care -->
+              <a href="services.html#influencer" class="prismatic-card">
+                <div class="prismatic-card-top">
+                  <div class="prismatic-icon-box">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2l2.4 7.2h7.6l-6.1 4.5 2.3 7.3L12 16.5l-6.2 4.5 2.3-7.3L2 9.2h7.6z"/>
+                    </svg>
+                  </div>
+                  <span class="prismatic-card-num">01</span>
+                </div>
+                <div class="prismatic-card-content">
+                  <h3 class="prismatic-card-title">
+                    <span class="title-primary">BEAUTY &amp;</span>
+                    <span class="title-accent">PERSONAL CARE</span>
+                  </h3>
+                  <div class="prismatic-card-tag">
+                    <span class="tag-emoji">✨</span>
+                    <span class="tag-text">120+ Brand Shoots</span>
+                  </div>
+                </div>
+              </a>
 
-          <!-- 02 Fashion -->
-          <a href="services.html#celebrity" class="visual-category-card" data-reveal style="--d:80ms">
-            <div class="category-icon-head">
-              <div class="category-vector-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-              </div>
-              <span class="category-num-tag">02</span>
-            </div>
-            <div class="category-card-body">
-              <h3 class="category-card-title">Fashion &amp; <b>Lifestyle</b></h3>
-              <span class="category-badge-stat">👗 250+ Lookbooks</span>
-            </div>
-          </a>
+              <!-- 02 Fashion & Lifestyle -->
+              <a href="services.html#celebrity" class="prismatic-card">
+                <div class="prismatic-card-top">
+                  <div class="prismatic-icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                      <line x1="3" y1="6" x2="21" y2="6"/>
+                      <path d="M16 10a4 4 0 0 1-8 0"/>
+                    </svg>
+                  </div>
+                  <span class="prismatic-card-num">02</span>
+                </div>
+                <div class="prismatic-card-content">
+                  <h3 class="prismatic-card-title">
+                    <span class="title-primary">FASHION &amp;</span>
+                    <span class="title-accent">LIFESTYLE</span>
+                  </h3>
+                  <div class="prismatic-card-tag">
+                    <span class="tag-emoji">🎽</span>
+                    <span class="tag-text">250+ Lookbooks</span>
+                  </div>
+                </div>
+              </a>
 
-          <!-- 03 Food -->
-          <a href="services.html#event" class="visual-category-card" data-reveal style="--d:120ms">
-            <div class="category-icon-head">
-              <div class="category-vector-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-              </div>
-              <span class="category-num-tag">03</span>
-            </div>
-            <div class="category-card-body">
-              <h3 class="category-card-title">Food &amp; <b>Beverage</b></h3>
-              <span class="category-badge-stat">🍷 85+ Activations</span>
-            </div>
-          </a>
+              <!-- 03 Food & Beverage -->
+              <a href="services.html#event" class="prismatic-card">
+                <div class="prismatic-card-top">
+                  <div class="prismatic-icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                      <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                      <line x1="6" y1="1" x2="6" y2="4"/>
+                      <line x1="10" y1="1" x2="10" y2="4"/>
+                      <line x1="14" y1="1" x2="14" y2="4"/>
+                    </svg>
+                  </div>
+                  <span class="prismatic-card-num">03</span>
+                </div>
+                <div class="prismatic-card-content">
+                  <h3 class="prismatic-card-title">
+                    <span class="title-primary">FOOD &amp;</span>
+                    <span class="title-accent">BEVERAGE</span>
+                  </h3>
+                  <div class="prismatic-card-tag">
+                    <span class="tag-emoji">☕</span>
+                    <span class="tag-text">85+ Activations</span>
+                  </div>
+                </div>
+              </a>
 
-          <!-- 04 Tech -->
-          <a href="services.html#social" class="visual-category-card" data-reveal style="--d:160ms">
-            <div class="category-icon-head">
-              <div class="category-vector-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-              </div>
-              <span class="category-num-tag">04</span>
-            </div>
-            <div class="category-card-body">
-              <h3 class="category-card-title">Tech &amp; <b>Electronics</b></h3>
-              <span class="category-badge-stat">📱 140+ Tech Reviews</span>
-            </div>
-          </a>
+              <!-- 04 Tech & Electronics -->
+              <a href="services.html#social" class="prismatic-card">
+                <div class="prismatic-card-top">
+                  <div class="prismatic-icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                      <line x1="12" y1="18" x2="12.01" y2="18"/>
+                    </svg>
+                  </div>
+                  <span class="prismatic-card-num">04</span>
+                </div>
+                <div class="prismatic-card-content">
+                  <h3 class="prismatic-card-title">
+                    <span class="title-primary">TECH &amp;</span>
+                    <span class="title-accent">ELECTRONICS</span>
+                  </h3>
+                  <div class="prismatic-card-tag">
+                    <span class="tag-emoji">📱</span>
+                    <span class="tag-text">140+ Tech Reviews</span>
+                  </div>
+                </div>
+              </a>
 
-          <!-- 05 Entertainment -->
-          <a href="services.html#movie" class="visual-category-card" data-reveal style="--d:200ms">
-            <div class="category-icon-head">
-              <div class="category-vector-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
-              </div>
-              <span class="category-num-tag">05</span>
-            </div>
-            <div class="category-card-body">
-              <h3 class="category-card-title">Entertainment &amp; <b>OTT</b></h3>
-              <span class="category-badge-stat">🎬 90+ Premieres</span>
-            </div>
-          </a>
+              <!-- 09 Gaming & Esports -->
+              <a href="services.html#influencer" class="prismatic-card">
+                <div class="prismatic-card-top">
+                  <div class="prismatic-icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="6" y1="12" x2="10" y2="12"/>
+                      <line x1="8" y1="10" x2="8" y2="14"/>
+                      <circle cx="15" cy="13" r="1"/>
+                      <circle cx="18" cy="11" r="1"/>
+                      <rect x="2" y="6" width="20" height="12" rx="6"/>
+                    </svg>
+                  </div>
+                  <span class="prismatic-card-num">09</span>
+                </div>
+                <div class="prismatic-card-content">
+                  <h3 class="prismatic-card-title">
+                    <span class="title-primary">GAMING &amp;</span>
+                    <span class="title-accent">ESPORTS</span>
+                  </h3>
+                  <div class="prismatic-card-tag">
+                    <span class="tag-emoji">🎮</span>
+                    <span class="tag-text">110+ Live Streams</span>
+                  </div>
+                </div>
+              </a>
 
-          <!-- 06 Fitness -->
-          <a href="services.html#influencer" class="visual-category-card" data-reveal style="--d:240ms">
-            <div class="category-icon-head">
-              <div class="category-vector-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-              </div>
-              <span class="category-num-tag">06</span>
-            </div>
-            <div class="category-card-body">
-              <h3 class="category-card-title">Health &amp; <b>Fitness</b></h3>
-              <span class="category-badge-stat">⚡ 60+ Challenges</span>
-            </div>
-          </a>
+              <!-- 10 Luxury & Jewellery -->
+              <a href="services.html#celebrity" class="prismatic-card">
+                <div class="prismatic-card-top">
+                  <div class="prismatic-icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M6 3h12l4 6-10 12L2 9z"/>
+                      <path d="M2 9h20"/>
+                      <path d="M10 3v6l2 12 2-12V3"/>
+                    </svg>
+                  </div>
+                  <span class="prismatic-card-num">10</span>
+                </div>
+                <div class="prismatic-card-content">
+                  <h3 class="prismatic-card-title">
+                    <span class="title-primary">LUXURY &amp;</span>
+                    <span class="title-accent">JEWELLERY</span>
+                  </h3>
+                  <div class="prismatic-card-tag">
+                    <span class="tag-emoji">💎</span>
+                    <span class="tag-text">70+ Brand Shoots</span>
+                  </div>
+                </div>
+              </a>
 
-          <!-- 07 Fintech -->
-          <a href="services.html#influencer" class="visual-category-card" data-reveal style="--d:280ms">
-            <div class="category-icon-head">
-              <div class="category-vector-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-              </div>
-              <span class="category-num-tag">07</span>
             </div>
-            <div class="category-card-body">
-              <h3 class="category-card-title">Finance &amp; <b>Fintech</b></h3>
-              <span class="category-badge-stat">💳 45+ App Launches</span>
-            </div>
-          </a>
 
-          <!-- 08 Travel -->
-          <a href="services.html#guest-listing" class="visual-category-card" data-reveal style="--d:320ms">
-            <div class="category-icon-head">
-              <div class="category-vector-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
-              </div>
-              <span class="category-num-tag">08</span>
+            <!-- Row 2: Cards 05 - 08 (and 11, 12) matching Image 4 -->
+            <div class="prismatic-row prismatic-row-2">
+              
+              <!-- 05 Entertainment & OTT -->
+              <a href="services.html#movie" class="prismatic-card">
+                <div class="prismatic-card-top">
+                  <div class="prismatic-icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/>
+                      <line x1="7" y1="2" x2="7" y2="22"/>
+                      <line x1="17" y1="2" x2="17" y2="22"/>
+                      <line x1="2" y1="12" x2="22" y2="12"/>
+                      <line x1="2" y1="7" x2="7" y2="7"/>
+                      <line x1="2" y1="17" x2="7" y2="17"/>
+                      <line x1="17" y1="17" x2="22" y2="17"/>
+                      <line x1="17" y1="7" x2="22" y2="7"/>
+                    </svg>
+                  </div>
+                  <span class="prismatic-card-num">05</span>
+                </div>
+                <div class="prismatic-card-content">
+                  <h3 class="prismatic-card-title">
+                    <span class="title-primary">ENTERTAINMENT &amp;</span>
+                    <span class="title-accent">OTT</span>
+                  </h3>
+                  <div class="prismatic-card-tag">
+                    <span class="tag-emoji">🎬</span>
+                    <span class="tag-text">90+ Premieres</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- 06 Health & Fitness -->
+              <a href="services.html#influencer" class="prismatic-card">
+                <div class="prismatic-card-top">
+                  <div class="prismatic-icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                  </div>
+                  <span class="prismatic-card-num">06</span>
+                </div>
+                <div class="prismatic-card-content">
+                  <h3 class="prismatic-card-title">
+                    <span class="title-primary">HEALTH &amp;</span>
+                    <span class="title-accent">FITNESS</span>
+                  </h3>
+                  <div class="prismatic-card-tag">
+                    <span class="tag-emoji">⚡</span>
+                    <span class="tag-text">60+ Challenges</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- 07 Finance & Fintech -->
+              <a href="services.html#influencer" class="prismatic-card">
+                <div class="prismatic-card-top">
+                  <div class="prismatic-icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                      <line x1="1" y1="10" x2="23" y2="10"/>
+                    </svg>
+                  </div>
+                  <span class="prismatic-card-num">07</span>
+                </div>
+                <div class="prismatic-card-content">
+                  <h3 class="prismatic-card-title">
+                    <span class="title-primary">FINANCE &amp;</span>
+                    <span class="title-accent">FINTECH</span>
+                  </h3>
+                  <div class="prismatic-card-tag">
+                    <span class="tag-emoji">💳</span>
+                    <span class="tag-text">45+ App Launches</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- 08 Travel & Hospitality -->
+              <a href="services.html#guest-listing" class="prismatic-card">
+                <div class="prismatic-card-top">
+                  <div class="prismatic-icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/>
+                      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor"/>
+                    </svg>
+                  </div>
+                  <span class="prismatic-card-num">08</span>
+                </div>
+                <div class="prismatic-card-content">
+                  <h3 class="prismatic-card-title">
+                    <span class="title-primary">TRAVEL &amp;</span>
+                    <span class="title-accent">HOSPITALITY</span>
+                  </h3>
+                  <div class="prismatic-card-tag">
+                    <span class="tag-emoji">✈️</span>
+                    <span class="tag-text">75+ Destination Trips</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- 11 Real Estate & Living -->
+              <a href="services.html#social" class="prismatic-card">
+                <div class="prismatic-card-top">
+                  <div class="prismatic-icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                      <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                  </div>
+                  <span class="prismatic-card-num">11</span>
+                </div>
+                <div class="prismatic-card-content">
+                  <h3 class="prismatic-card-title">
+                    <span class="title-primary">REAL ESTATE &amp;</span>
+                    <span class="title-accent">LIVING</span>
+                  </h3>
+                  <div class="prismatic-card-tag">
+                    <span class="tag-emoji">🏡</span>
+                    <span class="tag-text">55+ Property Tours</span>
+                  </div>
+                </div>
+              </a>
+
+              <!-- 12 EdTech & Learning -->
+              <a href="services.html#influencer" class="prismatic-card">
+                <div class="prismatic-card-top">
+                  <div class="prismatic-icon-box">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    </svg>
+                  </div>
+                  <span class="prismatic-card-num">12</span>
+                </div>
+                <div class="prismatic-card-content">
+                  <h3 class="prismatic-card-title">
+                    <span class="title-primary">EDTECH &amp;</span>
+                    <span class="title-accent">LEARNING</span>
+                  </h3>
+                  <div class="prismatic-card-tag">
+                    <span class="tag-emoji">📚</span>
+                    <span class="tag-text">95+ Cohort Launches</span>
+                  </div>
+                </div>
+              </a>
+
             </div>
-            <div class="category-card-body">
-              <h3 class="category-card-title">Travel &amp; <b>Hospitality</b></h3>
-              <span class="category-badge-stat">✈️ 75+ Destination Trips</span>
-            </div>
-          </a>
+
+          </div>
         </div>
+
+        <!-- Sticky Bottom Progress Line -->
+        <div class="prismatic-bottom-indicator">
+          <div class="prismatic-progress-track">
+            <div class="prismatic-progress-fill" id="prismaticProgressFill"></div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -789,7 +1004,7 @@
     </button>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=20260828-1"></script>
 </body>
 
 </html>

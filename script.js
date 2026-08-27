@@ -691,4 +691,147 @@
             });
         });
     }
+
+    /* ---------- 18. Hash Link Smooth Scroll & Target Alignment ---------- */
+    const scrollToHash = () => {
+        if (!window.location.hash) return;
+        try {
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                setTimeout(() => {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 150);
+            }
+        } catch (e) {
+            // Ignore invalid selector
+        }
+    };
+    if (document.readyState === 'complete') {
+        scrollToHash();
+    } else {
+        window.addEventListener('load', scrollToHash);
+    }
+    window.addEventListener('hashchange', scrollToHash);
+
+    /* ---------- 19. Prismatic Process: Pinned 2-Row Horizontal Scroll Controller ---------- */
+    const initPrismaticScroll = () => {
+        const section = $('.prismatic-scroll-section');
+        const viewport = $('.prismatic-scroll-viewport');
+        const track = $('.prismatic-track');
+        const progressFill = $('#prismaticProgressFill');
+
+        if (!section || !viewport || !track) return;
+
+        let maxScroll = 0;
+        let sectionTop = 0;
+        let sectionHeight = 0;
+        let windowHeight = window.innerHeight;
+        let currentX = 0;
+        let targetX = 0;
+        let isTicking = false;
+        let isDragging = false;
+        let startDragX = 0;
+        let dragStartXTarget = 0;
+
+        const measure = () => {
+            windowHeight = window.innerHeight;
+            if (window.innerWidth <= 768) {
+                // On mobile, native touch-scroll is active
+                track.style.transform = '';
+                section.style.height = 'auto';
+                return;
+            }
+
+            const trackWidth = track.scrollWidth;
+            const viewportWidth = viewport.clientWidth;
+            maxScroll = Math.max(0, trackWidth - viewportWidth + 40);
+
+            // Give a generous, comfortable scroll distance (e.g. maxScroll * 1.3 or 220vh)
+            const scrollDistance = Math.max(windowHeight * 1.5, maxScroll * 1.25);
+            section.style.height = `${Math.round(windowHeight + scrollDistance)}px`;
+
+            const rect = section.getBoundingClientRect();
+            sectionTop = window.scrollY + rect.top;
+            sectionHeight = section.offsetHeight;
+            updateScroll();
+        };
+
+        const updateScroll = () => {
+            if (window.innerWidth <= 768 || reduceMotion) return;
+
+            const scrollY = window.scrollY;
+            const startY = sectionTop;
+            const endY = sectionTop + sectionHeight - windowHeight;
+
+            if (scrollY <= startY) {
+                targetX = 0;
+            } else if (scrollY >= endY) {
+                targetX = -maxScroll;
+            } else {
+                const progress = (scrollY - startY) / (endY - startY);
+                targetX = -progress * maxScroll;
+            }
+
+            if (!isTicking) {
+                isTicking = true;
+                requestAnimationFrame(render);
+            }
+        };
+
+        const render = () => {
+            currentX += (targetX - currentX) * 0.16;
+            if (Math.abs(targetX - currentX) < 0.15) currentX = targetX;
+
+            track.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
+
+            if (progressFill && maxScroll > 0) {
+                const pct = Math.min(100, Math.max(8, (-currentX / maxScroll) * 100));
+                progressFill.style.width = `${pct}%`;
+            }
+
+            if (Math.abs(targetX - currentX) >= 0.15) {
+                requestAnimationFrame(render);
+            } else {
+                isTicking = false;
+            }
+        };
+
+        // Mouse Drag Interaction for interactive scrubbing
+        viewport.addEventListener('mousedown', (e) => {
+            if (window.innerWidth <= 768) return;
+            if (e.target.closest('a') && e.button !== 0) return;
+            isDragging = true;
+            viewport.classList.add('is-dragging');
+            startDragX = e.clientX;
+            dragStartXTarget = currentX;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const dx = e.clientX - startDragX;
+            let newX = dragStartXTarget + dx;
+            if (newX > 0) newX = newX * 0.25;
+            if (newX < -maxScroll) newX = -maxScroll + (newX + maxScroll) * 0.25;
+            targetX = Math.max(-maxScroll, Math.min(0, newX));
+            if (!isTicking) {
+                isTicking = true;
+                requestAnimationFrame(render);
+            }
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                viewport.classList.remove('is-dragging');
+            }
+        });
+
+        window.addEventListener('scroll', updateScroll, { passive: true });
+        window.addEventListener('resize', measure, { passive: true });
+        setTimeout(measure, 150);
+        setTimeout(measure, 600);
+        window.addEventListener('load', measure);
+    };
+
+    initPrismaticScroll();
 })();

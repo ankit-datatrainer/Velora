@@ -376,6 +376,7 @@ section {
     max-width: 100%;
     overflow-x: clip;
     padding-block: clamp(3.5rem, 7vw, 6.75rem);
+    scroll-margin-top: calc(var(--nav-h, 84px) + 16px);
 }
 
 .sect-float {
@@ -6942,6 +6943,404 @@ section {
 /* ==========================================================================
    GLIMPSES PAGE — VISUAL CATEGORY & GALLERY SHOWCASE
    ========================================================================== */
+
+/* ==========================================================================
+   GLIMPSES PAGE — PRISMATIC PROCESS (HORIZONTAL 2-ROW PINNED SCROLL)
+   ========================================================================== */
+
+/* Outer scroll container providing vertical scroll distance */
+.prismatic-scroll-section {
+    position: relative;
+    width: 100%;
+    min-height: 260vh;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+}
+
+/* Pinned sticky container */
+.prismatic-sticky-container {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(3.5rem, 6vh, 4.8rem) 0 clamp(1rem, 2vh, 1.6rem);
+    overflow: hidden;
+    background: radial-gradient(circle at 12% 18%, rgba(236, 72, 153, 0.09) 0%, transparent 45%),
+                radial-gradient(circle at 88% 82%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(245, 235, 255, 0.8) 0%, transparent 70%),
+                linear-gradient(135deg, #faf4ff 0%, #f3e6fd 50%, #f8f0ff 100%);
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+/* Ambient dreamy backdrop lights */
+.prismatic-ambient-backdrop {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(60% 40% at 75% 20%, rgba(192, 132, 252, 0.15), transparent 70%),
+                radial-gradient(50% 50% at 20% 80%, rgba(244, 114, 182, 0.12), transparent 70%);
+    z-index: 0;
+}
+
+/* Header Container */
+.prismatic-header-container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-bottom: clamp(0.5rem, 1.5vh, 1.2rem);
+}
+
+.prismatic-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.prismatic-header-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Lime-yellow Pill Badge matching Reference */
+.prismatic-badge-lime {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #cbf92b;
+    background: linear-gradient(135deg, #d2fa3c, #bbf426);
+    color: #0b0b0f;
+    font-family: var(--f-display, 'Bricolage Grotesque', sans-serif);
+    font-size: clamp(0.72rem, 0.9vw, 0.82rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    box-shadow: 0 4px 14px rgba(187, 244, 38, 0.35);
+    margin-bottom: 0.4rem;
+}
+
+.prismatic-hero-title {
+    font-family: var(--f-display, 'Bricolage Grotesque', sans-serif);
+    font-size: clamp(2rem, 3.8vw, 3.4rem);
+    font-weight: 800;
+    color: #1a0f2b;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    text-transform: none !important;
+    margin: 0;
+}
+
+/* Scroll Hint Pill Indicator */
+.prismatic-scroll-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 1px solid rgba(139, 92, 246, 0.18);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.08);
+}
+
+.prismatic-pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #a855f7;
+    box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.6);
+    animation: prismDotPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes prismDotPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 9px rgba(168, 85, 247, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
+    }
+}
+
+.prismatic-hint-label {
+    font-family: var(--f-display, sans-serif);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #55356e;
+    letter-spacing: 0.01em;
+}
+
+.prismatic-hint-arrow {
+    width: 16px;
+    height: 16px;
+    color: #a855f7;
+    animation: prismArrowFloat 1.8s ease-in-out infinite;
+}
+
+@keyframes prismArrowFloat {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+}
+
+/* Horizontal Scroll Viewport */
+.prismatic-scroll-viewport {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    padding: clamp(0.4rem, 1vh, 0.8rem) 0;
+}
+
+.prismatic-scroll-viewport.is-dragging {
+    cursor: grabbing;
+}
+
+/* The Sliding Multi-Row Track */
+.prismatic-track {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.85rem, 1.6vh, 1.3rem);
+    width: max-content;
+    padding: 0 clamp(1.5rem, 4vw, 4rem);
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+}
+
+/* Rows */
+.prismatic-row {
+    display: flex;
+    gap: clamp(1rem, 1.5vw, 1.4rem);
+    width: max-content;
+}
+
+/* Individual Card (Matching Image 4) */
+.prismatic-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: clamp(285px, 20vw, 325px);
+    min-width: 285px;
+    min-height: clamp(180px, 24vh, 215px);
+    padding: clamp(1.3rem, 1.8vw, 1.6rem);
+    background: #ffffff;
+    border-radius: 24px;
+    border: 1.5px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 30px rgba(97, 62, 124, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02);
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    flex-shrink: 0;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
+    box-sizing: border-box;
+}
+
+.prismatic-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 90% 10%, rgba(217, 70, 239, 0.06), transparent 60%);
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.prismatic-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 20px 42px rgba(139, 92, 246, 0.18), 0 0 0 1.5px rgba(139, 92, 246, 0.35);
+    border-color: rgba(139, 92, 246, 0.35);
+}
+
+.prismatic-card:hover .prismatic-icon-box {
+    transform: scale(1.08) rotate(3deg);
+    box-shadow: 0 10px 22px rgba(139, 92, 246, 0.38);
+}
+
+.prismatic-card:hover .prismatic-card-num {
+    color: rgba(139, 92, 246, 0.35);
+}
+
+/* Card Top: Squircle Icon + Index Number */
+.prismatic-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    z-index: 1;
+}
+
+.prismatic-icon-box {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: #8b5cf6;
+    background: linear-gradient(135deg, #9d67f8, #7c3aed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    box-shadow: 0 8px 18px rgba(139, 92, 246, 0.28);
+    flex-shrink: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.prismatic-icon-box svg {
+    width: 22px;
+    height: 22px;
+    stroke: #ffffff;
+}
+
+.prismatic-card-num {
+    font-family: var(--f-display, 'Bricolage Grotesque', sans-serif);
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #cbd5e1;
+    letter-spacing: -0.01em;
+    transition: color 0.3s ease;
+    user-select: none;
+}
+
+/* Card Content: Title + Tag */
+.prismatic-card-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.9rem;
+}
+
+.prismatic-card-title {
+    font-family: var(--f-display, 'Bricolage Grotesque', sans-serif);
+    font-size: clamp(1rem, 1.15vw, 1.12rem);
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0 0 0.9rem 0;
+    letter-spacing: -0.01em;
+}
+
+.prismatic-card-title .title-primary {
+    display: block;
+    color: #1a0f2b;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.prismatic-card-title .title-accent {
+    display: block;
+    color: #d946ef;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Bottom Tag Pill */
+.prismatic-card-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: #f4ecfb;
+    border: 1px solid rgba(139, 92, 246, 0.16);
+    font-family: var(--f-display, sans-serif);
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #3b185f;
+    width: fit-content;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.prismatic-card-tag .tag-emoji {
+    font-size: 0.85rem;
+    line-height: 1;
+}
+
+.prismatic-card-tag .tag-text {
+    line-height: 1;
+}
+
+/* Bottom Progress Line Indicator */
+.prismatic-bottom-indicator {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 440px;
+    margin: clamp(0.3rem, 1vh, 0.8rem) auto 0;
+    padding: 0 1.5rem;
+}
+
+.prismatic-progress-track {
+    width: 100%;
+    height: 4px;
+    background: rgba(139, 92, 246, 0.15);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+}
+
+.prismatic-progress-fill {
+    height: 100%;
+    width: 10%;
+    background: linear-gradient(90deg, #8b5cf6, #d946ef, #cbf92b);
+    border-radius: 999px;
+    transition: width 0.06s linear;
+}
+
+/* Mobile & Touch Fallback */
+@media (max-width: 768px) {
+    .prismatic-scroll-section {
+        min-height: auto;
+    }
+
+    .prismatic-sticky-container {
+        position: relative;
+        top: auto;
+        height: auto;
+        min-height: auto;
+        padding: 2.5rem 0 2rem;
+    }
+
+    .prismatic-scroll-viewport {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 1rem;
+    }
+
+    .prismatic-card {
+        scroll-snap-align: start;
+        width: 270px;
+        min-width: 270px;
+        min-height: 175px;
+    }
+
+    .prismatic-header-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+}
 
 /* ---------- Gallery Filter Tabs ---------- */
 .gallery-filters {

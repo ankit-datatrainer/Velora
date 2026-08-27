@@ -752,8 +752,246 @@ main {
     }
 }
 
+/* ========================================================================== 
+   Represent Roster — shared home/services treatment
+   ========================================================================== */
+.roster-section {
+    isolation: isolate;
+    padding-block: clamp(4.5rem, 7vw, 7rem);
+    color: #3f3150;
+    background:
+        radial-gradient(circle at 8% 14%, rgba(244, 114, 182, .14), transparent 28%),
+        radial-gradient(circle at 91% 4%, rgba(139, 92, 246, .12), transparent 30%),
+        linear-gradient(125deg, #f1e6f4 0%, #eee5f6 48%, #e7ddf3 100%);
+    border-block: 1px solid rgba(126, 85, 158, .12);
+}
+
+.roster-section::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    right: -8vw;
+    bottom: -16%;
+    width: min(52vw, 760px);
+    aspect-ratio: 1.5;
+    background: linear-gradient(145deg, rgba(255, 255, 255, .24), rgba(178, 134, 214, .09));
+    clip-path: polygon(28% 0, 100% 18%, 82% 100%, 0 72%);
+    pointer-events: none;
+}
+
+.roster-section > .watermark,
+.roster-section > .sect-float {
+    display: none;
+}
+
+.roster-section .section-head {
+    max-width: 720px;
+    margin-bottom: clamp(2.6rem, 5vw, 4.5rem);
+}
+
+.roster-section .eyebrow {
+    margin-bottom: clamp(1.35rem, 2.5vw, 2rem);
+    color: #f0439a;
+    font-size: .7rem;
+    letter-spacing: .26em;
+}
+
+.roster-section .eyebrow::after {
+    max-width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, #8b5cf6, #f0439a);
+}
+
+.roster-section .display-2 {
+    color: #261a38;
+    font-size: clamp(2.25rem, 4.2vw, 4.05rem);
+    line-height: .94;
+    letter-spacing: -.055em;
+}
+
+.roster-section .display-2 .gold-solid {
+    background-image: linear-gradient(96deg, #b45ee8 0%, #e96cda 45%, #ff6cae 100%);
+    background-size: 100% 100%;
+    animation: none;
+}
+
+.roster-section .rule.left {
+    margin: clamp(1.45rem, 2.8vw, 2rem) 0 1.25rem;
+}
+
+.roster-section .rule.left::after {
+    max-width: 190px;
+    background: linear-gradient(90deg, #9b5de5, #f0439a);
+}
+
+.roster-section .rule .spark {
+    width: 9px;
+    height: 9px;
+    background: #f0439a;
+    box-shadow: 0 0 0 5px rgba(240, 67, 154, .15);
+}
+
+.roster-section .lead {
+    max-width: 62ch;
+    margin-top: 0;
+    color: #584866;
+    font-size: clamp(1rem, 1.35vw, 1.2rem);
+    line-height: 1.55;
+}
+
+.roster-section .rail-head {
+    align-items: center;
+    margin-top: clamp(2rem, 4vw, 3.25rem);
+    padding-bottom: .7rem;
+    border-bottom-color: rgba(126, 85, 158, .23);
+}
+
+.roster-section .rail-title {
+    width: fit-content;
+    padding: .12em .08em .08em;
+    color: #fff;
+    background: linear-gradient(100deg, #fb4b9f, #ea3f91);
+    font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+    line-height: .96;
+    letter-spacing: -.055em;
+}
+
+.roster-section .rail-count {
+    color: #f0439a;
+    font-size: .68rem;
+    letter-spacing: .14em;
+}
+
+.roster-section .talent-marquee {
+    --roster-gap: clamp(1.15rem, 2vw, 1.7rem);
+    overflow: hidden;
+    width: 100%;
+    padding-block: clamp(1.55rem, 2.8vw, 2.35rem) clamp(2rem, 3.2vw, 2.8rem);
+    mask-image: linear-gradient(90deg, transparent, #000 2.5%, #000 97.5%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 2.5%, #000 97.5%, transparent);
+}
+
+.roster-section .talent-track {
+    gap: var(--roster-gap);
+    padding-right: var(--roster-gap);
+    animation-duration: 38s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.roster-section .talent-marquee[data-marquee="right"] .talent-track {
+    animation-name: talentSlideRight;
+}
+
+.roster-section .talent-marquee:hover .talent-track,
+.roster-section .talent-marquee:focus-within .talent-track {
+    animation-play-state: paused;
+}
+
+.roster-section .talent {
+    flex-basis: clamp(190px, 19vw, 238px);
+    padding-block: 0;
+}
+
+.roster-section .talent-photo,
+.roster-section .talent:nth-child(n) .talent-photo {
+    --ry: 0deg;
+    --ty: 0px;
+    --sc: 1;
+    aspect-ratio: 3 / 4;
+    border-radius: clamp(16px, 1.6vw, 22px);
+    background: #d8c5e7;
+    box-shadow: 0 22px 48px -25px rgba(76, 29, 149, .48);
+    transform: translateY(0);
+}
+
+.roster-section .talent:nth-child(4n+2) .talent-photo,
+.roster-section .talent:nth-child(4n+4) .talent-photo {
+    transform: translateY(10px);
+}
+
+.roster-section .talent:hover .talent-photo,
+.roster-section .talent:focus-visible .talent-photo {
+    transform: translateY(-7px) scale(1.018);
+    box-shadow: 0 28px 58px -22px rgba(76, 29, 149, .52), 0 0 30px -10px rgba(236, 72, 153, .34);
+}
+
+.roster-section .talent-photo img {
+    object-position: 50% 16%;
+    filter: saturate(.96) contrast(1.015);
+}
+
+.roster-section .talent-body {
+    gap: .12rem;
+    padding: 1rem .15rem 0;
+}
+
+.roster-section .talent-role {
+    color: #f0439a;
+    font-size: .61rem;
+    letter-spacing: .13em;
+}
+
+.roster-section .talent-name {
+    color: #30203e;
+    font-size: clamp(1rem, 1.35vw, 1.14rem);
+    font-weight: 750;
+}
+
+.roster-section .talent-marquee .talent-meta {
+    color: #766781;
+    font-size: .76rem;
+}
+
+.roster-section .talent:hover .talent-meta {
+    color: #d93688;
+}
+
+.roster-section .hire-talent-wrap {
+    margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+@media (max-width: 720px) {
+    .roster-section {
+        padding-block: 4.25rem;
+    }
+
+    .roster-section .section-head {
+        margin-bottom: 2.5rem;
+    }
+
+    .roster-section .display-2 {
+        font-size: clamp(2.1rem, 11.5vw, 3.1rem);
+    }
+
+    .roster-section .lead {
+        font-size: .98rem;
+    }
+
+    .roster-section .talent {
+        flex-basis: min(66vw, 224px);
+    }
+
+    .roster-section .talent-marquee {
+        mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+        -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     body {
         background-attachment: scroll;
+    }
+
+    .roster-section .talent-marquee {
+        overflow-x: auto;
+        mask-image: none;
+        -webkit-mask-image: none;
+        scrollbar-width: thin;
+    }
+
+    .roster-section .talent-track {
+        animation: none;
+        transform: none;
     }
 }
