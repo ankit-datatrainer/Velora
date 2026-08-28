@@ -11965,3 +11965,23 @@ svg {
         padding-block: .3rem;
     }
 }
+
+/* ========================================================================
+   51.6 SINGLE DOCUMENT SCROLLER
+   `overflow-x: hidden` on both root elements can promote the body to a second
+   vertical scroll container. Keep the document as the only page scroller and
+   use `clip` for horizontal artwork that intentionally reaches the viewport.
+   ======================================================================== */
+html {
+    overflow-x: clip;
+    overflow-y: auto;
+}
+
+body {
+    overflow-x: clip;
+    overflow-y: visible;
+}
+
+body.nav-open {
+    overflow: hidden;
+}
