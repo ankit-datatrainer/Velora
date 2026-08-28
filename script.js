@@ -713,125 +713,222 @@
     }
     window.addEventListener('hashchange', scrollToHash);
 
-    /* ---------- 19. Prismatic Process: Pinned 2-Row Horizontal Scroll Controller ---------- */
-    const initPrismaticScroll = () => {
-        const section = $('.prismatic-scroll-section');
-        const viewport = $('.prismatic-scroll-viewport');
-        const track = $('.prismatic-track');
-        const progressFill = $('#prismaticProgressFill');
+    /* ---------- 19. 3D 5-Card Coverflow Carousel (Auto-Sliding) ---------- */
+    const initCoverflowSlider = () => {
+        const section = $('.coverflow-showcase-section');
+        const deck = $('#coverflowDeck');
+        const cards = $$('.coverflow-card');
+        const dots = $$('.coverflow-dot');
+        const prevBtn = $('#coverflowPrev');
+        const nextBtn = $('#coverflowNext');
 
-        if (!section || !viewport || !track) return;
+        if (!deck || cards.length !== 5) return;
 
-        let maxScroll = 0;
-        let sectionTop = 0;
-        let sectionHeight = 0;
-        let windowHeight = window.innerHeight;
-        let currentX = 0;
-        let targetX = 0;
-        let isTicking = false;
-        let isDragging = false;
-        let startDragX = 0;
-        let dragStartXTarget = 0;
+        let activeIndex = 2; // Card 3 (Center / Best Seller) active initially
+        let autoSlideTimer = null;
+        let isPaused = false;
 
-        const measure = () => {
-            windowHeight = window.innerHeight;
-            if (window.innerWidth <= 768) {
-                // On mobile, native touch-scroll is active
-                track.style.transform = '';
-                section.style.height = 'auto';
-                return;
+        const updateCoverflow = () => {
+            const isMobile = window.innerWidth <= 768;
+            const isPhone = window.innerWidth <= 480;
+            const isTablet = window.innerWidth <= 1024 && !isMobile;
+
+            cards.forEach((card, i) => {
+                let offset = i - activeIndex;
+                if (offset > 2) offset -= 5;
+                if (offset < -2) offset += 5;
+
+                card.classList.remove('is-center');
+
+                if (offset === 0) {
+                    card.classList.add('is-center');
+                    card.style.transform = isPhone
+                        ? 'translateX(0%) scale(1)'
+                        : `translateX(0%) translateZ(100px) scale(${isMobile ? 1.05 : 1.14}) rotateY(0deg)`;
+                    card.style.zIndex = '10';
+                    card.style.opacity = '1';
+                    card.style.filter = 'none';
+                    card.style.pointerEvents = 'auto';
+                } else if (offset === -1) {
+                    const tx = isMobile ? -62 : isTablet ? -72 : -82;
+                    card.style.transform = isPhone
+                        ? `translateX(${tx}%) scale(.84)`
+                        : `translateX(${tx}%) translateZ(-35px) scale(${isMobile ? 0.88 : 0.92}) rotateY(${isMobile ? 10 : 16}deg)`;
+                    card.style.zIndex = '5';
+                    card.style.opacity = '0.84';
+                    card.style.filter = 'brightness(0.92)';
+                    card.style.pointerEvents = 'auto';
+                } else if (offset === 1) {
+                    const tx = isMobile ? 62 : isTablet ? 72 : 82;
+                    card.style.transform = isPhone
+                        ? `translateX(${tx}%) scale(.84)`
+                        : `translateX(${tx}%) translateZ(-35px) scale(${isMobile ? 0.88 : 0.92}) rotateY(${isMobile ? -10 : -16}deg)`;
+                    card.style.zIndex = '5';
+                    card.style.opacity = '0.84';
+                    card.style.filter = 'brightness(0.92)';
+                    card.style.pointerEvents = 'auto';
+                } else if (offset === -2) {
+                    const tx = isMobile ? -112 : isTablet ? -132 : -152;
+                    card.style.transform = isPhone
+                        ? `translateX(${tx}%) scale(.58)`
+                        : `translateX(${tx}%) translateZ(-110px) scale(${isMobile ? 0.68 : 0.76}) rotateY(${isMobile ? 18 : 28}deg)`;
+                    card.style.zIndex = '2';
+                    card.style.opacity = isMobile ? '0.35' : '0.55';
+                    card.style.filter = 'brightness(0.75)';
+                    card.style.pointerEvents = 'auto';
+                } else if (offset === 2) {
+                    const tx = isMobile ? 112 : isTablet ? 132 : 152;
+                    card.style.transform = isPhone
+                        ? `translateX(${tx}%) scale(.58)`
+                        : `translateX(${tx}%) translateZ(-110px) scale(${isMobile ? 0.68 : 0.76}) rotateY(${isMobile ? -18 : -28}deg)`;
+                    card.style.zIndex = '2';
+                    card.style.opacity = isMobile ? '0.35' : '0.55';
+                    card.style.filter = 'brightness(0.75)';
+                    card.style.pointerEvents = 'auto';
+                }
+            });
+
+            // Update bottom dots
+            dots.forEach((dot, idx) => {
+                if (idx === activeIndex) {
+                    dot.classList.add('is-active');
+                    dot.setAttribute('aria-selected', 'true');
+                } else {
+                    dot.classList.remove('is-active');
+                    dot.setAttribute('aria-selected', 'false');
+                }
+            });
+        };
+
+        const goToSlide = (index) => {
+            activeIndex = ((index % 5) + 5) % 5;
+            updateCoverflow();
+            startAutoSlide(); // Reset auto-slide interval on manual trigger
+        };
+
+        const nextSlide = () => goToSlide(activeIndex + 1);
+        const prevSlide = () => goToSlide(activeIndex - 1);
+
+        // Auto-Slide Loop (1 by 1 every 3.2s)
+        const startAutoSlide = () => {
+            stopAutoSlide();
+            if (reduceMotion) return;
+            autoSlideTimer = setInterval(() => {
+                if (!isPaused) {
+                    activeIndex = (activeIndex + 1) % 5;
+                    updateCoverflow();
+                }
+            }, 3200);
+        };
+
+        const stopAutoSlide = () => {
+            if (autoSlideTimer) clearInterval(autoSlideTimer);
+        };
+
+        // Pause only when hovering over active CTA button or favorite button
+        deck.querySelectorAll('.coverflow-cta-btn, .coverflow-fav-btn').forEach((btn) => {
+            btn.addEventListener('mouseenter', () => { isPaused = true; });
+            btn.addEventListener('mouseleave', () => { isPaused = false; });
+        });
+
+        // Arrow Buttons
+        if (prevBtn) prevBtn.addEventListener('click', (e) => { e.preventDefault(); prevSlide(); });
+        if (nextBtn) nextBtn.addEventListener('click', (e) => { e.preventDefault(); nextSlide(); });
+
+        // Click Any Card to Slide 1-by-1 to Center
+        cards.forEach((card, index) => {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('.coverflow-fav-btn') || e.target.closest('a')) return;
+                if (index !== activeIndex) {
+                    e.preventDefault();
+                    goToSlide(index);
+                }
+            });
+        });
+
+        // Favorite Buttons
+        $$('.coverflow-fav-btn').forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                btn.classList.toggle('is-active');
+            });
+        });
+
+        // Pagination Dots Click
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => goToSlide(idx));
+        });
+
+        // Touch Swipe Handling
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        deck.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            isPaused = true;
+        }, { passive: true });
+
+        deck.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            isPaused = false;
+            if (touchStartX - touchEndX > 45) {
+                nextSlide();
+            } else if (touchEndX - touchStartX > 45) {
+                prevSlide();
             }
+        }, { passive: true });
 
-            const trackWidth = track.scrollWidth;
-            const viewportWidth = viewport.clientWidth;
-            maxScroll = Math.max(0, trackWidth - viewportWidth + 40);
-
-            // Give a generous, comfortable scroll distance (e.g. maxScroll * 1.3 or 220vh)
-            const scrollDistance = Math.max(windowHeight * 1.5, maxScroll * 1.25);
-            section.style.height = `${Math.round(windowHeight + scrollDistance)}px`;
-
+        // Keyboard Arrow Keys (when visible)
+        window.addEventListener('keydown', (e) => {
+            if (!section) return;
             const rect = section.getBoundingClientRect();
-            sectionTop = window.scrollY + rect.top;
-            sectionHeight = section.offsetHeight;
-            updateScroll();
-        };
-
-        const updateScroll = () => {
-            if (window.innerWidth <= 768 || reduceMotion) return;
-
-            const scrollY = window.scrollY;
-            const startY = sectionTop;
-            const endY = sectionTop + sectionHeight - windowHeight;
-
-            if (scrollY <= startY) {
-                targetX = 0;
-            } else if (scrollY >= endY) {
-                targetX = -maxScroll;
-            } else {
-                const progress = (scrollY - startY) / (endY - startY);
-                targetX = -progress * maxScroll;
-            }
-
-            if (!isTicking) {
-                isTicking = true;
-                requestAnimationFrame(render);
-            }
-        };
-
-        const render = () => {
-            currentX += (targetX - currentX) * 0.16;
-            if (Math.abs(targetX - currentX) < 0.15) currentX = targetX;
-
-            track.style.transform = `translate3d(${currentX.toFixed(2)}px, 0, 0)`;
-
-            if (progressFill && maxScroll > 0) {
-                const pct = Math.min(100, Math.max(8, (-currentX / maxScroll) * 100));
-                progressFill.style.width = `${pct}%`;
-            }
-
-            if (Math.abs(targetX - currentX) >= 0.15) {
-                requestAnimationFrame(render);
-            } else {
-                isTicking = false;
-            }
-        };
-
-        // Mouse Drag Interaction for interactive scrubbing
-        viewport.addEventListener('mousedown', (e) => {
-            if (window.innerWidth <= 768) return;
-            if (e.target.closest('a') && e.button !== 0) return;
-            isDragging = true;
-            viewport.classList.add('is-dragging');
-            startDragX = e.clientX;
-            dragStartXTarget = currentX;
-        });
-
-        window.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            const dx = e.clientX - startDragX;
-            let newX = dragStartXTarget + dx;
-            if (newX > 0) newX = newX * 0.25;
-            if (newX < -maxScroll) newX = -maxScroll + (newX + maxScroll) * 0.25;
-            targetX = Math.max(-maxScroll, Math.min(0, newX));
-            if (!isTicking) {
-                isTicking = true;
-                requestAnimationFrame(render);
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === 'ArrowRight') nextSlide();
             }
         });
 
-        window.addEventListener('mouseup', () => {
-            if (isDragging) {
-                isDragging = false;
-                viewport.classList.remove('is-dragging');
-            }
-        });
+        window.addEventListener('resize', updateCoverflow, { passive: true });
 
-        window.addEventListener('scroll', updateScroll, { passive: true });
-        window.addEventListener('resize', measure, { passive: true });
-        setTimeout(measure, 150);
-        setTimeout(measure, 600);
-        window.addEventListener('load', measure);
+        // Initialize
+        updateCoverflow();
+        startAutoSlide();
     };
 
-    initPrismaticScroll();
+    /* ---------- Home roster: categorized panoramic portrait walls ---------- */
+    const initRosterPanorama = () => {
+        const roster = $('#faces.roster-panorama');
+        if (!roster || roster.dataset.panoramaReady === 'true') return;
+
+        const tracks = $$('.talent-track', roster);
+        if (!tracks.length) return;
+
+        tracks.forEach(track => {
+            const profiles = $$('.talent:not([aria-hidden="true"])', track);
+            const allCards = $$('.talent', track);
+            const total = profiles.length;
+            if (!total) return;
+
+            allCards.forEach((card, index) => {
+                const position = index % total;
+                const distance = Math.abs(position - ((total - 1) / 2));
+                const edge = distance / Math.max((total - 1) / 2, 1);
+                const direction = position < (total - 1) / 2 ? -1 : position > (total - 1) / 2 ? 1 : 0;
+                const width = Math.round(190 + (edge * 62));
+                const height = Math.round(314 + (edge * 96));
+                const offset = Math.round(92 - (edge * 72));
+                const rotation = Math.round(direction * (4 + (edge * 11)));
+
+                card.style.setProperty('--pano-w', `${width}px`);
+                card.style.setProperty('--pano-h', `${height}px`);
+                card.style.setProperty('--pano-y', `${offset}px`);
+                card.style.setProperty('--pano-r', `${rotation}deg`);
+            });
+        });
+
+        roster.dataset.panoramaReady = 'true';
+    };
+
+    initRosterPanorama();
+    initCoverflowSlider();
 })();

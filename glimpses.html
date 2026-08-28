@@ -18,8 +18,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260828-1">
-  <link rel="stylesheet" href="theme.css?v=20260828-1">
+<link rel="stylesheet" href="style.css?v=20260828-responsive-1">
+  <link rel="stylesheet" href="theme.css?v=20260828-5">
     <!-- Enables the section load-in in style.css section 40. Inline and in
          <head> on purpose: it must land before first paint so sections are
          never shown and then snapped to hidden, and if scripting is off the
@@ -108,18 +108,18 @@
 
   <main>
 
-    <!-- ============ PAGE HEAD ============ -->
-    <section class="page-head" style="text-align:center">
-      <div class="shell">
-        <p class="breadcrumb" style="justify-content:center"><a href="index.html">Home</a> / <span>Glimpses</span></p>
-        <p class="eyebrow centered" data-reveal>Some</p>
-        <h1 class="display-1 gold-solid" data-reveal style="--d:60ms">Glimpses</h1>
-        <div class="rule" data-reveal><span class="spark"></span></div>
-        <p class="lead" data-reveal style="margin-inline:auto;--d:120ms">
-          Campaign shoots, influencer events, celebrity collaborations and brand activations — a look at the work behind the results.
-        </p>
+    <!-- ============ 16:9 FULL-WIDTH CINEMATIC PAGE BANNER ============ -->
+    <section class="page-banner-section" aria-label="Glimpses Page Banner">
+      <div class="page-banner-frame" data-reveal>
+        <img src="assets/influ_banner.png" alt="VELORA Influencer & Creator Network" class="page-banner-img" loading="eager">
+        <div class="page-banner-overlay" aria-hidden="true"></div>
+        <div class="page-banner-content">
+          <div class="shell" style="text-align:left">
+            <p class="page-banner-eyebrow">BEHIND THE SCENES</p>
+            <h1 class="page-banner-title">Glimpses</h1>
+          </div>
+        </div>
       </div>
-      <span class="watermark" aria-hidden="true">V</span>
     </section>
 
     <div class="vvv">Value <i></i> Voice <i></i> Vision</div>
@@ -241,7 +241,7 @@
     </section>
 
     <!-- ============ FAMOUS FACES / REPRESENT ROSTER (MOVING ANIMATION) ============ -->
-    <section class="section" id="faces" style="padding-top:0">
+    <section class="section roster-section roster-panorama" id="faces">
       <span class="watermark" aria-hidden="true">V</span>
       <div class="shell">
         <div class="section-head">
@@ -260,7 +260,7 @@
           <h3 class="rail-title">Influencers</h3>
           <span class="rail-count">Top Creators</span>
         </div>
-        <div class="talent-marquee" data-marquee="right" aria-label="Influencers we work with">
+        <div class="talent-marquee" data-marquee="left" aria-label="Influencers we work with">
           <div class="talent-track">
             <!-- Set 1 -->
             <a class="talent" href="https://www.instagram.com/elvish_yadav/" target="_blank" rel="noopener">
@@ -400,7 +400,7 @@
           <h3 class="rail-title">Celebrities</h3>
           <span class="rail-count">A-List Talent</span>
         </div>
-        <div class="talent-marquee" data-marquee="left" aria-label="Celebrities we work with">
+        <div class="talent-marquee" data-marquee="right" aria-label="Celebrities we work with">
           <div class="talent-track">
             <!-- Set 1 -->
             <a class="talent" href="https://www.instagram.com/tamannaahspeaks/" target="_blank" rel="noopener">
@@ -532,343 +532,317 @@
       </div>
     </section>
 
-    <!-- ============ VISUAL CAMPAIGN CATEGORIES (HORIZONTAL PINNED 2-ROW SCROLL) ============ -->
-    <section class="prismatic-scroll-section" id="prismatic-process">
-      <div class="prismatic-sticky-container">
-        <!-- Ambient Glowing Background Gradient -->
-        <div class="prismatic-ambient-backdrop" aria-hidden="true"></div>
+    <!-- ============ FEATURED SHOWCASES / 3D 5-CARD COVERFLOW SLIDER ============ -->
+    <section class="coverflow-showcase-section" id="featured-showcase" aria-label="Featured Campaigns">
+      <!-- Ambient Glowing Backdrop -->
+      <div class="coverflow-ambient-glow" aria-hidden="true">
+        <div class="coverflow-orb orb-1"></div>
+        <div class="coverflow-orb orb-2"></div>
+        <div class="coverflow-orb orb-3"></div>
+      </div>
 
-        <!-- Section Header -->
-        <div class="shell prismatic-header-container">
-          <div class="prismatic-header-row">
-            <div class="prismatic-header-left">
-              <span class="prismatic-badge-lime" data-reveal>OUR METHOD</span>
-              <h2 class="prismatic-hero-title" data-reveal style="--d:60ms">The Prismatic Process</h2>
-            </div>
-            <div class="prismatic-header-right" data-reveal style="--d:120ms">
-              <div class="prismatic-scroll-indicator">
-                <span class="prismatic-pulse-dot"></span>
-                <span class="prismatic-hint-label">Scroll to explore categories</span>
-                <svg class="prismatic-hint-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
+      <div class="shell coverflow-container">
+        <!-- Section Header Matching Reference -->
+        <div class="coverflow-header centered" data-reveal>
+          <p class="coverflow-eyebrow">OUR COLLECTION</p>
+          <h2 class="coverflow-title">
+            Featured <span class="gold-solid">Campaigns</span>
+          </h2>
+          <p class="coverflow-lead">
+            Explore our most viral campaigns and celebrity collaborations loved by leading brands.
+          </p>
+        </div>
+
+        <!-- 3D Coverflow Stage with 5 Perspective Cards -->
+        <div class="coverflow-stage-wrap" data-reveal style="--d:100ms">
+          <!-- Left Arrow Button -->
+          <button class="coverflow-arrow-btn prev" id="coverflowPrev" aria-label="Previous Campaign">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+
+          <!-- 3D Deck Track -->
+          <div class="coverflow-deck" id="coverflowDeck">
+            
+            <!-- Card 1: Influencer Marketing -->
+            <div class="coverflow-card" data-index="0">
+              <div class="coverflow-card-inner">
+                <div class="coverflow-card-head">
+                  <span class="coverflow-badge badge-new">NEW</span>
+                  <button class="coverflow-fav-btn" aria-label="Save to favorites">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="coverflow-card-media">
+                  <img src="assets/gallery/glimpse-1.jpg" alt="Influencer Marketing Campaign" loading="lazy">
+                </div>
+
+                <div class="coverflow-card-body">
+                  <div class="coverflow-card-dots" aria-hidden="true">
+                    <span class="dot is-active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                  </div>
+                  <h3 class="coverflow-card-name">Influencer Marketing</h3>
+                  <p class="coverflow-card-desc">High-ROI creator activations across YouTube &amp; Instagram reels.</p>
+                  
+                  <div class="coverflow-card-rating">
+                    <span class="star-ic">★</span>
+                    <span class="rating-val">4.9</span>
+                    <span class="rating-count">(250+ Shoots)</span>
+                  </div>
+
+                  <div class="coverflow-card-foot">
+                    <div class="coverflow-card-stat">
+                      <span class="stat-num">250M+</span>
+                      <span class="stat-label">Reach</span>
+                    </div>
+                    <a href="services.html#influencer" class="coverflow-cta-btn compact" aria-label="Explore Influencer Marketing">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                    <a href="services.html#influencer" class="coverflow-cta-btn expanded">
+                      <span>Start Campaign</span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Horizontal Scroll Viewport & 2-Row Track -->
-        <div class="prismatic-scroll-viewport" id="prismaticViewport">
-          <div class="prismatic-track" id="prismaticTrack">
-            
-            <!-- Row 1: Cards 01 - 04 (and 09, 10) -->
-            <div class="prismatic-row prismatic-row-1">
-              
-              <!-- 01 Beauty & Personal Care -->
-              <a href="services.html#influencer" class="prismatic-card">
-                <div class="prismatic-card-top">
-                  <div class="prismatic-icon-box">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2l2.4 7.2h7.6l-6.1 4.5 2.3 7.3L12 16.5l-6.2 4.5 2.3-7.3L2 9.2h7.6z"/>
-                    </svg>
-                  </div>
-                  <span class="prismatic-card-num">01</span>
-                </div>
-                <div class="prismatic-card-content">
-                  <h3 class="prismatic-card-title">
-                    <span class="title-primary">BEAUTY &amp;</span>
-                    <span class="title-accent">PERSONAL CARE</span>
-                  </h3>
-                  <div class="prismatic-card-tag">
-                    <span class="tag-emoji">✨</span>
-                    <span class="tag-text">120+ Brand Shoots</span>
-                  </div>
-                </div>
-              </a>
-
-              <!-- 02 Fashion & Lifestyle -->
-              <a href="services.html#celebrity" class="prismatic-card">
-                <div class="prismatic-card-top">
-                  <div class="prismatic-icon-box">
+            <!-- Card 2: Celebrity Endorsements -->
+            <div class="coverflow-card" data-index="1">
+              <div class="coverflow-card-inner">
+                <div class="coverflow-card-head">
+                  <span class="coverflow-badge badge-trending">TRENDING</span>
+                  <button class="coverflow-fav-btn" aria-label="Save to favorites">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                      <line x1="3" y1="6" x2="21" y2="6"/>
-                      <path d="M16 10a4 4 0 0 1-8 0"/>
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                     </svg>
-                  </div>
-                  <span class="prismatic-card-num">02</span>
+                  </button>
                 </div>
-                <div class="prismatic-card-content">
-                  <h3 class="prismatic-card-title">
-                    <span class="title-primary">FASHION &amp;</span>
-                    <span class="title-accent">LIFESTYLE</span>
-                  </h3>
-                  <div class="prismatic-card-tag">
-                    <span class="tag-emoji">🎽</span>
-                    <span class="tag-text">250+ Lookbooks</span>
-                  </div>
-                </div>
-              </a>
 
-              <!-- 03 Food & Beverage -->
-              <a href="services.html#event" class="prismatic-card">
-                <div class="prismatic-card-top">
-                  <div class="prismatic-icon-box">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
-                      <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
-                      <line x1="6" y1="1" x2="6" y2="4"/>
-                      <line x1="10" y1="1" x2="10" y2="4"/>
-                      <line x1="14" y1="1" x2="14" y2="4"/>
-                    </svg>
-                  </div>
-                  <span class="prismatic-card-num">03</span>
+                <div class="coverflow-card-media">
+                  <img src="assets/talent/tamannaah-bhatia.jpg" alt="Celebrity Endorsement Deals" loading="lazy">
                 </div>
-                <div class="prismatic-card-content">
-                  <h3 class="prismatic-card-title">
-                    <span class="title-primary">FOOD &amp;</span>
-                    <span class="title-accent">BEVERAGE</span>
-                  </h3>
-                  <div class="prismatic-card-tag">
-                    <span class="tag-emoji">☕</span>
-                    <span class="tag-text">85+ Activations</span>
-                  </div>
-                </div>
-              </a>
 
-              <!-- 04 Tech & Electronics -->
-              <a href="services.html#social" class="prismatic-card">
-                <div class="prismatic-card-top">
-                  <div class="prismatic-icon-box">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                      <line x1="12" y1="18" x2="12.01" y2="18"/>
-                    </svg>
+                <div class="coverflow-card-body">
+                  <div class="coverflow-card-dots" aria-hidden="true">
+                    <span class="dot"></span>
+                    <span class="dot is-active"></span>
+                    <span class="dot"></span>
                   </div>
-                  <span class="prismatic-card-num">04</span>
-                </div>
-                <div class="prismatic-card-content">
-                  <h3 class="prismatic-card-title">
-                    <span class="title-primary">TECH &amp;</span>
-                    <span class="title-accent">ELECTRONICS</span>
-                  </h3>
-                  <div class="prismatic-card-tag">
-                    <span class="tag-emoji">📱</span>
-                    <span class="tag-text">140+ Tech Reviews</span>
+                  <h3 class="coverflow-card-name">Celebrity Endorsement</h3>
+                  <p class="coverflow-card-desc">A-list Bollywood stars &amp; music icons for brand ambassadorships.</p>
+                  
+                  <div class="coverflow-card-rating">
+                    <span class="star-ic">★</span>
+                    <span class="rating-val">5.0</span>
+                    <span class="rating-count">(120+ Deals)</span>
                   </div>
-                </div>
-              </a>
 
-              <!-- 09 Gaming & Esports -->
-              <a href="services.html#influencer" class="prismatic-card">
-                <div class="prismatic-card-top">
-                  <div class="prismatic-icon-box">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="6" y1="12" x2="10" y2="12"/>
-                      <line x1="8" y1="10" x2="8" y2="14"/>
-                      <circle cx="15" cy="13" r="1"/>
-                      <circle cx="18" cy="11" r="1"/>
-                      <rect x="2" y="6" width="20" height="12" rx="6"/>
-                    </svg>
-                  </div>
-                  <span class="prismatic-card-num">09</span>
-                </div>
-                <div class="prismatic-card-content">
-                  <h3 class="prismatic-card-title">
-                    <span class="title-primary">GAMING &amp;</span>
-                    <span class="title-accent">ESPORTS</span>
-                  </h3>
-                  <div class="prismatic-card-tag">
-                    <span class="tag-emoji">🎮</span>
-                    <span class="tag-text">110+ Live Streams</span>
+                  <div class="coverflow-card-foot">
+                    <div class="coverflow-card-stat">
+                      <span class="stat-num">A-List</span>
+                      <span class="stat-label">Roster</span>
+                    </div>
+                    <a href="services.html#celebrity" class="coverflow-cta-btn compact" aria-label="Explore Celebrity Endorsements">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                    <a href="services.html#celebrity" class="coverflow-cta-btn expanded">
+                      <span>Book Talent</span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </a>
                   </div>
                 </div>
-              </a>
-
-              <!-- 10 Luxury & Jewellery -->
-              <a href="services.html#celebrity" class="prismatic-card">
-                <div class="prismatic-card-top">
-                  <div class="prismatic-icon-box">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M6 3h12l4 6-10 12L2 9z"/>
-                      <path d="M2 9h20"/>
-                      <path d="M10 3v6l2 12 2-12V3"/>
-                    </svg>
-                  </div>
-                  <span class="prismatic-card-num">10</span>
-                </div>
-                <div class="prismatic-card-content">
-                  <h3 class="prismatic-card-title">
-                    <span class="title-primary">LUXURY &amp;</span>
-                    <span class="title-accent">JEWELLERY</span>
-                  </h3>
-                  <div class="prismatic-card-tag">
-                    <span class="tag-emoji">💎</span>
-                    <span class="tag-text">70+ Brand Shoots</span>
-                  </div>
-                </div>
-              </a>
-
+              </div>
             </div>
 
-            <!-- Row 2: Cards 05 - 08 (and 11, 12) matching Image 4 -->
-            <div class="prismatic-row prismatic-row-2">
-              
-              <!-- 05 Entertainment & OTT -->
-              <a href="services.html#movie" class="prismatic-card">
-                <div class="prismatic-card-top">
-                  <div class="prismatic-icon-box">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/>
-                      <line x1="7" y1="2" x2="7" y2="22"/>
-                      <line x1="17" y1="2" x2="17" y2="22"/>
-                      <line x1="2" y1="12" x2="22" y2="12"/>
-                      <line x1="2" y1="7" x2="7" y2="7"/>
-                      <line x1="2" y1="17" x2="7" y2="17"/>
-                      <line x1="17" y1="17" x2="22" y2="17"/>
-                      <line x1="17" y1="7" x2="22" y2="7"/>
+            <!-- Card 3: Song & Music Promotion (Center / Best Seller) -->
+            <div class="coverflow-card is-center" data-index="2">
+              <div class="coverflow-card-inner">
+                <div class="coverflow-card-head">
+                  <span class="coverflow-badge badge-bestseller">BEST SELLER</span>
+                  <button class="coverflow-fav-btn is-active" aria-label="Save to favorites">
+                    <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                     </svg>
-                  </div>
-                  <span class="prismatic-card-num">05</span>
+                  </button>
                 </div>
-                <div class="prismatic-card-content">
-                  <h3 class="prismatic-card-title">
-                    <span class="title-primary">ENTERTAINMENT &amp;</span>
-                    <span class="title-accent">OTT</span>
-                  </h3>
-                  <div class="prismatic-card-tag">
-                    <span class="tag-emoji">🎬</span>
-                    <span class="tag-text">90+ Premieres</span>
-                  </div>
-                </div>
-              </a>
 
-              <!-- 06 Health & Fitness -->
-              <a href="services.html#influencer" class="prismatic-card">
-                <div class="prismatic-card-top">
-                  <div class="prismatic-icon-box">
+                <div class="coverflow-card-media">
+                  <img src="assets/talent/yo-yo-honey-singh.jpg" alt="Song & Music Promotion" loading="lazy">
+                </div>
+
+                <div class="coverflow-card-body">
+                  <div class="coverflow-card-dots" aria-hidden="true">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot is-active"></span>
+                  </div>
+                  <h3 class="coverflow-card-name">Song &amp; Music Promotion</h3>
+                  <p class="coverflow-card-desc">Viral hook-steps, reel sound trends &amp; pan-India chartbuster hype.</p>
+                  
+                  <div class="coverflow-card-rating">
+                    <span class="star-ic">★</span>
+                    <span class="rating-val">5.0</span>
+                    <span class="rating-count">(320M+ Streams)</span>
+                  </div>
+
+                  <div class="coverflow-card-foot">
+                    <div class="coverflow-card-stat">
+                      <span class="stat-num">#1 Viral</span>
+                      <span class="stat-label">Audio Trends</span>
+                    </div>
+                    <a href="services.html#song" class="coverflow-cta-btn compact" aria-label="Explore Song Promotion">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                    <a href="services.html#song" class="coverflow-cta-btn expanded">
+                      <span>Launch Track</span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4: Movie & OTT Premieres -->
+            <div class="coverflow-card" data-index="3">
+              <div class="coverflow-card-inner">
+                <div class="coverflow-card-head">
+                  <span class="coverflow-badge badge-popular">POPULAR</span>
+                  <button class="coverflow-fav-btn" aria-label="Save to favorites">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                     </svg>
-                  </div>
-                  <span class="prismatic-card-num">06</span>
+                  </button>
                 </div>
-                <div class="prismatic-card-content">
-                  <h3 class="prismatic-card-title">
-                    <span class="title-primary">HEALTH &amp;</span>
-                    <span class="title-accent">FITNESS</span>
-                  </h3>
-                  <div class="prismatic-card-tag">
-                    <span class="tag-emoji">⚡</span>
-                    <span class="tag-text">60+ Challenges</span>
-                  </div>
-                </div>
-              </a>
 
-              <!-- 07 Finance & Fintech -->
-              <a href="services.html#influencer" class="prismatic-card">
-                <div class="prismatic-card-top">
-                  <div class="prismatic-icon-box">
+                <div class="coverflow-card-media">
+                  <img src="assets/gallery/glimpse-4.jpg" alt="Movie & OTT Premieres" loading="lazy">
+                </div>
+
+                <div class="coverflow-card-body">
+                  <div class="coverflow-card-dots" aria-hidden="true">
+                    <span class="dot is-active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                  </div>
+                  <h3 class="coverflow-card-name">Movie &amp; OTT Premieres</h3>
+                  <p class="coverflow-card-desc">Red carpet premieres, trailer launches &amp; theatrical buzz activations.</p>
+                  
+                  <div class="coverflow-card-rating">
+                    <span class="star-ic">★</span>
+                    <span class="rating-val">4.9</span>
+                    <span class="rating-count">(90+ Premieres)</span>
+                  </div>
+
+                  <div class="coverflow-card-foot">
+                    <div class="coverflow-card-stat">
+                      <span class="stat-num">90+</span>
+                      <span class="stat-label">Blockbusters</span>
+                    </div>
+                    <a href="services.html#movie" class="coverflow-cta-btn compact" aria-label="Explore Movie Promotions">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                    <a href="services.html#movie" class="coverflow-cta-btn expanded">
+                      <span>Promote Film</span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 5: Brand Shoots & Lookbooks -->
+            <div class="coverflow-card" data-index="4">
+              <div class="coverflow-card-inner">
+                <div class="coverflow-card-head">
+                  <span class="coverflow-badge badge-exclusive">EXCLUSIVE</span>
+                  <button class="coverflow-fav-btn" aria-label="Save to favorites">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
-                      <line x1="1" y1="10" x2="23" y2="10"/>
+                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                     </svg>
-                  </div>
-                  <span class="prismatic-card-num">07</span>
+                  </button>
                 </div>
-                <div class="prismatic-card-content">
-                  <h3 class="prismatic-card-title">
-                    <span class="title-primary">FINANCE &amp;</span>
-                    <span class="title-accent">FINTECH</span>
-                  </h3>
-                  <div class="prismatic-card-tag">
-                    <span class="tag-emoji">💳</span>
-                    <span class="tag-text">45+ App Launches</span>
-                  </div>
-                </div>
-              </a>
 
-              <!-- 08 Travel & Hospitality -->
-              <a href="services.html#guest-listing" class="prismatic-card">
-                <div class="prismatic-card-top">
-                  <div class="prismatic-icon-box">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"/>
-                      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor"/>
-                    </svg>
-                  </div>
-                  <span class="prismatic-card-num">08</span>
+                <div class="coverflow-card-media">
+                  <img src="assets/gallery/glimpse-5.jpg" alt="Brand Shoots & Lookbooks" loading="lazy">
                 </div>
-                <div class="prismatic-card-content">
-                  <h3 class="prismatic-card-title">
-                    <span class="title-primary">TRAVEL &amp;</span>
-                    <span class="title-accent">HOSPITALITY</span>
-                  </h3>
-                  <div class="prismatic-card-tag">
-                    <span class="tag-emoji">✈️</span>
-                    <span class="tag-text">75+ Destination Trips</span>
-                  </div>
-                </div>
-              </a>
 
-              <!-- 11 Real Estate & Living -->
-              <a href="services.html#social" class="prismatic-card">
-                <div class="prismatic-card-top">
-                  <div class="prismatic-icon-box">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                      <polyline points="9 22 9 12 15 12 15 22"/>
-                    </svg>
+                <div class="coverflow-card-body">
+                  <div class="coverflow-card-dots" aria-hidden="true">
+                    <span class="dot"></span>
+                    <span class="dot is-active"></span>
+                    <span class="dot"></span>
                   </div>
-                  <span class="prismatic-card-num">11</span>
-                </div>
-                <div class="prismatic-card-content">
-                  <h3 class="prismatic-card-title">
-                    <span class="title-primary">REAL ESTATE &amp;</span>
-                    <span class="title-accent">LIVING</span>
-                  </h3>
-                  <div class="prismatic-card-tag">
-                    <span class="tag-emoji">🏡</span>
-                    <span class="tag-text">55+ Property Tours</span>
+                  <h3 class="coverflow-card-name">Brand Shoots &amp; Lookbooks</h3>
+                  <p class="coverflow-card-desc">High-fashion lookbooks, model shoots &amp; luxury brand commercial visual sets.</p>
+                  
+                  <div class="coverflow-card-rating">
+                    <span class="star-ic">★</span>
+                    <span class="rating-val">4.9</span>
+                    <span class="rating-count">(180+ Shoots)</span>
                   </div>
-                </div>
-              </a>
 
-              <!-- 12 EdTech & Learning -->
-              <a href="services.html#influencer" class="prismatic-card">
-                <div class="prismatic-card-top">
-                  <div class="prismatic-icon-box">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                    </svg>
-                  </div>
-                  <span class="prismatic-card-num">12</span>
-                </div>
-                <div class="prismatic-card-content">
-                  <h3 class="prismatic-card-title">
-                    <span class="title-primary">EDTECH &amp;</span>
-                    <span class="title-accent">LEARNING</span>
-                  </h3>
-                  <div class="prismatic-card-tag">
-                    <span class="tag-emoji">📚</span>
-                    <span class="tag-text">95+ Cohort Launches</span>
+                  <div class="coverflow-card-foot">
+                    <div class="coverflow-card-stat">
+                      <span class="stat-num">180+</span>
+                      <span class="stat-label">Lookbooks</span>
+                    </div>
+                    <a href="services.html#guest-listing" class="coverflow-cta-btn compact" aria-label="Explore Brand Shoots">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </a>
+                    <a href="services.html#guest-listing" class="coverflow-cta-btn expanded">
+                      <span>Book Shoot</span>
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                      </svg>
+                    </a>
                   </div>
                 </div>
-              </a>
-
+              </div>
             </div>
 
           </div>
+
+          <!-- Right Arrow Button -->
+          <button class="coverflow-arrow-btn next" id="coverflowNext" aria-label="Next Campaign">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
         </div>
 
-        <!-- Sticky Bottom Progress Line -->
-        <div class="prismatic-bottom-indicator">
-          <div class="prismatic-progress-track">
-            <div class="prismatic-progress-fill" id="prismaticProgressFill"></div>
-          </div>
+        <!-- Pagination Indicator Dots -->
+        <div class="coverflow-pagination" id="coverflowDots" role="tablist" aria-label="Campaign Pagination" data-reveal style="--d:150ms">
+          <button class="coverflow-dot" data-index="0" role="tab" aria-label="Slide 1"></button>
+          <button class="coverflow-dot" data-index="1" role="tab" aria-label="Slide 2"></button>
+          <button class="coverflow-dot is-active" data-index="2" role="tab" aria-label="Slide 3 (Active)"></button>
+          <button class="coverflow-dot" data-index="3" role="tab" aria-label="Slide 4"></button>
+          <button class="coverflow-dot" data-index="4" role="tab" aria-label="Slide 5"></button>
         </div>
-
       </div>
     </section>
 
@@ -1004,7 +978,7 @@
     </button>
   </div>
 
-  <script src="script.js?v=20260828-1"></script>
+  <script src="script.js?v=20260828-3"></script>
 </body>
 
 </html>

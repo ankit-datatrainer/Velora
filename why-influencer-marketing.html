@@ -18,7 +18,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260826-18">
+<link rel="stylesheet" href="style.css?v=20260828-responsive-1">
   <link rel="stylesheet" href="theme.css?v=20260826-4">
   <!-- Enables the section load-in in style.css section 40. Inline and in
          <head> on purpose: it must land before first paint so sections are
@@ -109,17 +109,27 @@
 
   <main>
 
-    <!-- ============ PAGE HEAD ============ -->
-    <section class="page-head">
-      <div class="shell">
-        <p class="breadcrumb"><a href="index.html">Home</a> / <span>Why Influencer Marketing</span></p>
-        <p class="eyebrow" data-reveal>Strategic Powerhouse</p>
-        <h1 class="display-1" data-reveal style="--d:60ms">Why <span class="gold-solid">Influencer Marketing</span>?
-        </h1>
-        <div class="rule left" data-reveal><span class="spark"></span></div>
+    <!-- ============ 16:9 FULL-WIDTH CINEMATIC PAGE BANNER ============ -->
+    <section class="page-banner-section" aria-label="Why Influencer Marketing Page Banner">
+      <div class="page-banner-frame" data-reveal>
+        <img src="assets/influ_banner.png" alt="VELORA Influencer & Creator Network" class="page-banner-img" loading="eager">
+        <div class="page-banner-overlay" aria-hidden="true"></div>
+        <div class="page-banner-content">
+          <div class="shell">
+            <p class="page-banner-eyebrow">STRATEGIC POWERHOUSE</p>
+            <h1 class="page-banner-title">Why Influencer Marketing</h1>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <div class="vvv">Value <i></i> Voice <i></i> Vision</div>
+
+    <!-- ============ 3-STAGE GROWTH FUNNEL ============ -->
+    <section class="section" style="padding-top: clamp(2.5rem, 5vw, 4rem); padding-bottom: clamp(2rem, 4vw, 3rem);">
+      <div class="shell">
         <!-- Visual 3-Stage Growth Funnel Infographic -->
-        <div class="visual-funnel-grid" data-reveal style="--d:120ms">
+        <div class="visual-funnel-grid" data-reveal style="--d:60ms">
           <div class="visual-funnel-step">
             <div class="funnel-icon-box">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

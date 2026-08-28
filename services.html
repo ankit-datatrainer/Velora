@@ -14,12 +14,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20260826-14">
+<link rel="stylesheet" href="style.css?v=20260828-responsive-1">
 <link rel="stylesheet" href="theme.css?v=20260828-1">
     <!-- Enables the section load-in in style.css section 40. Inline and in
          <head> on purpose: it must land before first paint so sections are
-         never shown and then snapped to hidden, and if scripting is off the
-         class never arrives and everything simply stays visible. -->
+          never shown and then snapped to hidden, and if scripting is off the
+          class never arrives and everything simply stays visible. -->
     <script>document.documentElement.classList.add('has-sectfx');</script>
 </head>
 <body>
@@ -91,19 +91,18 @@
 
 <main>
 
-  <!-- ============ PAGE HEAD ============ -->
-  <section class="page-head">
-    <div class="shell">
-      <p class="breadcrumb"><a href="index.html">Home</a> / <span>Services</span></p>
-      <p class="eyebrow" data-reveal>What We Do</p>
-      <h1 class="display-1" data-reveal style="--d:60ms">Things We <span class="gold-solid">Offer</span></h1>
-      <div class="rule left" data-reveal><span class="spark"></span></div>
-      <p class="tag-line" data-reveal style="--d:120ms">Powerful influence. <em>Measurable impact.</em></p>
-      <p class="lead" data-reveal style="margin-top:1.25rem;--d:160ms">
-        From strategy to execution, we craft impactful campaigns that connect brands with 50,000+ top creators and A-list celebrities.
-      </p>
+  <!-- ============ 16:9 FULL-WIDTH CINEMATIC PAGE BANNER ============ -->
+  <section class="page-banner-section" aria-label="Services Page Banner">
+    <div class="page-banner-frame" data-reveal>
+      <img src="assets/influ_banner.png" alt="VELORA Influencer & Creator Network" class="page-banner-img" loading="eager">
+      <div class="page-banner-overlay" aria-hidden="true"></div>
+      <div class="page-banner-content">
+        <div class="shell">
+          <p class="page-banner-eyebrow">WHAT WE OFFER</p>
+          <h1 class="page-banner-title">Our Services</h1>
+        </div>
+      </div>
     </div>
-    <span class="watermark" aria-hidden="true">V</span>
   </section>
 
   <div class="vvv">Value <i></i> Voice <i></i> Vision</div>
@@ -151,16 +150,6 @@
             <p class="offer-card-desc">Flexible commercial models from product seeding and barter to contracted paid deliverables.</p>
           </article>
 
-          <article class="offer-card-visual" data-reveal style="--d:120ms">
-            <div class="offer-card-head">
-              <div class="offer-vector-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              </div>
-              <span class="offer-metric-pill">Compound Recall</span>
-            </div>
-            <h3 class="offer-card-title">Always-On <span>Ambassadors</span></h3>
-            <p class="offer-card-desc">Long-term creator relationships that build compound brand recall and higher consumer trust.</p>
-          </article>
 
           <article class="offer-card-visual" data-reveal style="--d:160ms">
             <div class="offer-card-head">

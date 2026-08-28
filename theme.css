@@ -995,3 +995,397 @@ main {
         transform: none;
     }
 }
+
+/* Panoramic roster captions and category rails. The complete card is the
+   existing Instagram anchor, so portraits, names and handles share one large
+   click/tap target without changing any profile content or destination. */
+#faces.roster-panorama .lead {
+    order: 4;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+#faces.roster-panorama .shell > .rail-head {
+    order: 5;
+}
+
+#faces.roster-panorama .shell > .talent-marquee {
+    order: 6;
+}
+
+#faces.roster-panorama .shell > .talent-marquee + .rail-head {
+    order: 7;
+}
+
+#faces.roster-panorama .shell > .talent-marquee + .rail-head + .talent-marquee {
+    order: 8;
+}
+
+#faces.roster-panorama .hire-talent-wrap {
+    order: 9;
+}
+
+#faces.roster-panorama .rail-head {
+    display: flex;
+    width: min(calc(100vw - 2.5rem), 1280px);
+    margin-top: clamp(1.4rem, 3vw, 2.5rem);
+    padding-bottom: .9rem;
+    border-bottom: 1px solid rgba(78, 55, 94, .18);
+}
+
+#faces.roster-panorama .rail-title {
+    padding: 0;
+    color: #30203e;
+    background: none;
+    font-size: clamp(1.35rem, 2vw, 1.75rem);
+    line-height: 1;
+    letter-spacing: -.045em;
+}
+
+#faces.roster-panorama .rail-count {
+    color: #f0439a;
+    font-size: .7rem;
+    letter-spacing: .15em;
+}
+
+#faces.roster-panorama .talent-marquee {
+    height: clamp(500px, 35vw, 570px);
+}
+
+#faces.roster-panorama .talent {
+    height: calc(var(--pano-y, 0px) + var(--pano-h, 340px) + 92px);
+    cursor: pointer;
+}
+
+#faces.roster-panorama .talent-body {
+    position: absolute;
+    top: calc(var(--pano-y, 0px) + var(--pano-h, 340px) + 14px);
+    left: 0;
+    display: grid;
+    width: var(--pano-w, 210px);
+    height: auto;
+    gap: .16rem;
+    padding: 0 .15rem;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+}
+
+#faces.roster-panorama .talent-role {
+    color: #f0439a;
+    font-size: .61rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: .12em;
+}
+
+#faces.roster-panorama .talent-name {
+    color: #30203e;
+    font-size: clamp(1rem, 1.25vw, 1.15rem);
+    font-weight: 760;
+    line-height: 1.18;
+}
+
+#faces.roster-panorama .talent-meta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    gap: .38rem;
+    margin-top: .16rem;
+    color: #75677e;
+    font-size: .77rem;
+    line-height: 1.25;
+    transition: color .25s ease;
+}
+
+#faces.roster-panorama .talent-meta::before {
+    content: '';
+    width: 17px;
+    height: 17px;
+    flex: none;
+    border: 0;
+    border-radius: 5px;
+    background: radial-gradient(circle at 70% 72%, #ffdc80 0, #fcaf45 26%, #f77737 43%, #e1306c 64%, #c13584 78%, #833ab4 100%);
+    box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .95);
+}
+
+#faces.roster-panorama .talent-meta::after {
+    content: '';
+    position: absolute;
+    left: 4.5px;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border: 1.4px solid #fff;
+    border-radius: 50%;
+    box-shadow: 4.4px -4.4px 0 -2.3px #fff;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+#faces.roster-panorama .talent:hover .talent-name,
+#faces.roster-panorama .talent:focus-visible .talent-name,
+#faces.roster-panorama .talent:hover .talent-meta,
+#faces.roster-panorama .talent:focus-visible .talent-meta {
+    color: #d93688;
+}
+
+#faces.roster-panorama .talent:focus-visible {
+    outline: 3px solid #ec4899;
+    outline-offset: 8px;
+    border-radius: 22px;
+}
+
+@media (max-width: 720px) {
+    #faces.roster-panorama .rail-head {
+        width: calc(100vw - 2.25rem);
+    }
+
+    #faces.roster-panorama .talent-marquee {
+        height: 390px;
+    }
+
+    #faces.roster-panorama .talent {
+        height: 382px;
+    }
+
+    #faces.roster-panorama .talent-body {
+        top: 310px;
+        width: 176px;
+    }
+
+    #faces.roster-panorama .talent-role {
+        font-size: .57rem;
+    }
+
+    #faces.roster-panorama .talent-name {
+        font-size: 1rem;
+    }
+}
+
+/* Direction is selected per category: creators move right-to-left while the
+   celebrity wall moves left-to-right on every page using this component. */
+#faces.roster-panorama .talent-marquee[data-marquee="left"] .talent-track {
+    animation-name: talentSlideLeft;
+}
+
+#faces.roster-panorama .talent-marquee[data-marquee="right"] .talent-track {
+    animation-name: talentSlideRight;
+}
+
+/* ========================================================================== 
+   Home roster — panoramic moving portrait wall
+   Uses the existing profile cards only; script.js combines the two home rails
+   into one duplicated sequence so the right-to-left motion has no blank seam.
+   ========================================================================== */
+#faces.roster-panorama {
+    overflow: hidden;
+    padding-block: clamp(4.5rem, 7vw, 7rem) clamp(3.5rem, 6vw, 5.5rem);
+    background:
+        radial-gradient(circle at 50% 44%, rgba(255, 255, 255, .98) 0 30%, rgba(249, 247, 250, .95) 66%),
+        #f8f7f8;
+    border-block-color: rgba(46, 29, 61, .08);
+}
+
+#faces.roster-panorama::before {
+    display: none;
+}
+
+#faces.roster-panorama .shell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: none;
+    padding-inline: 0;
+}
+
+#faces.roster-panorama .section-head {
+    display: contents;
+}
+
+#faces.roster-panorama .eyebrow {
+    order: 1;
+    justify-content: center;
+    width: min(90vw, 720px);
+    margin-bottom: 1.25rem;
+}
+
+#faces.roster-panorama .eyebrow::after {
+    flex: 0 0 96px;
+}
+
+#faces.roster-panorama .display-2 {
+    order: 2;
+    width: min(92vw, 900px);
+    text-align: center;
+    font-size: clamp(2.65rem, 5.4vw, 5.6rem);
+    line-height: .91;
+}
+
+#faces.roster-panorama .rule.left {
+    order: 3;
+    justify-content: center;
+    width: min(90vw, 520px);
+    margin: 1.35rem 0 .35rem;
+}
+
+#faces.roster-panorama .rule.left::before {
+    display: block;
+}
+
+#faces.roster-panorama .rule.left::before,
+#faces.roster-panorama .rule.left::after {
+    max-width: 82px;
+}
+
+#faces.roster-panorama .rail-head {
+    display: flex;
+}
+
+#faces.roster-panorama .talent-marquee {
+    order: 4;
+    width: 100vw;
+    height: clamp(520px, 38vw, 610px);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    perspective: 1400px;
+    mask-image: linear-gradient(90deg, transparent 0, #000 1.5%, #000 98.5%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 1.5%, #000 98.5%, transparent 100%);
+}
+
+#faces.roster-panorama .talent-track {
+    align-items: flex-start;
+    gap: clamp(18px, 1.6vw, 30px);
+    height: 100%;
+    padding-right: clamp(18px, 1.6vw, 30px);
+    transform-style: preserve-3d;
+    animation: talentSlideLeft 68s linear infinite;
+}
+
+#faces.roster-panorama .talent {
+    position: relative;
+    flex: 0 0 var(--pano-w, 210px);
+    width: var(--pano-w, 210px);
+    height: calc(var(--pano-y, 0px) + var(--pano-h, 340px) + 92px);
+    padding: 0;
+    overflow: visible;
+}
+
+#faces.roster-panorama .talent-photo,
+#faces.roster-panorama .talent:nth-child(n) .talent-photo {
+    width: var(--pano-w, 210px);
+    height: var(--pano-h, 340px);
+    aspect-ratio: auto;
+    border-radius: clamp(18px, 1.5vw, 28px);
+    background: #e7e2e8;
+    box-shadow: 0 26px 56px -28px rgba(22, 16, 28, .45);
+    transform: translateY(var(--pano-y, 0px)) rotateY(var(--pano-r, 0deg));
+    transform-origin: center center;
+    transition: transform .55s cubic-bezier(.22, 1, .36, 1), box-shadow .45s ease;
+}
+
+#faces.roster-panorama .talent-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 18%;
+    filter: saturate(.98) contrast(1.02);
+}
+
+#faces.roster-panorama .talent:hover .talent-photo,
+#faces.roster-panorama .talent:focus-visible .talent-photo {
+    transform: translateY(calc(var(--pano-y, 0px) - 10px)) rotateY(0deg) scale(1.025);
+    box-shadow: 0 34px 68px -28px rgba(22, 16, 28, .52), 0 0 32px -14px rgba(236, 72, 153, .32);
+}
+
+/* Profile details remain visually attached to their portrait and share its
+   Instagram link. */
+#faces.roster-panorama .talent-body {
+    position: absolute;
+    top: calc(var(--pano-y, 0px) + var(--pano-h, 340px) + 14px);
+    left: 0;
+    display: grid;
+    width: var(--pano-w, 210px);
+    height: auto;
+    gap: .16rem;
+    padding: 0 .15rem;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+}
+
+#faces.roster-panorama .lead {
+    order: 4;
+    width: min(88vw, 820px);
+    max-width: 820px;
+    margin: clamp(.35rem, 1.2vw, 1rem) auto clamp(2rem, 4vw, 3rem);
+    text-align: center;
+    color: #756f78;
+    font-size: clamp(.95rem, 1.25vw, 1.12rem);
+    line-height: 1.45;
+}
+
+#faces.roster-panorama .hire-talent-wrap {
+    order: 9;
+    margin-top: clamp(1.75rem, 3vw, 2.6rem);
+}
+
+@media (max-width: 720px) {
+    #faces.roster-panorama {
+        padding-block: 4rem 3.5rem;
+    }
+
+    #faces.roster-panorama .display-2 {
+        font-size: clamp(2.35rem, 12vw, 3.45rem);
+    }
+
+    #faces.roster-panorama .talent-marquee {
+        height: 390px;
+        margin-top: .75rem;
+    }
+
+    #faces.roster-panorama .talent-track {
+        gap: 14px;
+        padding-right: 14px;
+        animation-duration: 52s;
+    }
+
+    #faces.roster-panorama .talent {
+        flex-basis: 176px;
+        width: 176px;
+        height: 382px;
+    }
+
+    #faces.roster-panorama .talent-photo,
+    #faces.roster-panorama .talent:nth-child(n) .talent-photo {
+        width: 176px;
+        height: 286px;
+        border-radius: 18px;
+        transform: translateY(12px) rotateY(0deg);
+    }
+
+    #faces.roster-panorama .talent:nth-child(3n+2) .talent-photo {
+        transform: translateY(28px) rotateY(0deg);
+    }
+
+    #faces.roster-panorama .talent:hover .talent-photo,
+    #faces.roster-panorama .talent:focus-visible .talent-photo {
+        transform: translateY(6px) rotateY(0deg) scale(1.018);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #faces.roster-panorama .talent-marquee {
+        overflow-x: auto;
+        mask-image: none;
+        -webkit-mask-image: none;
+    }
+
+    #faces.roster-panorama .talent-track {
+        animation: none;
+        transform: none;
+    }
+}
