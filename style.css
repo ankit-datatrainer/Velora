@@ -112,6 +112,43 @@ body.nav-open {
     overflow: hidden;
 }
 
+/* ========================================================================
+   51.7 ABOUT — ALL PILLAR CARDS IN ONE DESKTOP VIEW
+   The cards remain inside the original horizontal rail, with its native
+   scrollbar and touch/trackpad scrolling preserved. Only desktop sizing is
+   changed so the complete four-card set is visible at once.
+   ======================================================================== */
+@media (min-width: 1081px) {
+    #who-we-are > .shell.slide-split {
+        width: min(100%, 1560px);
+        max-width: 1560px;
+        grid-template-columns: minmax(310px, .72fr) minmax(0, 1.7fr);
+        gap: clamp(2rem, 3.5vw, 4rem);
+    }
+
+    #who-we-are .swipe-track {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        align-items: stretch;
+        gap: clamp(.75rem, 1.15vw, 1.15rem);
+        overflow-x: scroll;
+        scrollbar-gutter: stable;
+    }
+
+    #who-we-are .swipe-card {
+        width: auto;
+        min-width: 0;
+        height: 100%;
+        padding: clamp(1rem, 1.45vw, 1.45rem);
+        scroll-snap-align: start;
+    }
+
+    #who-we-are .swipe-card .offer-desc {
+        font-size: clamp(.78rem, .82vw, .91rem);
+        line-height: 1.55;
+    }
+}
+
 img,
 video,
 svg,
