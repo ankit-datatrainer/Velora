@@ -113,6 +113,15 @@ body.nav-open {
 }
 
 /* ========================================================================
+   51.7 FOUNDER PORTRAIT SCALE - SINGLE VIEWPORT OPTIMIZED
+   The home and About pages share the same compact, single-view CEO orbit.
+   ======================================================================== */
+#founder {
+    padding-top: clamp(2rem, 3.5vh, 3.5rem);
+    padding-bottom: clamp(2.5rem, 4vh, 4rem);
+}
+
+/* ========================================================================
    51.7 ABOUT — ALL PILLAR CARDS IN ONE DESKTOP VIEW
    The cards remain inside the original horizontal rail, with its native
    scrollbar and touch/trackpad scrolling preserved. Only desktop sizing is
@@ -5245,32 +5254,51 @@ section {
 .founder-header-block {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-    gap: clamp(2rem, 4vw, 4rem);
+    gap: clamp(1.5rem, 2.5vw, 3rem);
     align-items: center;
-    margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+    margin-top: clamp(1.5rem, 3vh, 2.5rem);
+    margin-bottom: clamp(2rem, 3.5vh, 3rem);
 }
 
 .founder-header-left .founder-name {
-    font-size: clamp(2.2rem, 5.5vw, 4rem);
-    line-height: 0.95;
-    letter-spacing: -0.04em;
-    margin-top: 0.2rem;
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-top: 0.15rem;
 }
 
 .founder-header-left .founder-role {
     font-family: var(--f-display);
-    font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+    font-size: clamp(0.78rem, 1.1vw, 0.95rem);
     font-weight: 700;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--pink);
-    margin-top: 0.5rem;
+    margin-top: 0.3rem;
 }
 
 .founder-header-right .pullquote {
     display: flex;
-    gap: 0.9rem;
+    gap: 0.75rem;
     margin-top: 0;
+}
+
+.founder-header-right .pullquote blockquote {
+    font-size: clamp(0.92rem, 1.15vw, 1.05rem);
+    line-height: 1.38;
+}
+
+.founder-header-right .lead {
+    font-size: clamp(0.82rem, 0.95vw, 0.9rem);
+    line-height: 1.45;
+    margin-top: 0.35rem;
+}
+
+.founder-actions {
+    margin-top: 0.75rem;
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
 }
 
 /* Bento UGC Showcase Grid */
@@ -8643,6 +8671,263 @@ body {
     z-index: 2;
 }
 
+/* Premium Animated Vector Showcase (replaces the service photo) */
+.service-vector-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 50% 38%, rgba(139, 92, 246, 0.22), transparent 62%),
+        linear-gradient(160deg, #1b1030 0%, #0b0716 72%);
+}
+
+.vector-panel-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(236, 72, 153, 0.24) 0%, rgba(251, 191, 36, 0.12) 42%, transparent 72%);
+    filter: blur(28px);
+    animation: orbitHaloPulse 4.5s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+.vector-panel-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 26px 26px;
+    -webkit-mask-image: radial-gradient(circle at center, #000 42%, transparent 76%);
+    mask-image: radial-gradient(circle at center, #000 42%, transparent 76%);
+    pointer-events: none;
+}
+
+.vector-panel-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.vector-ring-outer {
+    width: 62%;
+    aspect-ratio: 1;
+    border: 1px dashed rgba(236, 72, 153, 0.3);
+    animation: vectorRingSpin 26s linear infinite;
+}
+
+.vector-ring-inner {
+    width: 44%;
+    aspect-ratio: 1;
+    border: 1px solid rgba(251, 191, 36, 0.22);
+    animation: vectorRingSpin 20s linear infinite reverse;
+}
+
+@keyframes vectorRingSpin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.vector-panel-scene {
+    position: relative;
+    z-index: 2;
+    width: 88%;
+    max-width: 440px;
+    filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.5));
+}
+
+/* Flat-illustration motion vocabulary */
+.svc-float {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: svcFloat 3.4s ease-in-out infinite;
+}
+
+@keyframes svcFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+}
+
+.svc-pop {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: svcPop 2.6s ease-in-out infinite;
+}
+
+@keyframes svcPop {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.07); }
+}
+
+.svc-rise {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: svcRise 3s ease-in-out infinite;
+}
+
+@keyframes svcRise {
+    0% { transform: translateY(10px); opacity: 0; }
+    25% { opacity: 1; }
+    100% { transform: translateY(-28px); opacity: 0; }
+}
+
+.svc-spin-slow {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: svcSpinSlow 9s linear infinite;
+}
+
+@keyframes svcSpinSlow {
+    to { transform: rotate(360deg); }
+}
+
+.svc-bar {
+    transform-box: fill-box;
+    transform-origin: bottom;
+    animation: svcBar 1.5s ease-in-out infinite;
+}
+
+@keyframes svcBar {
+    0%, 100% { transform: scaleY(0.45); }
+    50% { transform: scaleY(1); }
+}
+
+.svc-clap {
+    transform-box: fill-box;
+    transform-origin: left bottom;
+    animation: svcClap 3.2s ease-in-out infinite;
+}
+
+@keyframes svcClap {
+    0%, 68%, 100% { transform: rotate(0deg); }
+    80% { transform: rotate(-17deg); }
+    90% { transform: rotate(-4deg); }
+}
+
+.svc-sway {
+    transform-box: fill-box;
+    transform-origin: top center;
+    animation: svcSway 4.2s ease-in-out infinite;
+}
+
+@keyframes svcSway {
+    0%, 100% { transform: rotate(-2.2deg); }
+    50% { transform: rotate(2.2deg); }
+}
+
+.svc-beam polygon {
+    /* Soft light-shaft look: a hard-edged tinted polygon reads as a muddy
+       column against the dark panel, a blurred pale one reads as light. */
+    filter: blur(4px);
+    animation: svcBeam 3.6s ease-in-out infinite alternate;
+}
+
+@keyframes svcBeam {
+    0% { opacity: 0.10; }
+    100% { opacity: 0.26; }
+}
+
+.svc-fall {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: svcFall 4.2s linear infinite;
+}
+
+@keyframes svcFall {
+    0% { transform: translateY(-14px) rotate(0deg); opacity: 0; }
+    15% { opacity: 1; }
+    100% { transform: translateY(44px) rotate(220deg); opacity: 0; }
+}
+
+.svc-blink {
+    animation: svcSparkleBlink 2s ease-in-out infinite;
+}
+
+.svc-star-glow {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: svcStarGlow 3s ease-in-out infinite;
+}
+
+.svc-node, .svc-sparkle2 circle {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: svcNodePulse 2.4s ease-in-out infinite;
+}
+
+@keyframes svcNodePulse {
+    0%, 100% { opacity: 0.55; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.15); }
+}
+
+.svc-line {
+    opacity: 0.35;
+    animation: svcLinePulse 2.4s ease-in-out infinite;
+}
+
+@keyframes svcLinePulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.85; }
+}
+
+.svc-spot {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: vectorRingSpin 18s linear infinite;
+}
+
+.svc-star {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: svcStarGlow 3s ease-in-out infinite;
+}
+
+@keyframes svcStarGlow {
+    0%, 100% { filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.4)); }
+    50% { filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.9)); }
+}
+
+.svc-sparkle line {
+    animation: svcSparkleBlink 2s ease-in-out infinite;
+}
+
+@keyframes svcSparkleBlink {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+.svc-check-line {
+    opacity: 0.6;
+    animation: svcSparkleBlink 2.4s ease-in-out infinite;
+}
+
+.svc-check {
+    stroke-dasharray: 30;
+    stroke-dashoffset: 30;
+    animation: svcCheckDraw 2.8s ease-in-out infinite;
+}
+
+@keyframes svcCheckDraw {
+    0%, 15% { stroke-dashoffset: 30; }
+    45%, 85% { stroke-dashoffset: 0; }
+    100% { stroke-dashoffset: 30; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .vector-panel-glow,
+    .vector-panel-ring,
+    .svc-float, .svc-pop, .svc-rise, .svc-spin-slow, .svc-bar,
+    .svc-clap, .svc-sway, .svc-fall, .svc-blink, .svc-star-glow,
+    .svc-beam polygon, .svc-check, .svc-check-line, .svc-node, .svc-line {
+        animation: none !important;
+    }
+
+    .svc-check { stroke-dashoffset: 0; }
+}
+
 /* Rich Visual Offer Feature Grid */
 .offer-grid-visual {
     display: grid;
@@ -9288,44 +9573,54 @@ body {
 }
 
 /* ==========================================================================
-   CEO CIRCULAR ORBIT ECOSYSTEM SHOWCASE
+   CEO CIRCULAR ORBIT ECOSYSTEM SHOWCASE - FULL VIEWPORT HERO
    ========================================================================== */
-.ceo-orbit-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 1180px;
-    margin: 0 auto;
-    height: clamp(640px, 68vw, 780px);
+.founder-orbit-section,
+#founder {
+    min-height: calc(100vh - 70px);
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: clamp(24px, 3.5vw, 36px);
-    background: radial-gradient(circle at center, rgba(32, 16, 56, 0.85) 0%, rgba(14, 7, 28, 0.97) 65%, #0b0716 100%);
-    border: 1px solid rgba(236, 72, 153, 0.24);
-    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.85), 0 0 50px rgba(139, 92, 246, 0.18);
+    padding-top: clamp(1.5rem, 3vh, 2.5rem);
+    padding-bottom: clamp(1.5rem, 3vh, 2.5rem);
+}
+
+.ceo-orbit-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1536px;
+    margin: 0 auto;
+    height: clamp(550px, calc(100vh - 240px), 850px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: clamp(24px, 2.5vw, 36px);
+    background: radial-gradient(ellipse at center, rgba(248, 240, 252, 0.98) 0%, rgba(228, 208, 240, 0.96) 65%, #c8abd9 100%);
+    border: 1.5px solid rgba(160, 110, 185, 0.35);
+    box-shadow: 0 25px 60px -15px rgba(72, 39, 90, 0.25), 0 0 45px rgba(139, 92, 246, 0.12);
     overflow: hidden;
 }
 
 .orbit-halo-glow {
     position: absolute;
-    width: clamp(320px, 42vw, 480px);
-    height: clamp(320px, 42vw, 480px);
+    width: clamp(280px, 32vw, 380px);
+    height: clamp(280px, 32vw, 380px);
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, rgba(251, 191, 36, 0.16) 45%, transparent 70%);
-    filter: blur(40px);
+    background: radial-gradient(circle, rgba(251, 146, 60, 0.35) 0%, rgba(236, 72, 153, 0.2) 45%, transparent 70%);
+    filter: blur(30px);
     pointer-events: none;
     animation: orbitHaloPulse 4.5s ease-in-out infinite alternate;
 }
 
 @keyframes orbitHaloPulse {
     0% {
-        transform: scale(0.88);
+        transform: scale(0.92);
         opacity: 0.65;
     }
 
     100% {
-        transform: scale(1.15);
-        opacity: 1;
+        transform: scale(1.1);
+        opacity: 0.95;
     }
 }
 
@@ -9340,22 +9635,22 @@ body {
 }
 
 .orbit-ring-outer {
-    width: clamp(420px, 80%, 920px);
-    height: clamp(420px, 78%, 620px);
+    width: clamp(480px, 78%, 840px);
+    height: clamp(370px, 68%, 460px);
     border: 1.5px dashed rgba(236, 72, 153, 0.35);
-    box-shadow: 0 0 30px rgba(236, 72, 153, 0.12);
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.1);
 }
 
 .orbit-ring-mid {
-    width: clamp(320px, 62%, 680px);
-    height: clamp(320px, 60%, 460px);
-    border: 1px solid rgba(139, 92, 246, 0.22);
+    width: clamp(360px, 58%, 640px);
+    height: clamp(270px, 48%, 340px);
+    border: 1px solid rgba(139, 92, 246, 0.25);
 }
 
 .orbit-ring-inner {
-    width: clamp(220px, 44%, 440px);
-    height: clamp(220px, 42%, 300px);
-    border: 1px dashed rgba(251, 191, 36, 0.25);
+    width: clamp(260px, 42%, 460px);
+    height: clamp(190px, 35%, 240px);
+    border: 1px dashed rgba(251, 191, 36, 0.3);
 }
 
 /* Floating Stat Badges */
@@ -9365,24 +9660,25 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 7px 15px;
+    padding: 6px 14px;
     border-radius: 999px;
-    background: rgba(11, 7, 22, 0.88);
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: #ffffff !important;
+    border: 1px solid rgba(139, 92, 246, 0.22) !important;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     font-family: var(--f-display);
     font-size: 0.72rem;
     font-weight: 700;
-    color: #ffffff;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+    color: #1f142e !important;
+    box-shadow: 0 4px 14px rgba(72, 39, 90, 0.12) !important;
     pointer-events: none;
 }
 
 .orbit-stat-pill svg {
-    width: 14px;
-    height: 14px;
-    color: var(--pink-light);
+    width: 13px;
+    height: 13px;
+    color: #ec4899;
+    flex-shrink: 0;
 }
 
 .stat-pill-tl {
@@ -9425,58 +9721,58 @@ body {
     right: auto;
 }
 
-/* 8 Symmetrical Coordinates around the Main Center Circle */
+/* 8 Symmetrical Coordinates matching the design */
 .orbit-node.node-1, .node-1 {
-    top: 15%;
+    top: 17%;
     left: 50%;
     right: auto;
     bottom: auto;
 }
 
 .orbit-node.node-2, .node-2 {
-    top: 25%;
+    top: 27%;
     left: 77%;
     right: auto;
     bottom: auto;
 }
 
 .orbit-node.node-3, .node-3 {
-    top: 50%;
-    left: 84%;
+    top: 52%;
+    left: 83%;
     right: auto;
     bottom: auto;
 }
 
 .orbit-node.node-4, .node-4 {
-    top: 75%;
+    top: 76%;
     left: 77%;
     right: auto;
     bottom: auto;
 }
 
 .orbit-node.node-5, .node-5 {
-    top: 85%;
+    top: 83%;
     left: 50%;
     right: auto;
     bottom: auto;
 }
 
 .orbit-node.node-6, .node-6 {
-    top: 75%;
+    top: 76%;
     left: 23%;
     right: auto;
     bottom: auto;
 }
 
 .orbit-node.node-7, .node-7 {
-    top: 50%;
-    left: 16%;
+    top: 52%;
+    left: 17%;
     right: auto;
     bottom: auto;
 }
 
 .orbit-node.node-8, .node-8 {
-    top: 25%;
+    top: 27%;
     left: 23%;
     right: auto;
     bottom: auto;
@@ -9484,25 +9780,25 @@ body {
 
 /* Hover Animation on Satellite Nodes */
 .orbit-node:hover {
-    transform: translate(-50%, -50%) scale(1.18);
+    transform: translate(-50%, -50%) scale(1.12);
     z-index: 40;
 }
 
-/* Larger Circle Image Frame */
+/* Circle Image Frame for Orbit Satellites */
 .orbit-node-inner {
     position: relative;
-    width: clamp(86px, 10vw, 114px);
-    height: clamp(86px, 10vw, 114px);
+    width: clamp(90px, 9vw, 115px);
+    height: clamp(90px, 9vw, 115px);
     border-radius: 50%;
-    padding: 3.5px;
-    background: linear-gradient(135deg, rgba(236, 72, 153, 0.75), rgba(251, 191, 36, 0.65), rgba(139, 92, 246, 0.75));
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.75), 0 0 20px rgba(236, 72, 153, 0.3);
+    padding: 3px;
+    background: linear-gradient(135deg, #ec4899 0%, #fbbf24 100%);
+    box-shadow: 0 8px 24px rgba(72, 39, 90, 0.25), 0 0 16px rgba(236, 72, 153, 0.2);
     cursor: pointer;
     transition: box-shadow 0.35s ease, background 0.35s ease;
 }
 
 .orbit-node:hover .orbit-node-inner {
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 32px rgba(236, 72, 153, 0.7), 0 0 16px rgba(251, 191, 36, 0.5);
+    box-shadow: 0 12px 30px rgba(72, 39, 90, 0.4), 0 0 24px rgba(236, 72, 153, 0.7);
     background: linear-gradient(135deg, #fbbf24, #ec4899, #8b5cf6);
 }
 
@@ -9513,7 +9809,7 @@ body {
     object-fit: cover;
     object-position: center 15%;
     display: block;
-    border: 2.5px solid #0b0716;
+    border: 2.5px solid #ffffff;
     transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
@@ -9524,19 +9820,19 @@ body {
 /* Clean Non-Overlapping Info Capsule Pill */
 .orbit-node-info {
     position: absolute;
-    bottom: -18px;
+    bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 4px 12px;
+    gap: 5px;
+    padding: 3px 10px;
     border-radius: 999px;
-    background: rgba(13, 8, 26, 0.97) !important;
-    border: 1px solid rgba(255, 255, 255, 0.28) !important;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.85), 0 0 14px rgba(236, 72, 153, 0.25);
+    background: #ffffff !important;
+    border: 1px solid rgba(139, 92, 246, 0.25) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 14px rgba(72, 39, 90, 0.15) !important;
     white-space: nowrap;
     pointer-events: none;
     transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
@@ -9545,38 +9841,37 @@ body {
 
 .orbit-node-info strong {
     font-family: var(--f-display);
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     font-weight: 800;
-    color: #ffffff !important;
+    color: #1f142e !important;
     line-height: 1;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
 }
 
 .orbit-node-info .node-tag {
     font-family: var(--f-display);
-    font-size: 0.58rem;
+    font-size: 0.52rem;
     font-weight: 800;
     color: #ffffff !important;
-    background: linear-gradient(135deg, #ec4899, #8b5cf6) !important;
-    padding: 2px 7px;
+    background: linear-gradient(135deg, #ec4899, #d946ef) !important;
+    padding: 2px 6px;
     border-radius: 999px;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.02em;
     text-transform: uppercase;
-    box-shadow: 0 2px 6px rgba(236, 72, 153, 0.4);
+    box-shadow: 0 2px 5px rgba(236, 72, 153, 0.3);
 }
 
 .orbit-node:hover .orbit-node-info {
     border-color: #fbbf24 !important;
-    background: rgba(22, 11, 42, 0.98) !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.9), 0 0 20px rgba(251, 191, 36, 0.5) !important;
-    transform: translateX(-50%) scale(1.08);
+    box-shadow: 0 6px 18px rgba(72, 39, 90, 0.25), 0 0 16px rgba(251, 191, 36, 0.4) !important;
+    transform: translateX(-50%) scale(1.06);
 }
 
 .orbit-node:hover .orbit-node-info strong {
-    color: #fbbf24 !important;
+    color: #d97706 !important;
 }
 
-/* Center Main Hub (CEO Shubh Gupta) - EXACT CENTER */
+/* Center Main Hub (CEO Shubh Gupta) - EXACT CENTER & BALANCED SCALE */
 .orbit-center-hub {
     position: absolute;
     top: 50%;
@@ -9594,41 +9889,42 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: clamp(210px, 26vw, 270px);
-    height: clamp(210px, 26vw, 270px);
+    width: clamp(320px, 28vw, 350px);
+    height: clamp(320px, 28vw, 350px);
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(251, 191, 36, 0.28) 0%, rgba(236, 72, 153, 0.16) 50%, transparent 75%);
+    background: radial-gradient(circle, rgba(251, 146, 60, 0.35) 0%, rgba(236, 72, 153, 0.2) 45%, transparent 70%);
     animation: hubRingPulse 3.5s ease-in-out infinite alternate;
     pointer-events: none;
+    filter: blur(20px);
 }
 
 @keyframes hubRingPulse {
     0% {
         transform: translate(-50%, -50%) scale(0.92);
-        opacity: 0.6;
+        opacity: 0.65;
     }
 
     100% {
-        transform: translate(-50%, -50%) scale(1.12);
-        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.08);
+        opacity: 0.95;
     }
 }
 
 .center-hub-avatar-frame {
     position: relative;
-    width: clamp(160px, 20vw, 210px);
-    height: clamp(160px, 20vw, 210px);
+    width: clamp(230px, 20vw, 250px);
+    height: clamp(230px, 20vw, 250px);
     border-radius: 50%;
-    padding: 5px;
-    background: linear-gradient(135deg, #fbbf24 0%, #ec4899 50%, #8b5cf6 100%);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(251, 191, 36, 0.4);
+    padding: 4.5px;
+    background: linear-gradient(135deg, #f59e0b 0%, #ec4899 50%, #8b5cf6 100%);
+    box-shadow: 0 16px 40px rgba(72, 39, 90, 0.3), 0 0 32px rgba(245, 158, 11, 0.35);
     transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), box-shadow 0.4s ease;
     cursor: pointer;
 }
 
 .orbit-center-hub:hover .center-hub-avatar-frame {
-    transform: scale(1.07);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 50px rgba(251, 191, 36, 0.6);
+    transform: scale(1.05);
+    box-shadow: 0 20px 48px rgba(72, 39, 90, 0.4), 0 0 42px rgba(251, 191, 36, 0.6);
 }
 
 .center-hub-avatar-frame img {
@@ -9636,9 +9932,9 @@ body {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center 10%;
     display: block;
-    border: 3.5px solid #0b0716;
+    border: 3px solid #ffffff;
 }
 
 .center-hub-crown {
@@ -9648,13 +9944,14 @@ body {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #fbbf24, #d97706);
+    background: #fbbf24;
     display: grid;
     place-items: center;
-    color: #0b0716;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-    border: 2px solid #0b0716;
+    color: #1f142e;
+    box-shadow: 0 4px 10px rgba(72, 39, 90, 0.25);
+    border: 2.5px solid #ffffff;
     transition: transform 0.3s ease;
+    z-index: 30;
 }
 
 .orbit-center-hub:hover .center-hub-crown {
@@ -9662,41 +9959,41 @@ body {
 }
 
 .center-hub-crown svg {
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
 }
 
 .center-hub-label-card {
     position: absolute;
-    bottom: -24px;
+    bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2px;
-    padding: 6px 18px;
+    padding: 5px 18px;
     border-radius: 999px;
-    background: rgba(13, 8, 26, 0.97) !important;
-    border: 1.5px solid rgba(251, 191, 36, 0.65) !important;
+    background: #ffffff !important;
+    border: 1.5px solid rgba(245, 158, 11, 0.5) !important;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85), 0 0 20px rgba(251, 191, 36, 0.3) !important;
+    box-shadow: 0 6px 20px rgba(72, 39, 90, 0.18) !important;
     white-space: nowrap;
     z-index: 25;
     transition: all 0.3s ease;
 }
 
 .orbit-center-hub:hover .center-hub-label-card {
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.9), 0 0 28px rgba(251, 191, 36, 0.5) !important;
+    box-shadow: 0 8px 24px rgba(72, 39, 90, 0.25), 0 0 22px rgba(251, 191, 36, 0.5) !important;
     border-color: #fbbf24 !important;
 }
 
 .center-hub-name {
     font-family: var(--f-display);
-    font-size: clamp(0.85rem, 1.15vw, 1rem);
+    font-size: clamp(0.82rem, 1vw, 0.92rem);
     font-weight: 800;
-    color: #ffffff !important;
+    color: #1f142e !important;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -9706,35 +10003,35 @@ body {
 .center-hub-name .verified-check {
     width: 14px;
     height: 14px;
-    color: #38bdf8;
+    color: #1877f2;
 }
 
 .center-hub-title {
     font-family: var(--f-display);
-    font-size: 0.67rem;
-    font-weight: 700;
-    color: #fbbf24 !important;
+    font-size: 0.58rem;
+    font-weight: 800;
+    color: #b45309 !important;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
 }
 
 /* Responsive Scaling for Orbit */
 @media (max-width: 900px) {
     .ceo-orbit-wrapper {
-        height: 600px;
+        height: 500px;
     }
 
     .orbit-node-inner {
-        width: 74px;
-        height: 74px;
+        width: 52px;
+        height: 52px;
     }
 
     .orbit-node-info {
-        padding: 2px 7px;
+        padding: 2px 6px;
     }
 
     .orbit-node-info strong {
-        font-size: 0.6rem;
+        font-size: 0.56rem;
     }
 
     .orbit-node-info .node-tag {
@@ -9745,12 +10042,17 @@ body {
         width: 150px;
         height: 150px;
     }
+
+    .center-hub-ring-pulse {
+        width: 195px;
+        height: 195px;
+    }
 }
 
 @media (max-width: 600px) {
     .ceo-orbit-wrapper {
-        height: 520px;
-        border-radius: 20px;
+        height: 480px;
+        border-radius: 18px;
     }
 
     .orbit-stat-pill {
@@ -9758,17 +10060,17 @@ body {
     }
 
     .orbit-node-inner {
-        width: 58px;
-        height: 58px;
+        width: 44px;
+        height: 44px;
     }
 
     .node-1 {
-        top: 12%;
+        top: 11%;
         left: 50%;
     }
 
     .node-2 {
-        top: 24%;
+        top: 22%;
         left: 82%;
     }
 
@@ -9778,17 +10080,17 @@ body {
     }
 
     .node-4 {
-        top: 76%;
+        top: 78%;
         left: 82%;
     }
 
     .node-5 {
-        top: 88%;
+        top: 89%;
         left: 50%;
     }
 
     .node-6 {
-        top: 76%;
+        top: 78%;
         left: 18%;
     }
 
@@ -9798,18 +10100,35 @@ body {
     }
 
     .node-8 {
-        top: 24%;
+        top: 22%;
         left: 18%;
     }
 
     .center-hub-avatar-frame {
-        width: 130px;
-        height: 130px;
+        width: 125px;
+        height: 125px;
+    }
+
+    .center-hub-ring-pulse {
+        width: 165px;
+        height: 165px;
+    }
+
+    .center-hub-crown {
+        width: 26px;
+        height: 26px;
+        top: 4px;
+        right: 4px;
+    }
+
+    .center-hub-crown svg {
+        width: 13px;
+        height: 13px;
     }
 
     .center-hub-label-card {
-        padding: 4px 14px;
-        bottom: -20px;
+        padding: 3px 12px;
+        bottom: -15px;
     }
 }
 
@@ -10476,13 +10795,17 @@ body {
 }
 
 #founder .center-hub-avatar-frame {
-    overflow: hidden;
+    overflow: visible;
 }
 
 #founder .orbit-node-inner img,
 #founder .center-hub-avatar-frame img {
     object-fit: cover;
     transform-origin: center;
+}
+
+#founder .center-hub-avatar-frame img {
+    object-position: 50% 10%;
 }
 
 #founder .node-1 img { object-position: 50% 18%; }
@@ -10596,6 +10919,38 @@ body {
     white-space: normal;
     overflow: visible;
     text-overflow: clip;
+}
+
+.reel-metrics {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 6px;
+    font-family: var(--f-display);
+    font-size: clamp(0.78rem, 0.95vw, 0.88rem);
+    font-weight: 800;
+    color: #1877f2 !important;
+    letter-spacing: 0.02em;
+}
+
+.reel-metric {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #1877f2 !important;
+}
+
+.reel-metric svg {
+    width: 14px;
+    height: 14px;
+    color: #1877f2 !important;
+    flex-shrink: 0;
+}
+
+.reel-metric-dot {
+    color: rgba(24, 119, 242, 0.6) !important;
+    font-size: 0.75rem;
 }
 
 @media (max-width: 600px) {
@@ -11728,8 +12083,8 @@ svg {
     }
 
     .center-hub-avatar-frame {
-        width: 110px;
-        height: 110px;
+        width: 135px;
+        height: 135px;
     }
 
     .orbit-node-inner {

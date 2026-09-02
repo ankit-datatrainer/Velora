@@ -895,6 +895,112 @@
         startAutoSlide();
     };
 
+    /* ---------- Shared influencer roster ---------- */
+    const FEATURED_INFLUENCERS = [
+        {
+            name: 'Shadab Jakati',
+            role: 'Viral Comedy Creator',
+            handle: 'shadabjakati1',
+            image: 'assets/talent/shadab-jakati.jpg'
+        },
+        {
+            name: 'Shivani Gupta',
+            role: 'Lifestyle & Travel Creator',
+            handle: '___shivanigupta__',
+            image: 'assets/talent/shivani-gupta.jpg'
+        },
+        {
+            name: 'Mia Lakra',
+            role: 'Host, Model & Creator',
+            handle: 'mialakraofficial',
+            image: 'assets/talent/mia-lakra.jpg'
+        },
+        {
+            name: 'Puneet Superstar',
+            role: 'Viral Comedy Creator',
+            handle: 'puneetsuperr_star',
+            image: 'assets/talent/puneet-superstar.jpg'
+        },
+        {
+            name: 'Khush Ahlawat',
+            role: 'Fitness & Lifestyle',
+            handle: 'khush_ahlawat',
+            image: 'assets/talent/khush-ahlawat.jpg'
+        },
+        {
+            name: 'Shaad Malik',
+            role: 'Dance & Entertainment Creator',
+            handle: 'shaad8367',
+            image: 'assets/talent/shaad-malik.jpg'
+        },
+        {
+            name: 'Tanya Mittal',
+            role: 'Actor & Digital Creator',
+            handle: 'tanyamittalofficial',
+            image: 'assets/talent/tanya-mittal.jpg'
+        }
+    ];
+
+    const createTalentCard = (profile) => {
+        const card = document.createElement('a');
+        card.className = 'talent';
+        card.href = `https://www.instagram.com/${profile.handle}/`;
+        card.target = '_blank';
+        card.rel = 'noopener';
+        card.dataset.featuredInfluencer = profile.handle;
+
+        const photo = document.createElement('span');
+        photo.className = 'talent-photo';
+        const image = document.createElement('img');
+        image.src = profile.image;
+        image.alt = profile.name;
+        image.loading = 'lazy';
+        photo.append(image);
+
+        const body = document.createElement('span');
+        body.className = 'talent-body';
+        const role = document.createElement('span');
+        role.className = 'talent-role';
+        role.textContent = profile.role;
+        const name = document.createElement('span');
+        name.className = 'talent-name';
+        name.textContent = profile.name;
+        const handle = document.createElement('span');
+        handle.className = 'talent-meta';
+        handle.textContent = `@${profile.handle}`;
+        body.append(role, name, handle);
+        card.append(photo, body);
+        return card;
+    };
+
+    const hydrateSharedInfluencerRosters = () => {
+        const tracks = $$('.talent-marquee[aria-label="Influencers we work with"] .talent-track');
+
+        tracks.forEach(track => {
+            if (track.dataset.featuredReady === 'true') return;
+
+            // Rebuild the duplicate half after adding the featured profiles so
+            // both halves have the exact same order and the marquee stays seamless.
+            $$('.talent[aria-hidden="true"]', track).forEach(card => card.remove());
+            const firstExistingCard = $('.talent', track);
+            const featuredCards = document.createDocumentFragment();
+            FEATURED_INFLUENCERS.forEach(profile => featuredCards.append(createTalentCard(profile)));
+            track.insertBefore(featuredCards, firstExistingCard);
+
+            const profiles = $$('.talent:not([aria-hidden="true"])', track);
+            profiles.forEach(profile => {
+                const duplicate = profile.cloneNode(true);
+                duplicate.setAttribute('aria-hidden', 'true');
+                duplicate.tabIndex = -1;
+                track.append(duplicate);
+            });
+
+            track.dataset.featuredReady = 'true';
+        });
+    };
+
+    hydrateSharedInfluencerRosters();
+
     /* ---------- Home roster: categorized panoramic portrait walls ---------- */
     const initRosterPanorama = () => {
         const roster = $('#faces.roster-panorama');
