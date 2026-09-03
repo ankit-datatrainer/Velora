@@ -559,15 +559,13 @@ main {
     border-color: rgba(97, 62, 124, .16);
 }
 
-.section-campaigns .reel-title {
-    color: #1877f2 !important;
+.section-campaigns .reel-title a {
+    color: #1e1233 !important;
     text-shadow: none;
 }
 
-.section-campaigns .reel-metrics,
-.section-campaigns .reel-metric,
-.section-campaigns .reel-metric svg {
-    color: #1877f2 !important;
+.section-campaigns .reel-card:hover .reel-title a {
+    color: #7c3aed !important;
 }
 
 /* Footer */

@@ -411,7 +411,7 @@
                 status.classList.add('show');
             }
 
-            window.open(`https://wa.me/919013920785?text=${encodeURIComponent(lines)}`, '_blank', 'noopener');
+            window.open(`https://wa.me/919871788896?text=${encodeURIComponent(lines)}`, '_blank', 'noopener');
             form.reset();
         });
     }
@@ -689,6 +689,15 @@
                     playPreview();
                 }
             });
+
+            // Clicking the reel card or overlay redirects to the actual Instagram reel URL
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('.reel-audio-btn')) return;
+                const reelUrl = card.dataset.reelUrl;
+                if (reelUrl) {
+                    window.open(reelUrl, '_blank', 'noopener');
+                }
+            });
         });
     }
 
@@ -898,22 +907,22 @@
     /* ---------- Shared influencer roster ---------- */
     const FEATURED_INFLUENCERS = [
         {
-            name: 'Shadab Jakati',
-            role: 'Viral Comedy Creator',
-            handle: 'shadabjakati1',
-            image: 'assets/talent/shadab-jakati.jpg'
+            name: 'Fukra Insaan',
+            role: 'Digital Icon & Creator',
+            handle: 'fukra_insaan',
+            image: 'assets/gallery/fukra-insaan.jpg'
         },
         {
-            name: 'Shivani Gupta',
-            role: 'Lifestyle & Travel Creator',
-            handle: '___shivanigupta__',
-            image: 'assets/talent/shivani-gupta.jpg'
+            name: 'Digvijay Rathee',
+            role: 'Fitness & Reality Star',
+            handle: 'digvijay_rathee',
+            image: 'assets/gallery/digvijay-rathee.jpg'
         },
         {
-            name: 'Mia Lakra',
-            role: 'Host, Model & Creator',
-            handle: 'mialakraofficial',
-            image: 'assets/talent/mia-lakra.jpg'
+            name: 'Sana Sultan',
+            role: 'Actor & Fashion Star',
+            handle: 'sanakhan00',
+            image: 'assets/gallery/sana-sultan.jpg'
         },
         {
             name: 'Puneet Superstar',
@@ -922,22 +931,22 @@
             image: 'assets/talent/puneet-superstar.jpg'
         },
         {
-            name: 'Khush Ahlawat',
-            role: 'Fitness & Lifestyle',
-            handle: 'khush_ahlawat',
-            image: 'assets/talent/khush-ahlawat.jpg'
-        },
-        {
-            name: 'Shaad Malik',
-            role: 'Dance & Entertainment Creator',
-            handle: 'shaad8367',
-            image: 'assets/talent/shaad-malik.jpg'
+            name: 'Shadab Jakati',
+            role: 'Viral Comedy Creator',
+            handle: 'shadabjakati1',
+            image: 'assets/talent/shadab-jakati.jpg'
         },
         {
             name: 'Tanya Mittal',
             role: 'Actor & Digital Creator',
             handle: 'tanyamittalofficial',
             image: 'assets/talent/tanya-mittal.jpg'
+        },
+        {
+            name: 'Shivani Gupta',
+            role: 'Lifestyle & Travel Creator',
+            handle: '___shivanigupta__',
+            image: 'assets/talent/shivani-gupta.jpg'
         }
     ];
 
