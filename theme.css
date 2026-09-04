@@ -898,11 +898,34 @@ main {
 
 .roster-section .talent-marquee {
     --roster-gap: clamp(1.15rem, 2vw, 1.7rem);
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+    touch-action: pan-y pinch-zoom;
+    overscroll-behavior-x: contain;
     width: 100%;
     padding-block: clamp(1.55rem, 2.8vw, 2.35rem) clamp(2rem, 3.2vw, 2.8rem);
     mask-image: linear-gradient(90deg, transparent, #000 2.5%, #000 97.5%, transparent);
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 2.5%, #000 97.5%, transparent);
+}
+
+.roster-section .talent-marquee::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.roster-section .talent-marquee.is-dragging {
+    cursor: grabbing !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+}
+
+.roster-section .talent-marquee.js-scroll-active .talent-track {
+    animation: none !important;
+    transform: none !important;
 }
 
 .roster-section .talent-track {
@@ -1283,10 +1306,33 @@ main {
     height: clamp(520px, 38vw, 610px);
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+    touch-action: pan-y pinch-zoom;
+    overscroll-behavior-x: contain;
     perspective: 1400px;
     mask-image: linear-gradient(90deg, transparent 0, #000 1.5%, #000 98.5%, transparent 100%);
     -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 1.5%, #000 98.5%, transparent 100%);
+}
+
+#faces.roster-panorama .talent-marquee::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+#faces.roster-panorama .talent-marquee.is-dragging {
+    cursor: grabbing !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+}
+
+#faces.roster-panorama .talent-marquee.js-scroll-active .talent-track {
+    animation: none !important;
+    transform: none !important;
 }
 
 #faces.roster-panorama .talent-track {

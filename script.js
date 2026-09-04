@@ -910,19 +910,19 @@
             name: 'Fukra Insaan',
             role: 'Digital Icon & Creator',
             handle: 'fukra_insaan',
-            image: 'assets/gallery/fukra-insaan.jpg'
+            image: 'assets/talent/fukra-insaan.jpg'
         },
         {
             name: 'Digvijay Rathee',
             role: 'Fitness & Reality Star',
             handle: 'digvijay_rathee',
-            image: 'assets/gallery/digvijay-rathee.jpg'
+            image: 'assets/talent/digvijay-rathee.jpg'
         },
         {
             name: 'Sana Sultan',
             role: 'Actor & Fashion Star',
             handle: 'sanakhan00',
-            image: 'assets/gallery/sana-sultan.jpg'
+            image: 'assets/talent/sana-sultan.jpg'
         },
         {
             name: 'Puneet Superstar',
@@ -1010,6 +1010,281 @@
 
     hydrateSharedInfluencerRosters();
 
+    /* ---------- Unified Marquee & Interactive Rail Controller ----------
+       Enables smooth, continuous auto-drift and direct manual scrolling
+       (mouse grab-and-drag, touch swipe with momentum, and trackpad / Shift+wheel)
+       across all scrolling rails:
+       - Influencer & Celebrity rails (.talent-marquee)
+       - Client Logos marquee (.trust-band)
+       - Campaigns Reels marquee (.campaigns-marquee)
+    */
+    const initMarqueeRailControllers = () => {
+        const MARQUEE_CONFIGS = [
+            {
+                selector: '.talent-marquee',
+                trackSelector: '.talent-track',
+                defaultSpeed: 48
+            },
+            {
+                selector: '.trust-band',
+                trackSelector: '.trust-track',
+                defaultSpeed: 40
+            },
+            {
+                selector: '.campaigns-marquee',
+                trackSelector: '.campaigns-track',
+                defaultSpeed: 38
+            }
+        ];
+
+        const activeControllers = [];
+
+        MARQUEE_CONFIGS.forEach(cfg => {
+            const containers = $$(cfg.selector);
+            containers.forEach(container => {
+                if (container.dataset.manualScrollReady === 'true') return;
+                const track = container.querySelector(cfg.trackSelector);
+                if (!track) return;
+
+                const initialChildren = Array.from(track.children);
+                if (!initialChildren.length) return;
+
+                // Ensure 4 identical sets for seamless infinite wrapping in both directions
+                const hasAriaHidden = initialChildren.some(c => c.getAttribute('aria-hidden') === 'true');
+                if (hasAriaHidden) {
+                    initialChildren.forEach(child => {
+                        const clone = child.cloneNode(true);
+                        clone.setAttribute('aria-hidden', 'true');
+                        $$('a', clone).forEach(a => { a.tabIndex = -1; });
+                        track.appendChild(clone);
+                    });
+                } else {
+                    for (let s = 0; s < 3; s++) {
+                        initialChildren.forEach(child => {
+                            const clone = child.cloneNode(true);
+                            clone.setAttribute('aria-hidden', 'true');
+                            $$('a', clone).forEach(a => { a.tabIndex = -1; });
+                            track.appendChild(clone);
+                        });
+                    }
+                }
+
+                container.classList.add('js-scroll-active');
+                container.dataset.manualScrollReady = 'true';
+                container.tabIndex = 0;
+
+                const totalSets = 4;
+                const getCycleWidth = () => {
+                    const sw = track.scrollWidth;
+                    return sw > 0 ? sw / totalSets : 0;
+                };
+
+                let cycleWidth = getCycleWidth();
+                let currentScrollX = cycleWidth > 0 ? cycleWidth : 0;
+                container.scrollLeft = currentScrollX;
+
+                const step = container.dataset.marquee === 'right' ? -1 : 1;
+                const baseSpeed = cfg.defaultSpeed;
+
+                let isVisible = true;
+                let isHovered = false;
+                let isPointerDown = false;
+                let isDragging = false;
+                let startX = 0;
+                let startScrollX = 0;
+                let travelled = 0;
+                let lastMoveX = 0;
+                let lastMoveTime = 0;
+                let velocity = 0;
+                let momentumV = 0;
+                let isProgrammatic = false;
+
+                const syncDimensions = () => {
+                    const newCycle = getCycleWidth();
+                    if (newCycle > 10) {
+                        cycleWidth = newCycle;
+                    }
+                };
+
+                if ('IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver(entries => {
+                        entries.forEach(entry => {
+                            isVisible = entry.isIntersecting;
+                            if (isVisible) syncDimensions();
+                        });
+                    }, { rootMargin: '300px 0px', threshold: 0 });
+                    observer.observe(container);
+                }
+
+                container.addEventListener('pointerenter', (e) => {
+                    if (e.pointerType === 'mouse') isHovered = true;
+                });
+                container.addEventListener('pointerleave', (e) => {
+                    if (e.pointerType === 'mouse') isHovered = false;
+                });
+
+                container.addEventListener('dragstart', (e) => e.preventDefault());
+
+                container.addEventListener('pointerdown', (e) => {
+                    if (e.button !== 0) return;
+                    isPointerDown = true;
+                    isDragging = false;
+                    momentumV = 0;
+                    startX = e.clientX;
+                    lastMoveX = e.clientX;
+                    lastMoveTime = performance.now();
+                    startScrollX = container.scrollLeft;
+                    currentScrollX = container.scrollLeft;
+                    velocity = 0;
+                    travelled = 0;
+                });
+
+                container.addEventListener('pointermove', (e) => {
+                    if (!isPointerDown) return;
+                    const currentX = e.clientX;
+                    const dx = currentX - startX;
+                    travelled = Math.max(travelled, Math.abs(dx));
+
+                    const now = performance.now();
+                    const dt = now - lastMoveTime;
+                    if (dt > 8) {
+                        velocity = (currentX - lastMoveX) / dt;
+                        lastMoveX = currentX;
+                        lastMoveTime = now;
+                    }
+
+                    if (!isDragging && travelled > 6) {
+                        isDragging = true;
+                        container.classList.add('is-dragging');
+                        try { container.setPointerCapture(e.pointerId); } catch(err) {}
+                    }
+
+                    if (isDragging && cycleWidth > 10) {
+                        currentScrollX = startScrollX - dx;
+                        while (currentScrollX >= 2 * cycleWidth) {
+                            currentScrollX -= cycleWidth;
+                            startScrollX -= cycleWidth;
+                        }
+                        while (currentScrollX < cycleWidth) {
+                            currentScrollX += cycleWidth;
+                            startScrollX += cycleWidth;
+                        }
+                        isProgrammatic = true;
+                        container.scrollLeft = currentScrollX;
+                        isProgrammatic = false;
+                    }
+                });
+
+                const endDrag = (e) => {
+                    if (!isPointerDown) return;
+                    isPointerDown = false;
+                    container.classList.remove('is-dragging');
+                    try { container.releasePointerCapture(e.pointerId); } catch(err) {}
+
+                    if (isDragging) {
+                        if (Math.abs(velocity) > 0.12) {
+                            momentumV = Math.max(Math.min(velocity * 18, 50), -50);
+                        }
+                        setTimeout(() => {
+                            isDragging = false;
+                            travelled = 0;
+                        }, 80);
+                    }
+                    currentScrollX = container.scrollLeft;
+                };
+
+                container.addEventListener('pointerup', endDrag);
+                container.addEventListener('pointercancel', endDrag);
+
+                // Prevent link navigation if the pointer was dragged
+                container.addEventListener('click', (e) => {
+                    if (travelled > 6) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        travelled = 0;
+                    }
+                }, true);
+
+                // Trackpad / Shift+wheel horizontal scrolling
+                container.addEventListener('wheel', (e) => {
+                    if (e.shiftKey || Math.abs(e.deltaX) > 0) {
+                        const delta = Math.abs(e.deltaX) > 0 ? e.deltaX : e.deltaY * 0.6;
+                        currentScrollX += delta;
+                        syncDimensions();
+                        if (cycleWidth > 10) {
+                            while (currentScrollX >= 2 * cycleWidth) currentScrollX -= cycleWidth;
+                            while (currentScrollX < cycleWidth) currentScrollX += cycleWidth;
+                        }
+                        isProgrammatic = true;
+                        container.scrollLeft = currentScrollX;
+                        isProgrammatic = false;
+                    }
+                }, { passive: true });
+
+                // Native touch or scrollbar sync
+                container.addEventListener('scroll', () => {
+                    if (isProgrammatic) return;
+                    syncDimensions();
+                    currentScrollX = container.scrollLeft;
+                    if (cycleWidth > 10) {
+                        while (currentScrollX >= 2 * cycleWidth) {
+                            currentScrollX -= cycleWidth;
+                            container.scrollLeft -= cycleWidth;
+                        }
+                        while (currentScrollX < cycleWidth) {
+                            currentScrollX += cycleWidth;
+                            container.scrollLeft += cycleWidth;
+                        }
+                    }
+                }, { passive: true });
+
+                window.addEventListener('resize', syncDimensions, { passive: true });
+                window.addEventListener('load', syncDimensions, { passive: true });
+
+                activeControllers.push({
+                    tick(dt) {
+                        if (document.hidden || reduceMotion) return;
+                        if (isPointerDown || isDragging) return;
+
+                        if (cycleWidth <= 10) {
+                            syncDimensions();
+                            if (cycleWidth <= 10) return;
+                        }
+
+                        if (Math.abs(momentumV) > 0.5) {
+                            currentScrollX -= momentumV * dt * 45;
+                            momentumV *= 0.91;
+                            if (Math.abs(momentumV) < 0.5) momentumV = 0;
+                        } else {
+                            // On hover, glide at 55% speed so cards remain readable and user can click, but NEVER freeze
+                            const speed = isHovered ? (baseSpeed * 0.55) : baseSpeed;
+                            currentScrollX += step * speed * dt;
+                        }
+
+                        while (currentScrollX >= 2 * cycleWidth) currentScrollX -= cycleWidth;
+                        while (currentScrollX < cycleWidth) currentScrollX += cycleWidth;
+
+                        isProgrammatic = true;
+                        container.scrollLeft = currentScrollX;
+                        isProgrammatic = false;
+                    }
+                });
+            });
+        });
+
+        // Global RAF ticker for all active marquee controllers
+        if (activeControllers.length && !reduceMotion) {
+            let last = performance.now();
+            const animate = (now) => {
+                const dt = Math.min((now - last) / 1000, 0.05);
+                last = now;
+                activeControllers.forEach(ctrl => ctrl.tick(dt));
+                requestAnimationFrame(animate);
+            };
+            requestAnimationFrame(animate);
+        }
+    };
+
     /* ---------- Home roster: categorized panoramic portrait walls ---------- */
     const initRosterPanorama = () => {
         const roster = $('#faces.roster-panorama');
@@ -1045,5 +1320,6 @@
     };
 
     initRosterPanorama();
+    initMarqueeRailControllers();
     initCoverflowSlider();
 })();

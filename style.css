@@ -739,6 +739,7 @@ section {
 .preloader.done {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 }
 
 .preloader-inner {
@@ -2033,7 +2034,13 @@ section {
 /* ---------- 14. Trust band ---------- */
 .trust-band {
     display: flex;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+    touch-action: pan-y pinch-zoom;
+    overscroll-behavior-x: contain;
     padding-block: clamp(.9rem, 1.8vw, 1.35rem);
     mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
@@ -2419,22 +2426,63 @@ section {
     white-space: nowrap;
 }
 
-/* The roster rails are real scroll containers, not a CSS translate animation.
-   script.js advances scrollLeft each frame and wraps it at half the content
-   width, which looks identical but means the rail can also be dragged with the
-   mouse, flicked on touch, scrolled with a trackpad and reached by keyboard.
-   A translated track inside overflow:hidden can do none of that.
-
-   overflow-y stays hidden so the cards' hover lift and glow do not open a
-   vertical scrollbar; the vertical padding gives them room instead. */
 .talent-marquee {
     display: flex;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+    touch-action: pan-y pinch-zoom;
+    overscroll-behavior-x: contain;
     padding-block: clamp(1.2rem, 2vw, 1.8rem);
     mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
     width: 100%;
     position: relative;
+}
+
+.talent-marquee::-webkit-scrollbar,
+.trust-band::-webkit-scrollbar,
+.campaigns-marquee::-webkit-scrollbar,
+.quotes-marquee-wrap::-webkit-scrollbar,
+.marquee::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.talent-marquee.is-dragging,
+.trust-band.is-dragging,
+.campaigns-marquee.is-dragging,
+.quotes-marquee-wrap.is-dragging,
+.marquee.is-dragging {
+    cursor: grabbing !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+}
+
+.talent-marquee.is-dragging a,
+.talent-marquee.is-dragging .talent,
+.campaigns-marquee.is-dragging a,
+.campaigns-marquee.is-dragging .reel-card {
+    pointer-events: none;
+}
+
+.talent-marquee img,
+.trust-band img,
+.campaigns-marquee img,
+.campaigns-marquee video {
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.talent-marquee.js-scroll-active .talent-track,
+.trust-band.js-scroll-active .trust-track,
+.campaigns-marquee.js-scroll-active .campaigns-track {
+    animation: none !important;
+    transform: none !important;
 }
 
 .talent-track {
@@ -3091,7 +3139,13 @@ section {
 /* ---------- 22. Marquee ---------- */
 .marquee {
     display: flex;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+    touch-action: pan-y pinch-zoom;
+    overscroll-behavior-x: contain;
     padding-block: clamp(1rem, 2.2vw, 1.6rem);
     user-select: none;
 }
@@ -5136,7 +5190,13 @@ section {
 /* ---------- 35h. Testimonial marquee ---------- */
 .quotes-marquee-wrap {
     display: flex;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+    touch-action: pan-y pinch-zoom;
+    overscroll-behavior-x: contain;
     padding-block: .5rem 1.2rem;
     mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
@@ -5995,7 +6055,13 @@ section {
 
 .campaigns-marquee {
     display: flex;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+    touch-action: pan-y pinch-zoom;
+    overscroll-behavior-x: contain;
     padding-block: 2.5rem 3.2rem;
     margin-top: 1.5rem;
     mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
